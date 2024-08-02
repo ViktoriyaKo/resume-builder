@@ -1,0 +1,49 @@
+.scroll {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.scroll div {
+  white-space: nowrap;
+  padding-inline: 20px;
+  font-size: 80px;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: animate 30s linear infinite;
+  animation-delay: -30s;
+  color: black;
+  font-family: sans-serif;
+}
+
+.text {
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke-color: gray;
+  -webkit-text-stroke-width: 1px;
+  letter-spacing: 10px;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll div:nth-child(2) {
+  animation: animate2 30s linear infinite;
+  animation-delay: -15s;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}

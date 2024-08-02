@@ -6,19 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "bootstrap": "^5.3.3",
+    "clsx": "^2.1.1",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "keen-slider": "^6.8.6",
+    "next": "14.2.5",
     "react": "^18",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "react-hook-form": "^7.52.1",
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "4.3.2",
+    "@graphql-codegen/introspection": "4.0.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  height: 100%;
+  background-color: white;
+}
+
+.wrapper {
+  max-width: var(--width-container);
+  padding: 160px 20px 80px 20px;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--md-padding);
+}
+
+.description {
+  font-size: 22px;
+  text-align: justify;
+  flex: 1;
+}
+
+.title {
+  padding-right: 20px;
+  flex: 1;
+  border-right: 1px solid black;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}

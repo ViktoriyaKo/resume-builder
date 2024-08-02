@@ -1,0 +1,31 @@
+.container {
+  padding: 40px 80px;
+  position: relative;
+}
+
+.list {
+  border-radius: var(--border-radius);
+  background-color: white;
+  width: 590px;
+  height: 833px;
+  margin: 0 auto;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: fit-content;
+  background-color: black;
+  color: white;
+  transition: all 0.5s;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.5s;
+}

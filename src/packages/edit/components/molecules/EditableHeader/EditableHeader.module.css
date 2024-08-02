@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.input {
+  padding-inline: 12px;
+  font-weight: 600;
+  font-size: 20px;
+  outline: none;
+  border-bottom: 2px solid transparent;
+}
+
+.input:focus {
+  border-bottom: 2px solid var(--gray-300);
+}
+
+.input[readOnly]:focus {
+  border-bottom: 2px solid transparent;
+}

@@ -1,0 +1,8 @@
+.out {
+  cursor: pointer;
+  position: absolute;
+  z-index: calc(infinity);
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

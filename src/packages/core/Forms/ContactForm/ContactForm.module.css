@@ -1,0 +1,34 @@
+.form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  border: var(--white-border-small);
+}
+
+.textArea {
+  padding: 16px;
+  color: black;
+  outline: none;
+  border: none;
+  resize: none;
+}
+
+.textArea:focus {
+  outline: 2px solid black;
+}
+
+.button {
+  border: 1px solid white;
+  padding: 8px 12px;
+  background-color: transparent;
+  text-transform: uppercase;
+  transition: all 0s ease;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
