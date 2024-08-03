@@ -1,0 +1,11 @@
+.button {
+  color: var(--blue-100);
+  font-weight: 600;
+  align-self: flex-start;
+  transition: color 0.3s;
+}
+
+.button:hover {
+  color: var(--blue-200);
+  transition: color 0.3s;
+}

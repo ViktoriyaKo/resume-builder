@@ -20,7 +20,11 @@ const Hero = async () => {
       <div className={styles.wrapper}>
         <p className={styles.vertical}>Avsievich</p>
         <h1 className={styles.title}>Resume builder</h1>
-        <CustomLink href={'/'} className={styles.link} text={'Create resume'} />
+        <CustomLink
+          href={'/edit'}
+          className={styles.link}
+          text={'Create resume'}
+        />
       </div>
     </section>
   );

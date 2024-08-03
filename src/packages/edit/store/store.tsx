@@ -1,12 +1,19 @@
+import { FormData } from '../constants';
+
 export const contactData = [
-  { caption: 'Job title', id: 1, type: 'text' },
-  { caption: 'Upload photo', id: 1, type: 'file' },
-  { caption: 'First name', id: 2, type: 'text' },
-  { caption: 'Last name', id: 3, type: 'text' },
-  { caption: 'Email', id: 4, type: 'email' },
-  { caption: 'Phone', id: 5, type: 'number' },
-  { caption: 'Country', id: 6, type: 'text' },
-  { caption: 'City', id: 7, type: 'text' },
+  { caption: 'Job title', type: 'text', value: FormData.JOB },
+  { caption: 'Upload photo', type: 'file', value: 'test' },
+  { caption: 'First name', type: 'text', value: FormData.FIRST_NAME },
+  { caption: 'Last name', type: 'text', value: FormData.LAST_NAME },
+  { caption: 'Email', type: 'email', value: FormData.EMAIL },
+  { caption: 'Phone', type: 'number', value: FormData.PHONE },
+  { caption: 'Country', type: 'text', value: FormData.COUNTRY },
+  { caption: 'City', type: 'text', value: FormData.CITY },
+];
+
+export const additionalContactData = [
+  { caption: 'Address', id: 9, type: 'text' },
+  { caption: 'Driving License', id: 10, type: 'text' },
 ];
 
 export const educationData = [

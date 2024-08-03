@@ -11,12 +11,12 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 
 // eslint-disable-next-line react/display-name
 const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
-  const { caption, error, className, id, ...rest } = props;
+  const { caption, error, className, ...rest } = props;
 
   return (
     <div className={className ? className : ''}>
       <label className={clsx('form-label', styles.caption)}>{caption}</label>
-      <input className="form-control" {...rest} ref={ref} />
+      <input className="form-control" ref={ref} {...rest} />
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );

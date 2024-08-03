@@ -1,6 +1,12 @@
 'use client';
 import clsx from 'clsx';
-import { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
+import {
+  ChangeEvent,
+  forwardRef,
+  LegacyRef,
+  TextareaHTMLAttributes,
+  useState,
+} from 'react';
 
 interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -8,39 +14,39 @@ interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   caption?: string;
 }
 
-const TextArea = (props: IProps) => {
-  const {
-    id,
-    label,
-    caption,
-    rows = 3,
-    maxLength = 600,
-    className,
-    ...rest
-  } = props;
-  const [text, setText] = useState('');
+// eslint-disable-next-line react/display-name
+const TextArea = forwardRef(
+  (props: IProps, ref: LegacyRef<HTMLTextAreaElement>) => {
+    const {
+      label,
+      caption,
+      rows = 3,
+      maxLength = 600,
+      className,
+      ...rest
+    } = props;
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-  };
-
-  return (
-    <div className={clsx('mb-3', className && className)}>
-      {label && <label className="form-label">{label}</label>}
-      <textarea
-        onChange={handleChange}
-        className="form-control"
-        rows={rows}
-        {...rest}
-      ></textarea>
-      <div className="d-flex justify-content-between pt-1">
-        {caption && <small className="form-label text-muted">{caption}</small>}
-        <p className="form-label text-muted">
-          {text.length}/{maxLength}
-        </p>
+    const length = rest?.value ? String(rest?.value)?.length : 0;
+    return (
+      <div className={clsx('mb-3', className && className)}>
+        {label && <label className="form-label">{label}</label>}
+        <textarea
+          ref={ref}
+          className="form-control"
+          rows={rows}
+          {...rest}
+        ></textarea>
+        <div className="d-flex justify-content-between pt-1">
+          {caption && (
+            <small className="form-label text-muted">{caption}</small>
+          )}
+          <p className="form-label text-muted">
+            {length}/{maxLength}
+          </p>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
 export default TextArea;

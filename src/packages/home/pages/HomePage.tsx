@@ -2,7 +2,7 @@ import Description from '../components/Description';
 import Hero from '../components/Hero';
 import Templates from '../components/Templates';
 
-const HomePage = async () => {
+const HomePage = () => {
   return (
     <>
       <Hero />

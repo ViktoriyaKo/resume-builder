@@ -6,10 +6,12 @@ import { DeleteIcon } from '@/ui/atoms/Icons/DeleteIcon';
 interface IProps {
   children: ReactElement;
   title: string;
+  id: number;
+  handleDelete: (arg: number) => void;
 }
 
 const EditableAccordion = (props: IProps) => {
-  const { children, title } = props;
+  const { children, title, handleDelete, id } = props;
 
   return (
     <div className={styles.wrapper}>
@@ -17,7 +19,7 @@ const EditableAccordion = (props: IProps) => {
         <summary className={styles.summary}>{title}</summary>
         <div className={styles.content}>{children}</div>
       </details>
-      <button>
+      <button onClick={() => handleDelete(id)}>
         <Icon html={DeleteIcon} />
       </button>
     </div>

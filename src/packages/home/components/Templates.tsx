@@ -7,20 +7,20 @@ const Templates = () => {
     {
       link: '/edit',
       image: image,
-      title: 'title1',
-      description: 'description',
+      title: 'Simple template #1',
+      description: 'A clean and simple resume template',
     },
     {
       link: '/edit',
       image: image,
-      title: 'title2',
-      description: 'description',
+      title: 'Simple template #2',
+      description: 'A clean and simple resume template',
     },
     {
       link: '/edit',
       image: image,
-      title: 'title3',
-      description: 'description',
+      title: 'Simple template #3',
+      description: 'A clean and simple resume template',
     },
   ];
 
