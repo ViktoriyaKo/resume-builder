@@ -7,11 +7,18 @@ import { addData, removeDataItem } from '@/packages/edit/store/dataSlice';
 import { Categories, FormData } from '@/packages/edit/constants';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
+import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { TypeData } from '@/packages/edit/types/types';
 
-const ContactDetails = (props) => {
-  const { data, control } = props;
+interface IProps {
+  data: TypeData[];
+}
+
+const ContactDetails = (props: IProps) => {
+  const { data } = props;
   const dispatch = useDispatch();
   const [isToggle, setIsToggle] = useState(true);
+  const control = useControl();
 
   const handleClick = () => {
     if (isToggle) {
@@ -26,19 +33,18 @@ const ContactDetails = (props) => {
   return (
     <>
       <EditableHeader
-        control={control}
         title="Personal Details"
         value={FormData.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>
         {data.map((item) => {
-          const { caption, value, type } = item;
+          const { caption, name, type } = item;
           return (
             <Controller
               defaultValue={''}
               control={control}
-              name={value}
-              key={value}
+              name={name}
+              key={name}
               render={({ field }) => (
                 <Input type={type} caption={caption} {...field} />
               )}

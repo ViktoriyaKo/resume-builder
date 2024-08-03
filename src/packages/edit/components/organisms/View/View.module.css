@@ -9,6 +9,7 @@
   width: 590px;
   height: 833px;
   margin: 0 auto;
+  padding: 20px 40px;
 }
 
 .button {
@@ -28,4 +29,43 @@
   background-color: white;
   color: black;
   transition: all 0.5s;
+}
+
+/* content: */
+.headerWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  font-size: 14px;
+  text-wrap: nowrap;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.jobTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.job {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-block: 22px 12px;
+}
+
+.item {
+  list-style: inside;
+  padding-left: 20px;
 }

@@ -22,7 +22,7 @@ const initialState = {
   languagesData: [[0, languagesData]],
 };
 
-export const formSlice = createSlice({
+export const Slice = createSlice({
   name: 'data',
   initialState,
   reducers: {
@@ -62,7 +62,7 @@ export const formSlice = createSlice({
   },
 });
 
-export const { addData, removeDataItem } = formSlice.actions;
+export const { addData, removeDataItem } = Slice.actions;
 export const getStateData = (store: RootState) => store.data;
 
-export default formSlice.reducer;
+export default Slice.reducer;

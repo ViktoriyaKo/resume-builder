@@ -4,18 +4,18 @@ import { useRef, useState } from 'react';
 import styles from './EditableHeader.module.css';
 import { useOnClickOutside } from '@/hooks';
 import { Controller } from 'react-hook-form';
-import { FormData } from '@/packages/edit/constants';
+import { useControl } from '@/packages/edit/contexts/ControlContext';
 
 interface IProps {
   title: string;
   description?: string;
-  control: any;
   value: string;
 }
 
 const EditableHeader = (props: IProps) => {
-  const { title, description, control, value } = props;
+  const { title, description, value } = props;
   const [readonly, setReadonly] = useState(true);
+  const control = useControl();
   const ref = useRef<HTMLInputElement>(null);
 
   const handleCLick = () => {

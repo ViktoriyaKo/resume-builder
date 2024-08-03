@@ -1,26 +1,29 @@
-import { useState } from 'react';
+import { forwardRef, LegacyRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface IProps {
   label?: string;
+  value?: Date | null;
+  onChange?: (date: Date | null) => void;
 }
 
-const DataPicker = (props: IProps) => {
-  const { label } = props;
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+// eslint-disable-next-line react/display-name
+const DataPicker = forwardRef((props: IProps, ref: LegacyRef<DatePicker>) => {
+  const { label, value, onChange } = props;
 
   return (
     <div>
       {label && <label className="form-label d-block">{label}</label>}
       <DatePicker
-        selected={selectedDate}
-        onChange={(date: Date | null) => setSelectedDate(date)}
+        selected={value}
+        onChange={onChange}
+        ref={ref}
         className="form-control"
         dateFormat="MMMM d, yyyy"
       />
     </div>
   );
-};
+});
 
 export default DataPicker;

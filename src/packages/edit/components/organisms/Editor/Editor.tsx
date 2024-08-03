@@ -12,13 +12,18 @@ import LinksDetails from '../../molecules/LinksDetails/LinksDetails';
 import Skills from '../../molecules/Skills/Skills';
 import CoursesDetails from '../../molecules/CoursesDetails/CoursesDetails';
 import Languages from '../../molecules/Languages/Languages';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, Controller } from 'react-hook-form';
 import { FormData } from '@/packages/edit/constants';
+import ControlProvider from '@/packages/edit/contexts/ControlContext';
+import { useEffect } from 'react';
+import { updateData } from '@/packages/edit/store/formDataSlice';
 
 const Editor = () => {
   const initialData = useSelector(getStateData);
+  const dispatch = useDispatch();
+
   const {
     contactData,
     courseData,
@@ -30,46 +35,58 @@ const Editor = () => {
 
   const {
     handleSubmit,
-    register,
-    reset,
     control,
+    watch,
     formState: { errors },
   } = useForm({});
 
   const onSubmit = (data) => console.log(data);
-  // TODO вынести control в context!!!
+
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (name?.includes('.')) {
+        const [parentField, fieldName] = name.split('.');
+        const newData = {
+          [parentField]: {
+            ...value[parentField],
+            [fieldName]: value[parentField][fieldName],
+          },
+        };
+        dispatch(updateData({ data: newData, category: parentField }));
+      } else {
+        dispatch(updateData({ data: { [name]: value[name] } }));
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [dispatch, watch]);
 
   return (
-    <form className={styles.article} onSubmit={handleSubmit(onSubmit)}>
-      <ContactDetails control={control} data={contactData} />
-      <EditableHeader
-        value={FormData.SUMMARY_TITLE}
-        control={control}
-        title="Professional Summary"
-        description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}
-      />
-      <Controller
-        name={FormData.SUMMARY}
-        control={control}
-        render={({ field }) => (
-          <TextArea
-            caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
-            {...field}
-          />
-        )}
-      />
-      <EmploymentDetails data={employmentData} control={control} />
-      <EducationDetails data={educationData} control={control} />
-      <Skills control={control} />
-      <LinksDetails data={linksData} control={control} />
-      <CoursesDetails data={courseData} control={control} />
-      <Languages
-        data={languagesData}
-        options={selectLanguagesData}
-        control={control}
-      />
-      <button>test!!!!</button>
-    </form>
+    <ControlProvider value={control}>
+      <form className={styles.article} onSubmit={handleSubmit(onSubmit)}>
+        <ContactDetails data={contactData} />
+        <EditableHeader
+          value={FormData.SUMMARY_TITLE}
+          title="Professional Summary"
+          description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}
+        />
+        <Controller
+          name={FormData.SUMMARY}
+          control={control}
+          render={({ field }) => (
+            <TextArea
+              caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
+              {...field}
+            />
+          )}
+        />
+        <EmploymentDetails data={employmentData} />
+        <EducationDetails data={educationData} />
+        <Skills />
+        <LinksDetails data={linksData} />
+        <CoursesDetails data={courseData} />
+        <Languages data={languagesData} options={selectLanguagesData} />
+      </form>
+    </ControlProvider>
   );
 };
 
