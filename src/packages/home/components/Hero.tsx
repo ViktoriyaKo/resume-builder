@@ -1,7 +1,7 @@
 import { CustomLink } from '@/ui/atoms';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
-import background from '/public/images/background.jpg';
+import background from '@images/background.jpg';
 
 const Hero = async () => {
   return (

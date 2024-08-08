@@ -12,7 +12,7 @@ const InputsList = (props) => {
 
   return (
     <div className={styles.container}>
-      {data.map((item) => {
+      {data?.map((item) => {
         const { caption, type, name } = item;
 
         return (

@@ -6,8 +6,8 @@ import { DeleteIcon } from '@/ui/atoms/Icons/DeleteIcon';
 interface IProps {
   children: ReactElement;
   title: string;
-  id: number;
-  handleDelete: (arg: number) => void;
+  id: string;
+  handleDelete: (arg: string) => void;
 }
 
 const EditableAccordion = (props: IProps) => {

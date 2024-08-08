@@ -1,25 +1,25 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  additionalContactData,
   contactData,
   courseData,
   educationData,
   employmentData,
   languagesData,
   linksData,
-} from './store';
+} from './initialFormDataStore';
 import { Categories } from '../constants/categories';
 import { RootState } from './configStore';
 import addItemDataToState from '../utils/addItemDataToState';
+import { v4 as uuid } from 'uuid';
+import { TypeInitialDataState } from '../types';
 
-const initialState = {
+const initialState: TypeInitialDataState = {
   contactData: contactData,
-  educationData: [[0, educationData]],
-  courseData: [[0, courseData]],
-  employmentData: [[0, employmentData]],
-  linksData: [[0, linksData]],
-  languagesData: [[0, languagesData]],
+  educationData: [{ uuid: uuid(), data: educationData }],
+  courseData: [{ uuid: uuid(), data: courseData }],
+  employmentData: [{ uuid: uuid(), data: employmentData }],
+  linksData: [{ uuid: uuid(), data: linksData }],
+  languagesData: [{ uuid: uuid(), data: languagesData }],
 };
 
 export const Slice = createSlice({
@@ -27,28 +27,12 @@ export const Slice = createSlice({
   initialState,
   reducers: {
     addData: (state, action) => {
-      const category = action.payload;
-      switch (category) {
-        case Categories.CONTACT:
-          state[category] = [...contactData, ...additionalContactData];
-          break;
-        case Categories.EDUCATION:
-          addItemDataToState(state.educationData, educationData);
-          break;
-        case Categories.COURSE:
-          addItemDataToState(state.courseData, courseData);
-          break;
-        case Categories.EMPLOYMENT:
-          addItemDataToState(state.employmentData, employmentData);
-          break;
-        case Categories.LINKS:
-          addItemDataToState(state.linksData, linksData);
-          break;
-        case Categories.LANGUAGES:
-          addItemDataToState(state.languagesData, languagesData);
-          break;
-        default:
-          break;
+      const { category, data } = action.payload;
+
+      if (category === Categories.CONTACT) {
+        state[category] = [...contactData, ...data];
+      } else {
+        addItemDataToState(state[category], data);
       }
     },
     removeDataItem: (state, action) => {
@@ -56,7 +40,7 @@ export const Slice = createSlice({
       if (category === Categories.CONTACT) {
         state[category] = [...contactData];
       } else {
-        state[category] = state[category].filter((item) => item[0] !== id);
+        state[category] = state[category].filter((item) => item.uuid !== id);
       }
     },
   },

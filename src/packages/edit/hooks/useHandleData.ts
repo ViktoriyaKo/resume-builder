@@ -1,15 +1,22 @@
 import { addData, removeDataItem } from '@/packages/edit/store/dataSlice';
 import { useDispatch } from 'react-redux';
+import { TypeFieldData } from '../types';
 
-const useHandleData = (category: string) => {
+interface IProps {
+  category: string;
+  data: TypeFieldData[];
+}
+
+const useHandleData = (props: IProps) => {
+  const { category, data } = props;
   const dispatch = useDispatch();
 
   const addListItem = () => {
-    dispatch(addData(category));
+    dispatch(addData({ category, data }));
   };
 
-  const removeListItem = (id: number) => {
-    dispatch(removeDataItem({ category: category, id: id }));
+  const removeListItem = (id: string) => {
+    dispatch(removeDataItem({ category, id }));
   };
 
   return { addListItem, removeListItem };

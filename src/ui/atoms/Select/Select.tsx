@@ -5,6 +5,7 @@ interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
   label?: string;
   caption?: string;
+  options?: { caption: string; value: string }[];
 }
 // eslint-disable-next-line react/display-name
 const Select = forwardRef(
@@ -15,14 +16,16 @@ const Select = forwardRef(
       <div className={className ? className : ''}>
         <label className={'form-label'}>{label}</label>
         <select ref={ref} className="form-select" {...rest}>
-          {options.map((option) => {
-            const { caption, value } = option;
-            return (
-              <option key={value} defaultValue={value}>
-                {caption}
-              </option>
-            );
-          })}
+          {options &&
+            options.length > 0 &&
+            options.map((option) => {
+              const { caption, value } = option;
+              return (
+                <option key={value} defaultValue={value}>
+                  {caption}
+                </option>
+              );
+            })}
         </select>
       </div>
     );

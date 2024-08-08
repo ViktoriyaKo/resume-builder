@@ -14,12 +14,6 @@ const FooterContainer = (props: { children: React.ReactNode }) => {
 const Location = () => {
   return (
     <div className={styles.logo}>
-      {/* <Image
-        alt={'location'}
-        src={'/images/location.png'}
-        width={25}
-        height={25}
-      /> */}
       <span>Poland, Krakow</span>
     </div>
   );

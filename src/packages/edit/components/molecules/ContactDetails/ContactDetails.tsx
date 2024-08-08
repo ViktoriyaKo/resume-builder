@@ -8,10 +8,11 @@ import { Categories, FormData } from '@/packages/edit/constants';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
-import { TypeData } from '@/packages/edit/types/types';
+import { TypeFieldData } from '@/packages/edit/types/types';
+import { additionalContactData } from '@/packages/edit/store/initialFormDataStore';
 
 interface IProps {
-  data: TypeData[];
+  data: TypeFieldData[];
 }
 
 const ContactDetails = (props: IProps) => {
@@ -20,9 +21,11 @@ const ContactDetails = (props: IProps) => {
   const [isToggle, setIsToggle] = useState(true);
   const control = useControl();
 
-  const handleClick = () => {
+  const toggleDetails = () => {
     if (isToggle) {
-      dispatch(addData(Categories.CONTACT));
+      dispatch(
+        addData({ category: Categories.CONTACT, data: additionalContactData })
+      );
       setIsToggle(false);
     } else {
       dispatch(removeDataItem({ category: Categories.CONTACT }));
@@ -53,7 +56,7 @@ const ContactDetails = (props: IProps) => {
         })}
       </div>
       <ControlButton
-        onClick={handleClick}
+        onClick={toggleDetails}
         text={`${isToggle ? '▼ Add' : '▲ Hide'} additional details`}
       />
     </>

@@ -1,28 +1,13 @@
 import { Card } from '@/ui/molecules';
-import image from '/public/images/test-template.png';
 import styles from '../styles/Templates.module.css';
+import { TypeTemplate } from '@/packages/edit/types';
 
-const Templates = () => {
-  const templates = [
-    {
-      link: '/edit',
-      image: image,
-      title: 'Simple template #1',
-      description: 'A clean and simple resume template',
-    },
-    {
-      link: '/edit',
-      image: image,
-      title: 'Simple template #2',
-      description: 'A clean and simple resume template',
-    },
-    {
-      link: '/edit',
-      image: image,
-      title: 'Simple template #3',
-      description: 'A clean and simple resume template',
-    },
-  ];
+interface IProps {
+  templates: TypeTemplate[];
+}
+
+const Templates = (props: IProps) => {
+  const { templates } = props;
 
   return (
     <section className={styles.container}>

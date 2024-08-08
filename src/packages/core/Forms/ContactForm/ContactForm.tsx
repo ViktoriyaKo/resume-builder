@@ -23,14 +23,8 @@ const ContactForm = (props: IProps) => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      // await createRequest({ name: data.text, contact: data.email });
-      // const message = generateMessageForTelegram({
-      //   contact: data.email,
-      //   text: data.text,
-      // });
-      // setOpen(true);
-      // await sendDataToTelegram(message);
-      // reset();
+      // todo add request!!!
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

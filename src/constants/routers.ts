@@ -1,1 +1,1 @@
-export const ROUTERS = [{ href: '/template', title: 'Templates' }];
+export const ROUTERS = [{ href: '/edit', title: 'Create Resume' }];

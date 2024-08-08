@@ -1,16 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Card.module.css';
+import { TypeTemplate } from '@/packages/edit/types';
 
-interface IProps {
-  link: string;
-  image: string;
-  title: string;
-  filter?: string;
-  description: string;
-}
 
-const Template = (props: IProps) => {
+const Template = (props: TypeTemplate) => {
   const { link, image, title, description } = props;
 
   return (
