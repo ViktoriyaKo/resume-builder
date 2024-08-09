@@ -1,11 +1,12 @@
 'use client';
+import { TypeOptionsData } from '@/packages/edit/types';
 import { forwardRef, LegacyRef, SelectHTMLAttributes } from 'react';
 
 interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
   label?: string;
   caption?: string;
-  options?: { caption: string; value: string }[];
+  options?: TypeOptionsData[];
 }
 // eslint-disable-next-line react/display-name
 const Select = forwardRef(

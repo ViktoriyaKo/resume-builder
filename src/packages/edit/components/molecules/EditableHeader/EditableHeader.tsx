@@ -7,18 +7,23 @@ import styles from './EditableHeader.module.css';
 import { useOnClickOutside } from '@/hooks';
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { useDispatch } from 'react-redux';
+import { updateSimpleField } from '@/packages/edit/store/simpleFieldSlice';
+import { FormData } from '@/packages/edit/constants';
 
 interface IProps {
   title: string;
   description?: string;
   value: string;
+  category: FormData;
 }
 
 const EditableHeader = (props: IProps) => {
-  const { title, description, value } = props;
+  const { title, description, value, category } = props;
   const [readonly, setReadonly] = useState(true);
   const control = useControl();
   const ref = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
   const handleCLick = () => {
     setReadonly(false);
@@ -40,15 +45,22 @@ const EditableHeader = (props: IProps) => {
           defaultValue={title}
           name={value}
           control={control}
-          render={({ field }) => (
-            <input
-              {...field}
-              ref={ref}
-              type="text"
-              className={styles.input}
-              readOnly={readonly}
-            />
-          )}
+          render={({ field }) => {
+            const handleChange = (value: string) => {
+              field.onChange(value);
+              dispatch(updateSimpleField({ category, value }));
+            };
+            return (
+              <input
+                {...field}
+                ref={ref}
+                type="text"
+                className={styles.input}
+                readOnly={readonly}
+                onChange={(e) => handleChange(e.target.value)}
+              />
+            );
+          }}
         />
 
         <button onClick={handleCLick}>

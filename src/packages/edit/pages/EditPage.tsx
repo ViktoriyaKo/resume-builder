@@ -2,11 +2,11 @@
 import { Provider } from 'react-redux';
 import { View, Editor } from '../components/organisms';
 import styles from '../styles/EditPage.module.css';
-import configStore from '../store/configStore';
+import store from '../store/store';
 
 const EditPage = () => {
   return (
-    <Provider store={configStore}>
+    <Provider store={store}>
       <section className={styles.container}>
         <div className={styles.editor}>
           <Editor />

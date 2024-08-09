@@ -5,12 +5,10 @@ export interface TypeFieldData {
   caption: string;
   type: string;
   name: string;
+  value?: string;
 }
 
-export interface TypeOptionsData {
-  caption: string;
-  value: string;
-}
+export type TypeOptionsData = Omit<TypeFieldData, 'type' | 'name'>;
 
 export type TypeExpendedData = { uuid: string; data: TypeFieldData[] };
 
@@ -27,3 +25,20 @@ export type TypeInitialDataState = Record<
 > & {
   [Categories.CONTACT]: TypeFieldData[];
 };
+
+export interface AddDataActionPayload {
+  category: Categories;
+  data: TypeFieldData[];
+}
+
+export interface RemoveDataActionPayload {
+  category: Categories;
+  id?: string;
+}
+
+export interface UpdateValueToDataActionPayload {
+  category: Categories;
+  uuid?: string;
+  name: string;
+  value: string;
+}

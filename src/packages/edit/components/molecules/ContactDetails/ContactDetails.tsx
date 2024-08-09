@@ -3,7 +3,7 @@ import { Input } from '@/ui/atoms';
 import styles from './ContactDetails.module.css';
 import { ControlButton } from '../../atoms';
 import { useDispatch } from 'react-redux';
-import { addData, removeDataItem } from '@/packages/edit/store/dataSlice';
+import { addData, updateValueToData, removeDataItem } from '@/packages/edit/store/dataSlice';
 import { Categories, FormData } from '@/packages/edit/constants';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
@@ -20,15 +20,16 @@ const ContactDetails = (props: IProps) => {
   const dispatch = useDispatch();
   const [isToggle, setIsToggle] = useState(true);
   const control = useControl();
+  const category = Categories.CONTACT;
 
   const toggleDetails = () => {
     if (isToggle) {
       dispatch(
-        addData({ category: Categories.CONTACT, data: additionalContactData })
+        addData({ category, data: additionalContactData })
       );
       setIsToggle(false);
     } else {
-      dispatch(removeDataItem({ category: Categories.CONTACT }));
+      dispatch(removeDataItem({ category }));
       setIsToggle(true);
     }
   };
@@ -36,6 +37,7 @@ const ContactDetails = (props: IProps) => {
   return (
     <>
       <EditableHeader
+        category={FormData.TITLES}
         title="Personal Details"
         value={FormData.PERSONAL_TITLE}
       />
@@ -48,9 +50,20 @@ const ContactDetails = (props: IProps) => {
               control={control}
               name={name}
               key={name}
-              render={({ field }) => (
-                <Input type={type} caption={caption} {...field} />
-              )}
+              render={({ field }) => {
+                const handleChange = (value: string) => {
+                  field.onChange(value);
+                  dispatch(updateValueToData({ category, name, value }));
+                };
+                return (
+                  <Input
+                    type={type}
+                    caption={caption}
+                    {...field}
+                    onChange={(e) => handleChange(e.target.value)}
+                  />
+                );
+              }}
             />
           );
         })}

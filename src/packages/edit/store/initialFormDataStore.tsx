@@ -73,3 +73,14 @@ export const selectLanguagesData = [
   { caption: 'C1', value: 'C1' },
   { caption: 'C2', value: 'C2' },
 ];
+
+export const titles = [
+  { caption: 'Social links & Websites', name: FormData.LINK_TITLE },
+  { caption: 'Skills', name: FormData.SKILLS_TITLE },
+  { caption: 'Professional Summary', name: FormData.SUMMARY_TITLE },
+  { caption: 'Personal Details', name: FormData.PERSONAL_TITLE },
+  { caption: 'Education', name: FormData.EDUCATION_TITLE },
+  { caption: 'Employment History', name: FormData.EMPLOYMENT_TITLE },
+  { caption: 'Courses', name: FormData.COURSES_TITLE },
+  { caption: 'Languages', name: FormData.LANGUAGES_TITLE },
+];

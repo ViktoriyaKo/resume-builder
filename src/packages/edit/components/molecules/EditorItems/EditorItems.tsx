@@ -19,6 +19,8 @@ import {
   linksData,
   languagesData,
 } from '@/packages/edit/store/initialFormDataStore';
+import { updateValueToData } from '@/packages/edit/store/dataSlice';
+import { useDispatch } from 'react-redux';
 
 interface IDataProps {
   data: TypeExpendedData[];
@@ -27,7 +29,7 @@ interface IDataProps {
 
 interface IContentProps {
   value: string;
-  category: string;
+  category: Categories;
   header: string;
   description?: string;
   data: TypeExpendedData[];
@@ -49,7 +51,7 @@ const ItemContent = (props: IContentProps) => {
     options,
     initialFormData,
   } = props;
-
+  const dispatch = useDispatch();
   const { addListItem, removeListItem } = useHandleData({
     category,
     data: initialFormData,
@@ -57,11 +59,26 @@ const ItemContent = (props: IContentProps) => {
 
   return (
     <>
-      <EditableHeader value={value} title={header} description={description} />
+      <EditableHeader
+        category={FormData.TITLES}
+        value={value}
+        title={header}
+        description={description}
+      />
       {data &&
         data.length > 0 &&
         data.map((item, index) => {
           const { uuid, data } = item;
+
+          const clickUpdateValueToData = ({
+            name,
+            value,
+          }: {
+            name: string;
+            value: string;
+          }) => {
+            dispatch(updateValueToData({ category, uuid, name, value }));
+          };
 
           return (
             <Fragment key={uuid}>
@@ -71,8 +88,9 @@ const ItemContent = (props: IContentProps) => {
                 handleDelete={removeListItem}
               >
                 <InputsList
+                  uuid={uuid}
+                  handleClick={clickUpdateValueToData}
                   data={data}
-                  title={`${value}-${uuid}`}
                   options={options}
                 />
               </EditableAccordion>
@@ -175,6 +193,7 @@ const Summary = ({ control }: { control: Control<FieldValues> }) => {
   return (
     <>
       <EditableHeader
+        category={FormData.TITLES}
         value={FormData.SUMMARY_TITLE}
         title="Professional Summary"
         description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}

@@ -10,11 +10,12 @@ import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
 interface IProps {
   data: TypeFieldData[];
   options?: TypeOptionsData[];
-  title: string;
+  uuid: string;
+  handleClick: ({ name, value }: { name: string; value: string }) => void;
 }
 
 const InputsList = (props: IProps) => {
-  const { data, options, title } = props;
+  const { data, options, uuid, handleClick } = props;
   const control = useControl();
 
   return (
@@ -25,10 +26,14 @@ const InputsList = (props: IProps) => {
         return (
           <Controller
             key={caption}
-            name={`${title}.${name}`}
+            name={`${uuid}-${name}`}
             defaultValue={''}
             control={control}
             render={({ field }) => {
+              const handleChange = (value: string) => {
+                field.onChange(value);
+                handleClick({ name, value });
+              };
               switch (type) {
                 case 'textArea':
                   return (
@@ -36,11 +41,19 @@ const InputsList = (props: IProps) => {
                       label={caption}
                       className={styles.textArea}
                       {...field}
+                      onChange={(e) => handleChange(e.target.value)}
                     />
                   );
                 case 'date':
                   return (
-                    <DataPicker key={caption} label={caption} {...field} />
+                    <DataPicker
+                      key={caption}
+                      label={caption}
+                      {...field}
+                      onChange={(date) =>
+                        handleChange(date ? date.toISOString() : '')
+                      }
+                    />
                   );
                 case 'select':
                   return (
@@ -50,6 +63,7 @@ const InputsList = (props: IProps) => {
                       options={options}
                       className={styles.input}
                       {...field}
+                      onChange={(e) => handleChange(e.target.value)}
                     />
                   );
                 default:
@@ -59,6 +73,7 @@ const InputsList = (props: IProps) => {
                       {...item}
                       className={styles.input}
                       {...field}
+                      onChange={(e) => handleChange(e.target.value)}
                     />
                   );
               }

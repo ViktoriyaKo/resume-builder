@@ -1,9 +1,10 @@
 import { addData, removeDataItem } from '@/packages/edit/store/dataSlice';
 import { useDispatch } from 'react-redux';
 import { TypeFieldData } from '../types';
+import { Categories } from '../constants';
 
 interface IProps {
-  category: string;
+  category: Categories;
   data: TypeFieldData[];
 }
 

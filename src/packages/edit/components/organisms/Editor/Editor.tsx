@@ -2,18 +2,15 @@
 
 import styles from './Editor.module.css';
 import { selectLanguagesData } from '@/packages/edit/store/initialFormDataStore';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
 import ControlProvider from '@/packages/edit/contexts/ControlContext';
-import { useEffect } from 'react';
-import { updateData } from '@/packages/edit/store/formFilledDataSlice';
 import { ContactDetails, Skills } from '../../molecules';
 import EditorBlock from '../../molecules/EditorItems/EditorItems';
 
 const Editor = () => {
   const initialData = useSelector(getStateData);
-  const dispatch = useDispatch();
 
   const {
     contactData,
@@ -24,31 +21,12 @@ const Editor = () => {
     linksData,
   } = initialData;
 
-  const { handleSubmit, control, watch } = useForm({});
+  const { handleSubmit, control } = useForm({});
 
   const onSubmit = () => {
     // add action
     return;
   };
-
-  useEffect(() => {
-    const subscription = watch((value, { name }) => {
-      console.log(value[name], name, value);
-      if (name?.includes('.')) {
-        const [parentField, fieldName] = name.split('.');
-        const newData = {
-          [parentField]: {
-            ...value[parentField],
-            [fieldName]: value[parentField][fieldName],
-          },
-        };
-        dispatch(updateData({ data: newData, category: parentField }));
-      } else {
-        dispatch(updateData({ data: { [name]: value[name] } }));
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [dispatch, watch]);
 
   return (
     <ControlProvider value={control}>

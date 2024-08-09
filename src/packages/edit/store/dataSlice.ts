@@ -8,10 +8,15 @@ import {
   linksData,
 } from './initialFormDataStore';
 import { Categories } from '../constants/categories';
-import { RootState } from './configStore';
+import { RootState } from './store';
 import addItemDataToState from '../utils/addItemDataToState';
 import { v4 as uuid } from 'uuid';
-import { TypeFieldData, TypeInitialDataState } from '../types';
+import {
+  TypeInitialDataState,
+  AddDataActionPayload,
+  RemoveDataActionPayload,
+  UpdateValueToDataActionPayload,
+} from '../types';
 
 const initialState: TypeInitialDataState = {
   contactData: contactData,
@@ -21,16 +26,6 @@ const initialState: TypeInitialDataState = {
   linksData: [{ uuid: uuid(), data: linksData }],
   languagesData: [{ uuid: uuid(), data: languagesData }],
 };
-
-interface AddDataActionPayload {
-  category: Categories;
-  data: TypeFieldData[];
-}
-
-interface RemoveDataActionPayload {
-  category: Categories;
-  id?: string;
-}
 
 export const Slice = createSlice({
   name: 'data',
@@ -59,10 +54,29 @@ export const Slice = createSlice({
         state[category] = state[category].filter((item) => item.uuid !== id);
       }
     },
+    updateValueToData: (
+      state: TypeInitialDataState,
+      action: PayloadAction<UpdateValueToDataActionPayload>
+    ) => {
+      const { category, uuid, name, value } = action.payload;
+      let findItem;
+      if (category === Categories.CONTACT) {
+        findItem = state[category].find((item) => item.name === name);
+      } else {
+        const element = state[category].find((item) => item.uuid === uuid);
+        if (element) {
+          findItem = element.data.find((element) => element.name === name);
+        }
+      }
+
+      if (findItem) {
+        findItem.value = value;
+      }
+    },
   },
 });
 
-export const { addData, removeDataItem } = Slice.actions;
+export const { addData, removeDataItem, updateValueToData } = Slice.actions;
 export const getStateData = (store: RootState) => store.data;
 
 export default Slice.reducer;
