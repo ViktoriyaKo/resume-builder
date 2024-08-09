@@ -1,3 +1,5 @@
+'use client';
+
 import { Icon } from '@/ui/atoms';
 import { EditIcon } from '@/ui/atoms/Icons/EditIcon';
 import { useRef, useState } from 'react';

@@ -7,7 +7,7 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
 import ControlProvider from '@/packages/edit/contexts/ControlContext';
 import { useEffect } from 'react';
-import { updateData } from '@/packages/edit/store/formDataSlice';
+import { updateData } from '@/packages/edit/store/formFilledDataSlice';
 import { ContactDetails, Skills } from '../../molecules';
 import EditorBlock from '../../molecules/EditorItems/EditorItems';
 
@@ -27,11 +27,13 @@ const Editor = () => {
   const { handleSubmit, control, watch } = useForm({});
 
   const onSubmit = () => {
+    // add action
     return;
   };
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
+      console.log(value[name], name, value);
       if (name?.includes('.')) {
         const [parentField, fieldName] = name.split('.');
         const newData = {

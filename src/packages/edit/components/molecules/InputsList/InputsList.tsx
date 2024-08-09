@@ -5,8 +5,15 @@ import DataPicker from '../../atoms/DatePicker/DatePicker';
 import Select from '@/ui/atoms/Select/Select';
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
 
-const InputsList = (props) => {
+interface IProps {
+  data: TypeFieldData[];
+  options?: TypeOptionsData[];
+  title: string;
+}
+
+const InputsList = (props: IProps) => {
   const { data, options, title } = props;
   const control = useControl();
 

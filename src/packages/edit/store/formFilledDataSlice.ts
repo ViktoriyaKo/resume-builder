@@ -17,7 +17,7 @@ const initialState = {
 };
 
 export const formDataSlice = createSlice({
-  name: 'formData',
+  name: 'formFilledData',
   initialState,
   reducers: {
     updateData: (state, action) => {
@@ -42,6 +42,6 @@ export const formDataSlice = createSlice({
 });
 
 export const { updateData } = formDataSlice.actions;
-export const getFormData = (store: RootState) => store.formData;
+export const getFormFilledData = (store: RootState) => store.formFilledData;
 
 export default formDataSlice.reducer;

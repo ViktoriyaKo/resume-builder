@@ -5,27 +5,54 @@ import InputsList from '../InputsList/InputsList';
 import { ControlButton } from '../../atoms';
 import { useHandleData } from '@/packages/edit/hooks';
 import { Categories, FormData } from '@/packages/edit/constants';
-import { Controller } from 'react-hook-form';
+import { Control, Controller, FieldValues } from 'react-hook-form';
 import { TextArea } from '@/ui/atoms';
+import {
+  TypeExpendedData,
+  TypeOptionsData,
+  TypeFieldData,
+} from '@/packages/edit/types';
+import {
+  employmentData,
+  educationData,
+  courseData,
+  linksData,
+  languagesData,
+} from '@/packages/edit/store/initialFormDataStore';
 
-// todo типизировать!!!
+interface IDataProps {
+  data: TypeExpendedData[];
+  options?: TypeOptionsData[];
+}
 
-const ItemContent = (props) => {
+interface IContentProps {
+  value: string;
+  category: string;
+  header: string;
+  description?: string;
+  data: TypeExpendedData[];
+  titleAccordion: string;
+  labelButton: string;
+  options?: TypeOptionsData[];
+  initialFormData: TypeFieldData[];
+}
+
+const ItemContent = (props: IContentProps) => {
   const {
     value,
     category,
     header,
     description,
     data,
-    titleList,
     titleAccordion,
     labelButton,
     options,
+    initialFormData,
   } = props;
 
   const { addListItem, removeListItem } = useHandleData({
     category,
-    data,
+    data: initialFormData,
   });
 
   return (
@@ -45,7 +72,7 @@ const ItemContent = (props) => {
               >
                 <InputsList
                   data={data}
-                  title={`${titleList}-${uuid}`}
+                  title={`${value}-${uuid}`}
                   options={options}
                 />
               </EditableAccordion>
@@ -57,49 +84,50 @@ const ItemContent = (props) => {
   );
 };
 
-const Employment = (props) => {
+const Employment = (props: IDataProps) => {
   const { data } = props;
 
   return (
     <ItemContent
+      initialFormData={employmentData}
       value={FormData.EMPLOYMENT_TITLE}
+      category={Categories.EMPLOYMENT}
       header={'Employment History'}
       description={'Show your experience last 10 years'}
       data={data}
-      titleList={FormData.EMPLOYMENT_TITLE}
       titleAccordion={'Your job'}
       labelButton={'+ Add one more link'}
     />
   );
 };
 
-const Education = (props) => {
+const Education = (props: IDataProps) => {
   const { data } = props;
 
   return (
     <ItemContent
+      initialFormData={educationData}
       value={FormData.EDUCATION_TITLE}
       category={Categories.EDUCATION}
       header={'Education'}
       description={'Show your Education'}
       data={data}
-      titleList={FormData.EDUCATION_TITLE}
       titleAccordion={'Your Education'}
       labelButton={'+ Add one more education'}
     />
   );
 };
 
-const Courses = (props) => {
+const Courses = (props: IDataProps) => {
   const { data } = props;
 
   return (
     <ItemContent
+      initialFormData={courseData}
       value={FormData.COURSES_TITLE}
       header={'Courses'}
       description={'Show your Courses'}
       data={data}
-      titleList={FormData.LINK_TITLE}
       titleAccordion={'Your Course'}
       category={Categories.COURSE}
       labelButton={'+ Add one more course'}
@@ -107,18 +135,18 @@ const Courses = (props) => {
   );
 };
 
-const Links = (props) => {
+const Links = (props: IDataProps) => {
   const { data } = props;
 
   return (
     <ItemContent
+      initialFormData={linksData}
       value={FormData.LINK_TITLE}
       header={'Social links & Websites'}
       description={
         'You can add links to websites you want hiring managers to see! Perhaps It will be  a link to your portfolio, LinkedIn profile, or personal website'
       }
       data={data}
-      titleList={FormData.LINK_TITLE}
       titleAccordion={'Your link'}
       category={Categories.LINKS}
       labelButton={'+ Add one more link'}
@@ -126,15 +154,15 @@ const Links = (props) => {
   );
 };
 
-const Languages = (props) => {
+const Languages = (props: IDataProps) => {
   const { data, options } = props;
 
   return (
     <ItemContent
+      initialFormData={languagesData}
       value={FormData.LANGUAGES_TITLE}
       header={'Languages'}
       data={data}
-      titleList={FormData.LANGUAGES_TITLE}
       titleAccordion={'Your language'}
       category={Categories.LANGUAGES}
       labelButton={'+ Add one more language'}
@@ -143,9 +171,7 @@ const Languages = (props) => {
   );
 };
 
-const Summary = (props) => {
-  const { control } = props;
-
+const Summary = ({ control }: { control: Control<FieldValues> }) => {
   return (
     <>
       <EditableHeader

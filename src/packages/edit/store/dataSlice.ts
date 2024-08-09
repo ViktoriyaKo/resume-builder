@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   contactData,
   courseData,
@@ -11,7 +11,7 @@ import { Categories } from '../constants/categories';
 import { RootState } from './configStore';
 import addItemDataToState from '../utils/addItemDataToState';
 import { v4 as uuid } from 'uuid';
-import { TypeInitialDataState } from '../types';
+import { TypeFieldData, TypeInitialDataState } from '../types';
 
 const initialState: TypeInitialDataState = {
   contactData: contactData,
@@ -22,11 +22,24 @@ const initialState: TypeInitialDataState = {
   languagesData: [{ uuid: uuid(), data: languagesData }],
 };
 
+interface AddDataActionPayload {
+  category: Categories;
+  data: TypeFieldData[];
+}
+
+interface RemoveDataActionPayload {
+  category: Categories;
+  id?: string;
+}
+
 export const Slice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    addData: (state, action) => {
+    addData: (
+      state: TypeInitialDataState,
+      action: PayloadAction<AddDataActionPayload>
+    ) => {
       const { category, data } = action.payload;
 
       if (category === Categories.CONTACT) {
@@ -35,7 +48,10 @@ export const Slice = createSlice({
         addItemDataToState(state[category], data);
       }
     },
-    removeDataItem: (state, action) => {
+    removeDataItem: (
+      state: TypeInitialDataState,
+      action: PayloadAction<RemoveDataActionPayload>
+    ) => {
       const { category, id } = action.payload;
       if (category === Categories.CONTACT) {
         state[category] = [...contactData];

@@ -1,29 +1,28 @@
 'use client';
 import { useSelector } from 'react-redux';
 import styles from './View.module.css';
-import { getFormData } from '@/packages/edit/store/formDataSlice';
-
+import { getFormFilledData } from '@/packages/edit/store/formFilledDataSlice';
 
 // todo разбить на подкомпоненты!!!!!
 const View = () => {
-  const initialData = useSelector(getFormData);
+  const initialData = useSelector(getFormFilledData);
   const {
-    firstName,
-    lastName,
-    jobTitle,
-    email,
-    phone,
-    country,
-    city,
-    address,
-    summaryTitle,
-    coursesTitle,
-    summary,
-    skillsTitle,
-    languagesTitle,
-    skillsDescription,
-    educationTitle,
-    employmentTitle,
+    // firstName,
+    // lastName,
+    // jobTitle,
+    // email,
+    // phone,
+    // country,
+    // city,
+    // address,
+    // summaryTitle,
+    // coursesTitle,
+    // summary,
+    // skillsTitle,
+    // languagesTitle,
+    // skillsDescription,
+    // educationTitle,
+    // employmentTitle,
     employments,
     educations,
     courses,
@@ -39,7 +38,7 @@ const View = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
+      {/* <div className={styles.list}>
         <div className={styles.headerWrapper}>
           <header>
             <p className={styles.name}>
@@ -139,7 +138,7 @@ const View = () => {
             })}
           </section>
         )}
-      </div>
+      </div> */}
       <button className={styles.button}>Download PDF</button>
     </div>
   );
