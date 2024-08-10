@@ -6,7 +6,7 @@ import {
   employmentData,
   languagesData,
   linksData,
-} from './initialFormDataStore';
+} from '../entities';
 import { Categories } from '../constants/categories';
 import { RootState } from './store';
 import addItemDataToState from '../utils/addItemDataToState';
@@ -17,6 +17,8 @@ import {
   RemoveDataActionPayload,
   UpdateValueToDataActionPayload,
 } from '../types';
+
+//в этом слайсе обрабатываются сложные формы с вложенными секциями
 
 const initialState: TypeInitialDataState = {
   contactData: contactData,

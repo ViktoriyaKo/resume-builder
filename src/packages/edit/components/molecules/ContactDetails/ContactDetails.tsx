@@ -2,14 +2,18 @@ import EditableHeader from '../EditableHeader/EditableHeader';
 import { Input } from '@/ui/atoms';
 import styles from './ContactDetails.module.css';
 import { ControlButton } from '../../atoms';
-import { useDispatch } from 'react-redux';
-import { addData, updateValueToData, removeDataItem } from '@/packages/edit/store/dataSlice';
-import { Categories, FormData } from '@/packages/edit/constants';
+
+import {
+  Categories,
+  FormData,
+  ShortCategories,
+} from '@/packages/edit/constants';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
 import { TypeFieldData } from '@/packages/edit/types/types';
-import { additionalContactData } from '@/packages/edit/store/initialFormDataStore';
+import { additionalContactData } from '@/packages/edit/entities';
+import { useHandleData } from '@/packages/edit/hooks';
 
 interface IProps {
   data: TypeFieldData[];
@@ -17,19 +21,21 @@ interface IProps {
 
 const ContactDetails = (props: IProps) => {
   const { data } = props;
-  const dispatch = useDispatch();
   const [isToggle, setIsToggle] = useState(true);
   const control = useControl();
   const category = Categories.CONTACT;
 
+  const { addListItem, removeListItem, updateValueField } = useHandleData({
+    category,
+    data: additionalContactData,
+  });
+
   const toggleDetails = () => {
     if (isToggle) {
-      dispatch(
-        addData({ category, data: additionalContactData })
-      );
+      addListItem();
       setIsToggle(false);
     } else {
-      dispatch(removeDataItem({ category }));
+      removeListItem();
       setIsToggle(true);
     }
   };
@@ -37,9 +43,9 @@ const ContactDetails = (props: IProps) => {
   return (
     <>
       <EditableHeader
-        category={FormData.TITLES}
+        category={ShortCategories.TITLES}
         title="Personal Details"
-        value={FormData.PERSONAL_TITLE}
+        name={FormData.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>
         {data.map((item) => {
@@ -53,7 +59,7 @@ const ContactDetails = (props: IProps) => {
               render={({ field }) => {
                 const handleChange = (value: string) => {
                   field.onChange(value);
-                  dispatch(updateValueToData({ category, name, value }));
+                  updateValueField({ name, value });
                 };
                 return (
                   <Input

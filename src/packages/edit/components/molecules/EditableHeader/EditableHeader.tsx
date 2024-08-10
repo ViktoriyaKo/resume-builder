@@ -8,18 +8,18 @@ import { useOnClickOutside } from '@/hooks';
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
 import { useDispatch } from 'react-redux';
-import { updateSimpleField } from '@/packages/edit/store/simpleFieldSlice';
-import { FormData } from '@/packages/edit/constants';
+import { ShortCategories } from '@/packages/edit/constants/categories';
+import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
 
 interface IProps {
   title: string;
   description?: string;
-  value: string;
-  category: FormData;
+  name: string;
+  category: ShortCategories;
 }
 
 const EditableHeader = (props: IProps) => {
-  const { title, description, value, category } = props;
+  const { title, description, name, category } = props;
   const [readonly, setReadonly] = useState(true);
   const control = useControl();
   const ref = useRef<HTMLInputElement>(null);
@@ -28,7 +28,12 @@ const EditableHeader = (props: IProps) => {
   const handleCLick = () => {
     setReadonly(false);
     if (ref.current) {
+      const refLength = ref.current.value.length;
       ref.current.focus();
+      ref.current.setSelectionRange(
+        refLength,
+        refLength
+      );
     }
   };
 
@@ -43,12 +48,12 @@ const EditableHeader = (props: IProps) => {
       <div className={styles.wrapper}>
         <Controller
           defaultValue={title}
-          name={value}
+          name={name}
           control={control}
           render={({ field }) => {
             const handleChange = (value: string) => {
               field.onChange(value);
-              dispatch(updateSimpleField({ category, value }));
+              dispatch(updateShortField({ category, name, value }));
             };
             return (
               <input

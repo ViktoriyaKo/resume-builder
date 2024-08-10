@@ -1,32 +1,32 @@
-import { FormData } from '@/packages/edit/constants';
+import { FormData, ShortCategories } from '@/packages/edit/constants';
 import EditableHeader from '../EditableHeader/EditableHeader';
 import { TextArea } from '@/ui/atoms';
 import { Controller } from 'react-hook-form';
+import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
+import { TypeControllerProps } from '@/packages/edit/types';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
-import { useDispatch } from 'react-redux';
-import { updateSimpleField } from '@/packages/edit/store/simpleFieldSlice';
 
-const Skills = () => {
+const Skills = (props: TypeControllerProps) => {
+  const { dispatch } = props;
   const control = useControl();
-  const dispatch = useDispatch();
 
   return (
     <>
       <EditableHeader
-        category={FormData.SKILLS_DESCRIPTION}
-        value={FormData.TITLES}
+        category={ShortCategories.TITLES}
+        name={FormData.SKILLS_TITLE}
         title="Skills"
         description={'Describe your skills'}
       />
       <Controller
-        name={FormData.SKILLS_DESCRIPTION}
+        name={ShortCategories.SKILLS_DESCRIPTION}
         control={control}
         render={({ field }) => {
           const handleChange = (value: string) => {
             field.onChange(value);
             dispatch(
-              updateSimpleField({
-                category: FormData.SKILLS_DESCRIPTION,
+              updateShortField({
+                category: ShortCategories.SKILLS_DESCRIPTION,
                 value,
               })
             );

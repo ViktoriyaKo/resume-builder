@@ -1,9 +1,11 @@
 import { StaticImageData } from 'next/image';
-import { Categories } from '../constants';
+import { Categories, ShortCategories } from '../constants';
+import { Control, FieldValues } from 'react-hook-form';
+import { Dispatch } from '@reduxjs/toolkit';
 
 export interface TypeFieldData {
   caption: string;
-  type: string;
+  type?: string;
   name: string;
   value?: string;
 }
@@ -42,3 +44,25 @@ export interface UpdateValueToDataActionPayload {
   name: string;
   value: string;
 }
+
+export interface UpdateShortFieldActionPayload {
+  category: ShortCategories;
+  name?: string;
+  value: string;
+}
+
+export type TypeInitialShortField = Record<
+  Exclude<ShortCategories, ShortCategories.TITLES>,
+  string
+> & {
+  [ShortCategories.TITLES]: TypeFieldData[];
+};
+
+export interface TypeControllerProps {
+  dispatch: Dispatch;
+}
+
+export type UpdateValueActionPayload = Omit<
+  UpdateValueToDataActionPayload,
+  'category'
+>;

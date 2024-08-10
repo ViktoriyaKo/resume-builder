@@ -4,13 +4,18 @@ import EditableAccordion from '../EditableAccordion/EditableAccordion';
 import InputsList from '../InputsList/InputsList';
 import { ControlButton } from '../../atoms';
 import { useHandleData } from '@/packages/edit/hooks';
-import { Categories, FormData } from '@/packages/edit/constants';
-import { Control, Controller, FieldValues } from 'react-hook-form';
-import { TextArea } from '@/ui/atoms';
+import {
+  Categories,
+  FormData,
+  ShortCategories,
+} from '@/packages/edit/constants';
+import { Controller } from 'react-hook-form';
+import { Input, TextArea } from '@/ui/atoms';
 import {
   TypeExpendedData,
   TypeOptionsData,
   TypeFieldData,
+  TypeControllerProps,
 } from '@/packages/edit/types';
 import {
   employmentData,
@@ -18,9 +23,9 @@ import {
   courseData,
   linksData,
   languagesData,
-} from '@/packages/edit/store/initialFormDataStore';
-import { updateValueToData } from '@/packages/edit/store/dataSlice';
-import { useDispatch } from 'react-redux';
+} from '@/packages/edit/entities';
+import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
+import { useControl } from '@/packages/edit/contexts/ControlContext';
 
 interface IDataProps {
   data: TypeExpendedData[];
@@ -51,8 +56,7 @@ const ItemContent = (props: IContentProps) => {
     options,
     initialFormData,
   } = props;
-  const dispatch = useDispatch();
-  const { addListItem, removeListItem } = useHandleData({
+  const { addListItem, removeListItem, updateValueField } = useHandleData({
     category,
     data: initialFormData,
   });
@@ -60,8 +64,8 @@ const ItemContent = (props: IContentProps) => {
   return (
     <>
       <EditableHeader
-        category={FormData.TITLES}
-        value={value}
+        category={ShortCategories.TITLES}
+        name={value}
         title={header}
         description={description}
       />
@@ -77,7 +81,7 @@ const ItemContent = (props: IContentProps) => {
             name: string;
             value: string;
           }) => {
-            dispatch(updateValueToData({ category, uuid, name, value }));
+            updateValueField({ uuid, name, value });
           };
 
           return (
@@ -189,26 +193,67 @@ const Languages = (props: IDataProps) => {
   );
 };
 
-const Summary = ({ control }: { control: Control<FieldValues> }) => {
+// todo вынести повторение Controller:
+
+const Summary = ({ dispatch }: TypeControllerProps) => {
+  const control = useControl();
+
   return (
     <>
       <EditableHeader
-        category={FormData.TITLES}
-        value={FormData.SUMMARY_TITLE}
+        category={ShortCategories.TITLES}
+        name={FormData.SUMMARY_TITLE}
         title="Professional Summary"
         description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}
       />
       <Controller
-        name={FormData.SUMMARY}
+        name={ShortCategories.SUMMARY}
         control={control}
-        render={({ field }) => (
-          <TextArea
-            caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
-            {...field}
-          />
-        )}
+        render={({ field }) => {
+          const handleChange = (value: string) => {
+            field.onChange(value);
+            dispatch(
+              updateShortField({ category: ShortCategories.BACKGROUND, value })
+            );
+          };
+          return (
+            <TextArea
+              caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
+              {...field}
+              onChange={(e) => handleChange(e.target.value)}
+            />
+          );
+        }}
       />
     </>
+  );
+};
+
+const BackgroundColor = ({ dispatch }: TypeControllerProps) => {
+  const control = useControl();
+
+  return (
+    <Controller
+      name={'color'}
+      control={control}
+      render={({ field }) => {
+        const handleChange = (value: string) => {
+          field.onChange(value);
+          dispatch(
+            updateShortField({ category: ShortCategories.BACKGROUND, value })
+          );
+        };
+        return (
+          <Input
+            inputStyle={'form-control-color'}
+            caption={'Choose color for template:'}
+            {...field}
+            type={'color'}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        );
+      }}
+    />
   );
 };
 
@@ -219,6 +264,7 @@ const EditorBlock = {
   Links,
   Languages,
   Summary,
+  BackgroundColor,
 };
 
 export default EditorBlock;

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import dataReducer from './dataSlice';
-import simpleFormReducer from './simpleFieldSlice';
+import shortFormReducer from './shortFieldSlice';
 
 const store = configureStore({
   reducer: {
     data: dataReducer,
-    simpleForm: simpleFormReducer,
+    shortForm: shortFormReducer,
   },
 });
 
