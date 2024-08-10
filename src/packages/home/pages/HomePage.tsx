@@ -1,3 +1,4 @@
+"use client"
 import image from '@images/background.jpg';
 import Description from '../components/Description';
 import Hero from '../components/Hero';

@@ -1,9 +1,8 @@
-import { HomePage } from "@/packages/home";
+import { HomePage } from '@/packages/home';
 
-export const revalidate = 3600;
-export const runtime = 'edge';
+// export const revalidate = 3600;
 
-async function Page() {
+function Page() {
   return <HomePage />;
 }
 

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
 import background from '@images/background.jpg';
 
-const Hero = async () => {
+const Hero = () => {
   return (
     <section className={styles.container}>
       <div className={styles.imageWrapper}>

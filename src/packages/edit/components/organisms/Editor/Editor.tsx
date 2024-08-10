@@ -9,7 +9,6 @@ import ControlProvider from '@/packages/edit/contexts/ControlContext';
 import { ContactDetails, Skills } from '../../molecules';
 import EditorBlock from '../../molecules/EditorItems/EditorItems';
 import { useDispatch } from 'react-redux';
-import { TextEditor } from '@/ui/atoms';
 
 const Editor = () => {
   const initialData = useSelector(getStateData);
@@ -46,7 +45,6 @@ const Editor = () => {
           options={selectLanguagesData}
         />
         <EditorBlock.BackgroundColor dispatch={dispatch} />
-        <TextEditor/>
       </form>
     </ControlProvider>
   );

@@ -1,6 +1,6 @@
 import { EditPage } from '@/packages/edit';
 
-async function Edit() {
+function Edit() {
   return <EditPage />;
 }
 
