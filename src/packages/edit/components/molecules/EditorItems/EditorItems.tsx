@@ -10,7 +10,7 @@ import {
   ShortCategories,
 } from '@/packages/edit/constants';
 import { Controller } from 'react-hook-form';
-import { Input, TextArea } from '@/ui/atoms';
+import { Input, TextArea, TextEditor } from '@/ui/atoms';
 import {
   TypeExpendedData,
   TypeOptionsData,
@@ -217,10 +217,10 @@ const Summary = ({ dispatch }: TypeControllerProps) => {
             );
           };
           return (
-            <TextArea
+            <TextEditor
               caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
               {...field}
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={(value) => handleChange(value)}
             />
           );
         }}

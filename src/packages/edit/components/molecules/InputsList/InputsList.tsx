@@ -1,11 +1,11 @@
 'use client';
-import { Input, TextArea } from '@/ui/atoms';
+import { Input, DatePicker, Select, Checkbox, TextEditor } from '@/ui/atoms';
 import styles from './InputsList.module.css';
-import DataPicker from '../../atoms/DatePicker/DatePicker';
-import Select from '@/ui/atoms/Select/Select';
+
 import { Controller } from 'react-hook-form';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
+import { FormData } from '@/packages/edit/constants';
 
 interface IProps {
   data: TypeFieldData[];
@@ -37,23 +37,32 @@ const InputsList = (props: IProps) => {
               switch (type) {
                 case 'textArea':
                   return (
-                    <TextArea
+                    <TextEditor
                       label={caption}
                       className={styles.textArea}
                       {...field}
-                      onChange={(e) => handleChange(e.target.value)}
+                      onChange={(value) => handleChange(value)}
                     />
                   );
                 case 'date':
                   return (
-                    <DataPicker
-                      key={caption}
-                      label={caption}
-                      {...field}
-                      onChange={(date) =>
-                        handleChange(date ? date.toISOString() : '')
-                      }
-                    />
+                    <div>
+                      <DatePicker
+                        key={caption}
+                        label={caption}
+                        {...field}
+                        onChange={(date) =>
+                          handleChange(date ? date.toISOString() : '')
+                        }
+                      />
+                      {name === FormData.END_DATE && (
+                        <Checkbox
+                          label={'Currently'}
+                          {...field}
+                          onChange={(e) => handleChange(e.target.value)}
+                        />
+                      )}
+                    </div>
                   );
                 case 'select':
                   return (

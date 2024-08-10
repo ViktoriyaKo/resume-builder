@@ -1,12 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import {
-  ChangeEvent,
-  forwardRef,
-  LegacyRef,
-  TextareaHTMLAttributes,
-  useState,
-} from 'react';
+import { forwardRef, LegacyRef, TextareaHTMLAttributes } from 'react';
 
 interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;

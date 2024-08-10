@@ -21,6 +21,7 @@ export default async function Layout({
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
           name="viewport"
         />
+        <meta charSet="utf-8" />
       </head>
       <body className={clsx(inter.variable)}>
         <main>{children}</main>

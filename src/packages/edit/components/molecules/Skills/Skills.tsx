@@ -1,6 +1,6 @@
 import { FormData, ShortCategories } from '@/packages/edit/constants';
 import EditableHeader from '../EditableHeader/EditableHeader';
-import { TextArea } from '@/ui/atoms';
+import { TextEditor } from '@/ui/atoms';
 import { Controller } from 'react-hook-form';
 import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
 import { TypeControllerProps } from '@/packages/edit/types';
@@ -33,10 +33,9 @@ const Skills = (props: TypeControllerProps) => {
           };
 
           return (
-            <TextArea
-              rows={8}
+            <TextEditor
               {...field}
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={(value) => handleChange(value)}
             />
           );
         }}

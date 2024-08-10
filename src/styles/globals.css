@@ -66,6 +66,10 @@ button,
   background-color: transparent;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -92,4 +96,8 @@ h6 {
 p {
   margin: 0;
   padding: 0;
+}
+
+.ql-editor {
+  min-height: 150px;
 }
