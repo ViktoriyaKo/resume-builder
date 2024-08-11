@@ -26,6 +26,8 @@ import {
 } from '@/packages/edit/entities';
 import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
 import { useControl } from '@/packages/edit/contexts/ControlContext';
+import styles from './EditorItems.module.css';
+import clsx from 'clsx';
 
 interface IDataProps {
   data: TypeExpendedData[];
@@ -213,7 +215,7 @@ const Summary = ({ dispatch }: TypeControllerProps) => {
           const handleChange = (value: string) => {
             field.onChange(value);
             dispatch(
-              updateShortField({ category: ShortCategories.BACKGROUND, value })
+              updateShortField({ category: ShortCategories.SUMMARY, value })
             );
           };
           return (
@@ -245,7 +247,8 @@ const BackgroundColor = ({ dispatch }: TypeControllerProps) => {
         };
         return (
           <Input
-            inputStyle={'form-control-color'}
+            inputStyle={clsx('form-control-color', styles.input)}
+            defaultValue={'#f0f0f0'}
             caption={'Choose color for template:'}
             {...field}
             type={'color'}

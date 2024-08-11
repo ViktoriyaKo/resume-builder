@@ -1,17 +1,29 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
 }
 
+@media (width >= 1168px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .editor {
-  padding: 60px 20px;
+  padding: 20px;
 }
 
 .view {
-  padding: 20px;
-  background-color: var(--gray-300);
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  display: none;
+}
+
+@media (width >= 768px) {
+  .view {
+    padding: 20px;
+    background-color: var(--gray-300);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: block;
+  }
 }

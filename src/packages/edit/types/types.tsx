@@ -1,6 +1,5 @@
 import { StaticImageData } from 'next/image';
 import { Categories, ShortCategories } from '../constants';
-import { Control, FieldValues } from 'react-hook-form';
 import { Dispatch } from '@reduxjs/toolkit';
 
 export interface TypeFieldData {
@@ -12,7 +11,11 @@ export interface TypeFieldData {
 
 export type TypeOptionsData = Omit<TypeFieldData, 'type' | 'name'>;
 
-export type TypeExpendedData = { uuid: string; data: TypeFieldData[] };
+export type TypeExpendedData = {
+  uuid: string;
+  data: TypeFieldData[];
+  values?: { [key: string]: string };
+};
 
 export interface TypeTemplate {
   link: string;

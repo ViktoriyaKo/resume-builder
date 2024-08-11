@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   contactData,
+  additionalContactData,
   courseData,
   educationData,
   employmentData,
@@ -9,7 +10,6 @@ import {
 } from '../entities';
 import { Categories } from '../constants/categories';
 import { RootState } from './store';
-import addItemDataToState from '../utils/addItemDataToState';
 import { v4 as uuid } from 'uuid';
 import {
   TypeInitialDataState,
@@ -17,6 +17,7 @@ import {
   RemoveDataActionPayload,
   UpdateValueToDataActionPayload,
 } from '../types';
+import { addItemDataToState } from '../utils';
 
 //в этом слайсе обрабатываются сложные формы с вложенными секциями
 
@@ -40,7 +41,7 @@ export const Slice = createSlice({
       const { category, data } = action.payload;
 
       if (category === Categories.CONTACT) {
-        state[category] = [...contactData, ...data];
+        state[category] = [...state[category], ...data];
       } else {
         addItemDataToState(state[category], data);
       }
@@ -51,7 +52,8 @@ export const Slice = createSlice({
     ) => {
       const { category, id } = action.payload;
       if (category === Categories.CONTACT) {
-        state[category] = [...contactData];
+        const deletedLength = additionalContactData.length;
+        state[category] = state[category].slice(0, -deletedLength);
       } else {
         state[category] = state[category].filter((item) => item.uuid !== id);
       }
@@ -61,18 +63,19 @@ export const Slice = createSlice({
       action: PayloadAction<UpdateValueToDataActionPayload>
     ) => {
       const { category, uuid, name, value } = action.payload;
-      let findItem;
       if (category === Categories.CONTACT) {
-        findItem = state[category].find((item) => item.name === name);
+        const findItem = state[category].find((item) => item.name === name);
+        if (findItem) {
+          findItem.value = value;
+        }
       } else {
         const element = state[category].find((item) => item.uuid === uuid);
+        //добавлен объект values чтобы легче было отображать данные избегая reduce:
         if (element) {
-          findItem = element.data.find((element) => element.name === name);
+          element.values = element?.values
+            ? { ...element.values, [name]: value }
+            : { [name]: value };
         }
-      }
-
-      if (findItem) {
-        findItem.value = value;
       }
     },
   },

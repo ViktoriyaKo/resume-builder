@@ -57,16 +57,29 @@ const ContactDetails = (props: IProps) => {
               name={name}
               key={name}
               render={({ field }) => {
-                const handleChange = (value: string) => {
-                  field.onChange(value);
-                  updateValueField({ name, value });
+                const handleChange = (
+                  value: string | (EventTarget & HTMLInputElement)
+                ) => {
+                  if (type === 'file' && value instanceof EventTarget) {
+                    if (value?.files) {
+                      const blobFile = URL.createObjectURL(value.files?.[0]);
+                      field.onChange(value.value);
+
+                      updateValueField({ name, value: blobFile });
+                    }
+                  } else if (typeof value === 'string') {
+                    field.onChange(value);
+                    updateValueField({ name, value });
+                  }
                 };
                 return (
                   <Input
                     type={type}
                     caption={caption}
                     {...field}
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={(e) =>
+                      handleChange(type === 'file' ? e.target : e.target.value)
+                    }
                   />
                 );
               }}

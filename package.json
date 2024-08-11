@@ -10,6 +10,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.4",
     "@reduxjs/toolkit": "^2.2.7",
     "bootstrap": "^5.3.3",
     "clsx": "^2.1.1",

@@ -13,6 +13,7 @@ interface TextEditorProps {
   value?: string;
 }
 
+// eslint-disable-next-line react/display-name
 const TextEditor = forwardRef<ReactQuill, TextEditorProps>((props, ref) => {
   const {
     caption,

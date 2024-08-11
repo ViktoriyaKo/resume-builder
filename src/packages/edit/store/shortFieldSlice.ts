@@ -10,7 +10,7 @@ const initialState: TypeInitialShortField = {
   [ShortCategories.TITLES]: titles,
   [ShortCategories.SKILLS_DESCRIPTION]: '',
   [ShortCategories.SUMMARY]: '',
-  [ShortCategories.BACKGROUND]: 'white',
+  [ShortCategories.BACKGROUND]: '',
 };
 
 export const Slice = createSlice({
@@ -35,6 +35,6 @@ export const Slice = createSlice({
 });
 
 export const { updateShortField } = Slice.actions;
-export const getStateData = (store: RootState) => store.shortForm;
+export const getStateShortData = (store: RootState) => store.shortForm;
 
 export default Slice.reducer;

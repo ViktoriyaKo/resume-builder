@@ -7,7 +7,6 @@ import {
 } from '../types';
 import { Categories } from '../constants';
 import { updateValueToData } from '@/packages/edit/store/dataSlice';
-import { updateShortField } from '../store/shortFieldSlice';
 
 interface IProps {
   category: Categories;

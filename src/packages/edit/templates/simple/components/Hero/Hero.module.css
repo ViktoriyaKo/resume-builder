@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.bold {
+  font-weight: 600;
+  margin: 0;
+}
+
+.image {
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  align-self: center;
+}
+
+.header {
+  flex: 0.8;
+}
+
+.contacts {
+  font-size: 12px;
+  flex: 1;
+}

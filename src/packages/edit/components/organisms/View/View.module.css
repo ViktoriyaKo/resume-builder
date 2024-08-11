@@ -1,6 +1,24 @@
 .container {
-  padding: 40px 80px;
+  padding: 20px;
   position: relative;
+}
+
+.container li[data-list='bullet'] {
+  list-style: inside;
+  padding-left: 12px;
+}
+
+.container li[data-list='ordered'] {
+  list-style: decimal;
+  margin-left: 12px;
+}
+
+.container a u {
+  text-decoration: underline;
+}
+
+.container u {
+  text-decoration: underline;
 }
 
 .list {

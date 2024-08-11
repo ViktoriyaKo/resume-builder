@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import clsx from 'clsx';
@@ -7,6 +7,10 @@ import { ROUTERS } from '@/constants/routers';
 import { ContactForm } from '@/packages/core';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+});
 
 export default function Layout({
   children,
@@ -23,7 +27,7 @@ export default function Layout({
         />
         <meta charSet="utf-8" />
       </head>
-      <body className={clsx(inter.variable)}>
+      <body className={clsx(inter.variable, montserrat.variable)}>
         <main>{children}</main>
         <Footer
           title={'Meet your new everyday basics'}

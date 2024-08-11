@@ -2,6 +2,7 @@
 import handleDownloadPdf from '@/packages/edit/utils/handleDownloadPdf';
 import styles from './View.module.css';
 import { useRef } from 'react';
+import Resume from '@/packages/edit/templates/simple/components/organisms/Resume';
 
 const View = () => {
   const contentRef = useRef(null);
@@ -9,7 +10,7 @@ const View = () => {
   return (
     <div className={styles.container}>
       <div className={styles.list} ref={contentRef}>
-        test
+        <Resume />
       </div>
       <button
         className={styles.button}

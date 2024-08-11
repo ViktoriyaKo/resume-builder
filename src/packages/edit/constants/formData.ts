@@ -11,7 +11,7 @@ export enum FormData {
   DRIVING_LICENSE = 'drivingLicense',
   SUMMARY_TITLE = 'summaryTitle',
   PERSONAL_TITLE = 'personalTitle',
-  COURSES_TITLE = 'coursesTitle',
+  COURSES_TITLE = 'courseTitle',
   EDUCATION_TITLE = 'educationTitle',
   EMPLOYMENT_TITLE = 'employmentTitle',
   LANGUAGES_TITLE = 'languagesTitle',
@@ -30,4 +30,3 @@ export enum FormData {
   LABEL = 'label',
   LINK = 'link',
 }
-
