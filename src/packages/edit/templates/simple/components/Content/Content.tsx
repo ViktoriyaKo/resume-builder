@@ -60,6 +60,8 @@ const Content = () => {
                 endDate,
                 school,
                 city,
+                languagesName,
+                languagesLevel,
               } = values ?? {};
 
               const organization = employer || school;
@@ -85,6 +87,21 @@ const Content = () => {
                         {school && specialty && `, ${specialty}`}
                         {date && ` · ${date}`}
                       </span>
+                      {descriptionSchool && (
+                        <div
+                          className={styles.description}
+                          dangerouslySetInnerHTML={{
+                            __html: descriptionSchool,
+                          }}
+                        />
+                      )}
+                    </>
+                  ) : key === Categories.LANGUAGES ? (
+                    <>
+                      <p>
+                        <b>{languagesName}{languagesLevel && ': '}</b>
+                        {languagesLevel}
+                      </p>
                     </>
                   ) : (
                     <>

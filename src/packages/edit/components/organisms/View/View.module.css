@@ -21,6 +21,10 @@
   text-decoration: underline;
 }
 
+.container a {
+  color: var(--blue-200);
+}
+
 .list {
   border-radius: var(--border-radius);
   background-color: white;

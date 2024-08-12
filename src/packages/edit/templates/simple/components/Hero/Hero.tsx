@@ -5,13 +5,19 @@ import styles from './Hero.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { convertFilledContactData } from '@/packages/edit/utils';
+import Link from 'next/link';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
   const { background } = useSelector(getStateShortData);
 
-  const { contactData } = initialData;
+  const { contactData, linksData } = initialData;
   const headerData = convertFilledContactData(contactData);
+  const contactLinks = linksData
+    .map((item) => {
+      return item.values;
+    })
+    .filter((item) => item);
 
   const {
     city,
@@ -55,14 +61,30 @@ const Hero = () => {
       <div className={styles.contacts}>
         {phone && (
           <p>
-            <b>Phone:</b> {phone}
+            <b>Phone:</b> <span className={'text-nowrap'}>{phone}</span>
           </p>
         )}
         {email && (
           <p>
-            <b>Email:</b> {email}
+            <b>Email:</b> <span className={'text-nowrap'}>{email}</span>
           </p>
         )}
+        {contactLinks.map((item) => {
+          const { label, link } = item || {};
+          return (
+            <p>
+              <b>
+                {label}
+                {label && ': '}
+              </b>
+              {link && (
+                <Link className={'text-nowrap'} href={link}>
+                  {link}
+                </Link>
+              )}
+            </p>
+          );
+        })}
       </div>
     </div>
   );

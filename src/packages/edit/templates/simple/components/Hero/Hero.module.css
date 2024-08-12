@@ -25,4 +25,5 @@
 .contacts {
   font-size: 12px;
   flex: 1;
+  max-width: 200px;
 }

@@ -22,7 +22,7 @@ const Select = forwardRef(
             options.map((option) => {
               const { caption, value } = option;
               return (
-                <option key={value} defaultValue={value}>
+                <option key={value} value={value}>
                   {caption}
                 </option>
               );

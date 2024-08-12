@@ -33,10 +33,7 @@ const Skills = (props: TypeControllerProps) => {
           };
 
           return (
-            <TextEditor
-              {...field}
-              onChange={(value) => handleChange(value)}
-            />
+            <TextEditor {...field} onChange={(value) => handleChange(value)} />
           );
         }}
       />

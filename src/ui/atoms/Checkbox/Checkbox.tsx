@@ -8,10 +8,12 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Checkbox = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
-    const { label, name, ...rest } = props;
+    const { label, name, checked, ...rest } = props;
+
     return (
       <div className={clsx('form-check', styles.wrapper)}>
         <input
+          checked={checked}
           ref={ref}
           className="form-check-input"
           type="checkbox"

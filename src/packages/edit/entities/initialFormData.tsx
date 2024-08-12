@@ -68,6 +68,7 @@ export const titles = new DataBuilder()
 // todo: переделать:
 
 export const selectLanguagesData = [
+  { caption: 'Choose level', value: '' },
   { caption: 'A1', value: 'A1' },
   { caption: 'A2', value: 'A2' },
   { caption: 'B1', value: 'B1' },
