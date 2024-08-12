@@ -28,11 +28,6 @@
   color: var(--blue-200);
 }
 
-
-/* .wrapper {
-   overflow: hidden;
-} */
-
 .list {
   border-radius: var(--border-radius);
   background-color: white;
@@ -40,6 +35,14 @@
   height: 833px;
   padding: 40px;
   overflow: hidden;
+}
+
+@media print {
+  .list {
+    overflow: visible;
+    transform: scale(1.4);
+    transform-origin: top left;
+  }
 }
 
 .button {
