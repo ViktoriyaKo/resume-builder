@@ -19,14 +19,10 @@ export const Slice = createSlice({
       state.currentPage = action.payload;
       state.marginTop = (action.payload - 1) * -state.heightPage;
     },
-    resetStylePage: (state) => {
-      state.marginTop = 0;
-    },
   },
 });
 
-export const { changeTotalPage, changeCurrentPage, resetStylePage } =
-  Slice.actions;
+export const { changeTotalPage, changeCurrentPage } = Slice.actions;
 
 export const getPaginationData = (store: RootState) => store.paginationData;
 

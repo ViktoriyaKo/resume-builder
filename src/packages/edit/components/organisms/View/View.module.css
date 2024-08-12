@@ -1,3 +1,10 @@
+/* подключение шрифта для печати: */
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+  src: url(/fonts/Montserrat-Regular.woff) format('opentype');
+}
+
 .container {
   padding: 20px;
   position: relative;
@@ -42,6 +49,7 @@
     overflow: visible;
     transform: scale(1.4);
     transform-origin: top left;
+    font-family: 'Montserrat';
   }
 }
 

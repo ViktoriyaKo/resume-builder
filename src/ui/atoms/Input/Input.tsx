@@ -16,7 +16,9 @@ const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
 
   return (
     <div className={className ? className : ''}>
-      <label className={clsx('form-label', styles.caption)}>{caption}</label>
+      {caption && (
+        <label className={clsx('form-label', styles.caption)}>{caption}</label>
+      )}
       <input
         className={clsx('form-control', inputStyle ? inputStyle : '')}
         ref={ref}

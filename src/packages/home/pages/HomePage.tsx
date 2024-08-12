@@ -1,5 +1,5 @@
-"use client"
-import image from '@images/background.jpg';
+'use client';
+import image from '@images/test-template.png';
 import Description from '../components/Description';
 import Hero from '../components/Hero';
 import Templates from '../components/Templates';
