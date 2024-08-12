@@ -1,6 +1,9 @@
 .container {
   padding: 20px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container li[data-list='bullet'] {
@@ -25,13 +28,18 @@
   color: var(--blue-200);
 }
 
+
+/* .wrapper {
+   overflow: hidden;
+} */
+
 .list {
   border-radius: var(--border-radius);
   background-color: white;
   width: 590px;
   height: 833px;
-  margin: 0 auto;
-  padding: 20px 40px;
+  padding: 40px;
+  overflow: hidden;
 }
 
 .button {

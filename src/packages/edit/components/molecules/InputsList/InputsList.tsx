@@ -56,6 +56,7 @@ const InputsList = (props: IProps) => {
                         }
                       />
                       {name === FormData.END_DATE && (
+                        // todo не работает исправить!
                         <Checkbox
                           label={'Currently'}
                           {...field}
