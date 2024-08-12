@@ -6,7 +6,6 @@ import {
   getPaginationData,
 } from '../store/paginationSlice';
 
-// todo не работает когда контент уменьшается!!!
 const useResizePagination = (contentRef: RefObject<HTMLDivElement>) => {
   const { heightPage, totalPages, currentPage, marginTop } =
     useSelector(getPaginationData);
@@ -14,15 +13,15 @@ const useResizePagination = (contentRef: RefObject<HTMLDivElement>) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (
-        contentRef?.current &&
-        contentRef?.current?.scrollHeight > totalPages * heightPage
-      ) {
+      if (contentRef?.current) {
         const newTotalPage = Math.ceil(
-          contentRef.current?.scrollHeight / heightPage
+          contentRef.current.scrollHeight / heightPage
         );
-        dispatch(changeTotalPage(newTotalPage));
-        dispatch(changeCurrentPage(currentPage + 1));
+
+        if (newTotalPage !== totalPages) {
+          dispatch(changeTotalPage(newTotalPage));
+          console.log(newTotalPage);
+        }
       }
     };
 
@@ -34,7 +33,7 @@ const useResizePagination = (contentRef: RefObject<HTMLDivElement>) => {
     return () => {
       observer.disconnect();
     };
-  }, [totalPages, heightPage]);
+  }, [totalPages, heightPage, currentPage]);
 
   return { marginTop };
 };
