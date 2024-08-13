@@ -5,10 +5,9 @@ import { selectLanguagesData } from '@/packages/edit/entities';
 import { useSelector } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
-import ControlProvider from '@/packages/edit/contexts/ControlContext';
-import { ContactDetails, Skills } from '../../molecules';
-import EditorBlock from '../../molecules/EditorItems/EditorItems';
+import { ContactDetails, EditorBlock, Skills } from '../../molecules';
 import { useDispatch } from 'react-redux';
+import ControlProvider from '@/packages/edit/contexts/ControlContext';
 
 const Editor = () => {
   const initialData = useSelector(getStateData);

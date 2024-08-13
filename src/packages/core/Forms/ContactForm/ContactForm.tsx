@@ -5,29 +5,24 @@ import { Input } from '@/ui/atoms';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
+import { FormContactValues } from '@/types';
+import { createPublicRequest } from '@/services';
 
 interface IProps {
   title: string;
   label: string;
 }
 
-type FormValues = { email: string; text: string };
-
 const ContactForm = (props: IProps) => {
   const initialForm = { email: '', text: '' };
   const [open, setOpen] = useState(false);
-  const { handleSubmit, register, reset } = useForm({
+  const { handleSubmit, register } = useForm({
     defaultValues: initialForm,
     mode: 'onSubmit',
   });
 
-  const onSubmit = async (data: FormValues) => {
-    try {
-      // todo add request!!!
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const onSubmit = async (body: FormContactValues) => {
+    await createPublicRequest({path: 'request', body})  
   };
 
   return (

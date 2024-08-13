@@ -1,0 +1,36 @@
+.form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button {
+  padding: 12px;
+  margin-top: 20px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+}
+
+.link {
+  color: var(--gray-300);
+  font-size: 14px;
+  transform: color 0.5s;
+}
+
+.link:hover {
+  color: var(--blue-200);
+  transform: color 0.5s;
+}
