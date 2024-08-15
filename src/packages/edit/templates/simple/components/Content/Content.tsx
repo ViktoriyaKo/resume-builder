@@ -15,8 +15,7 @@ const Content = () => {
   const titles = titlesData.reduce(
     (accum: { [key: string]: string }, item: TypeFieldData) => {
       const key = item.name.replace('Title', 'Data');
-      accum[key] = item.caption;
-      return accum;
+      return { ...accum, [key]: item.caption };
     },
     {}
   );
@@ -99,7 +98,10 @@ const Content = () => {
                   ) : key === Categories.LANGUAGES ? (
                     <>
                       <p>
-                        <b>{languagesName}{languagesLevel && ': '}</b>
+                        <b>
+                          {languagesName}
+                          {languagesLevel && ': '}
+                        </b>
                         {languagesLevel}
                       </p>
                     </>

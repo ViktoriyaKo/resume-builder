@@ -1,94 +1,95 @@
 'use client';
-import { Input, DatePicker, Select, Checkbox } from '@/ui/atoms';
+import { Input, DatePicker, Select, TextEditor } from '@/ui/atoms';
 import styles from './InputsList.module.css';
 
-import { Controller, useForm } from 'react-hook-form';
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
-import { FormData } from '@/packages/edit/constants';
 
 interface IProps {
   data: TypeFieldData[];
   options?: TypeOptionsData[];
   uuid: string;
-  handleClick: ({ name, value }: { name: string; value: string }) => void;
+  handleClick: ({
+    uuid,
+    name,
+    value,
+  }: {
+    uuid: string;
+    name: string;
+    value: string;
+  }) => void;
 }
 
 const InputsList = (props: IProps) => {
-  const { data, options, uuid, handleClick } = props;
-  const { control } = useForm();
+  const { data, options, handleClick, uuid } = props;
 
   return (
     <div className={styles.container}>
       {data?.map((item) => {
         const { caption, type, name } = item;
+        const uniqueName = `${uuid}-${name}`;
 
-        return (
-          <Controller
-            key={caption}
-            name={`${uuid}-${name}`}
-            defaultValue={''}
-            control={control}
-            render={({ field }) => {
-              const handleChange = (value: string) => {
-                field.onChange(value);
-                handleClick({ name, value });
-              };
-              switch (type) {
-                case 'textArea':
-                  return (
-                    <TextEditor
-                      label={caption}
-                      className={styles.textArea}
-                      {...field}
-                      onChange={(value) => handleChange(value)}
-                    />
-                  );
-                case 'date':
-                  return (
-                    <div>
-                      <DatePicker
-                        key={caption}
-                        label={caption}
-                        {...field}
-                        onChange={(date) =>
-                          handleChange(date ? date.toISOString() : '')
-                        }
-                      />
-                      {name === FormData.END_DATE && (
-                        // todo не работает исправить!
-                        <Checkbox
-                          label={'Currently'}
-                          {...field}
-                          onChange={(e) => handleChange(e.target.value)}
-                        />
-                      )}
-                    </div>
-                  );
-                case 'select':
-                  return (
-                    <Select
-                      key={caption}
-                      label={caption}
-                      options={options}
-                      className={styles.input}
-                      {...field}
-                      onChange={(e) => handleChange(e.target.value)}
-                    />
-                  );
-                default:
-                  return (
-                    <Input
-                      key={caption}
-                      {...item}
-                      className={styles.input}
-                      {...field}
-                      onChange={(e) => handleChange(e.target.value)}
-                    />
-                  );
-              }
-            }}
-          />
-        );
+        const commonProps = {
+          name: uniqueName,
+          label: caption,
+          onChange: (e: any) =>
+            handleClick({ uuid, name, value: e.target.value }),
+        };
+
+        if (type === 'textArea') {
+          return (
+            <TextEditor
+              key={uniqueName}
+              {...commonProps}
+              className={styles.textArea}
+              onChange={(value) => handleClick({ uuid, name, value })}
+            />
+          );
+        }
+
+        if (type === 'date') {
+          return (
+            <div key={uniqueName}>
+              <DatePicker
+                {...commonProps}
+                onChange={(date: any) =>
+                  handleClick({
+                    uuid,
+                    name,
+                    value: date ? date.toISOString() : '',
+                  })
+                }
+              />
+              {/* {name === FormData.END_DATE && (
+                <Checkbox
+                  name={uniqueName}
+                  label={'Currently'}
+                  onChange={(e) =>
+                    handleClick({ uuid, name, value: e.target.value })
+                  }
+                />
+              )} */}
+            </div>
+          );
+        }
+        if (type === 'select') {
+          return (
+            <Select
+              key={uniqueName}
+              {...commonProps}
+              options={options}
+              className={styles.input}
+            />
+          );
+        } else {
+          return (
+            <Input
+              {...item}
+              key={uniqueName}
+              className={styles.input}
+              {...commonProps}
+            />
+          );
+        }
       })}
     </div>
   );

@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Pagination.module.css';
+import styles from './DocumentPreviewPagination.module.css';
 import {
   changeCurrentPage,
-  getPaginationData,
-} from '@/packages/edit/store/paginationSlice';
+  getPreviewPaginationData,
+} from '@/packages/edit/store/documentPreviewPaginationSlice';
+import { Button } from '@/ui/atoms';
 
-const Pagination = () => {
-  const { currentPage, totalPages } = useSelector(getPaginationData);
+const DocumentPreviewPagination = () => {
+  const { currentPage, totalPages } = useSelector(getPreviewPaginationData);
   const dispatch = useDispatch();
 
   const handlePrevList = () => dispatch(changeCurrentPage(currentPage - 1));
@@ -15,26 +16,26 @@ const Pagination = () => {
 
   return (
     <div className={styles.wrapper}>
-      <button
+      <Button
         className={styles.button}
         onClick={handlePrevList}
         disabled={currentPage === 1}
       >
         &#11160;
-      </button>
+      </Button>
       <span>
         {currentPage} / {totalPages}
       </span>
 
-      <button
+      <Button
         className={styles.button}
         onClick={handleNextList}
         disabled={currentPage === totalPages}
       >
         &#11162;
-      </button>
+      </Button>
     </div>
   );
 };
 
-export default Pagination;
+export default DocumentPreviewPagination;

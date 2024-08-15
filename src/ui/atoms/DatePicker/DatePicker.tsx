@@ -10,22 +10,24 @@ interface IProps {
 }
 
 // eslint-disable-next-line react/display-name
-const DataPicker = forwardRef((props: IProps, ref: LegacyRef<DatePicker>) => {
-  const { label, value, onChange } = props;
+const CustomDataPicker = forwardRef(
+  (props: IProps, ref: LegacyRef<DatePicker>) => {
+    const { label, value, onChange } = props;
 
-  return (
-    <div>
-      {label && <label className="form-label d-block">{label}</label>}
-      <DatePicker
-        selected={value}
-        onChange={onChange}
-        ref={ref}
-        className="form-control"
-        dateFormat="MMMM d, yyyy"
-      />
-    </div>
-  );
-});
+    return (
+      <div>
+        {label && <label className="form-label d-block">{label}</label>}
+        <DatePicker
+          selected={value}
+          onChange={onChange}
+          ref={ref}
+          className="form-control"
+          dateFormat="MMMM d, yyyy"
+        />
+      </div>
+    );
+  }
+);
 
 const ControlledDataPicker = (props) => {
   const { control } = useForm();
@@ -37,7 +39,7 @@ const ControlledDataPicker = (props) => {
       name={props.name ?? ''}
       render={({ field }) => {
         return (
-          <DatePicker
+          <CustomDataPicker
             {...field}
             {...props}
             onChange={(value) => {

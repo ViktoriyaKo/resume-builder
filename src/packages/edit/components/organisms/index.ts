@@ -1,2 +1,2 @@
-export { default as Editor } from './Editor/Editor';
-export { default as View } from './View/View';
+export { default as DocumentEditor } from './DocumentEditor/DocumentEditor';
+export { default as DocumentPreview } from './DocumentPreview/DocumentPreview';

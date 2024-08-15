@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from './store';
+import { RootState } from '../../../store/store';
 
 const initialState = {
   currentPage: 1,
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const Slice = createSlice({
-  name: 'paginationData',
+  name: 'documentPreviewPagination',
   initialState,
   reducers: {
     changeTotalPage: (state, action) => {
@@ -24,6 +24,7 @@ export const Slice = createSlice({
 
 export const { changeTotalPage, changeCurrentPage } = Slice.actions;
 
-export const getPaginationData = (store: RootState) => store.paginationData;
+export const getPreviewPaginationData = (store: RootState) =>
+  store.documentPreviewPagination;
 
 export default Slice.reducer;

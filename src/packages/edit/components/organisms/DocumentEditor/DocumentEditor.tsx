@@ -1,16 +1,13 @@
 'use client';
-
-import styles from './Editor.module.css';
-import { selectLanguagesData } from '@/packages/edit/entities';
+import styles from './DocumentEditor.module.css';
+import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
-import { ContactDetails, EditorBlock, Skills } from '../../molecules';
-import { useDispatch } from 'react-redux';
+import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
 
 const Editor = () => {
   const initialData = useSelector(getStateData);
-  const dispatch = useDispatch();
 
   const {
     contactData,
@@ -31,17 +28,17 @@ const Editor = () => {
   return (
     <form className={styles.article} onSubmit={handleSubmit(onSubmit)}>
       <ContactDetails data={contactData} />
-      <EditorBlock.Summary dispatch={dispatch} />
-      <EditorBlock.Employment data={employmentData} />
-      <EditorBlock.Education data={educationData} />
-      <Skills dispatch={dispatch} />
-      <EditorBlock.Links data={linksData} />
-      <EditorBlock.Courses data={courseData} />
-      <EditorBlock.Languages
+      <DocumentEditorSection.Summary />
+      <DocumentEditorSection.Employment data={employmentData} />
+      <DocumentEditorSection.Education data={educationData} />
+      <Skills />
+      <DocumentEditorSection.Links data={linksData} />
+      <DocumentEditorSection.Courses data={courseData} />
+      <DocumentEditorSection.Languages
         data={languagesData}
-        options={selectLanguagesData}
+        options={SELECT_LANGUAGES_ENTITY}
       />
-      <EditorBlock.BackgroundColor dispatch={dispatch} />
+      <DocumentEditorSection.ColorInput />
     </form>
   );
 };

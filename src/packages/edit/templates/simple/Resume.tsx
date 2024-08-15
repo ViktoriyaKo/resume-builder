@@ -1,13 +1,12 @@
-import { useResizePagination } from '@/packages/edit/hooks';
-import Content from '../Content/Content';
-import Hero from '../Hero/Hero';
+import { useResizePreviewPagination } from '@/packages/edit/hooks';
+import Content from './components/Content/Content';
+import Hero from './components/Hero/Hero';
 import styles from './Resume.module.css';
 import { useRef } from 'react';
 
-
 const Resume = () => {
- const contentRef = useRef<HTMLDivElement | null>(null);
- const {marginTop} = useResizePagination(contentRef)
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const { marginTop } = useResizePreviewPagination(contentRef);
 
   return (
     <div

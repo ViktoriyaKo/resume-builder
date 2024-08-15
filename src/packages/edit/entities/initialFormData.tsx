@@ -1,7 +1,7 @@
 import { FormData } from '../constants';
-import { DataBuilder, Contact, Experience } from '../services';
+import { DataBuilder, Contact, Experience } from '../models';
 
-export const employmentData = new Experience()
+export const EMPLOYMENT_ENTITY = new Experience()
   .addJob()
   .addEmployer()
   .addStartDate()
@@ -10,7 +10,7 @@ export const employmentData = new Experience()
   .addDescription()
   .build();
 
-export const educationData = new Experience()
+export const EDUCATION_ENTITY = new Experience()
   .addSchool()
   .addSpecialty()
   .addDegree()
@@ -19,7 +19,7 @@ export const educationData = new Experience()
   .addDescription()
   .build();
 
-export const courseData = new Experience()
+export const COURSE_ENTITY = new Experience()
   .addSchool()
   .addSpecialty()
   .addStartDate()
@@ -28,7 +28,7 @@ export const courseData = new Experience()
   .addDescription()
   .build();
 
-export const contactData = new Contact()
+export const CONTACT_ENTITY = new Contact()
   .addJob()
   .addPhoto()
   .addFirstName()
@@ -39,22 +39,22 @@ export const contactData = new Contact()
   .addCity()
   .build();
 
-export const additionalContactData = new Contact()
+export const ADDITIONAL_CONTACT_ENTITY = new Contact()
   .addAddress()
   .addAdditionalInfo('Driving License', FormData.DRIVING_LICENSE)
   .build();
 
-export const languagesData = new DataBuilder()
+export const LANGUAGES_ENTITY = new DataBuilder()
   .addField('Language', FormData.LANGUAGES_NAME)
   .addField('Level', FormData.LANGUAGES_LEVEL, 'select')
   .build();
 
-export const linksData = new DataBuilder()
+export const LINKS_ENTITY = new DataBuilder()
   .addField('Label', FormData.LABEL)
   .addField('Link', FormData.LINK)
   .build();
 
-export const titles = new DataBuilder()
+export const TITLES = new DataBuilder()
   .addField('Social links & Websites', FormData.LINK_TITLE)
   .addField('Skills', FormData.SKILLS_TITLE)
   .addField('Professional Summary', FormData.SUMMARY_TITLE)
@@ -67,7 +67,7 @@ export const titles = new DataBuilder()
 
 // todo: переделать:
 
-export const selectLanguagesData = [
+export const SELECT_LANGUAGES_ENTITY = [
   { caption: 'Choose level', value: '' },
   { caption: 'A1', value: 'A1' },
   { caption: 'A2', value: 'A2' },

@@ -1,16 +1,16 @@
 import { FormData, ShortCategories } from '@/packages/edit/constants';
 import EditableHeader from '../EditableHeader/EditableHeader';
-import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
+import { updateAdditionalField } from '@/packages/edit/store/shortFieldSlice';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
-import { ControlledTextEditor } from '@/ui/atoms';
+import { TextEditor } from '@/ui/atoms';
 
 const Skills = () => {
   const dispatch = useDispatch();
 
   const handleChange = useCallback((value: string) => {
     dispatch(
-      updateShortField({ category: ShortCategories.SKILLS_DESCRIPTION, value })
+      updateAdditionalField({ category: ShortCategories.SKILLS_DESCRIPTION, value })
     );
   }, []);
 
@@ -22,7 +22,7 @@ const Skills = () => {
         title="Skills"
         description={'Describe your skills'}
       />
-      <ControlledTextEditor
+      <TextEditor
         name={ShortCategories.SKILLS_DESCRIPTION}
         onChange={handleChange}
       />

@@ -3,7 +3,7 @@ interface IProps {
   body: { [key: string]: string };
 }
 
-export const createPublicRequest = async ({ path, body }: IProps) => {
+export const createRequest = async ({ path, body }: IProps) => {
   try {
     await fetch(`${process.env.baseUrl}/${path}`, {
       method: 'POST',

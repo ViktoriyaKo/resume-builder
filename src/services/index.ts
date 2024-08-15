@@ -1,1 +1,1 @@
-export { createPublicRequest } from './createPublicRequest';
+export { createRequest } from './createRequest';

@@ -1,18 +1,18 @@
 'use client';
 import { Provider } from 'react-redux';
-import { View, Editor } from '../components/organisms';
+import { DocumentPreview, DocumentEditor } from '../components/organisms';
 import styles from '../styles/EditPage.module.css';
-import store from '../store/store';
+import store from '../../../store/store';
 
 const EditPage = () => {
   return (
     <Provider store={store}>
       <section className={styles.container}>
         <div className={styles.editor}>
-          <Editor />
+          <DocumentEditor />
         </div>
         <div className={styles.view}>
-          <View />
+          <DocumentPreview />
         </div>
       </section>
     </Provider>

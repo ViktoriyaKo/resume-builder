@@ -1,17 +1,29 @@
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './Hero.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
-import { convertFilledContactData } from '@/packages/edit/utils';
 import Link from 'next/link';
+import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
   const { background } = useSelector(getStateShortData);
-
   const { contactData, linksData } = initialData;
+
+  const convertFilledContactData = useCallback((data: TypeFieldData[]) => {
+    const convertData = data.reduce(
+      (accum: { [key: string]: string }, item: TypeFieldData) => {
+        accum[item.name] = item.value as string;
+        return accum;
+      },
+      {}
+    );
+
+    return convertData;
+  }, []);
+
   const headerData = convertFilledContactData(contactData);
   const contactLinks = linksData
     .map((item) => {
@@ -72,7 +84,7 @@ const Hero = () => {
         {contactLinks.map((item) => {
           const { label, link } = item || {};
           return (
-            <p>
+            <p key={label}>
               <b>
                 {label}
                 {label && ': '}

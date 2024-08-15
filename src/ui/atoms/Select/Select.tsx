@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
 'use client';
 import { TypeOptionsData } from '@/packages/edit/types';
 import { forwardRef, LegacyRef, SelectHTMLAttributes } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 
 interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
@@ -33,4 +35,31 @@ const Select = forwardRef(
   }
 );
 
-export default Select;
+const ControlledSelect = forwardRef(
+  (props: IProps, ref: LegacyRef<HTMLSelectElement>) => {
+    const { control } = useForm();
+    const { onChange } = props;
+
+    return (
+      <Controller
+        control={control}
+        name={props.name ?? ''}
+        render={({ field }) => {
+          return (
+            <Select
+              {...field}
+              {...props}
+              onChange={(value) => {
+                onChange?.(value);
+                field.onChange(value);
+              }}
+              ref={ref}
+            />
+          );
+        }}
+      />
+    );
+  }
+);
+
+export default ControlledSelect;

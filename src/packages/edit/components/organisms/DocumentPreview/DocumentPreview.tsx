@@ -1,11 +1,12 @@
 'use client';
-import styles from './View.module.css';
+import styles from './DocumentPreview.module.css';
 import { useRef } from 'react';
-import Resume from '@/packages/edit/templates/simple/components/organisms/Resume';
+import Resume from '@/packages/edit/templates/simple/Resume';
 import { useReactToPrint } from 'react-to-print';
-import { Pagination } from '../../molecules';
+import { DocumentPreviewPagination } from '../../molecules';
+import { Button } from '@/ui/atoms';
 
-const View = () => {
+const DocumentPreview = () => {
   const contentRef = useRef(null);
 
   const handleDownloadPdf = useReactToPrint({
@@ -18,15 +19,15 @@ const View = () => {
       <div className={styles.list} ref={contentRef}>
         <Resume />
       </div>
-      <Pagination />
-      <button
+      <DocumentPreviewPagination />
+      <Button
         className={styles.button}
         onClick={() => handleDownloadPdf(contentRef)}
       >
         Download PDF
-      </button>
+      </Button>
     </div>
   );
 };
 
-export default View;
+export default DocumentPreview;

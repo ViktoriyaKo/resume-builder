@@ -1,33 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  contactData,
-  additionalContactData,
-  courseData,
-  educationData,
-  employmentData,
-  languagesData,
-  linksData,
+  CONTACT_ENTITY,
+  ADDITIONAL_CONTACT_ENTITY,
+  COURSE_ENTITY,
+  EDUCATION_ENTITY,
+  EMPLOYMENT_ENTITY,
+  LANGUAGES_ENTITY,
+  LINKS_ENTITY,
 } from '../entities';
 import { Categories } from '../constants/categories';
-import { RootState } from './store';
+import { RootState } from '../../../store/store';
 import { v4 as uuid } from 'uuid';
 import {
   TypeInitialDataState,
   AddDataActionPayload,
   RemoveDataActionPayload,
   UpdateValueToDataActionPayload,
+  TypeFieldData,
 } from '../types';
-import { addItemDataToState } from '../utils';
+import addItemDataToState from './utils/addItemDataToState';
 
 //в этом слайсе обрабатываются сложные формы с вложенными секциями
+const getDataItem = (data: TypeFieldData[]) => {
+  return [{ uuid: uuid(), data }];
+};
 
 const initialState: TypeInitialDataState = {
-  contactData: contactData,
-  educationData: [{ uuid: uuid(), data: educationData }],
-  courseData: [{ uuid: uuid(), data: courseData }],
-  employmentData: [{ uuid: uuid(), data: employmentData }],
-  linksData: [{ uuid: uuid(), data: linksData }],
-  languagesData: [{ uuid: uuid(), data: languagesData }],
+  contactData: CONTACT_ENTITY,
+  educationData: getDataItem(EDUCATION_ENTITY),
+  courseData: getDataItem(COURSE_ENTITY),
+  employmentData: getDataItem(EMPLOYMENT_ENTITY),
+  linksData: getDataItem(LINKS_ENTITY),
+  languagesData: getDataItem(LANGUAGES_ENTITY),
 };
 
 export const Slice = createSlice({
@@ -52,7 +56,7 @@ export const Slice = createSlice({
     ) => {
       const { category, id } = action.payload;
       if (category === Categories.CONTACT) {
-        const deletedLength = additionalContactData.length;
+        const deletedLength = ADDITIONAL_CONTACT_ENTITY.length;
         state[category] = state[category].slice(0, -deletedLength);
       } else {
         state[category] = state[category].filter((item) => item.uuid !== id);
@@ -70,7 +74,6 @@ export const Slice = createSlice({
         }
       } else {
         const element = state[category].find((item) => item.uuid === uuid);
-        //добавлен объект values чтобы легче было отображать данные избегая reduce:
         if (element) {
           element.values = element?.values
             ? { ...element.values, [name]: value }

@@ -55,18 +55,18 @@ export interface UpdateShortFieldActionPayload {
   value: string;
 }
 
-export type TypeInitialShortField = Record<
-  Exclude<ShortCategories, ShortCategories.TITLES>,
-  string
-> & {
+export type TypeInitialShortField = {
+  [key in Exclude<ShortCategories, ShortCategories.TITLES>]: string;
+} & {
   [ShortCategories.TITLES]: TypeFieldData[];
 };
-
-export interface TypeControllerProps {
-  dispatch: Dispatch;
-}
 
 export type UpdateValueActionPayload = Omit<
   UpdateValueToDataActionPayload,
   'category'
 >;
+
+export interface IDataEditorItems {
+  data: TypeExpendedData[];
+  options?: TypeOptionsData[];
+}

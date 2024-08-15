@@ -1,40 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './store';
-import { titles } from '../entities';
+import { RootState } from '../../../store/store';
+import { TITLES } from '../entities';
 import { UpdateShortFieldActionPayload, TypeInitialShortField } from '../types';
 import { ShortCategories } from '../constants';
 
 //в этом слайсе обрабатываются простые данные формы, где все values строки кроме TITLES
 
 const initialState: TypeInitialShortField = {
-  [ShortCategories.TITLES]: titles,
+  [ShortCategories.TITLES]: TITLES,
   [ShortCategories.SKILLS_DESCRIPTION]: '',
   [ShortCategories.SUMMARY]: '',
   [ShortCategories.BACKGROUND]: '',
 };
 
 export const Slice = createSlice({
-  name: 'shortForm',
+  name: 'simpleForm',
   initialState,
   reducers: {
-    updateShortField: (
+    updateTitleField: (
       state: TypeInitialShortField,
       action: PayloadAction<UpdateShortFieldActionPayload>
     ) => {
       const { category, name, value } = action.payload;
-      if (category === ShortCategories.TITLES) {
-        const findItem = state[category].find((item) => item.name === name);
-        if (findItem) {
-          findItem.caption = value;
-        }
-      } else {
-        state[category] = value;
+      const findItem = state[category].find((item) => item.name === name);
+      if (findItem) {
+        findItem.caption = value;
       }
+    },
+    updateAdditionalField: (
+      state: TypeInitialShortField,
+      action: PayloadAction<UpdateShortFieldActionPayload>
+    ) => {
+      const { category, value } = action.payload;
+      state[category] = value;
     },
   },
 });
 
-export const { updateShortField } = Slice.actions;
-export const getStateShortData = (store: RootState) => store.shortForm;
+export const { updateTitleField, updateAdditionalField } = Slice.actions;
+export const getStateShortData = (store: RootState) => store.simpleForm;
 
 export default Slice.reducer;

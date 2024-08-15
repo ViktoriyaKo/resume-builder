@@ -1,13 +1,13 @@
 'use client';
 
-import { ControlledInput, Icon } from '@/ui/atoms';
+import { Input, Icon } from '@/ui/atoms';
 import { EditIcon } from '@/ui/atoms/Icons/EditIcon';
 import { useRef, useState, useCallback } from 'react';
 import styles from './EditableHeader.module.css';
 import { useOnClickOutside } from '@/hooks';
 import { useDispatch } from 'react-redux';
 import { ShortCategories } from '@/packages/edit/constants/categories';
-import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
+import { updateTitleField } from '@/packages/edit/store/shortFieldSlice';
 import { UpdateShortFieldActionPayload } from '@/packages/edit/types';
 
 interface IProps {
@@ -23,14 +23,14 @@ const EditableHeader = (props: IProps) => {
   const ref = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  const handleCLick = () => {
+  const handleCLick = useCallback(() => {
     setReadonly(false);
     if (ref.current) {
       const refLength = ref.current.value.length;
       ref.current.focus();
       ref.current.setSelectionRange(refLength, refLength);
     }
-  };
+  }, []);
 
   useOnClickOutside(ref, () => {
     if (!readonly) {
@@ -40,7 +40,7 @@ const EditableHeader = (props: IProps) => {
 
   const handleChange = useCallback(
     ({ category, name, value }: UpdateShortFieldActionPayload) => {
-      dispatch(updateShortField({ category, name, value }));
+      dispatch(updateTitleField({ category, name, value }));
     },
     []
   );
@@ -48,7 +48,7 @@ const EditableHeader = (props: IProps) => {
   return (
     <header className={'mt-3'}>
       <div className={styles.wrapper}>
-        <ControlledInput
+        <Input
           name={name}
           defaultValue={title}
           inputStyle={styles.input}

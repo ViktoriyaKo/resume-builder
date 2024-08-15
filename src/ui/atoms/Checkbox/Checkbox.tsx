@@ -1,6 +1,7 @@
 import { forwardRef, InputHTMLAttributes, LegacyRef } from 'react';
 import styles from './Checkbox.module.css';
 import clsx from 'clsx';
+import { Controller, useForm } from 'react-hook-form';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -32,4 +33,32 @@ const Checkbox = forwardRef(
   }
 );
 
-export default Checkbox;
+// eslint-disable-next-line react/display-name
+const ControlledCheckbox = forwardRef(
+  (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
+    const { control } = useForm();
+    const { onChange } = props;
+
+    return (
+      <Controller
+        control={control}
+        name={props.name ?? ''}
+        render={({ field }) => {
+          return (
+            <Checkbox
+              {...field}
+              {...props}
+              onChange={(value) => {
+                onChange?.(value);
+                field.onChange(value);
+              }}
+              ref={ref}
+            />
+          );
+        }}
+      />
+    );
+  }
+);
+
+export default ControlledCheckbox;

@@ -19,7 +19,7 @@
   grid-column: span 2;
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   .textArea {
     grid-column: 1 / 5;
   }

@@ -8,6 +8,7 @@ import { Controller, useForm } from 'react-hook-form';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 interface TextEditorProps {
+  name: string;
   caption?: string;
   className?: string;
   label?: string;
@@ -77,7 +78,7 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
   }
 );
 
-const ControlledTextEditor = (props) => {
+const ControlledTextEditor = (props: TextEditorProps) => {
   const { control } = useForm();
   const { onChange } = props;
 
@@ -88,8 +89,8 @@ const ControlledTextEditor = (props) => {
       render={({ field }) => {
         return (
           <TextEditor
-            {...field}
             {...props}
+            {...field}
             onChange={(value) => {
               onChange?.(value);
               field.onChange(value);

@@ -12,27 +12,29 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 // eslint-disable-next-line react/display-name
-export const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
-  const { caption, error, className, inputStyle = 'form-control', defaultValue, ...rest } =
-    props;
+const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
+  const {
+    caption,
+    error,
+    className,
+    inputStyle = 'form-control',
+    defaultValue,
+    ...rest
+  } = props;
 
   return (
     <div className={className ? className : ''}>
       {caption && (
         <label className={clsx('form-label', styles.caption)}>{caption}</label>
       )}
-      <input
-        className={inputStyle}
-        ref={ref}
-        {...rest}
-      />
+      <input className={inputStyle} ref={ref} {...rest} />
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );
 });
 
 // eslint-disable-next-line react/display-name
-export const ControlledInput = forwardRef(
+const ControlledInput = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
     const { control } = useForm();
     const { name, onChange, defaultValue = '' } = props;

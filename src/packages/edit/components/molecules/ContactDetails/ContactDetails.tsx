@@ -6,12 +6,12 @@ import {
   FormData,
   ShortCategories,
 } from '@/packages/edit/constants';
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { TypeFieldData } from '@/packages/edit/types/types';
-import { additionalContactData } from '@/packages/edit/entities';
+import { ADDITIONAL_CONTACT_ENTITY } from '@/packages/edit/entities';
 import { useHandleFormData } from '@/packages/edit/hooks';
 import Button from '@/ui/atoms/Button/Button';
-import { ControlledInput } from '@/ui/atoms';
+import { Input } from '@/ui/atoms';
 
 interface IProps {
   data: TypeFieldData[];
@@ -24,7 +24,7 @@ const ContactDetails = (props: IProps) => {
 
   const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
-    data: additionalContactData,
+    data: ADDITIONAL_CONTACT_ENTITY,
   });
 
   const handleChange = useCallback(
@@ -64,12 +64,14 @@ const ContactDetails = (props: IProps) => {
         {data.map((item) => {
           const { caption, name, type } = item ?? {};
           return (
-            <ControlledInput
+            <Input
               name={name}
               key={name}
               type={type}
               caption={caption}
-              onChange={(event: Event) => handleChange({ event, type, name })}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                handleChange({ event: event.nativeEvent, type, name })
+              }
             />
           );
         })}
