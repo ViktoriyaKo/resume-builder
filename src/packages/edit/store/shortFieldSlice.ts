@@ -22,9 +22,11 @@ export const Slice = createSlice({
       action: PayloadAction<UpdateShortFieldActionPayload>
     ) => {
       const { category, name, value } = action.payload;
-      const findItem = state[category].find((item) => item.name === name);
-      if (findItem) {
-        findItem.caption = value;
+      if (category === ShortCategories.TITLES) {
+        const findItem = state[category].find((item) => item.name === name);
+        if (findItem) {
+          findItem.caption = value as string;
+        }
       }
     },
     updateAdditionalField: (
@@ -32,7 +34,9 @@ export const Slice = createSlice({
       action: PayloadAction<UpdateShortFieldActionPayload>
     ) => {
       const { category, value } = action.payload;
-      state[category] = value;
+      if (category !== ShortCategories.TITLES) {
+        state[category] = value as string;
+      }
     },
   },
 });

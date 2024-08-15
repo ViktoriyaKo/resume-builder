@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  font-family: var(--font-montserrat);
+  gap: 40px;
+  padding: 12px;
+}

@@ -5,6 +5,7 @@ import styles from './Hero.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getDataValuesForm, convertFilledContactData } from '../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
@@ -12,24 +13,13 @@ const Hero = () => {
   const { background } = useSelector(getStateShortData);
   const { contactData, linksData } = initialData;
 
-  const convertFilledContactData = useCallback((data: TypeFieldData[]) => {
-    const convertData = data.reduce(
-      (accum: { [key: string]: string }, item: TypeFieldData) => {
-        accum[item.name] = item.value as string;
-        return accum;
-      },
-      {}
-    );
+  const getFilledData = useCallback(
+    (data: TypeFieldData[]) => convertFilledContactData(data),
+    []
+  );
 
-    return convertData;
-  }, []);
-
-  const headerData = convertFilledContactData(contactData);
-  const contactLinks = linksData
-    .map((item) => {
-      return item.values;
-    })
-    .filter((item) => item);
+  const headerData = getFilledData(contactData);
+  const contactLinks = getDataValuesForm(linksData);
 
   const {
     city,

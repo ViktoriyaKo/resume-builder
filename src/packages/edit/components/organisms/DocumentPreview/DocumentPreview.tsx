@@ -1,7 +1,7 @@
 'use client';
 import styles from './DocumentPreview.module.css';
 import { useRef } from 'react';
-import Resume from '@/packages/edit/templates/simple/Resume';
+import Resume from '@/packages/edit/templates/modern/Resume';
 import { useReactToPrint } from 'react-to-print';
 import { DocumentPreviewPagination } from '../../molecules';
 import { Button } from '@/ui/atoms';

@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  font-size: 20px;
+}
+
+.caption {
+  color: var(--teal-100);
+}
+
+.contact {
+  background-color: var(--gray-300);
+  color: white;
+  padding: 4px 8px;
+  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(2);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* experience */
+
+.bold {
+  font-weight: 600;
+}
+
+.date {
+  color: var(----teal-100);
+  font-size: 12px;
+}

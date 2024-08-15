@@ -2,23 +2,18 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
-import { TypeFieldData } from '@/packages/edit/types';
+
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';
 import { getLongDateFormat } from '@/packages/edit/utils';
+import { getTitles } from '../../../utils';
 
 const Content = () => {
   const { contactData, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { skillsDescription, summary, titles: titlesData } = initialShortData;
 
-  const titles = titlesData.reduce(
-    (accum: { [key: string]: string }, item: TypeFieldData) => {
-      const key = item.name.replace('Title', 'Data');
-      return { ...accum, [key]: item.caption };
-    },
-    {}
-  );
+  const titles = getTitles(titlesData);
 
   return (
     <div className={styles.container}>

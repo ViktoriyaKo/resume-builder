@@ -1,12 +1,14 @@
 import { StaticImageData } from 'next/image';
 import { Categories, ShortCategories } from '../constants';
-import { Dispatch } from '@reduxjs/toolkit';
 
-export interface TypeFieldData {
-  caption: string;
-  type?: string;
+interface TypeAttributeData {
   name: string;
   value?: string;
+}
+
+export interface TypeFieldData extends TypeAttributeData {
+  caption: string;
+  type?: string;
 }
 
 export type TypeOptionsData = Omit<TypeFieldData, 'type' | 'name'>;
@@ -15,7 +17,7 @@ type UUID = string;
 export type TypeExpendedData = {
   uuid: UUID;
   data: TypeFieldData[];
-  values?: { [key: string]: string };
+  values?: { [key: string]: string | undefined };
 };
 
 export interface TypeTemplate {
@@ -32,27 +34,22 @@ export type TypeInitialDataState = Record<
   [Categories.CONTACT]: TypeFieldData[];
 };
 
-export interface AddDataActionPayload {
-  category: Categories;
-  data: TypeFieldData[];
-}
-
 export interface RemoveDataActionPayload {
   category: Categories;
   id?: string;
 }
 
-export interface UpdateValueToDataActionPayload {
-  category: Categories;
-  uuid?: UUID;
-  name: string;
-  value: string;
+export interface AddDataActionPayload extends RemoveDataActionPayload {
+  data: TypeFieldData[];
 }
 
-export interface UpdateShortFieldActionPayload {
+export interface UpdateShortFieldActionPayload extends TypeAttributeData {
   category: ShortCategories;
-  name?: string;
-  value: string;
+}
+
+export interface UpdateValueToDataActionPayload extends TypeAttributeData {
+  category: Categories;
+  uuid?: UUID;
 }
 
 export type TypeInitialShortField = {

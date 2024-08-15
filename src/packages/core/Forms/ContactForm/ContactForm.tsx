@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
 import { FormContactValues } from '@/types';
-import { createPublicRequest } from '@/services';
+import { createRequest } from '@/services';
 
 interface IProps {
   title: string;
@@ -22,7 +22,7 @@ const ContactForm = (props: IProps) => {
   });
 
   const onSubmit = async (body: FormContactValues) => {
-    await createPublicRequest({path: 'request', body})  
+    await createRequest({ path: 'request', body });
   };
 
   return (
