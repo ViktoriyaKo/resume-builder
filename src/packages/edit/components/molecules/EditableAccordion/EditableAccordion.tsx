@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import styles from './EditableAccordion.module.css';
-import { Icon } from '@/ui/atoms';
+import { Button, Icon } from '@/ui/atoms';
 import { DeleteIcon } from '@/ui/atoms/Icons/DeleteIcon';
 
 interface IProps {
@@ -19,9 +19,9 @@ const EditableAccordion = (props: IProps) => {
         <summary className={styles.summary}>{title}</summary>
         <div className={styles.content}>{children}</div>
       </details>
-      <button onClick={() => handleDelete(id)}>
+      <Button onClick={() => handleDelete(id)} className={styles.button}>
         <Icon html={DeleteIcon} />
-      </button>
+      </Button>
     </div>
   );
 };

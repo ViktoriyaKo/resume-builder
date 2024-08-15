@@ -2,6 +2,7 @@ import styles from './Form.module.css';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Input } from '@/ui/atoms';
+import { Button } from '@/ui/atoms';
 
 const Form = () => {
   const initialData = {
@@ -35,9 +36,9 @@ const Form = () => {
           type={'password'}
         />
       </div>
-      <button type={'submit'} className={styles.button}>
+      <Button type={'submit'} className={styles.button}>
         Войти
-      </button>
+      </Button>
       <Link href={'/sign-up'} className={styles.link}>
         Если у вас нет аккаунта, то нажмите сюда для регистрации
       </Link>

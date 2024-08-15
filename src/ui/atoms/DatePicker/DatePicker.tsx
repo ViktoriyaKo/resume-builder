@@ -1,6 +1,7 @@
 import { forwardRef, LegacyRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Controller, useForm } from 'react-hook-form';
 
 interface IProps {
   label?: string;
@@ -26,4 +27,28 @@ const DataPicker = forwardRef((props: IProps, ref: LegacyRef<DatePicker>) => {
   );
 });
 
-export default DataPicker;
+const ControlledDataPicker = (props) => {
+  const { control } = useForm();
+  const { onChange } = props;
+
+  return (
+    <Controller
+      control={control}
+      name={props.name ?? ''}
+      render={({ field }) => {
+        return (
+          <DatePicker
+            {...field}
+            {...props}
+            onChange={(value) => {
+              onChange?.(value);
+              field.onChange(value);
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
+
+export default ControlledDataPicker;

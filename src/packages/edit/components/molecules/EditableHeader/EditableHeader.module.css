@@ -16,7 +16,7 @@
 
 @media (width >= 468px) {
   .input {
-    max-width: auto;
+    max-width: max-content;
   }
 }
 

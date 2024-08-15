@@ -1,9 +1,8 @@
 'use client';
-import { Input, DatePicker, Select, Checkbox, TextEditor } from '@/ui/atoms';
+import { Input, DatePicker, Select, Checkbox } from '@/ui/atoms';
 import styles from './InputsList.module.css';
 
-import { Controller } from 'react-hook-form';
-import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { Controller, useForm } from 'react-hook-form';
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
 import { FormData } from '@/packages/edit/constants';
 
@@ -16,7 +15,7 @@ interface IProps {
 
 const InputsList = (props: IProps) => {
   const { data, options, uuid, handleClick } = props;
-  const control = useControl();
+  const { control } = useForm();
 
   return (
     <div className={styles.container}>

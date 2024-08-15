@@ -1,19 +1,17 @@
 import EditableHeader from '../EditableHeader/EditableHeader';
-import { Input } from '@/ui/atoms';
 import styles from './ContactDetails.module.css';
-import { ControlButton } from '../../atoms';
 
 import {
   Categories,
   FormData,
   ShortCategories,
 } from '@/packages/edit/constants';
-import { useState } from 'react';
-import { Controller } from 'react-hook-form';
-import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { useCallback, useState } from 'react';
 import { TypeFieldData } from '@/packages/edit/types/types';
 import { additionalContactData } from '@/packages/edit/entities';
-import { useHandleData } from '@/packages/edit/hooks';
+import { useHandleFormData } from '@/packages/edit/hooks';
+import Button from '@/ui/atoms/Button/Button';
+import { ControlledInput } from '@/ui/atoms';
 
 interface IProps {
   data: TypeFieldData[];
@@ -22,13 +20,28 @@ interface IProps {
 const ContactDetails = (props: IProps) => {
   const { data } = props;
   const [isToggle, setIsToggle] = useState(true);
-  const control = useControl();
   const category = Categories.CONTACT;
 
-  const { addListItem, removeListItem, updateValueField } = useHandleData({
+  const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
     data: additionalContactData,
   });
+
+  const handleChange = useCallback(
+    ({ type, name, event }: { event: Event; type?: string; name: string }) => {
+      const target = event.target as HTMLInputElement;
+
+      if (type === 'file') {
+        if (target?.files) {
+          const blobFile = URL.createObjectURL(target.files?.[0]);
+          updateValueField({ name, value: blobFile });
+        }
+      } else {
+        updateValueField({ name, value: target?.value });
+      }
+    },
+    []
+  );
 
   const toggleDetails = () => {
     if (isToggle) {
@@ -49,48 +62,21 @@ const ContactDetails = (props: IProps) => {
       />
       <div className={styles.wrapper}>
         {data.map((item) => {
-          const { caption, name, type } = item;
+          const { caption, name, type } = item ?? {};
           return (
-            <Controller
-              defaultValue={''}
-              control={control}
+            <ControlledInput
               name={name}
               key={name}
-              render={({ field }) => {
-                const handleChange = (
-                  value: string | (EventTarget & HTMLInputElement)
-                ) => {
-                  if (type === 'file' && value instanceof EventTarget) {
-                    if (value?.files) {
-                      const blobFile = URL.createObjectURL(value.files?.[0]);
-                      field.onChange(value.value);
-
-                      updateValueField({ name, value: blobFile });
-                    }
-                  } else if (typeof value === 'string') {
-                    field.onChange(value);
-                    updateValueField({ name, value });
-                  }
-                };
-                return (
-                  <Input
-                    type={type}
-                    caption={caption}
-                    {...field}
-                    onChange={(e) =>
-                      handleChange(type === 'file' ? e.target : e.target.value)
-                    }
-                  />
-                );
-              }}
+              type={type}
+              caption={caption}
+              onChange={(event: Event) => handleChange({ event, type, name })}
             />
           );
         })}
       </div>
-      <ControlButton
-        onClick={toggleDetails}
-        text={`${isToggle ? '▼ Add' : '▲ Hide'} additional details`}
-      />
+      <Button onClick={toggleDetails}>
+        {isToggle ? '▼ Add' : '▲ Hide'} additional details
+      </Button>
     </>
   );
 };

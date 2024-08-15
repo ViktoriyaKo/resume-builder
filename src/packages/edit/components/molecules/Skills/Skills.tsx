@@ -1,14 +1,18 @@
 import { FormData, ShortCategories } from '@/packages/edit/constants';
 import EditableHeader from '../EditableHeader/EditableHeader';
-import { TextEditor } from '@/ui/atoms';
-import { Controller } from 'react-hook-form';
 import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
-import { TypeControllerProps } from '@/packages/edit/types';
-import { useControl } from '@/packages/edit/contexts/ControlContext';
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import { ControlledTextEditor } from '@/ui/atoms';
 
-const Skills = (props: TypeControllerProps) => {
-  const { dispatch } = props;
-  const control = useControl();
+const Skills = () => {
+  const dispatch = useDispatch();
+
+  const handleChange = useCallback((value: string) => {
+    dispatch(
+      updateShortField({ category: ShortCategories.SKILLS_DESCRIPTION, value })
+    );
+  }, []);
 
   return (
     <>
@@ -18,24 +22,9 @@ const Skills = (props: TypeControllerProps) => {
         title="Skills"
         description={'Describe your skills'}
       />
-      <Controller
+      <ControlledTextEditor
         name={ShortCategories.SKILLS_DESCRIPTION}
-        control={control}
-        render={({ field }) => {
-          const handleChange = (value: string) => {
-            field.onChange(value);
-            dispatch(
-              updateShortField({
-                category: ShortCategories.SKILLS_DESCRIPTION,
-                value,
-              })
-            );
-          };
-
-          return (
-            <TextEditor {...field} onChange={(value) => handleChange(value)} />
-          );
-        }}
+        onChange={handleChange}
       />
     </>
   );

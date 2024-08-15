@@ -2,20 +2,18 @@ import { Fragment } from 'react';
 import EditableHeader from '../EditableHeader/EditableHeader';
 import EditableAccordion from '../EditableAccordion/EditableAccordion';
 import InputsList from '../InputsList/InputsList';
-import { ControlButton } from '../../atoms';
-import { useHandleData } from '@/packages/edit/hooks';
+import { Button, ControlledInput, ControlledTextEditor } from '@/ui/atoms';
+import { useHandleFormData } from '@/packages/edit/hooks';
 import {
   Categories,
   FormData,
   ShortCategories,
 } from '@/packages/edit/constants';
-import { Controller } from 'react-hook-form';
-import { Input, TextArea, TextEditor } from '@/ui/atoms';
+
 import {
   TypeExpendedData,
   TypeOptionsData,
   TypeFieldData,
-  TypeControllerProps,
 } from '@/packages/edit/types';
 import {
   employmentData,
@@ -25,9 +23,10 @@ import {
   languagesData,
 } from '@/packages/edit/entities';
 import { updateShortField } from '@/packages/edit/store/shortFieldSlice';
-import { useControl } from '@/packages/edit/contexts/ControlContext';
 import styles from './EditorItems.module.css';
 import clsx from 'clsx';
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 interface IDataProps {
   data: TypeExpendedData[];
@@ -58,7 +57,7 @@ const ItemContent = (props: IContentProps) => {
     options,
     initialFormData,
   } = props;
-  const { addListItem, removeListItem, updateValueField } = useHandleData({
+  const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
     data: initialFormData,
   });
@@ -103,7 +102,7 @@ const ItemContent = (props: IContentProps) => {
             </Fragment>
           );
         })}
-      <ControlButton onClick={addListItem} text={labelButton} />
+      <Button onClick={addListItem}>{labelButton}</Button>
     </>
   );
 };
@@ -195,10 +194,12 @@ const Languages = (props: IDataProps) => {
   );
 };
 
-// todo вынести повторение Controller:
+const Summary = () => {
+  const dispatch = useDispatch();
 
-const Summary = ({ dispatch }: TypeControllerProps) => {
-  const control = useControl();
+  const handleChange = useCallback((value: string) => {
+    dispatch(updateShortField({ category: ShortCategories.SUMMARY, value }));
+  }, []);
 
   return (
     <>
@@ -208,54 +209,34 @@ const Summary = ({ dispatch }: TypeControllerProps) => {
         title="Professional Summary"
         description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}
       />
-      <Controller
+      <ControlledTextEditor
         name={ShortCategories.SUMMARY}
-        control={control}
-        render={({ field }) => {
-          const handleChange = (value: string) => {
-            field.onChange(value);
-            dispatch(
-              updateShortField({ category: ShortCategories.SUMMARY, value })
-            );
-          };
-          return (
-            <TextEditor
-              caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
-              {...field}
-              onChange={(value) => handleChange(value)}
-            />
-          );
-        }}
+        caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
+        onChange={handleChange}
       />
     </>
   );
 };
 
-const BackgroundColor = ({ dispatch }: TypeControllerProps) => {
-  const control = useControl();
+const BackgroundColor = () => {
+  const dispatch = useDispatch();
+
+  const handleChange = useCallback(
+    (value: any) =>
+      dispatch(
+        updateShortField({ category: ShortCategories.BACKGROUND, value })
+      ),
+    []
+  );
 
   return (
-    <Controller
+    <ControlledInput
+      onChange={(e) => handleChange(e.target.value)}
       name={'color'}
-      control={control}
-      render={({ field }) => {
-        const handleChange = (value: string) => {
-          field.onChange(value);
-          dispatch(
-            updateShortField({ category: ShortCategories.BACKGROUND, value })
-          );
-        };
-        return (
-          <Input
-            inputStyle={clsx('form-control-color', styles.input)}
-            defaultValue={'#f0f0f0'}
-            caption={'Choose color for template:'}
-            {...field}
-            type={'color'}
-            onChange={(e) => handleChange(e.target.value)}
-          />
-        );
-      }}
+      inputStyle={clsx('form-control-color', styles.input)}
+      type={'color'}
+      defaultValue={'#f0f0f0'}
+      caption={'Choose color for template:'}
     />
   );
 };

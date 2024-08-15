@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import 'react-quill-new/dist/quill.snow.css';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
+import { Controller, useForm } from 'react-hook-form';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
@@ -76,4 +77,28 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
   }
 );
 
-export default TextEditor;
+const ControlledTextEditor = (props) => {
+  const { control } = useForm();
+  const { onChange } = props;
+
+  return (
+    <Controller
+      control={control}
+      name={props.name ?? ''}
+      render={({ field }) => {
+        return (
+          <TextEditor
+            {...field}
+            {...props}
+            onChange={(value) => {
+              onChange?.(value);
+              field.onChange(value);
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
+
+export default ControlledTextEditor;

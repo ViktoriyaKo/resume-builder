@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './ContactForm.module.css';
-import { Input } from '@/ui/atoms';
+import { Button, Input } from '@/ui/atoms';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
@@ -41,9 +41,9 @@ const ContactForm = (props: IProps) => {
           placeholder="..."
           rows={5}
         />
-        <button className={styles.button} type={'submit'}>
+        <Button className={styles.button} type={'submit'}>
           {props.label}
-        </button>
+        </Button>
       </form>
       <Modal
         isOpen={open}

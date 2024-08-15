@@ -46,7 +46,7 @@ export const Slice = createSlice({
         addItemDataToState(state[category], data);
       }
     },
-    removeDataItem: (
+    removeData: (
       state: TypeInitialDataState,
       action: PayloadAction<RemoveDataActionPayload>
     ) => {
@@ -81,7 +81,7 @@ export const Slice = createSlice({
   },
 });
 
-export const { addData, removeDataItem, updateValueToData } = Slice.actions;
+export const { addData, removeData, updateValueToData } = Slice.actions;
 export const getStateData = (store: RootState) => store.data;
 
 export default Slice.reducer;

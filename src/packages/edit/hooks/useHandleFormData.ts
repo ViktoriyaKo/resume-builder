@@ -1,10 +1,6 @@
-import { addData, removeDataItem } from '@/packages/edit/store/dataSlice';
+import { addData, removeData } from '@/packages/edit/store/dataSlice';
 import { useDispatch } from 'react-redux';
-import {
-  TypeFieldData,
-  UpdateValueActionPayload,
-  UpdateShortFieldActionPayload,
-} from '../types';
+import { TypeFieldData, UpdateValueActionPayload } from '../types';
 import { Categories } from '../constants';
 import { updateValueToData } from '@/packages/edit/store/dataSlice';
 
@@ -13,7 +9,7 @@ interface IProps {
   data: TypeFieldData[];
 }
 
-const useHandleData = (arg: IProps) => {
+const useHandleFormData = (arg: IProps) => {
   const { category, data } = arg;
   const dispatch = useDispatch();
 
@@ -22,7 +18,7 @@ const useHandleData = (arg: IProps) => {
   };
 
   const removeListItem = (id?: string) => {
-    dispatch(removeDataItem({ category, id }));
+    dispatch(removeData({ category, id }));
   };
 
   const updateValueField = (props: UpdateValueActionPayload) => {
@@ -37,4 +33,4 @@ const useHandleData = (arg: IProps) => {
   };
 };
 
-export default useHandleData;
+export default useHandleFormData;

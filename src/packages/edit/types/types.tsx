@@ -10,9 +10,10 @@ export interface TypeFieldData {
 }
 
 export type TypeOptionsData = Omit<TypeFieldData, 'type' | 'name'>;
+type UUID = string;
 
 export type TypeExpendedData = {
-  uuid: string;
+  uuid: UUID;
   data: TypeFieldData[];
   values?: { [key: string]: string };
 };
@@ -43,7 +44,7 @@ export interface RemoveDataActionPayload {
 
 export interface UpdateValueToDataActionPayload {
   category: Categories;
-  uuid?: string;
+  uuid?: UUID;
   name: string;
   value: string;
 }

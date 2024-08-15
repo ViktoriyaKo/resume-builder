@@ -1,3 +1,5 @@
+'use client';
+import { Button } from '@/ui/atoms';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import styles from './Modal.module.css';
 
@@ -17,9 +19,9 @@ const Modal = (props: Props) => {
         <div className={styles.container}>
           <h4 className={styles.title}>{title}</h4>
           <div>{description}</div>
-          <button onClick={onClose} className={styles.button}>
+          <Button onClick={onClose} className={styles.button}>
             Close
-          </button>
+          </Button>
         </div>
       }
     </ModalWrapper>
