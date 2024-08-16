@@ -11,7 +11,7 @@ import {
   getTitles,
 } from '../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
-import { LabelValue } from '../atoms';
+import { LabelValue, Title } from '../atoms';
 
 // todo разбить на компоненты!!
 
@@ -38,9 +38,10 @@ const Aside = () => {
 
   const contactLinks = getDataValuesForm(linksData);
   const languages = getDataValuesForm(languagesData);
+  const isEducation = educationData.some((item) => item.values);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ backgroundColor: background }}>
       {photo && (
         <Image
           src={photo}
@@ -70,42 +71,50 @@ const Aside = () => {
           />
         </div>
       )}
-      <div>
-        <h3 className={styles.title}>{titles.educationData}</h3>
-        <ul className={styles.education}>
-          {educationData.map((item) => {
-            const { uuid, values } = item;
-            const {
-              degree,
-              descriptionSchool,
-              specialty,
-              startDate,
-              endDate,
-              school,
-            } = values ?? {};
-            const date =
-              startDate &&
-              endDate &&
-              `${getLongDateFormat(startDate)} - ${getLongDateFormat(endDate)}`;
-            return (
-              <li key={uuid}>
-                <p className={styles.muted}>{date}</p>
-                <p className={styles.bold}>{degree}</p>
-                <p>
-                  {school}, {specialty}
-                </p>
-                {descriptionSchool && (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: descriptionSchool,
-                    }}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {isEducation && (
+        <div>
+          <Title title={titles.educationData}/>
+          <ul className={styles.education}>
+            {educationData.map((item) => {
+              const { uuid, values } = item;
+              const {
+                degree,
+                descriptionSchool,
+                specialty,
+                startDate,
+                endDate,
+                school,
+              } = values ?? {};
+
+              const date =
+                startDate &&
+                endDate &&
+                `${getLongDateFormat(startDate)} - ${getLongDateFormat(
+                  endDate
+                )}`;
+
+              return (
+                <li key={uuid}>
+                  <p className={styles.muted}>{date}</p>
+                  <p className={styles.bold}>{degree}</p>
+                  <p>
+                    {school && specialty
+                      ? `${school}, ${specialty}`
+                      : specialty || school}
+                  </p>
+                  {descriptionSchool && (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: descriptionSchool,
+                      }}
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
       {languages.length > 0 && (
         <div className={styles.wrapper}>
           <h3 className={styles.title}>{titles.languagesData}</h3>

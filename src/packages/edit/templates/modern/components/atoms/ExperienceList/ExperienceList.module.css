@@ -1,0 +1,15 @@
+.position {
+  color: var(--teal-100);
+  font-weight: 500;
+}
+
+.muted {
+  color: var(--gray-500);
+  font-size: 12px;
+}
+
+.description {
+  font-size: 14px;
+}
+
+/* todo add before! */

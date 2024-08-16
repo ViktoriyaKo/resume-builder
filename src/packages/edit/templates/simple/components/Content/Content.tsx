@@ -2,6 +2,7 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
+import { useMemo } from 'react';
 
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';

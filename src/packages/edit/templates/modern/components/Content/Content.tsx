@@ -6,18 +6,18 @@ import { getTitles } from '../../../utils';
 import React, { useCallback } from 'react';
 import { convertFilledContactData } from '../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
+import { ExperienceList } from '../atoms';
 
 const Content = () => {
-  const { contactData, ...initialData } = useSelector(getStateData);
+  const { contactData, employmentData, courseData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
-  const { skillsDescription, summary, titles: titlesData } = initialShortData;
+  const { summary, titles: titlesData } = initialShortData;
 
   const titles = getTitles(titlesData);
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []
   );
-
   const headerData = getFilledData(contactData);
   const { firstName, job, lastName } = headerData;
 
@@ -36,6 +36,8 @@ const Content = () => {
           }}
         />
       )}
+      <ExperienceList data={employmentData} title={titles.employmentData} />
+      <ExperienceList data={courseData} title={titles.courseData} />
     </div>
   );
 };
