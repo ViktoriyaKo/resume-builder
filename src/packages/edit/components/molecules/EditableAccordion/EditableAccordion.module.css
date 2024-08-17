@@ -1,23 +1,23 @@
 .wrapper {
   display: flex;
-  gap: 12px;
+  gap: var(--xs-spacing);
 }
 
 .details {
   flex: 1;
   border: var(--bs-border-width) solid var(--bs-border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .summary {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  padding: 20px;
+  padding: var(--sm-spacing);
   background: linear-gradient(180deg, #f7f7f7 57%, rgba(255, 255, 255, 1) 100%);
 }
 
 .content {
-  padding: 20px;
+  padding: var(--sm-spacing);
 }
 
 .button {

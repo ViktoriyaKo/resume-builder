@@ -7,7 +7,7 @@
   font-weight: 600;
   padding: 8px;
   transition: all 0.5s;
-  gap: 12px;
+  gap: var(--xs-spacing);
 }
 
 .link:hover {

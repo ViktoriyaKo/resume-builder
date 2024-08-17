@@ -18,7 +18,7 @@
   color: white;
   text-transform: uppercase;
   max-width: var(--width-container);
-  padding-inline: 20px;
+  padding-inline: var(--sm-spacing);
 }
 
 @media (width >= 768px) {

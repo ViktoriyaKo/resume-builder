@@ -6,7 +6,7 @@
 }
 
 .input {
-  padding-inline: 12px;
+  padding-inline: var(--xs-spacing);
   font-weight: 600;
   font-size: 20px;
   outline: none;

@@ -11,15 +11,20 @@
   --teal-100: rgb(15, 167, 167);
   --teal-200: rgb(15 167 167 / 61%);
 
-  /* padding: */
-  --sm-padding: 20px;
-  --md-padding: 20px;
-  --lg-padding: 100px;
+  /* spacing: */
+  --xs-spacing: 12px;
+  --sm-spacing: 20px;
+  --lg-spacing: 100px;
 
   /* other: */
   --width-container: 1170px;
   --white-border-small: 1px solid white;
   --border-radius: 8px;
+
+  /* dimensions */
+  --review-height: 833px;
+  --review-max-height: 1000px;
+  --review-width: 590px;
 }
 
 *,

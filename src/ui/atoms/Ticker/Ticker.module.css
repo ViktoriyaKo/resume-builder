@@ -2,19 +2,25 @@
   width: 100%;
   display: flex;
   overflow: hidden;
-  gap: 20px;
+  gap: var(--sm-spacing);
 }
 
 .scroll div {
   white-space: nowrap;
-  padding-inline: 20px;
-  font-size: 80px;
+  padding-inline: var(--sm-spacing);
+  font-size: 40px;
   font-weight: 900;
   text-transform: uppercase;
   animation: animate 30s linear infinite;
   animation-delay: -30s;
   color: black;
   font-family: sans-serif;
+}
+
+@media (width >= 768px) {
+  .scroll div {
+    font-size: 80px;
+  }
 }
 
 .text {

@@ -20,6 +20,7 @@ const Aside = () => {
   const {
     skillsDescription,
     background,
+    color,
     titles: titlesData,
   } = useSelector(getStateShortData);
   const { contactData, educationData, linksData, languagesData } = initialData;
@@ -32,6 +33,7 @@ const Aside = () => {
   );
 
   const headerData = getFilledData(contactData);
+
   const { city, country, email, phone, address, photo } = headerData;
   const shortAddress =
     city && country ? `${city}, ${country}` : city || country;
@@ -39,9 +41,13 @@ const Aside = () => {
   const contactLinks = getDataValuesForm(linksData);
   const languages = getDataValuesForm(languagesData);
   const isEducation = educationData.some((item) => item.values);
+  const borderRight = `6px solid ${color ? color : 'rgb(15, 167, 167)'}`;
 
   return (
-    <div className={styles.container} style={{ backgroundColor: background }}>
+    <div
+      className={styles.container}
+      style={{ backgroundColor: background, borderRight: borderRight }}
+    >
       {photo && (
         <Image
           src={photo}
@@ -62,7 +68,7 @@ const Aside = () => {
       </div>
       {skillsDescription && (
         <div>
-          <h3 className={styles.title}>{titles.skillsData}</h3>
+          <Title title={titles.skillsData}/>
           <div
             className={styles.skills}
             dangerouslySetInnerHTML={{
@@ -73,7 +79,7 @@ const Aside = () => {
       )}
       {isEducation && (
         <div>
-          <Title title={titles.educationData}/>
+          <Title title={titles.educationData} />
           <ul className={styles.education}>
             {educationData.map((item) => {
               const { uuid, values } = item;
@@ -116,18 +122,20 @@ const Aside = () => {
         </div>
       )}
       {languages.length > 0 && (
-        <div className={styles.wrapper}>
-          <h3 className={styles.title}>{titles.languagesData}</h3>
-          {languages.map((item) => {
-            const { languagesLevel, languagesName } = item || {};
-            return (
-              <LabelValue
-                key={languagesName}
-                label={languagesName}
-                value={languagesLevel}
-              />
-            );
-          })}
+        <div>
+           <Title title={titles.languagesData}/>     
+          <div className={styles.wrapper}>
+            {languages.map((item) => {
+              const { languagesLevel, languagesName } = item ?? {};
+              return (
+                <LabelValue
+                  key={languagesName}
+                  label={languagesName}
+                  value={languagesLevel}
+                />
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

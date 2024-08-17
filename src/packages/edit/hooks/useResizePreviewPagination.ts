@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect, useCallback } from 'react';
 import {
   changeTotalPage,
   getPreviewPaginationData,
 } from '../store/documentPreviewPaginationSlice';
 
 const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
-  const { heightPage, totalPages, currentPage, marginTop } = useSelector(
+  const { heightPage, totalPages, marginTop } = useSelector(
     getPreviewPaginationData
   );
   const dispatch = useDispatch();
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     if (contentRef?.current) {
       const newTotalPage = Math.ceil(
         contentRef.current.scrollHeight / heightPage
@@ -21,7 +21,7 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
         dispatch(changeTotalPage(newTotalPage));
       }
     }
-  };
+  }, [heightPage, totalPages, dispatch]);
 
   useEffect(() => {
     const observer = new ResizeObserver(handleResize);
@@ -32,7 +32,7 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
     return () => {
       observer.disconnect();
     };
-  }, [totalPages, heightPage, currentPage]);
+  }, [totalPages, heightPage, handleResize]);
 
   return { marginTop };
 };

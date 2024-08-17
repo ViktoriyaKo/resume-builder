@@ -1,11 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  gap: var(--sm-spacing);
+  padding: var(--sm-spacing);
   color: white;
+  min-height: var(--review-height);
   background-color: black;
-  border-right: 6px solid var(--teal-100);
 }
 
 .wrapper {

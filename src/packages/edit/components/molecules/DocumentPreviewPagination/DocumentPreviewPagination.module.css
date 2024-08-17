@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 12px;
+  padding: var(--xs-spacing);
   display: flex;
   align-items: center;
   justify-content: center;

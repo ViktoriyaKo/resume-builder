@@ -1,22 +1,56 @@
 .container {
   position: relative;
-  padding-block: 100px;
+  padding-block: 50px;
   height: 100%;
   background-color: white;
 }
 
+@media (width >= 768px) {
+  .wrapper {
+    padding-block: var(--lg-spacing);
+  }
+}
+
 .title {
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 600;
   text-align: center;
-  padding-inline: 20px;
+  padding-inline: var(--sm-spacing);
+}
+
+@media (width >= 768px) {
+  .title {
+    font-size: 50px;
+  }
 }
 
 .wrapper {
+  padding: 60px 20px 0 20px;
   max-width: var(--width-container);
-  padding: 100px 20px 0 20px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--md-padding);
+  gap: var(--sm-spacing);
+  justify-items: center;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    padding: 100px 20px 0 20px;
+  }
+}
+
+.link {
+  margin-top: 40px;
+  align-self: center;
+  font-size: 18px;
+  background-color: black;
+  padding: 4px 8px;
+  color: white;
+  margin: 40px auto 0;
+}
+
+.link:hover {
+  background-color: white;
+  color: black;
 }

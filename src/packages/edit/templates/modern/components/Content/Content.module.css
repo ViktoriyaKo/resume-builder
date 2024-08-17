@@ -1,19 +1,23 @@
 .container {
-  padding-block: 20px;
+  padding-block: var(--sm-spacing);
+  padding-right: var(--sm-spacing);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--xs-spacing);
 }
 
 .header {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .caption {
   color: var(--teal-100);
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.contact {
+/* .contact {
   background-color: var(--gray-300);
   color: white;
   padding: 4px 8px;
@@ -26,20 +30,4 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* experience */
-
-.bold {
-  font-weight: 600;
-}
-
-.date {
-  color: var(----teal-100);
-  font-size: 12px;
-}
+} */

@@ -1,0 +1,12 @@
+.container {
+  max-width: var(--width-container);
+  padding: 60px 20px 0 20px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--sm-spacing);
+  padding-block: 60px;
+}

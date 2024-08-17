@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
-  column-gap: 20px;
-  row-gap: 12px;
+  column-gap: var(--sm-spacing);
+  row-gap: var(--xs-spacing);
 }
 
 @media (width >= 468px) {

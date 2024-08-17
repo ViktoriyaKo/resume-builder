@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--xs-spacing);
 }
 
 .wrapper {
@@ -14,7 +14,7 @@
 }
 
 .button {
-  padding: 12px;
+  padding: var(--xs-spacing);
   margin-top: 20px;
   color: white;
   text-transform: uppercase;

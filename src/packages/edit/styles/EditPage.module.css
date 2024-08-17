@@ -19,11 +19,11 @@
 
 @media (width >= 768px) {
   .view {
-    padding: 20px;
+    padding: var(--sm-spacing);
     background-color: var(--gray-300);
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: var(--review-max-height);
     display: block;
   }
 }

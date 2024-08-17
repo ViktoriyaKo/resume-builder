@@ -8,7 +8,7 @@ const Template = (props: TypeTemplate) => {
   const { link, image, title, description } = props;
 
   return (
-    <Link href={link} className={styles.card}>
+    <Link href={`/edit${link}`} className={styles.card}>
       <div className={styles.wrapperImage}>
         <Image
           className={styles.image}

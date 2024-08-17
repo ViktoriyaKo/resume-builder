@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--sm-spacing);
+  width: 100%;
+  justify-content: center;
+}
+
+.item {
+  padding: 8px 12px;
+  text-transform: uppercase;
+  transition: background-color 0.5s;
+  font-weight: 600;
+  border: 2px solid black;
+}
+
+.item:hover,
+.active {
+  background-color: black;
+  color: white;
+  transition: all 0.5s;
+}

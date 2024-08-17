@@ -6,7 +6,7 @@
 }
 
 .container {
-  padding: 20px;
+  padding: var(--sm-spacing);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15,12 +15,12 @@
 
 .container li[data-list='bullet'] {
   list-style: inside;
-  padding-left: 12px;
+  padding-left: var(--xs-spacing);
 }
 
 .container li[data-list='ordered'] {
   list-style: decimal;
-  margin-left: 12px;
+  margin-left: var(--xs-spacing);
 }
 
 .container a u {
@@ -38,8 +38,8 @@
 .list {
   border-radius: var(--border-radius);
   background-color: white;
-  width: 590px;
-  height: 833px;
+  width: var(--review-width);
+  height: var(--review-height);
   overflow: hidden;
 }
 
@@ -107,5 +107,5 @@
 
 .item {
   list-style: inside;
-  padding-left: 20px;
+  padding-left: var(--sm-spacing);
 }

@@ -3,3 +3,8 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.wrapper {
+  display: flex;
+  gap: 40px;
+}

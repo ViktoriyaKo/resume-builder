@@ -11,6 +11,7 @@ const initialState: TypeInitialShortField = {
   [ShortCategories.SKILLS_DESCRIPTION]: '',
   [ShortCategories.SUMMARY]: '',
   [ShortCategories.BACKGROUND]: '',
+  [ShortCategories.COLOR]: '',
 };
 
 export const Slice = createSlice({
