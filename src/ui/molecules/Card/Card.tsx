@@ -1,19 +1,22 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Card.module.css';
-import { TypeTemplate } from '@/packages/edit/types';
+import { type Template } from '@/graphql/gql/graphql';
+import { useParams } from 'next/navigation';
 
-
-const Template = (props: TypeTemplate) => {
-  const { link, image, title, description } = props;
+const Template = (props: Template) => {
+  const { link, image, title, description } = props ?? {};
+  const { lang } = useParams();
+  const cover = image?.data?.attributes?.url;
 
   return (
-    <Link href={`/edit${link}`} className={styles.card}>
+    <Link href={`/${lang}/edit?design=${link}`} className={styles.card}>
       <div className={styles.wrapperImage}>
         <Image
           className={styles.image}
-          src={image}
-          alt={title}
+          src={cover ?? ''}
+          alt={title ?? ''}
           sizes="(max-width: 768px) 70vw, 30vw"
           quality={70}
           fill

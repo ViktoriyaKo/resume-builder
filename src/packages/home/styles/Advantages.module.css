@@ -18,6 +18,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   height: 100%;
   color: white;
   box-shadow: 0px 0px 20px 4px rgb(104 99 99 / 48%);

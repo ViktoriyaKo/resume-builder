@@ -3,29 +3,33 @@ import Link from 'next/link';
 import styles from './Filters.module.css';
 import { useSearchParams } from 'next/navigation';
 import clsx from 'clsx';
+import { TemplateEntity } from '@/graphql/gql/graphql';
 
-const Filters = () => {
-  // todo перенести фильтры в БД
-  const filters = [{ title: 'simple' }, { title: 'modern' }];
+interface IProps {
+  filters: TemplateEntity[];
+}
 
+const Filters = (props: IProps) => {
+  const { filters } = props;
+  const links = filters.map((item) => item?.attributes?.link);
+  const uniqueLinks = Array.from(new Set(links));
   const searchParams = useSearchParams();
-  const currentFilter = searchParams.get('filter') ?? 'simple';
+  const currentFilter = searchParams.get('filter') ?? 'all';
 
   return (
     <ul className={styles.wrapper}>
-      {filters.map((item) => {
-        const { title } = item;
+      {['all', ...uniqueLinks].map((item) => {
         return (
-          <li key={title}>
+          <li key={item}>
             <Link
               className={clsx(styles.item, {
-                [styles.active]: currentFilter === title,
+                [styles.active]: currentFilter === item,
               })}
               href={{
-                query: { filter: title },
+                query: { filter: item },
               }}
             >
-              {title}
+              {item}
             </Link>
           </li>
         );

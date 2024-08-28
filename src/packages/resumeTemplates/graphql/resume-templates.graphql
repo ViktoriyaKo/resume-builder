@@ -1,0 +1,26 @@
+query ResumeTemplates($locale: I18NLocaleCode, $link: String) {
+  templates(filters: { link: { eq: $link } }, locale: $locale) {
+    data {
+      attributes {
+        link
+        title
+        description
+        image {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+  allFilters: templates(sort: "id") {
+    data {
+      attributes {
+        link
+      }
+    }
+  }
+}

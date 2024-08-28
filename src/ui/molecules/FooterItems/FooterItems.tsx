@@ -1,5 +1,8 @@
+"use client"
 import styles from './Footer.module.css';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+
 
 const FooterContainer = (props: { children: React.ReactNode }) => {
   const { children } = props;
@@ -40,6 +43,7 @@ const SocialSites = () => {
 
 const Navigation = (props: { routers: { title: string; href: string }[] }) => {
   const { routers } = props;
+  const { lang } = useParams();
 
   return (
     <nav className={styles.nav}>
@@ -50,7 +54,7 @@ const Navigation = (props: { routers: { title: string; href: string }[] }) => {
             const { title, href } = item ?? {};
             return (
               <li key={title} className={styles.item}>
-                <Link href={`/${href}`}>{title}</Link>
+                <Link href={`/${lang}/${href}`}>{title}</Link>
               </li>
             );
           })}

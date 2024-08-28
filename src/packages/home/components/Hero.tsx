@@ -1,3 +1,4 @@
+'use client';
 import { CustomLink } from '@/ui/atoms';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';

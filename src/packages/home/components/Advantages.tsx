@@ -1,52 +1,28 @@
+'use client';
 import styles from '../styles/Advantages.module.css';
 import Image from 'next/image';
-import iconEducation from '/public/images/background.jpg';
+import { AdvantageEntity } from '@/graphql/gql/graphql';
 
-const Advantages = () => {
-  const sections = [
-    {
-      icon: iconEducation,
-      title: 'test test1',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-    {
-      icon: iconEducation,
-      title: 'test test2',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-    {
-      icon: iconEducation,
-      title: 'test test3',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-    {
-      icon: iconEducation,
-      title: 'test test4',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-    {
-      icon: iconEducation,
-      title: 'test test5',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-    {
-      icon: iconEducation,
-      title: 'test test6',
-      description: 'Lorem Lorem LoremLorem LoremLorem LoremLorem LoremLorem ',
-    },
-  ];
+interface IProps {
+  advantages: AdvantageEntity[];
+}
+
+const Advantages = (props: IProps) => {
+  const { advantages } = props;
 
   return (
     <section className={styles.container}>
       <ul className={styles.wrapper}>
-        {sections.map((item) => {
-          const { icon, title, description } = item;
+        {advantages.map((item) => {
+          const { icon, title, description } = item?.attributes ?? {};
+          const cover = icon?.data?.attributes?.url;
+
           return (
             <li key={title} className={styles.item}>
               <Image
                 className={styles.image}
-                alt={title}
-                src={icon}
+                alt={title ?? ''}
+                src={cover ?? ''}
                 width={60}
                 height={60}
               />

@@ -1,15 +1,22 @@
 import styles from './Content.module.css';
 import Filters from '../Filters/Filters';
 import { Card } from '@/ui/molecules';
-import { templates } from '@/entitis';
+import { TemplateEntity } from '@/graphql/gql/graphql';
 
-const Content = () => {
+interface IProps {
+  templates: TemplateEntity[];
+  allFilters: TemplateEntity[];
+}
+
+const Content = (props: IProps) => {
+  const { templates, allFilters } = props;
   return (
     <section className={styles.container}>
-      <Filters />
+      <Filters filters={allFilters} />
       <div className={styles.wrapper}>
-        {templates.map((item) => {
-          return <Card key={item.title} {...item} />;
+        {templates?.map((item) => {
+          const element = item?.attributes ?? {};
+          return <Card key={element.title} {...element} />;
         })}
       </div>
     </section>

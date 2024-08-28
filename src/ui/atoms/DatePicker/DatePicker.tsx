@@ -1,3 +1,4 @@
+'use client';
 import { forwardRef, LegacyRef, useCallback, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -21,7 +22,8 @@ const CustomDataPicker = forwardRef(
     const { label, value, onChange, isPresent, onPresentChange, withCheckbox } =
       props;
 
-    const handlePresentChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePresentChange = useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
         const checked = event.target.checked;
 
         if (onPresentChange) {
@@ -33,7 +35,9 @@ const CustomDataPicker = forwardRef(
         } else {
           onChange?.(null);
         }
-      }, []);
+      },
+      []
+    );
 
     return (
       <div>

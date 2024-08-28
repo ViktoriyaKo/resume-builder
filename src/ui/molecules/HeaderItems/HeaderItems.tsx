@@ -2,6 +2,7 @@
 import styles from './Header.module.css';
 import Link from 'next/link';
 import { RoutersType } from '@/types';
+import { useParams } from 'next/navigation';
 
 const HeaderContainer = (props: { children: React.ReactNode }) => {
   const { children } = props;
@@ -11,6 +12,7 @@ const HeaderContainer = (props: { children: React.ReactNode }) => {
 
 const Navigation = (props: { routers: RoutersType }) => {
   const { routers } = props;
+  const { lang } = useParams();
 
   return (
     <nav className={styles.menu}>
@@ -21,7 +23,7 @@ const Navigation = (props: { routers: RoutersType }) => {
             const { href, title } = item ?? {};
             return (
               <li key={title} className={styles.item}>
-                <Link href={`${href}`}>{title}</Link>
+                <Link href={`/${lang}${href}`}>{title}</Link>
               </li>
             );
           })}
@@ -31,9 +33,8 @@ const Navigation = (props: { routers: RoutersType }) => {
 };
 
 const Logo = () => {
-  return <p className={styles.vertical}>Avsievich</p>
-
-}
+  return <p className={styles.vertical}>Avsievich</p>;
+};
 
 const Header = {
   HeaderContainer,

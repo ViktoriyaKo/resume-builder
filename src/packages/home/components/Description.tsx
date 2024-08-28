@@ -1,3 +1,4 @@
+'use client';
 import { Ticker } from '@/ui/atoms';
 import styles from '../styles/Description.module.css';
 

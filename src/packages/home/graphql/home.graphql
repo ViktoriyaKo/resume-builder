@@ -1,0 +1,36 @@
+query Home($locale: I18NLocaleCode) {
+  templates(locale: $locale) {
+    data {
+      attributes {
+        link
+        title
+        description
+        image {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+
+  advantages(locale: $locale) {
+    data {
+      attributes {
+        title
+        description
+        icon {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
