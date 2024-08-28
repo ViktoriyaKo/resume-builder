@@ -2,7 +2,7 @@ import { StaticImageData } from 'next/image';
 import { Categories, ShortCategories } from '../constants';
 
 interface TypeAttributeData {
-  name?: string;
+  name: string;
   value?: string;
 }
 

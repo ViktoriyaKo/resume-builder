@@ -3,6 +3,7 @@ import { Input, DatePicker, Select, TextEditor } from '@/ui/atoms';
 import styles from './InputsList.module.css';
 
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
+import { FormData } from '@/packages/edit/constants';
 
 interface IProps {
   data: TypeFieldData[];
@@ -50,24 +51,21 @@ const InputsList = (props: IProps) => {
           return (
             <div key={uniqueName}>
               <DatePicker
+              withCheckbox={name === FormData.END_DATE}
                 {...commonProps}
-                onChange={(date: any) =>
+                onChange={(date: any) => {
                   handleClick({
                     uuid,
                     name,
-                    value: date ? date.toISOString() : '',
-                  })
-                }
+                    value:
+                      date === FormData.PRESENT
+                        ? FormData.PRESENT
+                        : date
+                        ? date.toISOString()
+                        : '',
+                  });
+                }}
               />
-              {/* {name === FormData.END_DATE && (
-                <Checkbox
-                  name={uniqueName}
-                  label={'Currently'}
-                  onChange={(e) =>
-                    handleClick({ uuid, name, value: e.target.value })
-                  }
-                />
-              )} */}
             </div>
           );
         }

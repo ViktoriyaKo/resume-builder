@@ -64,9 +64,11 @@ const Content = () => {
               const date =
                 startDate &&
                 endDate &&
-                `${getLongDateFormat(startDate)} - ${getLongDateFormat(
-                  endDate
-                )}`;
+                `${getLongDateFormat(startDate)} - ${
+                  endDate === 'Present'
+                    ? endDate
+                    : getLongDateFormat(endDate)
+                }`;
 
               return values ? (
                 <div key={uuid}>

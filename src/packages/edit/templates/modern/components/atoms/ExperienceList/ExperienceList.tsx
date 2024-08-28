@@ -3,6 +3,7 @@ import styles from './ExperienceList.module.css';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { TypeExpendedData } from '@/packages/edit/types';
 import { StaticImageData } from 'next/image';
+import { FormData } from '@/packages/edit/constants';
 
 interface IProps {
   data: TypeExpendedData[];
@@ -37,7 +38,11 @@ const ExperienceList = (props: IProps) => {
           const date =
             startDate &&
             endDate &&
-            `${getLongDateFormat(startDate)} - ${getLongDateFormat(endDate)}`;
+            `${getLongDateFormat(startDate)} - ${
+              endDate === FormData.PRESENT
+                ? endDate
+                : getLongDateFormat(endDate)
+            }`;
 
           return (
             <div key={uuid} className={styles.innerWrapper}>

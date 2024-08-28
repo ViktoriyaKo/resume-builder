@@ -111,3 +111,16 @@ p {
 .ql-editor {
   min-height: 150px;
 }
+
+/* datePicker */
+.react-datepicker__header {
+  background-color: #bad9f1 !important;
+}
+
+.react-datepicker__month-select, .react-datepicker__year-select {
+  padding: 2px;
+}
+
+h2.react-datepicker__current-month {
+  margin-bottom: 4px!important;
+}

@@ -12,6 +12,7 @@ import {
 } from '../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
+import { FormData } from '@/packages/edit/constants';
 
 // todo разбить на компоненты!!
 
@@ -68,7 +69,7 @@ const Aside = () => {
       </div>
       {skillsDescription && (
         <div>
-          <Title title={titles.skillsData}/>
+          <Title title={titles.skillsData} />
           <div
             className={styles.skills}
             dangerouslySetInnerHTML={{
@@ -95,9 +96,11 @@ const Aside = () => {
               const date =
                 startDate &&
                 endDate &&
-                `${getLongDateFormat(startDate)} - ${getLongDateFormat(
-                  endDate
-                )}`;
+                `${getLongDateFormat(startDate)} - ${
+                  endDate === FormData.PRESENT
+                    ? endDate
+                    : getLongDateFormat(endDate)
+                }`;
 
               return (
                 <li key={uuid}>
@@ -123,7 +126,7 @@ const Aside = () => {
       )}
       {languages.length > 0 && (
         <div>
-           <Title title={titles.languagesData}/>     
+          <Title title={titles.languagesData} />
           <div className={styles.wrapper}>
             {languages.map((item) => {
               const { languagesLevel, languagesName } = item ?? {};

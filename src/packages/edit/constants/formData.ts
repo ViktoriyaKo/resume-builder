@@ -29,4 +29,5 @@ export enum FormData {
   EMPLOYER = 'employer',
   LABEL = 'label',
   LINK = 'link',
+  PRESENT = 'Present'
 }

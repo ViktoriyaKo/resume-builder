@@ -24,6 +24,7 @@
     "react-datepicker": "^7.3.0",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2",
+    "react-modern-calendar-datepicker": "^3.1.6",
     "react-quill": "^2.0.0",
     "react-quill-new": "^3.2.2",
     "react-redux": "^9.1.2",

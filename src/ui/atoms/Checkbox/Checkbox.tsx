@@ -8,7 +8,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 // eslint-disable-next-line react/display-name
-const Checkbox = forwardRef(
+export const Checkbox = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
     const { label, name, checked, ...rest } = props;
 
