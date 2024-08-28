@@ -1,1 +1,1 @@
-export type { FormContactValues } from './types';
+export type { FormContactValues, RoutersType } from './types';

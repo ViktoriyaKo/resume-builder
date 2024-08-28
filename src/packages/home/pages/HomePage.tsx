@@ -1,14 +1,14 @@
 'use client';
-import Description from '../components/Description';
-import Hero from '../components/Hero';
-import Templates from '../components/Templates';
+
 import { templates } from '@/entitis';
+import { Hero, Description, Templates, Advantages } from '../components';
 
 const HomePage = () => {
   return (
     <>
       <Hero />
       <Description />
+      <Advantages />
       <Templates templates={templates} />
     </>
   );

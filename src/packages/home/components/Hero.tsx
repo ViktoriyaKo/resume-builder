@@ -18,7 +18,6 @@ const Hero = () => {
         <div className={styles.filter} />
       </div>
       <div className={styles.wrapper}>
-        <p className={styles.vertical}>Avsievich</p>
         <h1 className={styles.title}>Resume builder</h1>
         <CustomLink
           href={'/edit'}

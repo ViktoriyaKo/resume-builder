@@ -18,7 +18,7 @@
 
   /* other: */
   --width-container: 1170px;
-  --white-border-small: 1px solid white;
+  --white-border-small: 1px solid var(--gray-100);
   --border-radius: 8px;
 
   /* dimensions */
@@ -117,10 +117,11 @@ p {
   background-color: #bad9f1 !important;
 }
 
-.react-datepicker__month-select, .react-datepicker__year-select {
+.react-datepicker__month-select,
+.react-datepicker__year-select {
   padding: 2px;
 }
 
 h2.react-datepicker__current-month {
-  margin-bottom: 4px!important;
+  margin-bottom: 4px !important;
 }

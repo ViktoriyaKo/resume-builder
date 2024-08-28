@@ -2,7 +2,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import clsx from 'clsx';
-import { Footer } from '@/ui/organisms';
+import { Footer, Header } from '@/ui/organisms';
 import { ROUTERS } from '@/constants/routers';
 import { ContactForm } from '@/packages/core';
 
@@ -11,6 +11,8 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
 });
+
+
 
 export default function Layout({
   children,
@@ -28,6 +30,7 @@ export default function Layout({
         <meta charSet="utf-8" />
       </head>
       <body className={clsx(inter.variable, montserrat.variable)}>
+        <Header routers={ROUTERS ?? []} />
         <main>{children}</main>
         <Footer
           title={'Meet your new everyday basics'}

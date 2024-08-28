@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  z-index: 10;
+  padding: 30px 20px;
+  position: absolute;
+  width: 100%;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    padding: 30px 40px 30px 60px;
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.menuNav {
+  display: none;
+}
+
+@media (width >= 968px) {
+  .menuNav {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+}
+
+.item {
+  padding: var(--xs-spacing);
+  font-weight: 500;
+  transition: opacity 0.5s;
+  color: white;
+}
+
+.menu:hover .item {
+  opacity: 0.3;
+}
+
+.item:hover {
+  opacity: 1 !important;
+  transition: opacity 0.3s;
+}
+
+.vertical {
+  color: white;
+  text-transform: uppercase;
+  text-orientation: upright;
+  font-size: 20px;
+  writing-mode: vertical-rl;
+}

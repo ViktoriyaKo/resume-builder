@@ -13,13 +13,7 @@
   align-items: flex-start;
   color: white;
   height: 100%;
-}
-
-.vertical {
-  text-transform: uppercase;
-  text-orientation: upright;
-  font-size: 20px;
-  writing-mode: vertical-rl;
+  justify-content: center;
 }
 
 .title {
@@ -29,7 +23,6 @@
   letter-spacing: var(--xs-spacing);
   align-self: center;
   text-align: center;
-  padding-top: 150px;
 }
 
 @media (width >= 768px) {
