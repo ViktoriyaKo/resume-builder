@@ -1,21 +1,19 @@
 'use client';
 import { Ticker } from '@/ui/atoms';
 import styles from '../styles/Description.module.css';
+import { useTranslation } from 'react-i18next';
+
 
 const Description = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>
-          Create Your Professional Resume Quickly with Our Resume Builder
+        {t('title_description')}
         </h2>
-        <p className={styles.description}>
-          Our Online Resume Builder helps you craft impressive resumes in
-          minutes, perfect for all job seekers. Choose from a variety of
-          customizable templates and easily add your skills, experience, and
-          qualifications. The platform guides you through each step, ensuring
-          you highlight your strengths effectively.
-        </p>
+        <p className={styles.description}>{t('description')}</p>
       </div>
       <Ticker text="Avsievich Resume Builder" />
     </section>

@@ -13,11 +13,14 @@ import {
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';
+import { useTranslation } from 'react-i18next';
 
 // todo разбить на компоненты!!
 
 const Aside = () => {
   const initialData = useSelector(getStateData);
+  const { t } = useTranslation();
+
   const {
     skillsDescription,
     background,
@@ -26,7 +29,7 @@ const Aside = () => {
   } = useSelector(getStateShortData);
   const { contactData, educationData, linksData, languagesData } = initialData;
 
-  const titles = getTitles(titlesData);
+  const titles = getTitles(titlesData, t);
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),

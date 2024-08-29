@@ -28,7 +28,7 @@ const ColorInput = (props: IProps) => {
       inputStyle={clsx('form-control-color', styles.input)}
       type={'color'}
       defaultValue={'#f0f0f0'}
-      caption={caption}
+      label={caption}
     />
   );
 };

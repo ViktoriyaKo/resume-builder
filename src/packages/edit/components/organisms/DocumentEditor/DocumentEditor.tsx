@@ -6,9 +6,14 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
 import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
 import { ShortCategories } from '@/packages/edit/constants';
+import { useTranslation } from 'react-i18next';
+import { CustomLink } from '@/ui/atoms';
+import { useParams } from 'next/navigation';
 
-const Editor = () => {
+const DocumentEditor = () => {
   const initialData = useSelector(getStateData);
+  const { t } = useTranslation();
+  const { lang } = useParams();
 
   const {
     contactData,
@@ -28,6 +33,7 @@ const Editor = () => {
 
   return (
     <form className={styles.article} onSubmit={handleSubmit(onSubmit)}>
+      <CustomLink text={t('home')} href={`/${lang}/`} className={styles.link} />
       <ContactDetails data={contactData} />
       <DocumentEditorSection.Summary />
       <DocumentEditorSection.Employment data={employmentData} />
@@ -41,11 +47,11 @@ const Editor = () => {
       />
       <div className={styles.wrapper}>
         <DocumentEditorSection.ColorInput
-          caption={'Choose color for background:'}
+          caption={t('choose_background')}
           category={ShortCategories.BACKGROUND}
         />
         <DocumentEditorSection.ColorInput
-          caption={'Choose main color:'}
+          caption={t('choose_color')}
           category={ShortCategories.COLOR}
         />
       </div>
@@ -53,4 +59,4 @@ const Editor = () => {
   );
 };
 
-export default Editor;
+export default DocumentEditor;

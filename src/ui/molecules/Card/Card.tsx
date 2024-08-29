@@ -5,7 +5,7 @@ import styles from './Card.module.css';
 import { type Template } from '@/graphql/gql/graphql';
 import { useParams } from 'next/navigation';
 
-const Template = (props: Template) => {
+const Card = (props: Template) => {
   const { link, image, title, description } = props ?? {};
   const { lang } = useParams();
   const cover = image?.data?.attributes?.url;
@@ -31,4 +31,4 @@ const Template = (props: Template) => {
   );
 };
 
-export default Template;
+export default Card;

@@ -1,6 +1,6 @@
 'use client';
 import { RoutersType } from '@/types';
-import { Header } from '@/ui/molecules';
+import { Header, LanguageSelect } from '@/ui/molecules';
 
 interface IProps {
   routers: RoutersType;
@@ -17,7 +17,7 @@ export default function HeaderBlock(props: IProps) {
         routers={routers}
         pathname={pathname}
       /> */}
-      {/* <LanguageSelect pathname={pathname} isDark={isDarkHeader} /> */}
+      <LanguageSelect />
     </Header.HeaderContainer>
   );
 }

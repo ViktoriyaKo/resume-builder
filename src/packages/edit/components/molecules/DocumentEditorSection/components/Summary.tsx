@@ -4,9 +4,11 @@ import { useCallback } from 'react';
 import { updateAdditionalField } from '@/packages/edit/store/shortFieldSlice';
 import EditableHeader from '../../EditableHeader/EditableHeader';
 import { TextEditor } from '@/ui/atoms';
+import { useTranslation } from 'react-i18next';
 
 const Summary = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleChange = useCallback((value: string) => {
     dispatch(
@@ -19,12 +21,12 @@ const Summary = () => {
       <EditableHeader
         category={ShortCategories.TITLES}
         name={FormData.SUMMARY_TITLE}
-        title="Professional Summary"
-        description={`Craft several energetic sentences highlighting your strengths. Specify your role, what you accomplished, and major achievements. Explain your motivation and list your key skills.`}
+        title={t('summaryTitle')}
+        description={t('description_summary')}
       />
       <TextEditor
         name={ShortCategories.SUMMARY}
-        caption={`Recruiter tip: write 400-600 characters to increase interview chances`}
+        caption={t('advice_summary')}
         onChange={handleChange}
       />
     </>

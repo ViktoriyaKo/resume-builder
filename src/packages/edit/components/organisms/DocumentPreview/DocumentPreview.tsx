@@ -1,16 +1,19 @@
 'use client';
 import styles from './DocumentPreview.module.css';
 import { useRef } from 'react';
-import Resume from '@/packages/edit/templates/modern/Resume';
 import { useReactToPrint } from 'react-to-print';
 import { DocumentPreviewPagination } from '../../molecules';
 import { Button } from '@/ui/atoms';
 import { useSearchParams } from 'next/navigation';
 import { paramsVariables } from '@/constants';
 import { ListTemplates } from '@/packages/edit/templates';
+import { useTranslation } from 'react-i18next';
+
 
 const DocumentPreview = () => {
   const contentRef = useRef(null);
+  const { t } = useTranslation();
+
   const searchParams  = useSearchParams();
   const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple'
 
@@ -29,7 +32,7 @@ const DocumentPreview = () => {
         className={styles.button}
         onClick={() => handleDownloadPdf(contentRef)}
       >
-        Download PDF
+        {t('download_pdf')}
       </Button>
     </div>
   );

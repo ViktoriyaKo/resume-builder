@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  margin: 4px 12px;
+  width: 50px;
+  text-align: center;
+}
+
+.summary {
+  list-style: none;
+  padding: 4px 12px;
+  border: 1px solid white;
+  transition: background-color 0.5s;
+}
+
+@media (width >= 968px) {
+  .summary {
+    padding: 8px;
+  }
+}
+
+.summary:hover {
+  background-color: black;
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 50px;
+}
+
+.link {
+  padding: 8px 13px;
+  color: black;
+  transition: background-color 0.5s;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}

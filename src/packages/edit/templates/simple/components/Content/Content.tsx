@@ -2,19 +2,19 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
-import { useMemo } from 'react';
 
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { getTitles } from '../../../utils';
+import { useTranslation } from 'react-i18next';
 
 const Content = () => {
   const { contactData, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { skillsDescription, summary, titles: titlesData } = initialShortData;
-
-  const titles = getTitles(titlesData);
+  const { t } = useTranslation();
+  const titles = getTitles(titlesData, t);
 
   return (
     <div className={styles.container}>
@@ -31,7 +31,7 @@ const Content = () => {
       )}
       {summary && (
         <>
-          <h3 className={styles.title}>{titles.summaryData}</h3>
+          <h3 className={styles.title}>{t(titles.summaryData)}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{
@@ -41,6 +41,7 @@ const Content = () => {
         </>
       )}
       {Object.entries(initialData).map(([key, formData]) => {
+        console.log(key);
         return (
           <Fragment key={key}>
             {formData.map((element, index) => {
@@ -65,9 +66,7 @@ const Content = () => {
                 startDate &&
                 endDate &&
                 `${getLongDateFormat(startDate)} - ${
-                  endDate === 'Present'
-                    ? endDate
-                    : getLongDateFormat(endDate)
+                  endDate === 'Present' ? endDate : getLongDateFormat(endDate)
                 }`;
 
               return values ? (

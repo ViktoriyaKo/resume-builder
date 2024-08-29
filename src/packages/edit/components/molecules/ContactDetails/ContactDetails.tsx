@@ -12,6 +12,7 @@ import { ADDITIONAL_CONTACT_ENTITY } from '@/packages/edit/entities';
 import { useHandleFormData } from '@/packages/edit/hooks';
 import Button from '@/ui/atoms/Button/Button';
 import { Input } from '@/ui/atoms';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   data: TypeFieldData[];
@@ -19,6 +20,7 @@ interface IProps {
 
 const ContactDetails = (props: IProps) => {
   const { data } = props;
+  const { t } = useTranslation();
   const [isToggle, setIsToggle] = useState(true);
   const category = Categories.CONTACT;
 
@@ -57,27 +59,33 @@ const ContactDetails = (props: IProps) => {
     <>
       <EditableHeader
         category={ShortCategories.TITLES}
-        title="Personal Details"
+        title={t('personalTitle')}
         name={FormData.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>
         {data.map((item) => {
           const { caption, name, type } = item ?? {};
+
           return (
             <Input
               name={name}
               key={name}
               type={type}
-              caption={caption}
+              label={t(caption)}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                handleChange({ event: event.nativeEvent, type, name })
+                handleChange({
+                  event: event.nativeEvent,
+                  type,
+                  name: name ?? '',
+                })
               }
             />
           );
         })}
       </div>
       <Button onClick={toggleDetails}>
-        {isToggle ? '▼ Add' : '▲ Hide'} additional details
+        {isToggle ? `▼ ${t('add')}` : `▲ ${t('hide')}`}{' '}
+        {t('additional_details')}
       </Button>
     </>
   );

@@ -26,7 +26,7 @@ const Hero = () => {
         <CustomLink
           href={'/edit'}
           className={styles.link}
-          text={'Create resume'}
+          text={t('create_resume')}
         />
       </div>
     </section>

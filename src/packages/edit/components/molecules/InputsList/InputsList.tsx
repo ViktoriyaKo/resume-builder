@@ -1,7 +1,7 @@
 'use client';
 import { Input, DatePicker, Select, TextEditor } from '@/ui/atoms';
 import styles from './InputsList.module.css';
-
+import { useTranslation } from 'react-i18next';
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
 import { FormData } from '@/packages/edit/constants';
 
@@ -22,6 +22,7 @@ interface IProps {
 
 const InputsList = (props: IProps) => {
   const { data, options, handleClick, uuid } = props;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
@@ -31,9 +32,9 @@ const InputsList = (props: IProps) => {
 
         const commonProps = {
           name: uniqueName,
-          label: caption,
+          label: t(caption),
           onChange: (e: any) =>
-            handleClick({ uuid, name, value: e.target.value }),
+            handleClick({ uuid, name: name ?? '', value: e.target.value }),
         };
 
         if (type === 'textArea') {
@@ -42,7 +43,9 @@ const InputsList = (props: IProps) => {
               key={uniqueName}
               {...commonProps}
               className={styles.textArea}
-              onChange={(value) => handleClick({ uuid, name, value })}
+              onChange={(value) =>
+                handleClick({ uuid, name: name ?? '', value })
+              }
             />
           );
         }
@@ -51,12 +54,12 @@ const InputsList = (props: IProps) => {
           return (
             <div key={uniqueName}>
               <DatePicker
-              withCheckbox={name === FormData.END_DATE}
+                withCheckbox={name === FormData.END_DATE}
                 {...commonProps}
                 onChange={(date: any) => {
                   handleClick({
                     uuid,
-                    name,
+                    name: name ?? '',
                     value:
                       date === FormData.PRESENT
                         ? FormData.PRESENT

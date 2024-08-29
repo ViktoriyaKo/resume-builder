@@ -1,7 +1,9 @@
+'use client';
 import { Card } from '@/ui/molecules';
 import styles from '../styles/Templates.module.css';
 import { CustomLink } from '@/ui/atoms';
 import { TemplateEntity } from '@/graphql/gql/graphql';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   templates: TemplateEntity[];
@@ -9,10 +11,11 @@ interface IProps {
 
 const Templates = (props: IProps) => {
   const { templates } = props;
+  const { t } = useTranslation();
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>Choose templates:</h2>
+      <h2 className={styles.title}>{t('choose_templates')}:</h2>
       <div className={styles.wrapper}>
         {templates?.map((item) => {
           const element = item?.attributes ?? {};
@@ -22,7 +25,7 @@ const Templates = (props: IProps) => {
       <CustomLink
         href={'/resume-templates'}
         className={styles.link}
-        text={'See all templates'}
+        text={t('see_templates')}
       />
     </section>
   );

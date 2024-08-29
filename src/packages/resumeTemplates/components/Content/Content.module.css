@@ -9,4 +9,5 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--sm-spacing);
   padding-block: 60px;
+  justify-items: center;
 }

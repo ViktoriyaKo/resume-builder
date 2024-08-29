@@ -1,21 +1,25 @@
-'use client';
-import { Provider } from 'react-redux';
-import { DocumentPreview, DocumentEditor } from '../components/organisms';
-import styles from '../styles/EditPage.module.css';
-import store from '../../../store/store';
+import TranslationsProvider from '@/providers/TranslationsProvider';
+import initTranslations from '@/app/i18n';
+import { LanguagesType } from '@/types/types';
+import ClientEditPage from './ClientEditPage';
 
-const EditPage = () => {
+const namespaces = ['edit'];
+
+const EditPage = async (props: LanguagesType) => {
+  const { lang } = props;
+  const { resources } = await initTranslations({
+    lang,
+    namespaces,
+  });
+
   return (
-    <Provider store={store}>
-      <section className={styles.container}>
-        <div className={styles.editor}>
-          <DocumentEditor />
-        </div>
-        <div className={styles.view}>
-          <DocumentPreview />
-        </div>
-      </section>
-    </Provider>
+    <TranslationsProvider
+      namespaces={namespaces}
+      lang={lang}
+      resources={resources}
+    >
+      <ClientEditPage />
+    </TranslationsProvider>
   );
 };
 
