@@ -1,1 +1,7 @@
-export type { FormContactValues, RoutersType } from './types';
+export type {
+  FormContactValues,
+  RoutersType,
+  Locales,
+  TranslationsProviderProps,
+  InitTranslationsParams,
+} from './types';

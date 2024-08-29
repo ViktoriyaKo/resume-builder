@@ -3,8 +3,11 @@ import { CustomLink } from '@/ui/atoms';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
 import background from '@images/background.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.container}>
       <div className={styles.imageWrapper}>
@@ -19,7 +22,7 @@ const Hero = () => {
         <div className={styles.filter} />
       </div>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>Resume builder</h1>
+        <h1 className={styles.title}>{t('header')}</h1>
         <CustomLink
           href={'/edit'}
           className={styles.link}

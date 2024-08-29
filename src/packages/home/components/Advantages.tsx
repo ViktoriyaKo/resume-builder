@@ -19,13 +19,13 @@ const Advantages = (props: IProps) => {
 
           return (
             <li key={title} className={styles.item}>
-              <Image
+              {/* <Image
                 className={styles.image}
                 alt={title ?? ''}
                 src={cover ?? ''}
                 width={60}
                 height={60}
-              />
+              /> */}
               <p className={styles.title}>{title}</p>
               <p className={styles.description}>{description}</p>
             </li>

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "i18nexus pull && next build",
     "start": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts"
@@ -17,13 +17,17 @@
     "clsx": "^2.1.1",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
+    "i18next": "^23.14.0",
+    "i18next-resources-to-backend": "^1.2.1",
     "keen-slider": "^6.8.6",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
+    "next-i18n-router": "^5.5.1",
     "react": "^18",
     "react-datepicker": "^7.3.0",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2",
+    "react-i18next": "^15.0.1",
     "react-modern-calendar-datepicker": "^3.1.6",
     "react-quill": "^2.0.0",
     "react-quill-new": "^3.2.2",
@@ -41,6 +45,7 @@
     "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "i18nexus-cli": "^3.5.0",
     "typescript": "^5"
   }
 }

@@ -1,13 +1,11 @@
+import { Locales } from '@/types';
 import { Hero, Content } from '../components';
-import { LanguagesType } from '@/types/types';
 import { getResumeTemplatesData } from '../services/getResumeTemplatesData';
 import { TemplateEntity } from '@/graphql/gql/graphql';
-import { Locales } from "@/i18n-config";
-
 
 interface IProps {
   lang: Locales;
-  searchParams: { [key: string]: string | string[] }
+  searchParams: { [key: string]: string | string[] };
 }
 
 const ResumeTemplatesPage = async (props: IProps) => {
