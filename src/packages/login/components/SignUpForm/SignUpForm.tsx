@@ -5,10 +5,15 @@ import { Button } from '@/ui/atoms';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { getRequestOptions } from '@/utils';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 
 const Form = () => {
   const { lang } = useParams();
+  const router = useRouter();
+
   const initialData = {
     email: '',
     password: '',
@@ -19,6 +24,7 @@ const Form = () => {
     handleSubmit,
     register,
     watch,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: initialData,
@@ -30,9 +36,24 @@ const Form = () => {
     repeatPassword: string;
   }) => {
     try {
-      console.log(data);
+      const options: RequestInit = getRequestOptions({ method: 'POST', data });
+      const res = await fetch(`/api/create-user`, options);
+       if (res.ok) {
+        await signIn('credentials', {
+          redirect: false,
+          email: data.email,
+          password: data.password,
+        });
+        router.push(`/${lang}`);
+      } else {
+        const errorText = await res.json();
+        setError('repeatPassword', {
+          type: 'manual',
+          message: errorText.message,
+        });
+      }
     } catch (error) {
-      console.log(error);
+      console.log('Error');
     }
   };
   const password = watch('password');

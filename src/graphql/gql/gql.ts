@@ -14,6 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "mutation CreateRequest($contact: String!, $description: String) {\n  createRequest(data: {contact: $contact, description: $description}) {\n    data {\n      id\n      attributes {\n        description\n        contact\n      }\n    }\n  }\n}": types.CreateRequestDocument,
+    "mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}": types.CreateUserDocument,
+    "mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}": types.LoginDocument,
     "query Home($locale: I18NLocaleCode) {\n  templates(locale: $locale) {\n    data {\n      attributes {\n        link\n        title\n        description\n        image {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n  advantages(locale: $locale) {\n    data {\n      attributes {\n        title\n        description\n        icon {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.HomeDocument,
     "query ResumeTemplates($locale: I18NLocaleCode, $link: String) {\n  templates(filters: {link: {eq: $link}}, locale: $locale) {\n    data {\n      attributes {\n        link\n        title\n        description\n        image {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n  allFilters: templates(sort: \"id\") {\n    data {\n      attributes {\n        link\n      }\n    }\n  }\n}": types.ResumeTemplatesDocument,
 };
@@ -36,6 +38,14 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "mutation CreateRequest($contact: String!, $description: String) {\n  createRequest(data: {contact: $contact, description: $description}) {\n    data {\n      id\n      attributes {\n        description\n        contact\n      }\n    }\n  }\n}"): (typeof documents)["mutation CreateRequest($contact: String!, $description: String) {\n  createRequest(data: {contact: $contact, description: $description}) {\n    data {\n      id\n      attributes {\n        description\n        contact\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"): (typeof documents)["mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"): (typeof documents)["mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

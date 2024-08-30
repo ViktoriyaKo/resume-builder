@@ -41,7 +41,6 @@ const Content = () => {
         </>
       )}
       {Object.entries(initialData).map(([key, formData]) => {
-        console.log(key);
         return (
           <Fragment key={key}>
             {formData.map((element, index) => {

@@ -4,22 +4,42 @@ import { useForm } from 'react-hook-form';
 import { Button, Input } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 import PasswordInput from '../PasswordInput/PasswordInput';
-import { ChangeEvent } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Form = () => {
   const { lang } = useParams();
+  const router = useRouter();
+
   const initialData = {
     email: '',
     password: '',
   };
 
-  const { handleSubmit, setValue } = useForm({
+  const {
+    handleSubmit,
+    register,
+    setError,
+    formState: { errors },
+  } = useForm({
     defaultValues: initialData,
   });
 
   const onSubmit = async (data: { email: string; password: string }) => {
     try {
-      console.log(data);
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      if (result?.ok) {
+        router.push(`/${lang}`);
+      } else {
+        setError('password', {
+          type: 'manual',
+          message: 'Password or Email are not correct',
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -29,17 +49,21 @@ const Form = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.wrapper}>
         <Input
-          name={'email'}
-          onChange={(e) => setValue('email', e.target.value)}
+          error={errors.email?.message}
+          {...register('email', { required: 'Email is required' })}
           placeholder="Enter email"
           type={'email'}
         />
         <PasswordInput
           placeholder={'Enter password'}
-          name={'password'}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setValue('password', e.target.value)
-          }
+          error={errors.password?.message}
+          {...register('password', {
+            required: 'Password is required',
+            minLength: {
+              value: 8,
+              message: 'Password must be at least 8 characters long',
+            },
+          })}
         />
       </div>
       <Button type={'submit'} className={styles.button}>

@@ -6,6 +6,7 @@ import { Footer, Header } from '@/ui/organisms';
 import { ROUTERS } from '@/constants/routers';
 import { ContactForm } from '@/packages/core';
 import { Locales } from '@/types';
+import MainProviders from '@/providers/MainProviders';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({
@@ -20,6 +21,7 @@ export default function Layout({
   children: React.ReactNode;
   params: { lang: Locales };
 }>) {
+
   return (
     <html lang={lang}>
       <head>
@@ -30,7 +32,8 @@ export default function Layout({
         />
         <meta charSet="utf-8" />
       </head>
-      <body className={clsx(inter.variable, montserrat.variable)}>   
+      <body className={clsx(inter.variable, montserrat.variable)}>
+        <MainProviders>
           <Header routers={ROUTERS ?? []} />
           <main>{children}</main>
           <Footer
@@ -43,6 +46,7 @@ export default function Layout({
               />
             }
           />
+        </MainProviders>
       </body>
     </html>
   );
