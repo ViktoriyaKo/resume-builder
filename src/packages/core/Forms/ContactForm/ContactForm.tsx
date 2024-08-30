@@ -16,13 +16,15 @@ interface IProps {
 const ContactForm = (props: IProps) => {
   const initialForm = { email: '', text: '' };
   const [open, setOpen] = useState(false);
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, reset } = useForm({
     defaultValues: initialForm,
     mode: 'onSubmit',
   });
 
   const onSubmit = async (body: FormContactValues) => {
-    await createRequest({ path: 'request', body });
+    await createRequest(body);
+    setOpen(true);
+    reset();
   };
 
   return (

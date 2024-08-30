@@ -6,3 +6,4 @@ export { HidePassword } from './HidePassword';
 export { ShowPassword } from './ShowPassword';
 export { EmailIcon } from './EmailIcon';
 export { PasswordIcon } from './PasswordIcon';
+export { GoogleIcon } from './GoogleIcon';

@@ -12,6 +12,10 @@
   }
 }
 
+.dark {
+  background-color: black;
+}
+
 .menu {
   display: flex;
   gap: 4px;

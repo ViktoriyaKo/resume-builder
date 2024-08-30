@@ -4,12 +4,14 @@ import styles from '../styles/Templates.module.css';
 import { CustomLink } from '@/ui/atoms';
 import { TemplateEntity } from '@/graphql/gql/graphql';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
 
 interface IProps {
   templates: TemplateEntity[];
 }
 
 const Templates = (props: IProps) => {
+  const { lang } = useParams();
   const { templates } = props;
   const { t } = useTranslation();
 
@@ -23,7 +25,7 @@ const Templates = (props: IProps) => {
         })}
       </div>
       <CustomLink
-        href={'/resume-templates'}
+        href={`/${lang}/resume-templates`}
         className={styles.link}
         text={t('see_templates')}
       />

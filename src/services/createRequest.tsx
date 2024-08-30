@@ -1,18 +1,27 @@
-interface IProps {
-  path: string;
-  body: { [key: string]: string };
-}
+import { client } from '@/graphql-client';
+import {
+  CreateRequestMutation,
+  CreateRequestDocument,
+} from '@/graphql/gql/graphql';
 
-export const createRequest = async ({ path, body }: IProps) => {
+interface IProps {
+  email?: string;
+  text: string;
+}
+export const createRequest = async (data: IProps) => {
+  const variables = {
+    contact: data.email,
+    description: data.text,
+  };
+
   try {
-    await fetch(`${process.env.baseUrl}/${path}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
+    const data = await client.request<CreateRequestMutation>(
+      CreateRequestDocument,
+      variables
+    );
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error('GraphQL Error:', error);
+    throw error;
   }
 };

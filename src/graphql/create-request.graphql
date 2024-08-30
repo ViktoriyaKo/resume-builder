@@ -1,0 +1,11 @@
+mutation CreateRequest($contact: String!, $description: String) {
+  createRequest(data: { contact: $contact, description: $description }) {
+    data {
+      id
+      attributes {
+        description
+        contact
+      }
+    }
+  }
+}

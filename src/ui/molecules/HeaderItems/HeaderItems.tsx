@@ -3,11 +3,19 @@ import styles from './Header.module.css';
 import Link from 'next/link';
 import { RoutersType } from '@/types';
 import { useParams } from 'next/navigation';
+import clsx from 'clsx';
 
-const HeaderContainer = (props: { children: React.ReactNode }) => {
-  const { children } = props;
+const HeaderContainer = (props: {
+  children: React.ReactNode;
+  isDarkHeader: boolean;
+}) => {
+  const { children, isDarkHeader } = props;
 
-  return <header className={styles.wrapper}>{children}</header>;
+  return (
+    <header className={clsx(styles.wrapper, isDarkHeader && styles.dark)}>
+      {children}
+    </header>
+  );
 };
 
 const Navigation = (props: { routers: RoutersType }) => {

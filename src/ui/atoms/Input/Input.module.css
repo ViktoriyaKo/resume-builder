@@ -1,3 +1,9 @@
 .caption {
   color: var(--gray-100);
 }
+
+.error {
+  font-size: 12px;
+  color: red;
+  position: absolute;
+}
