@@ -1,15 +1,16 @@
-import { useCallback } from "react";
-import { TypeFieldData } from "../../types";
+import { TypeFieldData } from '../../types';
 
 const convertFilledContactData = (data: TypeFieldData[]) => {
   const convertData = data.reduce(
     (accum: { [key: string]: string }, item: TypeFieldData) => {
-      accum[item.name] = item.value as string;
+      const key = item.name as string;
+      accum[key] = item.value as string;
       return accum;
     },
     {}
   );
 
-  return convertData};
+  return convertData;
+};
 
 export default convertFilledContactData;

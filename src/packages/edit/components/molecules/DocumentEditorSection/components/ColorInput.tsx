@@ -17,7 +17,7 @@ const ColorInput = (props: IProps) => {
 
   const handleChange = useCallback(
     (value: any) => dispatch(updateAdditionalField({ category, value })),
-    []
+    [category, dispatch]
   );
 
   return (

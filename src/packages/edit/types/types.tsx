@@ -48,6 +48,7 @@ export interface UpdateShortFieldActionPayload extends TypeAttributeData {
 }
 
 export interface UpdateValueToDataActionPayload extends TypeAttributeData {
+  name: string;
   category: Categories;
   uuid?: UUID;
 }

@@ -73,8 +73,8 @@ const Form = () => {
       <Button type={'submit'} className={styles.button}>
         Register
       </Button>
-      <Link href={`/${lang}/sign-up`} className={styles.link}>
-        У вас уже есть аккаунт? Sign in
+      <Link href={`/${lang}/sign-in`} className={styles.link}>
+        Have you already had account? Sign in
       </Link>
     </form>
   );
