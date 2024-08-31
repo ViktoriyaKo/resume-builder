@@ -1,0 +1,57 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  min-height: var(--review-height);
+  background-color: var(--black-100);
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: var(--xs-spacing);
+  left: var(--xs-spacing);
+  right: 0;
+  bottom: var(--xs-spacing);
+  border: 1px solid var(--blue-300);
+  pointer-events: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--xs-spacing) var(--sm-spacing);
+}
+
+/* education */
+.education {
+  display: flex;
+  padding: var(--xs-spacing) var(--sm-spacing);
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.muted {
+  color: var(--gray-500);
+}
+
+.bold {
+  font-size: 14px;
+  font-weight: 600;
+}

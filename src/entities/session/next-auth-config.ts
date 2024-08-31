@@ -67,7 +67,6 @@ export const nextAuthConfig: AuthOptions = {
         email,
         jwt: token.jwt,
       });
-      console.log(session);
       return session;
     },
   },

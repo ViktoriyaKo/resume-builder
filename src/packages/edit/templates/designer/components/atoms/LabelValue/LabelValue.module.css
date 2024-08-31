@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  gap: var(--xs-spacing);
+  align-items: center;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.icon svg {
+  border-radius: 50%;
+  background-color: var(--blue-300);
+  padding: 4px;
+}

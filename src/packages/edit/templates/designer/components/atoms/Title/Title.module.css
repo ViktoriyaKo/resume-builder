@@ -1,0 +1,33 @@
+.title {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 0;
+}
+
+.filled {
+  position: relative;
+  color: white;
+  background-color: var(--blue-300);
+  padding-inline: 20px 12px;
+  width: 105%;
+  padding-block: 8px;
+}
+/* border-bottom-right-radius */
+.filled::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--gray-400);
+}
+
+.notFilled {
+  color: var(--blue-300);
+  border-top: 1px solid var(--blue-300);
+  border-bottom: 1px solid var(--blue-300);
+  padding-block: 4px;
+}
