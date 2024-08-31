@@ -1,12 +1,17 @@
-import { createUser } from '@/services';
+import { createUser, createResumeItem } from '@/services';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    await createUser(body);
-    return NextResponse.json({ message: 'ok' }, { status: 200 });
+    const { id, jwt } = await createUser(body);
+
+    if (id) {
+      await createResumeItem(id);
+    }
+    return NextResponse.json({ jwt }, { status: 200 });
   } catch (error: any) {
+    console.log(error);
     const errorMessage = 'Email or Username are already taken';
     if (error?.response?.errors?.[0]?.message === errorMessage) {
       return NextResponse.json(
@@ -17,7 +22,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: 'An unexpected error occurred' },
-      { status: 500 }
+      { status: 405 }
     );
   }
 }

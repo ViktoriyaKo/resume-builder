@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { RoutersType } from '@/types';
 import { useParams } from 'next/navigation';
 import clsx from 'clsx';
+import { CustomLink } from '@/ui/atoms';
+import { useSession } from 'next-auth/react';
 
 const HeaderContainer = (props: {
   children: React.ReactNode;
@@ -44,9 +46,22 @@ const Logo = () => {
   return <p className={styles.vertical}>Avsievich</p>;
 };
 
+const Login = () => {
+  const { status } = useSession();
+  const { lang } = useParams();
+  const isAuthorized = status === 'authenticated';
+  const text = isAuthorized ? 'Account' : 'Sign in';
+  const path = isAuthorized ? `/${lang}/` : `/${lang}/sign-in`;
+
+  return (
+    <CustomLink href={path} className={styles.link} text={text}></CustomLink>
+  );
+};
+
 const Header = {
   HeaderContainer,
   Logo,
+  Login,
   Navigation,
 };
 

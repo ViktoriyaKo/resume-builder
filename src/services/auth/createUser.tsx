@@ -19,7 +19,8 @@ export const createUser = async (data: IProps) => {
       CreateUserDocument,
       variables
     );
-    return data;
+    const {user, jwt} = data.register;
+    return {id: user.id, jwt }
   } catch (error) {
     console.error('Error');
     throw error;

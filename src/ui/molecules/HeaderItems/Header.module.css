@@ -4,6 +4,7 @@
   padding: 30px 20px;
   position: absolute;
   width: 100%;
+  align-items: flex-start;
 }
 
 @media (width >= 768px) {
@@ -58,4 +59,18 @@
   text-orientation: upright;
   font-size: 20px;
   writing-mode: vertical-rl;
+}
+
+.link {
+  padding: 8px !important;
+  color: white;
+  border: 1px solid white;
+  margin-block: 4px;
+  transition: background-color 0.5s;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s;
 }

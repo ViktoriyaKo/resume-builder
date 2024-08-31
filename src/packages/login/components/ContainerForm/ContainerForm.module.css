@@ -6,11 +6,11 @@
   align-items: center;
   gap: var(--sm-spacing);
   padding-block: var(--lg-spacing);
-  z-index: 10;
   position: relative;
 }
 
 .wrapper {
+  z-index: 11;
   max-width: 600px;
   width: 100%;
   border-radius: 4px;
@@ -31,4 +31,27 @@
 .description {
   color: var(--gray-100);
   font-size: 14px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--gray-500);
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 0.3;
+  margin-inline: 10px;
+  border-bottom: 1.5px solid var(--gray-500);
+}
+
+.icon {
+  align-self: center;
 }

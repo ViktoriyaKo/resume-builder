@@ -12,6 +12,7 @@ declare module 'next-auth' {
 
   interface Session extends DefaultSession {
     jwt?: unknown;
+    data?: { [key: string]: string };
   }
 
   interface Token extends DefaultToken {
