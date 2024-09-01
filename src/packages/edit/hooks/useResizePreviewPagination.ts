@@ -10,6 +10,7 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
     getPreviewPaginationData
   );
   const dispatch = useDispatch();
+  const height = heightPage * totalPages;
 
   const handleResize = useCallback(() => {
     if (contentRef?.current) {
@@ -34,7 +35,7 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
     };
   }, [totalPages, heightPage, handleResize]);
 
-  return { marginTop };
+  return { marginTop, height };
 };
 
 export default useResizePreviewPagination;

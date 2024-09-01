@@ -5,3 +5,9 @@
   font-family: var(--font-montserrat);
   padding: 40px;
 }
+
+@media print {
+  .container {
+    margin-top: 0 !important;
+  }
+}

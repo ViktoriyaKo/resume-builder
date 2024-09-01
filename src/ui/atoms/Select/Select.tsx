@@ -9,6 +9,7 @@ interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   caption?: string;
   options?: TypeOptionsData[];
+  selectedValue?: string;
 }
 // eslint-disable-next-line react/display-name
 const Select = forwardRef(

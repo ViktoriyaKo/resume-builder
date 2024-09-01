@@ -46,6 +46,15 @@ export const nextAuthConfig: AuthOptions = {
     }),
   ],
   callbacks: {
+    async session({ session, token }) {
+      session.jwt = token.jwt;
+      const email = session?.user?.email;
+      session.data = await fetchUserResumeData({
+        email,
+        jwt: token.jwt,
+      });
+      return session;
+    },
     async jwt({ token, user, account }) {
       const isSignIn = user ? true : false;
       if (isSignIn) {
@@ -59,15 +68,6 @@ export const nextAuthConfig: AuthOptions = {
         }
       }
       return token;
-    },
-    async session({ session, token }) {
-      session.jwt = token.jwt;
-      const email = session?.user?.email;
-      session.data = await fetchUserResumeData({
-        email,
-        jwt: token.jwt,
-      });
-      return session;
     },
   },
   pages: {

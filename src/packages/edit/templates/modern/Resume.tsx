@@ -5,7 +5,7 @@ import { Aside, Content } from './components';
 
 const Resume = () => {
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const { marginTop } = useResizePreviewPagination(contentRef);
+  const { marginTop, height } = useResizePreviewPagination(contentRef);
 
   return (
     <div

@@ -51,7 +51,7 @@ const Login = () => {
   const { lang } = useParams();
   const isAuthorized = status === 'authenticated';
   const text = isAuthorized ? 'Account' : 'Sign in';
-  const path = isAuthorized ? `/${lang}/` : `/${lang}/sign-in`;
+  const path = `/${lang}/${isAuthorized ? 'account' : 'sign-in'}`;
 
   return (
     <CustomLink href={path} className={styles.link} text={text}></CustomLink>

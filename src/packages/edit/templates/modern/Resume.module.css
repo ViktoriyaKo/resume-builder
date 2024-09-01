@@ -5,3 +5,9 @@
   gap: 40px;
   font-size: 10px;
 }
+
+@media print {
+  .container {
+    margin-top: 0 !important;
+  }
+}

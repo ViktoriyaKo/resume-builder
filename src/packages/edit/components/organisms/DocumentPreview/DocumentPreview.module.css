@@ -46,9 +46,9 @@
 @media print {
   .list {
     overflow: visible;
-    transform: scale(1.4);
     transform-origin: top left;
     font-family: 'Montserrat';
+    zoom: 1.4;
   }
 }
 

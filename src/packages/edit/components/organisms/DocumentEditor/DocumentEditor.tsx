@@ -4,7 +4,12 @@ import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm } from 'react-hook-form';
-import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
+import {
+  ContactDetails,
+  DocumentEditorSection,
+  SelectTemplates,
+  Skills,
+} from '../../molecules';
 import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
 import { CustomLink } from '@/ui/atoms';
@@ -39,7 +44,14 @@ const DocumentEditor = (props: IProps) => {
 
   return (
     <form className={styles.article} onSubmit={handleSubmit(onSubmit)}>
-      <CustomLink text={t('home')} href={`/${lang}/`} className={styles.link} />
+      <div className={styles.topLine}>
+        <CustomLink
+          text={t('home')}
+          href={`/${lang}/`}
+          className={styles.link}
+        />
+        <SelectTemplates currentTemplate={currentTemplate} />
+      </div>
       <ContactDetails data={contactData} />
       <DocumentEditorSection.Summary />
       <DocumentEditorSection.Employment data={employmentData} />

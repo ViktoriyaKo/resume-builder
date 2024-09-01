@@ -1,19 +1,7 @@
 .container {
   position: relative;
-  min-height: var(--height-md-hero);
-  min-height: 33vh;
-}
-
-.filter {
+  min-height: 30vh;
   background: linear-gradient(var(--blue-300) 30%, var(--pink-100) 80%);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-}
-
-.image {
-  object-fit: cover;
 }
 
 .header {
@@ -26,10 +14,20 @@
   position: relative;
   align-items: center;
   min-height: 33vh;
+  padding: 60px;
 }
 
 .title {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 40px;
   font-weight: 600;
+  text-align: center;
+}
+
+.wrapper {
+  max-width: var(--width-container);
+  margin: 0 auto;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--sm-spacing);
+  padding: 0 20px 60px 20px;
 }
