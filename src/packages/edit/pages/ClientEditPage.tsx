@@ -1,22 +1,26 @@
-"use client"
+'use client';
 import { Provider } from 'react-redux';
 import { DocumentPreview, DocumentEditor } from '../components/organisms';
 import styles from '../styles/EditPage.module.css';
 import store from '@/store/store';
+import { useSearchParams } from 'next/navigation';
+import { paramsVariables } from '@/constants';
 
 const ClientEditPage = () => {
+  const searchParams = useSearchParams();
+  const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple';
 
-  return ( 
-      <Provider store={store}>
-        <section className={styles.container}>
-          <div className={styles.editor}>
-            <DocumentEditor />
-          </div>
-          <div className={styles.view}>
-            <DocumentPreview />
-          </div>
-        </section>
-      </Provider>
+  return (
+    <Provider store={store}>
+      <section className={styles.container}>
+        <div className={styles.editor}>
+          <DocumentEditor currentTemplate={currentTemplate} />
+        </div>
+        <div className={styles.view}>
+          <DocumentPreview currentTemplate={currentTemplate} />
+        </div>
+      </section>
+    </Provider>
   );
 };
 

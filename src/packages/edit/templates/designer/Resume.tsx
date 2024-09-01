@@ -13,7 +13,7 @@ const Resume = () => {
       style={{ marginTop: `${marginTop}px` }}
       ref={contentRef}
     >
-      <Aside />
+      <Aside/>
       <Content />
     </div>
   );

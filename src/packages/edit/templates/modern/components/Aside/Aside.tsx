@@ -21,12 +21,8 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const {
-    skillsDescription,
-    background,
-    color,
-    titles: titlesData,
-  } = useSelector(getStateShortData);
+  const { skillsDescription, titles: titlesData } =
+    useSelector(getStateShortData);
   const { contactData, educationData, linksData, languagesData } = initialData;
 
   const titles = getTitles(titlesData, t);
@@ -38,20 +34,16 @@ const Aside = () => {
 
   const headerData = getFilledData(contactData);
 
-  const { city, country, email, phone, address, photo } = headerData;
+  const { city, country, email, phone, photo } = headerData;
   const shortAddress =
     city && country ? `${city}, ${country}` : city || country;
 
   const contactLinks = getDataValuesForm(linksData);
   const languages = getDataValuesForm(languagesData);
   const isEducation = educationData.some((item) => item.values);
-  const borderRight = `6px solid ${color ? color : 'rgb(15, 167, 167)'}`;
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundColor: background, borderRight: borderRight }}
-    >
+    <div className={styles.container}>
       {photo && (
         <Image
           src={photo}

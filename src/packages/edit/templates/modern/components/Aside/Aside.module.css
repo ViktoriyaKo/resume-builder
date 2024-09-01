@@ -5,7 +5,8 @@
   padding: var(--sm-spacing);
   color: white;
   min-height: var(--review-height);
-  background-color: black;
+  background-color: var(--modern-secondary-color);
+  border-right: 6px solid var(--modern-primary-color);
 }
 
 .wrapper {
@@ -18,7 +19,7 @@
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  border: 2px solid var(--teal-100);
+  border: 2px solid var(--modern-primary-color);
   object-fit: cover;
   align-self: center;
   margin-bottom: 20px;
@@ -42,7 +43,8 @@
 }
 
 .skills p {
-  background-color: var(--teal-200);
+  background-color: var(--modern-primary-color);
+  opacity: 0.8;
   padding-inline: 4px;
   color: black;
   width: max-content;
@@ -51,7 +53,7 @@
 
 /* contacts */
 .link {
-  color: var(--teal-100);
+  color: var(--modern-primary-color);
 }
 
 /* education */

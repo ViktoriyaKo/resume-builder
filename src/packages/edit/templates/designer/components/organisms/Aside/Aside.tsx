@@ -22,7 +22,6 @@ const Aside = () => {
 
   const {
     skillsDescription,
-    background,
     titles: titlesData,
   } = useSelector(getStateShortData);
   const { contactData, educationData, linksData, languagesData } = initialData;
@@ -43,7 +42,7 @@ const Aside = () => {
   const languages = getDataValuesForm(languagesData);
 
   return (
-    <div className={styles.container} style={{ backgroundColor: background }}>
+    <div className={styles.container}>
       {photo && (
         <Image
           src={photo}

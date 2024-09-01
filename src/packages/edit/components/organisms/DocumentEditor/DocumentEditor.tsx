@@ -10,7 +10,13 @@ import { useTranslation } from 'react-i18next';
 import { CustomLink } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 
-const DocumentEditor = () => {
+interface IProps {
+  currentTemplate: string;
+}
+
+const DocumentEditor = (props: IProps) => {
+  const { currentTemplate } = props;
+
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
   const { lang } = useParams();
@@ -48,10 +54,12 @@ const DocumentEditor = () => {
       <div className={styles.wrapper}>
         <DocumentEditorSection.ColorInput
           caption={t('choose_background')}
+          template={currentTemplate}
           category={ShortCategories.BACKGROUND}
         />
         <DocumentEditorSection.ColorInput
           caption={t('choose_color')}
+          template={currentTemplate}
           category={ShortCategories.COLOR}
         />
       </div>

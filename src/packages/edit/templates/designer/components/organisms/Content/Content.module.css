@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--xs-spacing);
-  color: var(--black-100);
+  color: var(--designer-secondary-color);
 }
 
 .wrapper {
-  border-left: 1px solid var(--blue-300);
+  border-left: 1px solid var(--designer-primary-color);
   padding-left: 20px;
 }
 
@@ -19,7 +19,7 @@
   font-size: 36px;
   font-weight: 500;
   margin: 0;
-  text-shadow: 2px 2px 3px var(--blue-300);
+  text-shadow: 2px 2px 3px var(--designer-primary-color);
 }
 
 .caption {

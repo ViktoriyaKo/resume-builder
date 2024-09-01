@@ -12,6 +12,6 @@ export enum ShortCategories {
   SUMMARY = 'summary',
   SKILLS_DESCRIPTION = 'skillsDescription',
   TITLES = 'titles',
-  BACKGROUND = 'background',
-  COLOR = 'color',
+  BACKGROUND = 'secondary-color',
+  COLOR = 'primary-color',
 }

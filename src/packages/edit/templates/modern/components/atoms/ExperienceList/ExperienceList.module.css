@@ -6,7 +6,7 @@
 }
 
 .position {
-  color: var(--teal-100);
+  color: var(--modern-primary-color);
   font-weight: 500;
 }
 
@@ -31,6 +31,6 @@
   width: 10px;
   height: 10px;
   left: -20px;
-  background-color: var(--teal-100);
+  background-color: var(--modern-primary-color);
   border-radius: 50px;
 }
