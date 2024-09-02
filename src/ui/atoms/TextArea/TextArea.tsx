@@ -1,7 +1,7 @@
 'use client';
 import clsx from 'clsx';
 import { forwardRef, LegacyRef, TextareaHTMLAttributes } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -47,7 +47,7 @@ const TextArea = forwardRef(
 // eslint-disable-next-line react/display-name
 const ControlledTextArea = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLTextAreaElement>) => {
-    const { control } = useForm();
+    const { control } = useFormContext();
     const { onChange } = props;
 
     return (

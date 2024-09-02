@@ -1,6 +1,6 @@
 import styles from './SignInForm.module.css';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { Button, Input } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 import PasswordInput from '../PasswordInput/PasswordInput';
@@ -16,12 +16,7 @@ const Form = () => {
     password: '',
   };
 
-  const {
-    handleSubmit,
-    register,
-    setError,
-    formState: { errors },
-  } = useForm({
+  const methods = useForm({
     defaultValues: initialData,
   });
 
@@ -35,7 +30,7 @@ const Form = () => {
       if (result?.ok) {
         router.push(`/${lang}`);
       } else {
-        setError('password', {
+        methods.setError('password', {
           type: 'manual',
           message: 'Password or Email are not correct',
         });
@@ -46,33 +41,35 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <div className={styles.wrapper}>
-        <Input
-          error={errors.email?.message}
-          {...register('email', { required: 'Email is required' })}
-          placeholder="Enter email"
-          type={'email'}
-        />
-        <PasswordInput
-          placeholder={'Enter password'}
-          error={errors.password?.message}
-          {...register('password', {
-            required: 'Password is required',
-            minLength: {
-              value: 8,
-              message: 'Password must be at least 8 characters long',
-            },
-          })}
-        />
-      </div>
-      <Button type={'submit'} className={styles.button}>
-        Войти
-      </Button>
-      <Link href={`/${lang}/sign-up`} className={styles.link}>
-        Если у вас нет аккаунта, то нажмите сюда для регистрации
-      </Link>
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.wrapper}>
+          <Input
+            name={'email'}
+            rules={{ required: 'Email is required' }}
+            placeholder="Enter email"
+            type={'email'}
+          />
+          <PasswordInput
+            name={'password'}
+            placeholder={'Enter password'}
+            rules={{
+              required: 'Password is required',
+              minLength: {
+                value: 8,
+                message: 'Password must be at least 8 characters long',
+              },
+            }}
+          />
+        </div>
+        <Button type={'submit'} className={styles.button}>
+          Войти
+        </Button>
+        <Link href={`/${lang}/sign-up`} className={styles.link}>
+          Если у вас нет аккаунта, то нажмите сюда для регистрации
+        </Link>
+      </form>
+    </FormProvider>
   );
 };
 

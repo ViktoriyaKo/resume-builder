@@ -3,6 +3,7 @@ import { getRequestOptions } from '@/utils';
 import { AuthOptions, User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GooggleProvider from 'next-auth/providers/google';
+import { cookies } from 'next/headers';
 
 export const nextAuthConfig: AuthOptions = {
   providers: [
@@ -47,11 +48,15 @@ export const nextAuthConfig: AuthOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
-      session.jwt = token.jwt;
+      const jwt = token.jwt;
+      session.jwt = jwt;
+      if (typeof jwt === 'string') {
+        cookies().set('jwt', jwt);
+      }
       const email = session?.user?.email;
       session.data = await fetchUserResumeData({
         email,
-        jwt: token.jwt,
+        jwt,
       });
       return session;
     },

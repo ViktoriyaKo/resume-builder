@@ -2,14 +2,14 @@
 'use client';
 import { TypeOptionsData } from '@/packages/edit/types';
 import { forwardRef, LegacyRef, SelectHTMLAttributes } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
   label?: string;
   caption?: string;
   options?: TypeOptionsData[];
-  selectedValue?: string;
+  defaultValue?: string;
 }
 // eslint-disable-next-line react/display-name
 const Select = forwardRef(
@@ -38,7 +38,7 @@ const Select = forwardRef(
 
 const ControlledSelect = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLSelectElement>) => {
-    const { control } = useForm();
+    const { control } = useFormContext();
     const { onChange } = props;
 
     return (

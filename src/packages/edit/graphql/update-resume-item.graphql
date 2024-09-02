@@ -1,0 +1,9 @@
+mutation UpdateResumeItem($data: ResumeItemInput!, $id: ID!) {
+  updateResumeItem(data: $data, id: $id) {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}

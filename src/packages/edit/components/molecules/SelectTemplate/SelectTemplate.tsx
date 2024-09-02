@@ -30,7 +30,7 @@ const SelectTemplates = (props: IProps) => {
 
   return (
     <Select
-      selectedValue={currentTemplate}
+      defaultValue={currentTemplate}
       label={'Change template:'}
       options={options}
       name={'current-template'}

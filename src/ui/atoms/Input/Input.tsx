@@ -2,13 +2,19 @@ import { forwardRef, InputHTMLAttributes, LegacyRef } from 'react';
 
 import styles from './Input.module.css';
 import clsx from 'clsx';
-import { Controller, useForm } from 'react-hook-form';
+import {
+  Controller,
+  useFormContext,
+  RegisterOptions,
+  FieldError,
+} from 'react-hook-form';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  error?: string;
+  error?: FieldError;
   label?: string;
   inputStyle?: string;
+  rules?: RegisterOptions;
 }
 
 // eslint-disable-next-line react/display-name
@@ -28,7 +34,7 @@ const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
         <label className={clsx('form-label', styles.caption)}>{label}</label>
       )}
       <input className={inputStyle} ref={ref} {...rest} />
-      {error && <span className={styles.error}>{error}</span>}
+      {error?.message && <span className={styles.error}>{error?.message}</span>}
     </div>
   );
 });
@@ -36,17 +42,23 @@ const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
 // eslint-disable-next-line react/display-name
 const ControlledInput = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
-    const { control } = useForm();
-    const { name, onChange, defaultValue = '' } = props;
+    const {
+      control,
+      formState: { errors },
+    } = useFormContext();
+    const { name, onChange, rules, defaultValue = '' } = props;
+    const error = name ? (errors[name] as FieldError | undefined) : undefined;
 
     return (
       <Controller
         defaultValue={defaultValue}
         control={control}
         name={name ?? ''}
+        rules={rules && rules}
         render={({ field }) => {
           return (
             <Input
+              error={error}
               {...props}
               {...field}
               onChange={(value) => {

@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import 'react-quill-new/dist/quill.snow.css';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
@@ -79,7 +79,7 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
 );
 
 const ControlledTextEditor = (props: TextEditorProps) => {
-  const { control } = useForm();
+  const { control } = useFormContext();
   const { onChange } = props;
 
   return (

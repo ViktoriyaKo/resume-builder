@@ -2,7 +2,7 @@
 
 import styles from './ContactForm.module.css';
 import { Button, Input } from '@/ui/atoms';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
 import { FormContactValues } from '@/types';
@@ -16,7 +16,7 @@ interface IProps {
 const ContactForm = (props: IProps) => {
   const initialForm = { email: '', text: '' };
   const [open, setOpen] = useState(false);
-  const { handleSubmit, register, reset } = useForm({
+  const methods = useForm({
     defaultValues: initialForm,
     mode: 'onSubmit',
   });
@@ -24,21 +24,16 @@ const ContactForm = (props: IProps) => {
   const onSubmit = async (body: FormContactValues) => {
     await createRequest(body);
     setOpen(true);
-    reset();
+    methods.reset();
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
         <p>{props.title}</p>
-        <Input
-          {...register('email')}
-          placeholder="Email"
-          type={'email'}
-          id={'email'}
-        />
+        <Input name={'email'} placeholder="Email" type={'email'} id={'email'} />
         <textarea
-          {...register('text')}
+          {...methods.register('text')}
           className={styles.textArea}
           placeholder="..."
           rows={5}
@@ -53,7 +48,7 @@ const ContactForm = (props: IProps) => {
         title={'Thank you for your message!'}
         description={'We will definitely contact you'}
       />
-    </>
+    </FormProvider>
   );
 };
 

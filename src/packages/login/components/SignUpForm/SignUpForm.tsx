@@ -1,5 +1,5 @@
 import styles from './SignUpForm.module.css';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Input } from '@/ui/atoms';
 import { Button } from '@/ui/atoms';
 import PasswordInput from '../PasswordInput/PasswordInput';
@@ -19,15 +19,7 @@ const Form = () => {
     repeatPassword: '',
   };
 
-  const {
-    handleSubmit,
-    register,
-    watch,
-    setError,
-    formState: { errors },
-  } = useForm({
-    defaultValues: initialData,
-  });
+  const methods = useForm({ defaultValues: initialData });
 
   const onSubmit = async (data: {
     email: string;
@@ -46,7 +38,7 @@ const Form = () => {
         router.push(`/${lang}`);
       } else {
         const errorText = await res.json();
-        setError('repeatPassword', {
+        methods.setError('repeatPassword', {
           type: 'manual',
           message: errorText.message,
         });
@@ -56,36 +48,37 @@ const Form = () => {
     }
   };
 
-  const password = watch('password');
+  const password = methods.watch('password');
 
   return (
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.wrapper}>
           <Input
-            error={errors.email?.message}
-            {...register('email', { required: 'Email is required' })}
+            name={'email'}
+            rules={{ required: 'Email is required' }}
             placeholder="Enter email"
             type={'email'}
           />
           <PasswordInput
-            error={errors.password?.message}
+            name={'password'}
             placeholder={'Enter password'}
-            {...register('password', {
+            rules={{
               required: 'Password is required',
               minLength: {
                 value: 8,
                 message: 'Password must be at least 8 characters long',
               },
-            })}
+            }}
           />
           <PasswordInput
-            error={errors.repeatPassword?.message}
+            name={'repeatPassword'}
             placeholder={'Repeat password'}
-            {...register('repeatPassword', {
+            rules={{
               required: 'Please repeat your password',
               validate: (value) =>
                 value === password || 'Passwords do not match',
-            })}
+            }}
           />
         </div>
         <Button type={'submit'} className={styles.button}>
@@ -94,7 +87,8 @@ const Form = () => {
         <Link href={`/${lang}/sign-in`} className={styles.link}>
           Have you already had account? Sign in
         </Link>
-      </form> 
+      </form>
+    </FormProvider>
   );
 };
 

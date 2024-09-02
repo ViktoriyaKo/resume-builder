@@ -28,9 +28,6 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
   useEffect(() => {
     const observer = new ResizeObserver(handleResize);
     if (contentRef?.current) {
-      console.log(contentRef?.current);
-      console.log(contentRef);
-
       observer.observe(contentRef.current);
     }
     handleResize();

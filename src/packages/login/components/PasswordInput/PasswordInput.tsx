@@ -1,15 +1,14 @@
 import styles from './PasswordInput.module.css';
 import { Icon, Input, ShowPassword, HidePassword, Button } from '@/ui/atoms';
-import { ChangeEventHandler, useState } from 'react';
-import { RegisterOptions } from 'react-hook-form';
+import { useState } from 'react';
+import { RegisterOptions, FieldError } from 'react-hook-form';
 import { forwardRef, LegacyRef } from 'react';
 
 interface IProps {
   placeholder: string;
   name: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
   rules?: RegisterOptions;
-  error?: string;
+  error?: FieldError;
 }
 
 // eslint-disable-next-line react/display-name

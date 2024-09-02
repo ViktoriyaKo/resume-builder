@@ -28,7 +28,7 @@ const InputsList = (props: IProps) => {
     <div className={styles.container}>
       {data?.map((item) => {
         const { caption, type, name } = item;
-        const uniqueName = `${uuid}-${name}`;
+        const uniqueName = `${uuid}${name}`;
 
         const commonProps = {
           name: uniqueName,

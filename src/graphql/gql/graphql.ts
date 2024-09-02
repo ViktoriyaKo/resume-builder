@@ -14,6 +14,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  Date: { input: any; output: any; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
   /** A string used to identify an i18n locale */
@@ -112,6 +114,158 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type ComponentContactContact = {
+  __typename?: 'ComponentContactContact';
+  address?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  country?: Maybe<Scalars['String']['output']>;
+  drivingLicense?: Maybe<Scalars['Boolean']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  firstName?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  job?: Maybe<Scalars['String']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<UploadFileEntityResponse>;
+};
+
+export type ComponentContactContactFiltersInput = {
+  address?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentContactContactFiltersInput>>>;
+  city?: InputMaybe<StringFilterInput>;
+  country?: InputMaybe<StringFilterInput>;
+  drivingLicense?: InputMaybe<BooleanFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  firstName?: InputMaybe<StringFilterInput>;
+  job?: InputMaybe<StringFilterInput>;
+  lastName?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentContactContactFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentContactContactFiltersInput>>>;
+  phone?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentContactContactInput = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  country?: InputMaybe<Scalars['String']['input']>;
+  drivingLicense?: InputMaybe<Scalars['Boolean']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  job?: InputMaybe<Scalars['String']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentEducationEducation = {
+  __typename?: 'ComponentEducationEducation';
+  city?: Maybe<Scalars['String']['output']>;
+  degree?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Date']['output']>;
+  id: Scalars['ID']['output'];
+  school?: Maybe<Scalars['String']['output']>;
+  specialty?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['Date']['output']>;
+};
+
+export type ComponentEducationEducationFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentEducationEducationFiltersInput>>>;
+  city?: InputMaybe<StringFilterInput>;
+  degree?: InputMaybe<StringFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  endDate?: InputMaybe<DateFilterInput>;
+  not?: InputMaybe<ComponentEducationEducationFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentEducationEducationFiltersInput>>>;
+  school?: InputMaybe<StringFilterInput>;
+  specialty?: InputMaybe<StringFilterInput>;
+  startDate?: InputMaybe<DateFilterInput>;
+};
+
+export type ComponentEducationEducationInput = {
+  city?: InputMaybe<Scalars['String']['input']>;
+  degree?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['Date']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  specialty?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['Date']['input']>;
+};
+
+export type ComponentExperienceExperience = {
+  __typename?: 'ComponentExperienceExperience';
+  city?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  employer?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Date']['output']>;
+  id: Scalars['ID']['output'];
+  job?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['Date']['output']>;
+};
+
+export type ComponentExperienceExperienceFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentExperienceExperienceFiltersInput>>>;
+  city?: InputMaybe<StringFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  employer?: InputMaybe<StringFilterInput>;
+  endDate?: InputMaybe<DateFilterInput>;
+  job?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentExperienceExperienceFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentExperienceExperienceFiltersInput>>>;
+  startDate?: InputMaybe<DateFilterInput>;
+};
+
+export type ComponentExperienceExperienceInput = {
+  city?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  employer?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['Date']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  job?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['Date']['input']>;
+};
+
+export type ComponentLanguageLanguage = {
+  __typename?: 'ComponentLanguageLanguage';
+  id: Scalars['ID']['output'];
+  language?: Maybe<Scalars['String']['output']>;
+  level?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentLinkLink = {
+  __typename?: 'ComponentLinkLink';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  contains?: InputMaybe<Scalars['Date']['input']>;
+  containsi?: InputMaybe<Scalars['Date']['input']>;
+  endsWith?: InputMaybe<Scalars['Date']['input']>;
+  eq?: InputMaybe<Scalars['Date']['input']>;
+  eqi?: InputMaybe<Scalars['Date']['input']>;
+  gt?: InputMaybe<Scalars['Date']['input']>;
+  gte?: InputMaybe<Scalars['Date']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  lt?: InputMaybe<Scalars['Date']['input']>;
+  lte?: InputMaybe<Scalars['Date']['input']>;
+  ne?: InputMaybe<Scalars['Date']['input']>;
+  nei?: InputMaybe<Scalars['Date']['input']>;
+  not?: InputMaybe<DateFilterInput>;
+  notContains?: InputMaybe<Scalars['Date']['input']>;
+  notContainsi?: InputMaybe<Scalars['Date']['input']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  notNull?: InputMaybe<Scalars['Boolean']['input']>;
+  null?: InputMaybe<Scalars['Boolean']['input']>;
+  or?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  startsWith?: InputMaybe<Scalars['Date']['input']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -168,7 +322,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Advantage | I18NLocale | Request | ResumeItem | Template | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Advantage | ComponentContactContact | ComponentEducationEducation | ComponentExperienceExperience | ComponentLanguageLanguage | ComponentLinkLink | I18NLocale | Request | ResumeItem | StrapiGoogleAuthGoogleCredential | Template | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -300,6 +454,7 @@ export type Mutation = {
   deleteAdvantage?: Maybe<AdvantageEntityResponse>;
   deleteRequest?: Maybe<RequestEntityResponse>;
   deleteResumeItem?: Maybe<ResumeItemEntityResponse>;
+  deleteStrapiGoogleAuthGoogleCredential?: Maybe<StrapiGoogleAuthGoogleCredentialEntityResponse>;
   deleteTemplate?: Maybe<TemplateEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -322,6 +477,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateRequest?: Maybe<RequestEntityResponse>;
   updateResumeItem?: Maybe<ResumeItemEntityResponse>;
+  updateStrapiGoogleAuthGoogleCredential?: Maybe<StrapiGoogleAuthGoogleCredentialEntityResponse>;
   updateTemplate?: Maybe<TemplateEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -503,6 +659,11 @@ export type MutationUpdateResumeItemArgs = {
 };
 
 
+export type MutationUpdateStrapiGoogleAuthGoogleCredentialArgs = {
+  data: StrapiGoogleAuthGoogleCredentialInput;
+};
+
+
 export type MutationUpdateTemplateArgs = {
   data: TemplateInput;
   id: Scalars['ID']['input'];
@@ -573,6 +734,7 @@ export type Query = {
   requests?: Maybe<RequestEntityResponseCollection>;
   resumeItem?: Maybe<ResumeItemEntityResponse>;
   resumeItems?: Maybe<ResumeItemEntityResponseCollection>;
+  strapiGoogleAuthGoogleCredential?: Maybe<StrapiGoogleAuthGoogleCredentialEntityResponse>;
   template?: Maybe<TemplateEntityResponse>;
   templates?: Maybe<TemplateEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -635,6 +797,11 @@ export type QueryResumeItemsArgs = {
   filters?: InputMaybe<ResumeItemFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryStrapiGoogleAuthGoogleCredentialArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -754,10 +921,37 @@ export type ResponseCollectionMeta = {
 
 export type ResumeItem = {
   __typename?: 'ResumeItem';
+  Contact?: Maybe<ComponentContactContact>;
+  course?: Maybe<Array<Maybe<ComponentEducationEducation>>>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  education?: Maybe<Array<Maybe<ComponentEducationEducation>>>;
+  employment?: Maybe<Array<Maybe<ComponentExperienceExperience>>>;
+  skills?: Maybe<Scalars['JSON']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   user?: Maybe<UsersPermissionsUserEntityResponse>;
+};
+
+
+export type ResumeItemCourseArgs = {
+  filters?: InputMaybe<ComponentEducationEducationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type ResumeItemEducationArgs = {
+  filters?: InputMaybe<ComponentEducationEducationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type ResumeItemEmploymentArgs = {
+  filters?: InputMaybe<ComponentExperienceExperienceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type ResumeItemEntity = {
@@ -778,19 +972,61 @@ export type ResumeItemEntityResponseCollection = {
 };
 
 export type ResumeItemFiltersInput = {
+  Contact?: InputMaybe<ComponentContactContactFiltersInput>;
   and?: InputMaybe<Array<InputMaybe<ResumeItemFiltersInput>>>;
+  course?: InputMaybe<ComponentEducationEducationFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  education?: InputMaybe<ComponentEducationEducationFiltersInput>;
+  employment?: InputMaybe<ComponentExperienceExperienceFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<ResumeItemFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ResumeItemFiltersInput>>>;
+  skills?: InputMaybe<JsonFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
+  summary?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   user?: InputMaybe<UsersPermissionsUserFiltersInput>;
 };
 
 export type ResumeItemInput = {
+  Contact?: InputMaybe<ComponentContactContactInput>;
+  course?: InputMaybe<Array<InputMaybe<ComponentEducationEducationInput>>>;
+  education?: InputMaybe<Array<InputMaybe<ComponentEducationEducationInput>>>;
+  employment?: InputMaybe<Array<InputMaybe<ComponentExperienceExperienceInput>>>;
+  skills?: InputMaybe<Scalars['JSON']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type StrapiGoogleAuthGoogleCredential = {
+  __typename?: 'StrapiGoogleAuthGoogleCredential';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  google_client_id: Scalars['String']['output'];
+  google_client_secret: Scalars['String']['output'];
+  google_redirect_url: Scalars['String']['output'];
+  google_scopes: Scalars['JSON']['output'];
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type StrapiGoogleAuthGoogleCredentialEntity = {
+  __typename?: 'StrapiGoogleAuthGoogleCredentialEntity';
+  attributes?: Maybe<StrapiGoogleAuthGoogleCredential>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type StrapiGoogleAuthGoogleCredentialEntityResponse = {
+  __typename?: 'StrapiGoogleAuthGoogleCredentialEntityResponse';
+  data?: Maybe<StrapiGoogleAuthGoogleCredentialEntity>;
+};
+
+export type StrapiGoogleAuthGoogleCredentialInput = {
+  google_client_id?: InputMaybe<Scalars['String']['input']>;
+  google_client_secret?: InputMaybe<Scalars['String']['input']>;
+  google_redirect_url?: InputMaybe<Scalars['String']['input']>;
+  google_scopes?: InputMaybe<Scalars['JSON']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type StringFilterInput = {
@@ -1292,6 +1528,14 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, username: string, email?: string | null } } };
 
+export type UpdateResumeItemMutationVariables = Exact<{
+  data: ResumeItemInput;
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type UpdateResumeItemMutation = { __typename?: 'Mutation', updateResumeItem?: { __typename?: 'ResumeItemEntityResponse', data?: { __typename?: 'ResumeItemEntity', attributes?: { __typename?: 'ResumeItem', slug?: string | null } | null } | null } | null };
+
 export type HomeQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 }>;
@@ -1312,5 +1556,6 @@ export const CreateRequestDocument = {"kind":"Document","definitions":[{"kind":"
 export const CreateResumeItemDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateResumeItem"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"user"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createResumeItem"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user"},"value":{"kind":"Variable","name":{"kind":"Name","value":"user"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<CreateResumeItemMutation, CreateResumeItemMutationVariables>;
 export const CreateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UsersPermissionsRegisterInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jwt"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<CreateUserMutation, CreateUserMutationVariables>;
 export const LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UsersPermissionsLoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jwt"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;
+export const UpdateResumeItemDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateResumeItem"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ResumeItemInput"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateResumeItem"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}},{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UpdateResumeItemMutation, UpdateResumeItemMutationVariables>;
 export const HomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Home"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"templates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"advantages"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<HomeQuery, HomeQueryVariables>;
 export const ResumeTemplatesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ResumeTemplates"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"link"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"templates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"link"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"link"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"allFilters"},"name":{"kind":"Name","value":"templates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"id","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"link"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ResumeTemplatesQuery, ResumeTemplatesQueryVariables>;

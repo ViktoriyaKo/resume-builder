@@ -7,3 +7,4 @@ export { ShowPassword } from './ShowPassword';
 export { EmailIcon } from './EmailIcon';
 export { PasswordIcon } from './PasswordIcon';
 export { GoogleIcon } from './GoogleIcon';
+export { AddIcon } from './AddIcon';

@@ -2,7 +2,7 @@
 import { forwardRef, LegacyRef, useCallback, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { FormData } from '@/packages/edit/constants';
 import { UncontrolledCheckbox as Checkbox } from '@/ui/atoms';
 
@@ -77,7 +77,7 @@ const CustomDataPicker = forwardRef(
 );
 
 const ControlledDataPicker = (props: IProps) => {
-  const { control } = useForm();
+  const { control } = useFormContext();
   const { onChange } = props;
   const [isPresent, setIsPresent] = useState<boolean>(false);
 

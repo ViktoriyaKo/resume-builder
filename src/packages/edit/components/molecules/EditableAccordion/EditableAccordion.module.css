@@ -18,6 +18,7 @@
 
 .content {
   padding: var(--sm-spacing);
+  padding-top: 0;
 }
 
 .button {

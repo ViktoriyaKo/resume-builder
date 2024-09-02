@@ -1,7 +1,7 @@
 import { forwardRef, InputHTMLAttributes, LegacyRef } from 'react';
 import styles from './Checkbox.module.css';
 import clsx from 'clsx';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -36,7 +36,7 @@ export const Checkbox = forwardRef(
 // eslint-disable-next-line react/display-name
 const ControlledCheckbox = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLInputElement>) => {
-    const { control } = useForm();
+    const { control } = useFormContext();
     const { onChange } = props;
 
     return (
