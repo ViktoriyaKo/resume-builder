@@ -10,7 +10,6 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
     getPreviewPaginationData
   );
   const dispatch = useDispatch();
-  const height = heightPage * totalPages;
 
   const handleResize = useCallback(() => {
     if (contentRef?.current) {
@@ -20,6 +19,8 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
 
       if (newTotalPage !== totalPages) {
         dispatch(changeTotalPage(newTotalPage));
+        //TODO при уменьшении контента не отрабатывает из-за фиксации высоты. fix, но как??
+        contentRef.current.style.minHeight = `${newTotalPage * heightPage}px`;
       }
     }
   }, [heightPage, totalPages, dispatch]);
@@ -27,6 +28,9 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
   useEffect(() => {
     const observer = new ResizeObserver(handleResize);
     if (contentRef?.current) {
+      console.log(contentRef?.current);
+      console.log(contentRef);
+
       observer.observe(contentRef.current);
     }
     handleResize();
@@ -35,7 +39,7 @@ const useResizePreviewPagination = (contentRef: RefObject<HTMLDivElement>) => {
     };
   }, [totalPages, heightPage, handleResize]);
 
-  return { marginTop, height };
+  return { marginTop };
 };
 
 export default useResizePreviewPagination;

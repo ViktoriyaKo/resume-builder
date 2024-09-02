@@ -1,0 +1,14 @@
+.wrapper {
+  border-radius: var(--border-radius);
+  padding: var(--sm-spacing);
+  display: flex;
+  flex-direction: column;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size:20px;
+  color: var(--blue-300);
+}

@@ -25,9 +25,9 @@
 }
 
 .wrapper {
-  max-width: var(--width-container);
+  display: grid;
   margin: 0 auto;
   grid-template-columns: 1fr 2fr;
-  gap: var(--sm-spacing);
+  gap: 40px;
   padding: 0 20px 60px 20px;
 }

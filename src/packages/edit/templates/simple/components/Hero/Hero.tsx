@@ -10,7 +10,6 @@ import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
-  const { background } = useSelector(getStateShortData);
   const { contactData, linksData } = initialData;
 
   const getFilledData = useCallback(
@@ -34,10 +33,7 @@ const Hero = () => {
   } = headerData;
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundColor: background && background }}
-    >
+    <div className={styles.container}>
       {photo && (
         <Image
           src={photo}

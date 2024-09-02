@@ -1,26 +1,25 @@
-'use client';
 import { LanguagesType } from '@/types/types';
-import styles from '../styles/AccountPage.module.css';
-import { useSession } from 'next-auth/react';
-import { Aside } from '../components';
+import initTranslations from '@/app/i18n';
+import TranslationsProvider from '@/providers/TranslationsProvider';
+import ClientAccountPage from './ClientAccountPage';
 
-const AccountPage = (props: LanguagesType) => {
+const namespaces = ['account'];
+
+const AccountPage = async (props: LanguagesType) => {
   const { lang } = props;
-  const session = useSession();
-  const { name, image } = session?.data?.user ?? {};
+  const { resources } = await initTranslations({
+    lang,
+    namespaces,
+  });
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>
-          Welcome, <br />
-          {name}!
-        </h1>
-      </header>
-      <div className={styles.wrapper}>
-        <Aside name={name ?? 'anonymous'} image={image ?? ''} />
-      </div>
-    </div>
+    <TranslationsProvider
+      namespaces={namespaces}
+      lang={lang}
+      resources={resources}
+    >
+      <ClientAccountPage />
+    </TranslationsProvider>
   );
 };
 
