@@ -10,4 +10,5 @@ export { default as Select } from './Select/Select';
 export { default as DatePicker } from './DatePicker/DatePicker';
 export { default as TextEditor } from './TextEditor/TextEditor';
 export { default as Button } from './Button/Button';
+export { default as MenuContext } from './MenuContext/MenuContext';
 export * from './Icons';

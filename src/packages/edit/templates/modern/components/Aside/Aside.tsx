@@ -81,7 +81,7 @@ const Aside = () => {
               const { uuid, values } = item;
               const {
                 degree,
-                descriptionSchool,
+                description,
                 specialty,
                 startDate,
                 endDate,
@@ -106,10 +106,10 @@ const Aside = () => {
                       ? `${school}, ${specialty}`
                       : specialty || school}
                   </p>
-                  {descriptionSchool && (
+                  {description && (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: descriptionSchool,
+                        __html: description,
                       }}
                     />
                   )}

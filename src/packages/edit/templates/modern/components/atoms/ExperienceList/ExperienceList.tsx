@@ -26,7 +26,7 @@ const ExperienceList = (props: IProps) => {
             employer,
             school,
             specialty,
-            descriptionSchool,
+            description,
             startDate,
             endDate,
             city,
@@ -50,10 +50,10 @@ const ExperienceList = (props: IProps) => {
               {position && <p className={styles.position}>{position}</p>}
               {startDate && endDate && <p className={styles.muted}>{date}</p>}
               {city && <p className={styles.muted}>{city}</p>}
-              {descriptionSchool && (
+              {description && (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: descriptionSchool,
+                    __html: description,
                   }}
                 />
               )}

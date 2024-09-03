@@ -65,6 +65,8 @@ const Content = (props: IContentProps) => {
                   handleClick={updateValueField}
                   data={data}
                   options={options}
+                  nestedIndex={index}
+                  category={category}
                 />
               </EditableAccordion>
             </Fragment>

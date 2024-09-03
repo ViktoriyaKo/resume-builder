@@ -46,12 +46,12 @@ const ControlledInput = forwardRef(
       control,
       formState: { errors },
     } = useFormContext();
-    const { name, onChange, rules, defaultValue = '' } = props;
+    const { name, onChange, rules, defaultValue } = props;
     const error = name ? (errors[name] as FieldError | undefined) : undefined;
 
     return (
       <Controller
-        defaultValue={defaultValue}
+        defaultValue={defaultValue && defaultValue}
         control={control}
         name={name ?? ''}
         rules={rules && rules}

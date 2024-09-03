@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import styles from './EditableAccordion.module.css';
 import { Button, Icon } from '@/ui/atoms';
-import { DeleteIcon } from '@/ui/atoms/Icons/DeleteIcon';
+import { DeleteIcon } from '@/ui/atoms';
 
 interface IProps {
   children: ReactElement;

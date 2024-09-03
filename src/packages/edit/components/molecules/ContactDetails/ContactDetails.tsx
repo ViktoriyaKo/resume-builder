@@ -68,7 +68,7 @@ const ContactDetails = (props: IProps) => {
 
           return (
             <Input
-              name={name}
+              name={`.${name}`}
               key={name}
               type={type}
               label={t(caption)}

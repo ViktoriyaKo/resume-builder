@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import clsx from 'clsx';
 
 interface IProps {
-  text: string;
+  text?: string;
   href: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -13,9 +13,9 @@ interface IProps {
 }
 
 const CustomLink = (props: IProps) => {
-  const { text, href, prefix, suffix, className } = props;
+  const { text, href, prefix, suffix, className, ...rest } = props;
   return (
-    <Link href={href} className={clsx(styles.link, className ? className : '')}>
+    <Link href={href} className={clsx(styles.link, className ? className : '')} {...rest}>
       {prefix}
       {text}
       {suffix}

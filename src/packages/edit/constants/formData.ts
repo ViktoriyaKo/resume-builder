@@ -22,12 +22,12 @@ export enum FormData {
   START_DATE = 'startDate',
   END_DATE = 'endDate',
   SPECIALTY = 'specialty',
-  DESCRIPTION_SCHOOL = 'descriptionSchool',
+  DESCRIPTION = 'description',
   LANGUAGES_NAME = 'languagesName',
   LANGUAGES_LEVEL = 'languagesLevel',
   JOB_TITLE = 'job',
   EMPLOYER = 'employer',
   LABEL = 'label',
   LINK = 'link',
-  PRESENT = 'Present'
+  PRESENT = 'Present',
 }

@@ -22,7 +22,7 @@ const Education = (props: IProps) => {
             const { uuid, values } = item;
             const {
               degree,
-              descriptionSchool,
+              description,
               specialty,
               startDate,
               endDate,
@@ -47,10 +47,10 @@ const Education = (props: IProps) => {
                     ? `${school}, ${specialty}`
                     : specialty || school}
                 </p>
-                {descriptionSchool && (
+                {description && (
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: descriptionSchool,
+                      __html: description,
                     }}
                   />
                 )}

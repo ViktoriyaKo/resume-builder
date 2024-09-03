@@ -27,11 +27,7 @@ class Experience extends DataBuilder {
     return this.addField('City', FormData.CITY);
   }
   addDescription() {
-    return this.addField(
-      'Description',
-      FormData.DESCRIPTION_SCHOOL,
-      'textArea'
-    );
+    return this.addField('Description', FormData.DESCRIPTION, 'textArea');
   }
 }
 

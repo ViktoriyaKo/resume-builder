@@ -50,7 +50,7 @@ const Content = () => {
                 degree,
                 specialty,
                 employer,
-                descriptionSchool,
+                description,
                 startDate,
                 endDate,
                 school,
@@ -82,11 +82,11 @@ const Content = () => {
                         {school && specialty && `, ${specialty}`}
                         {date && ` · ${date}`}
                       </span>
-                      {descriptionSchool && (
+                      {description && (
                         <div
                           className={styles.description}
                           dangerouslySetInnerHTML={{
-                            __html: descriptionSchool,
+                            __html: description,
                           }}
                         />
                       )}
@@ -112,11 +112,11 @@ const Content = () => {
                         <p className={styles.muted}>{date}</p>
                       )}
                       {city && <p className={styles.muted}>{city}</p>}
-                      {descriptionSchool && (
+                      {description && (
                         <div
                           className={styles.description}
                           dangerouslySetInnerHTML={{
-                            __html: descriptionSchool,
+                            __html: description,
                           }}
                         />
                       )}

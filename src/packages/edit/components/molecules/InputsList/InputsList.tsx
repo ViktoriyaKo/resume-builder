@@ -4,11 +4,14 @@ import styles from './InputsList.module.css';
 import { useTranslation } from 'react-i18next';
 import { TypeFieldData, TypeOptionsData } from '@/packages/edit/types';
 import { FormData } from '@/packages/edit/constants';
+import { Categories } from '@/packages/edit/constants';
 
 interface IProps {
   data: TypeFieldData[];
   options?: TypeOptionsData[];
   uuid: string;
+  category: Categories;
+  nestedIndex: number;
   handleClick: ({
     uuid,
     name,
@@ -21,14 +24,14 @@ interface IProps {
 }
 
 const InputsList = (props: IProps) => {
-  const { data, options, handleClick, uuid } = props;
+  const { data, options, handleClick, uuid, nestedIndex, category } = props;
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
         const { caption, type, name } = item;
-        const uniqueName = `${uuid}${name}`;
+        const uniqueName = `${category}[${nestedIndex}].[${index}].${name}`;
 
         const commonProps = {
           name: uniqueName,
