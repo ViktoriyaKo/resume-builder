@@ -2,9 +2,6 @@ import { Button, Icon, PdfIcon, TxtIcon } from '@/ui/atoms';
 import styles from './DownloadButtons.module.css';
 import { useReactToPrint } from 'react-to-print';
 import { useCallback, RefObject } from 'react';
-import { Document, Packer, Paragraph, TextRun } from 'docx';
-import { saveAs } from 'file-saver';
-
 
 const DownloadButtons = ({
   contentRef,
@@ -31,7 +28,6 @@ const DownloadButtons = ({
 
     URL.revokeObjectURL(url);
   }, []);
-
 
   const buttons = [
     {

@@ -1,4 +1,3 @@
-import { fetchUserResumeData } from '@/services';
 import { getRequestOptions } from '@/utils';
 import { AuthOptions, User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
@@ -53,11 +52,6 @@ export const nextAuthConfig: AuthOptions = {
       if (typeof jwt === 'string') {
         cookies().set('jwt', jwt);
       }
-      const email = session?.user?.email;
-      session.data = await fetchUserResumeData({
-        email,
-        jwt,
-      });
       return session;
     },
     async jwt({ token, user, account }) {

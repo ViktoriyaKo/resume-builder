@@ -1,7 +1,0 @@
-mutation CreateResumeItem($user: ID!) {
-  createResumeItem(data: { user: $user }) {
-    data {
-      id
-    }
-  }
-}

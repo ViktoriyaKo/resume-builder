@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Icon, CustomLink, Button, DeleteIcon } from '@/ui/atoms';
 import styles from './ResumeCard.module.css';
-import { MouseEvent } from 'react';
 
 interface IOptions {
   name: string;
@@ -12,12 +11,22 @@ interface IProps {
   href: string;
   handleDelete: () => void;
   image: string;
-  options: IOptions[];
-  onContextMenu: (e: MouseEvent<HTMLImageElement>, options: IOptions[]) => void;
+  options?: IOptions[];
+  onContextMenu?: (
+    e: React.MouseEvent<HTMLDivElement>,
+    options: IOptions[]
+  ) => void;
 }
 
 const ResumeCard = (props: IProps) => {
   const { href, handleDelete, image, onContextMenu, options } = props;
+
+  const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (onContextMenu && options) {
+      onContextMenu(event, options);
+    }
+  };
 
   return (
     <>
@@ -30,7 +39,7 @@ const ResumeCard = (props: IProps) => {
               <Icon html={DeleteIcon} />
             </Button>
             <Image
-              onContextMenu={(event) => onContextMenu(event, options)}
+              onContextMenu={handleContextMenu}
               className={styles.image}
               src={image}
               alt={href ?? ''}

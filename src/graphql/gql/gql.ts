@@ -14,9 +14,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "mutation CreateRequest($contact: String!, $description: String) {\n  createRequest(data: {contact: $contact, description: $description}) {\n    data {\n      id\n      attributes {\n        description\n        contact\n      }\n    }\n  }\n}": types.CreateRequestDocument,
-    "mutation CreateResumeItem($user: ID!) {\n  createResumeItem(data: {user: $user}) {\n    data {\n      id\n    }\n  }\n}": types.CreateResumeItemDocument,
     "mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}": types.CreateUserDocument,
     "mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}": types.LoginDocument,
+    "mutation CreateResumeItem {\n  createResumeItem(\n    data: {education: {id: \"\"}, employment: {id: \"\"}, course: {id: \"\"}, contact: {id: \"\"}}\n  ) {\n    data {\n      id\n    }\n  }\n}": types.CreateResumeItemDocument,
     "mutation UpdateResumeItem($data: ResumeItemInput!, $id: ID!) {\n  updateResumeItem(data: $data, id: $id) {\n    data {\n      attributes {\n        slug\n      }\n    }\n  }\n}": types.UpdateResumeItemDocument,
     "query Home($locale: I18NLocaleCode) {\n  templates(locale: $locale) {\n    data {\n      attributes {\n        link\n        title\n        description\n        image {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n  advantages(locale: $locale) {\n    data {\n      attributes {\n        title\n        description\n        icon {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.HomeDocument,
     "query ResumeTemplates($locale: I18NLocaleCode, $link: String) {\n  templates(filters: {link: {eq: $link}}, locale: $locale) {\n    data {\n      attributes {\n        link\n        title\n        description\n        image {\n          data {\n            id\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n  allFilters: templates(sort: \"id\") {\n    data {\n      attributes {\n        link\n      }\n    }\n  }\n}": types.ResumeTemplatesDocument,
@@ -43,15 +43,15 @@ export function graphql(source: "mutation CreateRequest($contact: String!, $desc
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation CreateResumeItem($user: ID!) {\n  createResumeItem(data: {user: $user}) {\n    data {\n      id\n    }\n  }\n}"): (typeof documents)["mutation CreateResumeItem($user: ID!) {\n  createResumeItem(data: {user: $user}) {\n    data {\n      id\n    }\n  }\n}"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
 export function graphql(source: "mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"): (typeof documents)["mutation CreateUser($input: UsersPermissionsRegisterInput!) {\n  register(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"): (typeof documents)["mutation Login($input: UsersPermissionsLoginInput!) {\n  login(input: $input) {\n    jwt\n    user {\n      id\n      username\n      email\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation CreateResumeItem {\n  createResumeItem(\n    data: {education: {id: \"\"}, employment: {id: \"\"}, course: {id: \"\"}, contact: {id: \"\"}}\n  ) {\n    data {\n      id\n    }\n  }\n}"): (typeof documents)["mutation CreateResumeItem {\n  createResumeItem(\n    data: {education: {id: \"\"}, employment: {id: \"\"}, course: {id: \"\"}, contact: {id: \"\"}}\n  ) {\n    data {\n      id\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

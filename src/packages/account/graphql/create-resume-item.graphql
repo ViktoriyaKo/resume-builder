@@ -1,0 +1,14 @@
+mutation CreateResumeItem {
+  createResumeItem(
+    data: {
+      education: { id: "" }
+      employment: { id: "" }
+      course: { id: "" }
+      contact: { id: "" }
+    }
+  ) {
+    data {
+      id
+    }
+  }
+}
