@@ -1,11 +1,8 @@
 'use client';
 import styles from './DocumentPreview.module.css';
 import { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import { DocumentPreviewPagination } from '../../molecules';
-import { Button } from '@/ui/atoms';
+import { DocumentPreviewPagination, DownloadButtons } from '../../molecules';
 import { ListTemplates } from '@/packages/edit/templates';
-import { useTranslation } from 'react-i18next';
 
 interface IProps {
   currentTemplate: string;
@@ -14,12 +11,6 @@ interface IProps {
 const DocumentPreview = (props: IProps) => {
   const { currentTemplate } = props;
   const contentRef = useRef(null);
-  const { t } = useTranslation();
-
-  const handleDownloadPdf = useReactToPrint({
-    content: () => contentRef.current,
-    documentTitle: `Resume`,
-  });
 
   return (
     <div className={styles.container}>
@@ -27,12 +18,7 @@ const DocumentPreview = (props: IProps) => {
         {ListTemplates[currentTemplate]}
       </div>
       <DocumentPreviewPagination />
-      <Button
-        className={styles.button}
-        onClick={() => handleDownloadPdf(contentRef)}
-      >
-        {t('download_pdf')}
-      </Button>
+      <DownloadButtons contentRef={contentRef}/>
     </div>
   );
 };

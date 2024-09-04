@@ -7,3 +7,4 @@ export { default as Skills } from './Skills/Skills';
 export { default as DocumentPreviewPagination } from './DocumentPreviewPagination/DocumentPreviewPagination';
 export { default as DocumentEditorSection } from './DocumentEditorSection/DocumentEditorSection';
 export { default as SelectTemplates } from './SelectTemplate/SelectTemplate';
+export { default as DownloadButtons } from './DownloadButtons/DownloadButtons';
