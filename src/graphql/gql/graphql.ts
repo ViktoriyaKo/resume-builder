@@ -929,6 +929,7 @@ export type ResumeItem = {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   education?: Maybe<Array<Maybe<ComponentEducationEducation>>>;
   employment?: Maybe<Array<Maybe<ComponentExperienceExperience>>>;
+  image?: Maybe<UploadFileEntityResponse>;
   skills?: Maybe<Scalars['JSON']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   summary?: Maybe<Scalars['String']['output']>;
@@ -996,6 +997,7 @@ export type ResumeItemInput = {
   course?: InputMaybe<Array<InputMaybe<ComponentEducationEducationInput>>>;
   education?: InputMaybe<Array<InputMaybe<ComponentEducationEducationInput>>>;
   employment?: InputMaybe<Array<InputMaybe<ComponentExperienceExperienceInput>>>;
+  image?: InputMaybe<Scalars['ID']['input']>;
   skills?: InputMaybe<Scalars['JSON']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
@@ -1449,7 +1451,6 @@ export type UsersPermissionsUser = {
   provider?: Maybe<Scalars['String']['output']>;
   resume_items?: Maybe<ResumeItemRelationResponseCollection>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
-  test?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   username: Scalars['String']['output'];
 };
@@ -1493,7 +1494,6 @@ export type UsersPermissionsUserFiltersInput = {
   resetPasswordToken?: InputMaybe<StringFilterInput>;
   resume_items?: InputMaybe<ResumeItemFiltersInput>;
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
-  test?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   username?: InputMaybe<StringFilterInput>;
 };
@@ -1508,7 +1508,6 @@ export type UsersPermissionsUserInput = {
   resetPasswordToken?: InputMaybe<Scalars['String']['input']>;
   resume_items?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   role?: InputMaybe<Scalars['ID']['input']>;
-  test?: InputMaybe<Scalars['String']['input']>;
   username?: InputMaybe<Scalars['String']['input']>;
 };
 

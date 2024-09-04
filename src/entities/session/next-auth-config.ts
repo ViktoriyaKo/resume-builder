@@ -62,6 +62,7 @@ export const nextAuthConfig: AuthOptions = {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
           const data = await response.json();
+
           token.jwt = data.jwt;
           token.id = data.user.id;
         }

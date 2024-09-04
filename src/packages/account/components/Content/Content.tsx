@@ -4,11 +4,15 @@ import { Icon, AddIcon, Button } from '@/ui/atoms';
 import clsx from 'clsx';
 import ResumeCard from '../ResumeCard/ResumeCard';
 import { createResumeItem, updateUserResumeData } from '../../services';
+import { ResumeItemFiltersInput } from '@/graphql/gql/graphql';
 
-const Content = () => {
-  const cards: any[] = [];
+interface IProps {
+  resume: ResumeItemFiltersInput[];
+}
+
+const Content = (props: IProps) => {
+  const { resume } = props;
   const { t } = useTranslation();
-
   const testCreateResume = async () => {
     const data = await createResumeItem();
     const id = data?.id;
@@ -29,10 +33,13 @@ const Content = () => {
             <Icon html={AddIcon} />
           </>
         </Button>
-        {cards &&
-          cards.length > 0 &&
-          cards?.map((item) => {
-            return <ResumeCard key={item.id} {...item} />;
+        {resume &&
+          resume.length > 0 &&
+          resume?.map((item) => {
+            const { id, image } = item;
+            return (
+              <ResumeCard key={String(item.id)} id={id} image={image?.url} />
+            );
           })}
       </div>
     </div>

@@ -1,12 +1,17 @@
 import TranslationsProvider from '@/providers/TranslationsProvider';
 import initTranslations from '@/app/i18n';
-import { LanguagesType } from '@/types/types';
+import { Locales } from '@/types/types';
 import ClientEditPage from './ClientEditPage';
 
 const namespaces = ['edit'];
 
-const EditPage = async (props: LanguagesType) => {
-  const { lang } = props;
+interface IProps {
+  resume: string;
+  lang: Locales;
+}
+
+const EditPage = async (props: IProps) => {
+  const { lang, resume } = props;
   const { resources } = await initTranslations({
     lang,
     namespaces,

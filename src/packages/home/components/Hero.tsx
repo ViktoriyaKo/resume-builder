@@ -24,7 +24,7 @@ const Hero = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{t('header')}</h1>
         <CustomLink
-          href={'/edit'}
+          href={'/account'}
           className={styles.link}
           text={t('create_resume')}
         />

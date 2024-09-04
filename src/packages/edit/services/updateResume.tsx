@@ -4,7 +4,8 @@ import {
   UpdateResumeItemDocument,
 } from '@/graphql/gql/graphql';
 
-export const updateResume = async (data) => {
+export const updateResume = async (data: any) => {
+  //todo test!!!!
   const variables = { data, id: '23' };
 
   try {

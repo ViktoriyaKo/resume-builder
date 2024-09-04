@@ -18,7 +18,6 @@ export const fetchUserResumeData = async (props: IProps) => {
       }
     );
     const data = await res.json();
-
     return data?.resume_item;
   } catch (error) {
     return null;

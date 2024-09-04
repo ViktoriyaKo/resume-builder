@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Icon, CustomLink, Button, DeleteIcon } from '@/ui/atoms';
 import styles from './ResumeCard.module.css';
+import { InputMaybe, IdFilterInput } from '@/graphql/gql/graphql';
 
 interface IOptions {
   name: string;
@@ -8,9 +9,9 @@ interface IOptions {
 }
 
 interface IProps {
-  href: string;
-  handleDelete: () => void;
+  id?: InputMaybe<IdFilterInput>;
   image: string;
+  handleDelete?: () => void;
   options?: IOptions[];
   onContextMenu?: (
     e: React.MouseEvent<HTMLDivElement>,
@@ -19,34 +20,30 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { href, handleDelete, image, onContextMenu, options } = props;
-
-  const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    if (onContextMenu && options) {
-      onContextMenu(event, options);
-    }
-  };
+  const { id, handleDelete, image } = props;
 
   return (
     <>
       <CustomLink
-        href={href}
+        href={`/edit/${id}`}
         className={styles.card}
         prefix={
           <>
-            <Button onClick={handleDelete} className={styles.delete}>
-              <Icon html={DeleteIcon} />
-            </Button>
-            <Image
-              onContextMenu={handleContextMenu}
-              className={styles.image}
-              src={image}
-              alt={href ?? ''}
-              sizes="(max-width: 768px) 70vw, 30vw"
-              quality={70}
-              fill
-            />
+            {handleDelete && (
+              <Button onClick={handleDelete} className={styles.delete}>
+                <Icon html={DeleteIcon} />
+              </Button>
+            )}
+            {image && (
+              <Image
+                className={styles.image}
+                src={image}
+                alt={`resume-${id}`}
+                sizes="(max-width: 768px) 70vw, 30vw"
+                quality={70}
+                fill
+              />
+            )}
           </>
         }
       />

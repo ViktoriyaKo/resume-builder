@@ -3,8 +3,14 @@ import styles from '../styles/AccountPage.module.css';
 import { useSession } from 'next-auth/react';
 import { Aside, Content } from '../components';
 import { useTranslation } from 'react-i18next';
+import { ResumeItemFiltersInput } from '@/graphql/gql/graphql';
 
-const ClientAccountPage = () => {
+interface IProps {
+  resume: ResumeItemFiltersInput[];
+}
+
+const ClientAccountPage = (props: IProps) => {
+  const { resume } = props;
   const session = useSession();
   const { name, image } = session?.data?.user ?? {};
   const { t } = useTranslation();
@@ -19,7 +25,7 @@ const ClientAccountPage = () => {
       </header>
       <div className={styles.wrapper}>
         <Aside name={name ?? 'anonymous'} image={image ?? ''} />
-        <Content />
+        <Content resume={resume} />
       </div>
     </div>
   );

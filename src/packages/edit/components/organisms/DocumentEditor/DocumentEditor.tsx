@@ -14,8 +14,6 @@ import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
 import { CustomLink } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
-import { updateResume } from '@/packages/edit/services/updateResume';
-import { useEffect } from 'react';
 interface IProps {
   currentTemplate: string;
 }
@@ -39,10 +37,7 @@ const DocumentEditor = (props: IProps) => {
   const methods = useForm();
 
   const onSubmit = async (data) => {
-    const { contact, educationData } = data;
-    console.log(educationData);
-    // await updateResume({ education: educationData });
-    // await updateResume();
+    console.log(data);
     return;
   };
 

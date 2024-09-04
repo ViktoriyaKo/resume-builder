@@ -28,13 +28,15 @@ const Aside = (props: IProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.user}>
-        <Image
-          className={styles.image}
-          width={60}
-          height={60}
-          src={image ?? ''}
-          alt={'user-photo'}
-        />
+        {image && (
+          <Image
+            className={styles.image}
+            width={60}
+            height={60}
+            src={image}
+            alt={'user-photo'}
+          />
+        )}
         <h3>{name}</h3>
       </div>
       <ul className={styles.list}>

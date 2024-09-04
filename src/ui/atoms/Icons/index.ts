@@ -11,3 +11,4 @@ export { AddIcon } from './AddIcon';
 export { DeleteIcon } from './DeleteIcon';
 export { PdfIcon } from './PdfIcon';
 export { TxtIcon } from './TxtIcon';
+export { SaveIcon } from './SaveIcon';
