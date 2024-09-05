@@ -1,6 +1,16 @@
 abstract class Builder {
-  abstract addField(caption: string, name: string, type: string): this;
-  abstract build(): { caption: string; name: string; type: string }[];
+  abstract addField(
+    caption: string,
+    name: string,
+    value: any,
+    type: string
+  ): this;
+  abstract build(): {
+    caption: string;
+    name: string;
+    value: any;
+    type: string;
+  }[];
 }
 
-export default Builder
+export default Builder;

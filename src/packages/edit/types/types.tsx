@@ -68,3 +68,10 @@ export interface IDataEditorItems {
   data: TypeExpendedData[];
   options?: TypeOptionsData[];
 }
+
+export interface IExperienceFields {
+  caption: string;
+  name: string;
+  type?: string;
+  value?: any;
+}

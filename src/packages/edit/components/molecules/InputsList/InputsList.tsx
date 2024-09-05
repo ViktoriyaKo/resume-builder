@@ -30,9 +30,8 @@ const InputsList = (props: IProps) => {
   return (
     <div className={styles.container}>
       {data?.map((item, index) => {
-        const { caption, type, name } = item;
+        const { caption, type, name, value } = item;
         const uniqueName = `${category}[${nestedIndex}].[${index}].${name}`;
-
         const commonProps = {
           name: uniqueName,
           label: t(caption),
@@ -87,7 +86,8 @@ const InputsList = (props: IProps) => {
         } else {
           return (
             <Input
-              {...item}
+              defaultValue={value}
+              type={type}
               key={uniqueName}
               className={styles.input}
               {...commonProps}

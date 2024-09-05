@@ -37,7 +37,7 @@ const Content = (props: IContentProps) => {
   } = props;
   const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
-    data: initialFormData,
+    data: initialFormData(),
   });
 
   return (

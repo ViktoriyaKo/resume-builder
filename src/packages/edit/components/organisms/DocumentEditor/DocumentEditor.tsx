@@ -1,7 +1,10 @@
 'use client';
 import styles from './DocumentEditor.module.css';
-import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
-import { useSelector } from 'react-redux';
+import {
+  EDUCATION_ENTITY,
+  SELECT_LANGUAGES_ENTITY,
+} from '@/packages/edit/entities';
+import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
 import {
@@ -14,16 +17,23 @@ import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
 import { CustomLink } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
+import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
+import { useEffect } from 'react';
 interface IProps {
   currentTemplate: string;
 }
 
 const DocumentEditor = (props: IProps) => {
   const { currentTemplate } = props;
+  const dispatch = useDispatch();
 
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
   const { lang } = useParams();
+
+  useEffect(() => {
+    dispatch(getCurrentResume('37'));
+  }, []);
 
   const {
     contactData,
@@ -37,7 +47,7 @@ const DocumentEditor = (props: IProps) => {
   const methods = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log(EDUCATION_ENTITY);
     return;
   };
 

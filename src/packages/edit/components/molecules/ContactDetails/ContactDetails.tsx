@@ -26,7 +26,7 @@ const ContactDetails = (props: IProps) => {
 
   const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
-    data: ADDITIONAL_CONTACT_ENTITY,
+    data: ADDITIONAL_CONTACT_ENTITY(),
   });
 
   const handleChange = useCallback(
@@ -64,13 +64,15 @@ const ContactDetails = (props: IProps) => {
       />
       <div className={styles.wrapper}>
         {data.map((item) => {
-          const { caption, name, type } = item ?? {};
+          const { caption, name, type, value } = item ?? {};
+          const defaultValue = value === null ? undefined : value;
 
           return (
             <Input
-              name={`.${name}`}
               key={name}
+              name={name}
               type={type}
+              defaultValue={defaultValue}
               label={t(caption)}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 handleChange({

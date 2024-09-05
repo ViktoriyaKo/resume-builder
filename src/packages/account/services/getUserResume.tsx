@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers';
 
 export const getUserResume = async () => {
-  const { value } = cookies().get('jwt');
+  const jwt = cookies().get('jwt');
 
   try {
     const res = await fetch(
@@ -10,7 +10,7 @@ export const getUserResume = async () => {
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${value}`,
+          Authorization: `Bearer ${jwt?.value}`,
         },
       }
     );

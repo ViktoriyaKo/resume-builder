@@ -10,7 +10,7 @@ import {
 } from '../entities';
 import { Categories } from '../constants/categories';
 import { RootState } from '../../../store/store';
-import { v4 as uuid } from 'uuid';
+
 import {
   TypeInitialDataState,
   AddDataActionPayload,
@@ -19,19 +19,33 @@ import {
   TypeFieldData,
 } from '../types';
 import addItemDataToState from './utils/addItemDataToState';
+import { getCurrentResume } from '../services';
+
+const entityMapping = {
+  contact: CONTACT_ENTITY,
+  education: EDUCATION_ENTITY,
+  course: COURSE_ENTITY,
+  employment: EMPLOYMENT_ENTITY,
+  links: LINKS_ENTITY,
+  languages: LANGUAGES_ENTITY,
+};
 
 //в этом слайсе обрабатываются сложные формы с вложенными секциями
-const getDataItem = (data: TypeFieldData[]) => {
-  return [{ uuid: uuid(), data }];
+const getInitialDataItem = (data, ENTITY) => {
+  return data.map((item) => {
+    const uuid = item.id;
+    const schema = ENTITY(item);
+    return { uuid, data: schema };
+  });
 };
 
 const initialState: TypeInitialDataState = {
-  contactData: CONTACT_ENTITY,
-  educationData: getDataItem(EDUCATION_ENTITY),
-  courseData: getDataItem(COURSE_ENTITY),
-  employmentData: getDataItem(EMPLOYMENT_ENTITY),
-  linksData: getDataItem(LINKS_ENTITY),
-  languagesData: getDataItem(LANGUAGES_ENTITY),
+  contactData: [],
+  educationData: [],
+  courseData: [],
+  employmentData: [],
+  linksData: [],
+  languagesData: [],
 };
 
 export const Slice = createSlice({
@@ -75,12 +89,29 @@ export const Slice = createSlice({
       } else {
         const element = state[category].find((item) => item.uuid === uuid);
         if (element) {
+          console.log(element);
           element.values = element?.values
             ? { ...element.values, [name]: value }
             : { [name]: value };
         }
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getCurrentResume.fulfilled, (state, action) => {
+      Object.keys(entityMapping).forEach((key) => {
+        if (action.payload[key]) {
+          const ENTITY = entityMapping[key];
+          const data = action.payload[key];
+
+          if (key === 'contact') {
+            state.contactData = ENTITY(data);
+          } else {
+            state[`${key}Data`] = getInitialDataItem(data, ENTITY);
+          }
+        }
+      });
+    });
   },
 });
 
