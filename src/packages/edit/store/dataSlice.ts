@@ -16,10 +16,9 @@ import {
   AddDataActionPayload,
   RemoveDataActionPayload,
   UpdateValueToDataActionPayload,
-  TypeFieldData,
 } from '../types';
-import addItemDataToState from './utils/addItemDataToState';
 import { getCurrentResume } from '../services';
+import { getInitialDataItem, addItemDataToState } from './utils';
 
 const entityMapping = {
   contact: CONTACT_ENTITY,
@@ -31,13 +30,6 @@ const entityMapping = {
 };
 
 //в этом слайсе обрабатываются сложные формы с вложенными секциями
-const getInitialDataItem = (data, ENTITY) => {
-  return data.map((item) => {
-    const uuid = item.id;
-    const schema = ENTITY(item);
-    return { uuid, data: schema };
-  });
-};
 
 const initialState: TypeInitialDataState = {
   contactData: [],
@@ -89,7 +81,6 @@ export const Slice = createSlice({
       } else {
         const element = state[category].find((item) => item.uuid === uuid);
         if (element) {
-          console.log(element);
           element.values = element?.values
             ? { ...element.values, [name]: value }
             : { [name]: value };
@@ -103,11 +94,13 @@ export const Slice = createSlice({
         if (action.payload[key]) {
           const ENTITY = entityMapping[key];
           const data = action.payload[key];
-
           if (key === 'contact') {
-            state.contactData = ENTITY(data);
+            state.contactData = ENTITY.map(item => {
+              return {...item, value: data[item.name]}
+            });
           } else {
-            state[`${key}Data`] = getInitialDataItem(data, ENTITY);
+            const newKey = `${key}Data` as Categories;
+            state[newKey] = getInitialDataItem(data, ENTITY);
           }
         }
       });

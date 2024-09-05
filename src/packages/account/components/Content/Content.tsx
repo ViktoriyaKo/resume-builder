@@ -13,7 +13,8 @@ interface IProps {
 const Content = (props: IProps) => {
   const { resume } = props;
   const { t } = useTranslation();
-  const testCreateResume = async () => {
+
+  const createResume = async () => {
     const data = await createResumeItem();
     const id = data?.id;
     if (id) {
@@ -25,7 +26,7 @@ const Content = (props: IProps) => {
     <div className={styles.wrapper}>
       <div className={styles.list}>
         <Button
-          onClick={testCreateResume}
+          onClick={createResume}
           className={clsx(styles.empty, styles.card)}
         >
           <>
@@ -36,10 +37,8 @@ const Content = (props: IProps) => {
         {resume &&
           resume.length > 0 &&
           resume?.map((item) => {
-            const { id, image } = item;
-            return (
-              <ResumeCard key={String(item.id)} id={id} image={image?.url} />
-            );
+            const { id } = item;
+            return <ResumeCard key={String(item.id)} id={id} />;
           })}
       </div>
     </div>

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 
 export const getCurrentResume = createAsyncThunk(
-  'test/getCurrentResume',
+  'resume/getCurrentResume',
   async (id: string, thunkAPI) => {
     try {
       const jwt = Cookies.get('jwt');
@@ -24,4 +24,3 @@ export const getCurrentResume = createAsyncThunk(
     }
   }
 );
-

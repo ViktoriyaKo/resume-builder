@@ -10,7 +10,7 @@ interface IOptions {
 
 interface IProps {
   id?: InputMaybe<IdFilterInput>;
-  image: string;
+  image?: string;
   handleDelete?: () => void;
   options?: IOptions[];
   onContextMenu?: (
@@ -20,7 +20,9 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { id, handleDelete, image } = props;
+  const { id, handleDelete } = props;
+  const image =
+    'https://res.cloudinary.com/dzwxhvkhw/image/upload/v1724875296/Untitled_8d45050e8f.png';
 
   return (
     <>

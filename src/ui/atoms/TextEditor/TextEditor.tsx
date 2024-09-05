@@ -9,6 +9,7 @@ const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 interface TextEditorProps {
   name: string;
+  defaultValue?: string;
   caption?: string;
   className?: string;
   label?: string;
@@ -54,6 +55,7 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
       'list',
       'link',
     ];
+    console.log(props);
 
     return (
       <div className={clsx('mb-3', className && className)}>
@@ -80,17 +82,19 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
 
 const ControlledTextEditor = (props: TextEditorProps) => {
   const { control } = useFormContext();
-  const { onChange } = props;
+  const { onChange, defaultValue } = props;
 
   return (
     <Controller
       control={control}
+      defaultValue={defaultValue && defaultValue}
       name={props.name ?? ''}
       render={({ field }) => {
         return (
           <TextEditor
             {...props}
             {...field}
+            value={field.value || defaultValue || ''}
             onChange={(value) => {
               onChange?.(value);
               field.onChange(value);

@@ -37,7 +37,7 @@ const Content = (props: IContentProps) => {
   } = props;
   const { addListItem, removeListItem, updateValueField } = useHandleFormData({
     category,
-    data: initialFormData(),
+    data: initialFormData,
   });
 
   return (
@@ -51,7 +51,7 @@ const Content = (props: IContentProps) => {
       {data &&
         data.length > 0 &&
         data.map((item, index) => {
-          const { uuid, data } = item;
+          const { uuid, data, values } = item;
 
           return (
             <Fragment key={uuid}>
@@ -64,6 +64,7 @@ const Content = (props: IContentProps) => {
                   uuid={uuid}
                   handleClick={updateValueField}
                   data={data}
+                  values={values}
                   options={options}
                   nestedIndex={index}
                   category={category}

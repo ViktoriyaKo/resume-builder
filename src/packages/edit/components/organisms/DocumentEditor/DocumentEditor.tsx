@@ -19,18 +19,20 @@ import { CustomLink } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect } from 'react';
+import { AppDispatch } from '@/store/store';
 interface IProps {
   currentTemplate: string;
 }
 
 const DocumentEditor = (props: IProps) => {
   const { currentTemplate } = props;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
   const { lang } = useParams();
 
+  //TODO TEST!!!
   useEffect(() => {
     dispatch(getCurrentResume('37'));
   }, []);
@@ -46,8 +48,7 @@ const DocumentEditor = (props: IProps) => {
 
   const methods = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(EDUCATION_ENTITY);
+  const onSubmit = async () => {
     return;
   };
 

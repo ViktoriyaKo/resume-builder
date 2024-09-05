@@ -5,8 +5,7 @@ import {
 } from '@/graphql/gql/graphql';
 
 export const updateResume = async (data: any) => {
-  //todo test!!!!
-  const variables = { data, id: '23' };
+  const variables = { data };
 
   try {
     const data = await authClient.request<UpdateResumeItemMutation>(

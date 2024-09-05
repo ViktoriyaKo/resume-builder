@@ -12,6 +12,7 @@ interface IProps {
   uuid: string;
   category: Categories;
   nestedIndex: number;
+  values?: { [key: string]: string | undefined };
   handleClick: ({
     uuid,
     name,
@@ -24,13 +25,15 @@ interface IProps {
 }
 
 const InputsList = (props: IProps) => {
-  const { data, options, handleClick, uuid, nestedIndex, category } = props;
+  const { data, options, handleClick, uuid, nestedIndex, category, values } =
+    props;
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       {data?.map((item, index) => {
-        const { caption, type, name, value } = item;
+        const { caption, type, name } = item;
+        const defaultValue = values && name && values?.[name];
         const uniqueName = `${category}[${nestedIndex}].[${index}].${name}`;
         const commonProps = {
           name: uniqueName,
@@ -45,6 +48,7 @@ const InputsList = (props: IProps) => {
               key={uniqueName}
               {...commonProps}
               className={styles.textArea}
+              value={defaultValue}
               onChange={(value) =>
                 handleClick({ uuid, name: name ?? '', value })
               }
@@ -86,7 +90,7 @@ const InputsList = (props: IProps) => {
         } else {
           return (
             <Input
-              defaultValue={value}
+              defaultValue={defaultValue}
               type={type}
               key={uniqueName}
               className={styles.input}

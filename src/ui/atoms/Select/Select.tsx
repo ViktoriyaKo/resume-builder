@@ -38,12 +38,13 @@ const Select = forwardRef(
 
 const ControlledSelect = forwardRef(
   (props: IProps, ref: LegacyRef<HTMLSelectElement>) => {
-    const { control } = useFormContext();
+    const { control, defaultValue } = useFormContext();
     const { onChange } = props;
 
     return (
       <Controller
         control={control}
+        defaultValue={defaultValue && defaultValue}
         name={props.name ?? ''}
         render={({ field }) => {
           return (

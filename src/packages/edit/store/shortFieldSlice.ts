@@ -3,6 +3,7 @@ import { RootState } from '../../../store/store';
 import { TITLES } from '../entities';
 import { UpdateShortFieldActionPayload, TypeInitialShortField } from '../types';
 import { ShortCategories } from '../constants';
+import { getCurrentResume } from '../services';
 
 //в этом слайсе обрабатываются простые данные формы, где все values строки кроме TITLES
 
@@ -39,6 +40,11 @@ export const Slice = createSlice({
         state[category] = value as string;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getCurrentResume.fulfilled, (state, action) => {
+      state.summary = action.payload.summary;
+    });
   },
 });
 

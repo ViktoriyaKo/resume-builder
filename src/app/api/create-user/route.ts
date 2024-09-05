@@ -1,14 +1,11 @@
-import { createUser, createResumeItem } from '@/services';
+import { createUser } from '@/services';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { id, jwt } = await createUser(body);
+    const { jwt } = await createUser(body);
 
-    if (id) {
-      await createResumeItem(id);
-    }
     return NextResponse.json({ jwt }, { status: 200 });
   } catch (error: any) {
     console.log(error);

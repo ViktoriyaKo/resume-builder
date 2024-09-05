@@ -69,7 +69,7 @@ export interface IDataEditorItems {
   options?: TypeOptionsData[];
 }
 
-export interface IExperienceFields {
+export interface IFields {
   caption: string;
   name: string;
   type?: string;
