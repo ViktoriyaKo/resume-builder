@@ -6,7 +6,12 @@ import store from '@/store/store';
 import { useSearchParams } from 'next/navigation';
 import { paramsVariables } from '@/constants';
 
-const ClientEditPage = () => {
+interface IProps {
+  resume:string
+}
+
+const ClientEditPage = (props: IProps) => {
+  const { resume }= props
   const searchParams = useSearchParams();
   const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple';
 
@@ -14,7 +19,7 @@ const ClientEditPage = () => {
     <Provider store={store}>
       <section className={styles.container}>
         <div className={styles.editor}>
-          <DocumentEditor currentTemplate={currentTemplate} />
+          <DocumentEditor currentTemplate={currentTemplate} resume={resume}/>
         </div>
         <div className={styles.view}>
           <DocumentPreview currentTemplate={currentTemplate} />

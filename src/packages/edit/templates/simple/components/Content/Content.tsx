@@ -10,28 +10,28 @@ import { getTitles } from '../../../utils';
 import { useTranslation } from 'react-i18next';
 
 const Content = () => {
-  const { contactData, ...initialData } = useSelector(getStateData);
+  const { contact, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
-  const { skillsDescription, summary, titles: titlesData } = initialShortData;
+  const { skills, summary, titles: titlesData } = initialShortData;
   const { t } = useTranslation();
   const titles = getTitles(titlesData, t);
 
   return (
     <div className={styles.container}>
-      {skillsDescription && (
+      {skills && (
         <>
-          <h3 className={styles.title}>{titles.skillsData}</h3>
+          <h3 className={styles.title}>{titles.skills}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{
-              __html: skillsDescription,
+              __html: skills,
             }}
           />
         </>
       )}
       {summary && (
         <>
-          <h3 className={styles.title}>{t(titles.summaryData)}</h3>
+          <h3 className={styles.title}>{t(titles.summary)}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{

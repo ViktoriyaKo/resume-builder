@@ -33,7 +33,7 @@ const SelectTemplates = (props: IProps) => {
       defaultValue={currentTemplate}
       label={'Change template:'}
       options={options}
-      name={'current-template'}
+      name={'designer'}
       onChange={handleChange}
     />
   );

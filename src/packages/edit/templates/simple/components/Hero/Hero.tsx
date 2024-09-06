@@ -10,15 +10,15 @@ import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
-  const { contactData, linksData } = initialData;
+  const { contact, links } = initialData;
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []
   );
 
-  const headerData = getFilledData(contactData);
-  const contactLinks = getDataValuesForm(linksData);
+  const headerData = getFilledData(contact);
+  const contactLinks = getDataValuesForm(links);
 
   const {
     city,

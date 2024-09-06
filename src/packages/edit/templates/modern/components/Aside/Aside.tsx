@@ -21,9 +21,8 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skillsDescription, titles: titlesData } =
-    useSelector(getStateShortData);
-  const { contactData, educationData, linksData, languagesData } = initialData;
+  const { skills, titles: titlesData } = useSelector(getStateShortData);
+  const { contact, education, links, languages: languagesData } = initialData;
 
   const titles = getTitles(titlesData, t);
 
@@ -32,15 +31,15 @@ const Aside = () => {
     []
   );
 
-  const headerData = getFilledData(contactData);
+  const headerData = getFilledData(contact);
 
   const { city, country, email, phone, photo } = headerData;
   const shortAddress =
     city && country ? `${city}, ${country}` : city || country;
 
-  const contactLinks = getDataValuesForm(linksData);
+  const contactLinks = getDataValuesForm(links);
   const languages = getDataValuesForm(languagesData);
-  const isEducation = educationData.some((item) => item.values);
+  const isEducation = education.some((item) => item.values);
 
   return (
     <div className={styles.container}>
@@ -62,22 +61,22 @@ const Aside = () => {
         <LabelValue label={'Phone:'} value={phone} />
         <LabelValue label={'Address:'} value={shortAddress} />
       </div>
-      {skillsDescription && (
+      {skills && (
         <div>
-          <Title title={titles.skillsData} />
+          <Title title={titles.skills} />
           <div
             className={styles.skills}
             dangerouslySetInnerHTML={{
-              __html: skillsDescription,
+              __html: skills,
             }}
           />
         </div>
       )}
       {isEducation && (
         <div>
-          <Title title={titles.educationData} />
+          <Title title={titles.education} />
           <ul className={styles.education}>
-            {educationData.map((item) => {
+            {education.map((item) => {
               const { uuid, values } = item;
               const {
                 degree,
@@ -121,7 +120,7 @@ const Aside = () => {
       )}
       {languages.length > 0 && (
         <div>
-          <Title title={titles.languagesData} />
+          <Title title={titles.languages} />
           <div className={styles.wrapper}>
             {languages.map((item) => {
               const { languagesLevel, languagesName } = item ?? {};

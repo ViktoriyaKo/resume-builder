@@ -43,7 +43,13 @@ export const Slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCurrentResume.fulfilled, (state, action) => {
-      state.summary = action.payload.summary;
+      Object.keys(initialState).forEach((key) => {
+        if (action.payload[key]) {
+          if (action.payload[key] !== ShortCategories.TITLES) {
+            state[key] = action.payload[key];
+          }
+        }
+      });
     });
   },
 });

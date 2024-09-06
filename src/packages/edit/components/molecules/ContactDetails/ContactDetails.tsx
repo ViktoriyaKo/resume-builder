@@ -69,7 +69,7 @@ const ContactDetails = (props: IProps) => {
           return (
             <Input
               key={name}
-              name={name}
+              name={`contact.${name}`}
               type={type}
               defaultValue={defaultValue}
               label={t(caption)}

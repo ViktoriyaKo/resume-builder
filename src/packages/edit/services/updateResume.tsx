@@ -4,8 +4,8 @@ import {
   UpdateResumeItemDocument,
 } from '@/graphql/gql/graphql';
 
-export const updateResume = async (data: any) => {
-  const variables = { data };
+export const updateResume = async (data: any, id: string) => {
+  const variables = { data, id };
 
   try {
     const data = await authClient.request<UpdateResumeItemMutation>(

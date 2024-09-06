@@ -7,11 +7,10 @@ import { TextEditor } from '@/ui/atoms';
 import { useTranslation } from 'react-i18next';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 
-
 const Skills = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { skillsDescription  } = useSelector(getStateShortData);
+  const { skills } = useSelector(getStateShortData);
 
   const handleChange = useCallback((value: string) => {
     dispatch(
@@ -31,7 +30,7 @@ const Skills = () => {
         description={t('description_skills')}
       />
       <TextEditor
-        defaultValue={skillsDescription}
+        defaultValue={skills}
         name={ShortCategories.SKILLS_DESCRIPTION}
         onChange={handleChange}
       />

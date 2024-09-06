@@ -23,7 +23,7 @@ const EditPage = async (props: IProps) => {
       lang={lang}
       resources={resources}
     >
-      <ClientEditPage />
+      <ClientEditPage resume={resume} />
     </TranslationsProvider>
   );
 };

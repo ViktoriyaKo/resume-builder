@@ -32,12 +32,12 @@ const entityMapping = {
 //в этом слайсе обрабатываются сложные формы с вложенными секциями
 
 const initialState: TypeInitialDataState = {
-  contactData: [],
-  educationData: [],
-  courseData: [],
-  employmentData: [],
-  linksData: [],
-  languagesData: [],
+  contact: [],
+  education: [],
+  course: [],
+  employment: [],
+  links: [],
+  languages: [],
 };
 
 export const Slice = createSlice({
@@ -95,12 +95,11 @@ export const Slice = createSlice({
           const ENTITY = entityMapping[key];
           const data = action.payload[key];
           if (key === 'contact') {
-            state.contactData = ENTITY.map(item => {
-              return {...item, value: data[item.name]}
+            state[key] = ENTITY.map((item) => {
+              return { ...item, value: data[item.name] };
             });
           } else {
-            const newKey = `${key}Data` as Categories;
-            state[newKey] = getInitialDataItem(data, ENTITY);
+            state[key] = getInitialDataItem(data, ENTITY);
           }
         }
       });

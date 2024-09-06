@@ -55,7 +55,6 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
       'list',
       'link',
     ];
-    console.log(props);
 
     return (
       <div className={clsx('mb-3', className && className)}>

@@ -12,7 +12,7 @@ import iconJob from '/public/icons/job1.png';
 import { useTranslation } from 'react-i18next';
 
 const Content = () => {
-  const { contactData, employmentData, courseData } = useSelector(getStateData);
+  const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { summary, titles: titlesData } = initialShortData;
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const Content = () => {
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []
   );
-  const headerData = getFilledData(contactData);
+  const headerData = getFilledData(contact);
   const { firstName, job, lastName } = headerData;
 
   return (
@@ -41,13 +41,13 @@ const Content = () => {
         />
       )}
       <ExperienceList
-        data={employmentData}
-        title={titles.employmentData}
+        data={employment}
+        title={titles.employment}
         icon={iconJob}
       />
       <ExperienceList
-        data={courseData}
-        title={titles.courseData}
+        data={course}
+        title={titles.course}
         icon={iconEducation}
       />
     </div>

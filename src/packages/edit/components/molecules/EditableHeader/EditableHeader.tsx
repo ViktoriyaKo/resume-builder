@@ -49,7 +49,7 @@ const EditableHeader = (props: IProps) => {
     <header className={'mt-3'}>
       <div className={styles.wrapper}>
         <Input
-          name={name}
+          name={`${category}.${name}`}
           defaultValue={title}
           inputStyle={styles.input}
           ref={ref}

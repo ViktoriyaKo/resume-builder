@@ -18,6 +18,7 @@ export const getCurrentResume = createAsyncThunk(
       );
 
       const data = await response.json();
+      console.log('current-resume', data?.resume_items[0]);
       return data?.resume_items[0];
     } catch (e) {
       return thunkAPI.rejectWithValue('ERROR');

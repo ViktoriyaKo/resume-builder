@@ -10,7 +10,7 @@ import { ExperienceList, Title } from '../../atoms';
 import { useTranslation } from 'react-i18next';
 
 const Content = () => {
-  const { contactData, employmentData, courseData } = useSelector(getStateData);
+  const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { summary, titles: titlesData } = initialShortData;
   const { t } = useTranslation();
@@ -20,7 +20,7 @@ const Content = () => {
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []
   );
-  const headerData = getFilledData(contactData);
+  const headerData = getFilledData(contact);
   const { firstName, job, lastName } = headerData;
 
   return (
@@ -34,7 +34,7 @@ const Content = () => {
       </header>
       {summary && (
         <div className={styles.summary}>
-          <Title title={titles.summaryData} />
+          <Title title={titles.summary} />
           <div
             dangerouslySetInnerHTML={{
               __html: summary,
@@ -42,8 +42,8 @@ const Content = () => {
           />
         </div>
       )}
-      <ExperienceList data={employmentData} title={titles.employmentData} />
-      <ExperienceList data={courseData} title={titles.courseData} />
+      <ExperienceList data={employment} title={titles.employment} />
+      <ExperienceList data={course} title={titles.course} />
     </div>
   );
 };

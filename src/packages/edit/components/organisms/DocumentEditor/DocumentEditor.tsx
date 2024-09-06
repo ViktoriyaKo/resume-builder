@@ -20,35 +20,33 @@ import { useParams } from 'next/navigation';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect } from 'react';
 import { AppDispatch } from '@/store/store';
+import { updateResume } from '@/packages/edit/services';
+
 interface IProps {
   currentTemplate: string;
+  resume: string;
 }
 
 const DocumentEditor = (props: IProps) => {
-  const { currentTemplate } = props;
+  const { currentTemplate, resume } = props;
   const dispatch = useDispatch<AppDispatch>();
 
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
   const { lang } = useParams();
 
-  //TODO TEST!!!
   useEffect(() => {
-    dispatch(getCurrentResume('37'));
+    dispatch(getCurrentResume(resume));
   }, []);
 
-  const {
-    contactData,
-    courseData,
-    educationData,
-    employmentData,
-    languagesData,
-    linksData,
-  } = initialData;
+  const { contact, course, education, employment, languages, links } =
+    initialData;
 
   const methods = useForm();
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
+    // await updateResume(data, resume)
+    console.log(data);
     return;
   };
 
@@ -72,15 +70,15 @@ const DocumentEditor = (props: IProps) => {
 
           <SelectTemplates currentTemplate={currentTemplate} />
         </div>
-        <ContactDetails data={contactData} />
+        <ContactDetails data={contact} />
         <DocumentEditorSection.Summary />
-        <DocumentEditorSection.Employment data={employmentData} />
-        <DocumentEditorSection.Education data={educationData} />
+        <DocumentEditorSection.Employment data={employment} />
+        <DocumentEditorSection.Education data={education} />
         <Skills />
-        <DocumentEditorSection.Links data={linksData} />
-        <DocumentEditorSection.Courses data={courseData} />
+        <DocumentEditorSection.Links data={links} />
+        <DocumentEditorSection.Courses data={course} />
         <DocumentEditorSection.Languages
-          data={languagesData}
+          data={languages}
           options={SELECT_LANGUAGES_ENTITY}
         />
         <div className={styles.wrapper}>

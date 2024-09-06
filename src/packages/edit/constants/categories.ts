@@ -1,17 +1,17 @@
 export enum Categories {
-  CONTACT = 'contactData',
-  EDUCATION = 'educationData',
-  COURSE = 'courseData',
-  EMPLOYMENT = 'employmentData',
-  LINKS = 'linksData',
-  LANGUAGES = 'languagesData',
+  CONTACT = 'contact',
+  EDUCATION = 'education',
+  COURSE = 'course',
+  EMPLOYMENT = 'employment',
+  LINKS = 'links',
+  LANGUAGES = 'languages',
 }
 
 // категории для простых форм без вложенностей:
 export enum ShortCategories {
   SUMMARY = 'summary',
-  SKILLS_DESCRIPTION = 'skillsDescription',
+  SKILLS_DESCRIPTION = 'skills',
   TITLES = 'titles',
-  BACKGROUND = 'secondary-color',
-  COLOR = 'primary-color',
+  BACKGROUND = 'secondaryColor',
+  COLOR = 'primaryColor',
 }

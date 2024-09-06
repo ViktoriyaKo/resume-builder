@@ -20,11 +20,8 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const {
-    skillsDescription,
-    titles: titlesData,
-  } = useSelector(getStateShortData);
-  const { contactData, educationData, linksData, languagesData } = initialData;
+  const { skills, titles: titlesData } = useSelector(getStateShortData);
+  const { contact, education, links, languages: languagesData } = initialData;
 
   const titles = getTitles(titlesData, t);
   const getFilledData = useCallback(
@@ -32,13 +29,13 @@ const Aside = () => {
     []
   );
 
-  const headerData = getFilledData(contactData);
+  const headerData = getFilledData(contact);
 
   const { city, country, email, phone, photo } = headerData;
   const shortAddress =
     city && country ? `${city}, ${country}` : city || country;
 
-  const contactLinks = getDataValuesForm(linksData);
+  const contactLinks = getDataValuesForm(links);
   const languages = getDataValuesForm(languagesData);
 
   return (
@@ -52,7 +49,7 @@ const Aside = () => {
           height={70}
         />
       )}
-      <Title title={titles.personalData} filled={true} />
+      <Title title={titles.personal} filled={true} />
       <div className={clsx(styles.wrapper)}>
         <LabelValue label={'Email'} value={email} icon={EmailIcon} />
         <LabelValue label={'Phone'} value={phone} icon={CallIcon} />
@@ -62,15 +59,9 @@ const Aside = () => {
           return <LabelValue key={label} label={label} value={link} />;
         })}
       </div>
-      <AsideSection.Education
-        title={titles.educationData}
-        data={educationData}
-      />
-      <AsideSection.Skills
-        title={titles.educationData}
-        description={skillsDescription}
-      />
-      <AsideSection.Languages title={titles.languagesData} data={languages} />
+      <AsideSection.Education title={titles.education} data={education} />
+      <AsideSection.Skills title={titles.skills} description={skills} />
+      <AsideSection.Languages title={titles.languages} data={languages} />
     </div>
   );
 };
