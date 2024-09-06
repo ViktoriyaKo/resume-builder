@@ -5,10 +5,7 @@ import styles from './Aside.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { TypeFieldData } from '@/packages/edit/types';
-import {
-  convertFilledContactData,
-  getDataValuesForm,
-} from '../../../utils';
+import { convertFilledContactData, getDataValuesForm } from '../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';
@@ -60,7 +57,7 @@ const Aside = () => {
       </div>
       {skills && (
         <div>
-          <Title title={titles.skills} />
+          <Title title={titles.skills ?? ''} />
           <div
             className={styles.skills}
             dangerouslySetInnerHTML={{
@@ -71,7 +68,7 @@ const Aside = () => {
       )}
       {isEducation && (
         <div>
-          <Title title={titles.education} />
+          <Title title={titles.education ?? ''} />
           <ul className={styles.education}>
             {education.map((item) => {
               const { uuid, values } = item;
@@ -117,7 +114,7 @@ const Aside = () => {
       )}
       {languages.length > 0 && (
         <div>
-          <Title title={titles.languages} />
+          <Title title={titles.languages ?? ''} />
           <div className={styles.wrapper}>
             {languages.map((item) => {
               const { languagesLevel, languagesName } = item ?? {};

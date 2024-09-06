@@ -40,12 +40,12 @@ const Content = () => {
       )}
       <ExperienceList
         data={employment}
-        title={titles.employment}
+        title={titles.employment ?? ''}
         icon={iconJob}
       />
       <ExperienceList
         data={course}
-        title={titles.course}
+        title={titles.course ?? ''}
         icon={iconEducation}
       />
     </div>

@@ -32,7 +32,7 @@ const Content = () => {
       </header>
       {summary && (
         <div className={styles.summary}>
-          <Title title={titles.summary} />
+          <Title title={titles.summary ?? ''} />
           <div
             dangerouslySetInnerHTML={{
               __html: summary,
@@ -40,8 +40,8 @@ const Content = () => {
           />
         </div>
       )}
-      <ExperienceList data={employment} title={titles.employment} />
-      <ExperienceList data={course} title={titles.course} />
+      <ExperienceList data={employment} title={titles.employment ?? ''} />
+      <ExperienceList data={course} title={titles.course ?? ''} />
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const Slice = createSlice({
       action: PayloadAction<UpdateShortFieldActionPayload>
     ) => {
       const { category, name, value } = action.payload;
-      if (category === ShortCategories.TITLES) {
+      if (category === ShortCategories.TITLES && name && category) {
         state[category] = { ...state[category], [name]: value };
       }
     },
@@ -33,23 +33,28 @@ export const Slice = createSlice({
       action: PayloadAction<UpdateShortFieldActionPayload>
     ) => {
       const { category, value } = action.payload;
-      if (category !== ShortCategories.TITLES) {
-        state[category] = value as string;
+      if (category !== ShortCategories.TITLES && category) {
+        state[category] = value as never;
       }
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getCurrentResume.fulfilled, (state, action) => {
-      Object.keys(initialState).forEach((key) => {
-        const initialData = action.payload[key];
-        if (key.includes('Id')) {
-          state[key] = action.payload[key.slice(0, -2)].id;
-        }
-        if (action.payload[key]) {
-          state[key] = initialData;
-        }
-      });
-    });
+    builder.addCase(
+      getCurrentResume.fulfilled,
+      (state: TypeInitialShortField, action) => {
+        Object.keys(initialState).forEach((key) => {
+          const initialData = action.payload[key];
+          const category = key as keyof TypeInitialShortField;
+          if (category === ShortCategories.CONTACT_ID) {
+            state[category] = action.payload[category.slice(0, -2)].id;
+          } else {
+            if (action.payload[key]) {
+              state[category] = initialData;
+            }
+          }
+        });
+      }
+    );
   },
 });
 

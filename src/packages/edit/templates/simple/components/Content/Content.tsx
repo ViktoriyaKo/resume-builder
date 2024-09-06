@@ -29,7 +29,7 @@ const Content = () => {
       )}
       {summary && (
         <>
-          <h3 className={styles.title}>{t(titles.summary)}</h3>
+          <h3 className={styles.title}>{titles.summary}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{

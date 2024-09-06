@@ -52,11 +52,9 @@ const DocumentEditor = (props: IProps) => {
     }
   }, [contactId, methods]);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     // await updateResume(data, resume);
-    const formData = methods.getValues();
-
-    console.log(formData);
+    console.log(data);
     return;
   };
 

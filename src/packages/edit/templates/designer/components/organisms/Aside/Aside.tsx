@@ -44,7 +44,7 @@ const Aside = () => {
           height={70}
         />
       )}
-      <Title title={titles.personal} filled={true} />
+      <Title title={titles.personal ?? ''} filled={true} />
       <div className={clsx(styles.wrapper)}>
         <LabelValue label={'Email'} value={email} icon={EmailIcon} />
         <LabelValue label={'Phone'} value={phone} icon={CallIcon} />
@@ -54,9 +54,9 @@ const Aside = () => {
           return <LabelValue key={label} label={label} value={link} />;
         })}
       </div>
-      <AsideSection.Education title={titles.education} data={education} />
-      <AsideSection.Skills title={titles.skills} description={skills} />
-      <AsideSection.Languages title={titles.languages} data={languages} />
+      <AsideSection.Education title={titles.education ?? ''} data={education} />
+      <AsideSection.Skills title={titles.skills ?? ''} description={skills} />
+      <AsideSection.Languages title={titles.languages ?? ''} data={languages} />
     </div>
   );
 };

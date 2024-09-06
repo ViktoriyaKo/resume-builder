@@ -90,19 +90,21 @@ export const Slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCurrentResume.fulfilled, (state, action) => {
-      Object.keys(entityMapping).forEach((key) => {
-        if (action.payload[key]) {
-          const ENTITY = entityMapping[key];
-          const data = action.payload[key];
-          if (key === 'contact') {
-            state[key] = ENTITY.map((item) => {
-              return { ...item, value: data[item.name] };
-            });
-          } else {
-            state[key] = getInitialDataItem(data, ENTITY);
+      (Object.keys(entityMapping) as Array<keyof typeof entityMapping>).forEach(
+        (key) => {
+          if (action.payload[key]) {
+            const ENTITY = entityMapping[key];
+            const data = action.payload[key];
+            if (key === 'contact') {
+              state[key] = ENTITY.map((item) => {
+                return { ...item, value: data[item.name] };
+              });
+            } else {
+              state[key] = getInitialDataItem(data, ENTITY);
+            }
           }
         }
-      });
+      );
     });
   },
 });
