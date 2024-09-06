@@ -9,7 +9,7 @@ import { Fragment } from 'react';
 import EditableHeader from '../../EditableHeader/EditableHeader';
 import EditableAccordion from '../../EditableAccordion/EditableAccordion';
 import InputsList from '../../InputsList/InputsList';
-import { Button } from '@/ui/atoms';
+import { Button, Input } from '@/ui/atoms';
 
 interface IContentProps {
   value: string;
@@ -60,15 +60,22 @@ const Content = (props: IContentProps) => {
                 title={`${titleAccordion} #${index + 1}`}
                 handleDelete={removeListItem}
               >
-                <InputsList
-                  uuid={uuid}
-                  handleClick={updateValueField}
-                  data={data}
-                  values={values}
-                  options={options}
-                  nestedIndex={index}
-                  category={category}
-                />
+                <>
+                  <Input
+                    type="hidden"
+                    defaultValue={uuid}
+                    name={`${category}[${index}].id`}
+                  />
+                  <InputsList
+                    uuid={uuid}
+                    handleClick={updateValueField}
+                    data={data}
+                    values={values}
+                    options={options}
+                    nestedIndex={index}
+                    category={category}
+                  />
+                </>
               </EditableAccordion>
             </Fragment>
           );

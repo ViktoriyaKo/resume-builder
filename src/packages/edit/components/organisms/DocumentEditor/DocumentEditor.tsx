@@ -45,7 +45,7 @@ const DocumentEditor = (props: IProps) => {
   const methods = useForm();
 
   const onSubmit = async (data) => {
-    // await updateResume(data, resume)
+    await updateResume(data, resume);
     console.log(data);
     return;
   };

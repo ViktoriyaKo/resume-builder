@@ -45,7 +45,8 @@ export const Slice = createSlice({
     builder.addCase(getCurrentResume.fulfilled, (state, action) => {
       Object.keys(initialState).forEach((key) => {
         if (action.payload[key]) {
-          if (action.payload[key] !== ShortCategories.TITLES) {
+          // TODO fix!!!
+          if (key !== ShortCategories.TITLES) {
             state[key] = action.payload[key];
           }
         }

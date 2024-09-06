@@ -7,11 +7,11 @@ import { useSearchParams } from 'next/navigation';
 import { paramsVariables } from '@/constants';
 
 interface IProps {
-  resume:string
+  resume: string;
 }
 
 const ClientEditPage = (props: IProps) => {
-  const { resume }= props
+  const { resume } = props;
   const searchParams = useSearchParams();
   const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple';
 
@@ -19,10 +19,10 @@ const ClientEditPage = (props: IProps) => {
     <Provider store={store}>
       <section className={styles.container}>
         <div className={styles.editor}>
-          <DocumentEditor currentTemplate={currentTemplate} resume={resume}/>
+          <DocumentEditor currentTemplate={currentTemplate} resume={resume} />
         </div>
         <div className={styles.view}>
-          <DocumentPreview currentTemplate={currentTemplate} />
+          {/* <DocumentPreview currentTemplate={currentTemplate} /> */}
         </div>
       </section>
     </Provider>
