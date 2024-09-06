@@ -22,7 +22,7 @@ const ClientEditPage = (props: IProps) => {
           <DocumentEditor currentTemplate={currentTemplate} resume={resume} />
         </div>
         <div className={styles.view}>
-          {/* <DocumentPreview currentTemplate={currentTemplate} /> */}
+          <DocumentPreview currentTemplate={currentTemplate} />
         </div>
       </section>
     </Provider>

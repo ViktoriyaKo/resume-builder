@@ -23,7 +23,6 @@ const Summary = () => {
       <EditableHeader
         category={ShortCategories.TITLES}
         name={FormData.SUMMARY_TITLE}
-        title={t('summaryTitle')}
         description={t('description_summary')}
       />
       <TextEditor

@@ -1,9 +1,6 @@
 'use client';
 import styles from './DocumentEditor.module.css';
-import {
-  EDUCATION_ENTITY,
-  SELECT_LANGUAGES_ENTITY,
-} from '@/packages/edit/entities';
+import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -15,12 +12,13 @@ import {
 } from '../../molecules';
 import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
-import { CustomLink } from '@/ui/atoms';
+import { CustomLink, Button } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect } from 'react';
 import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
+import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 
 interface IProps {
   currentTemplate: string;
@@ -32,6 +30,7 @@ const DocumentEditor = (props: IProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const initialData = useSelector(getStateData);
+  const { contactId, titles } = useSelector(getStateShortData);
   const { t } = useTranslation();
   const { lang } = useParams();
 
@@ -44,9 +43,20 @@ const DocumentEditor = (props: IProps) => {
 
   const methods = useForm();
 
-  const onSubmit = async (data) => {
-    await updateResume(data, resume);
-    console.log(data);
+  useEffect(() => {
+    if (contactId && titles?.id) {
+      methods.reset({
+        contact: { id: contactId },
+        titles,
+      });
+    }
+  }, [contactId, methods]);
+
+  const onSubmit = (data) => {
+    // await updateResume(data, resume);
+    const formData = methods.getValues();
+
+    console.log(formData);
     return;
   };
 
@@ -62,12 +72,6 @@ const DocumentEditor = (props: IProps) => {
             href={`/${lang}/`}
             className={styles.link}
           />
-          {/* todo test!!!! */}
-          <button className={styles.button} type={'submit'}>
-            TEST_Submit
-          </button>
-          {/* todo test!!!! */}
-
           <SelectTemplates currentTemplate={currentTemplate} />
         </div>
         <ContactDetails data={contact} />
@@ -93,6 +97,9 @@ const DocumentEditor = (props: IProps) => {
             category={ShortCategories.COLOR}
           />
         </div>
+        <Button className={styles.button} type={'submit'}>
+          Save resume
+        </Button>
       </form>
     </FormProvider>
   );

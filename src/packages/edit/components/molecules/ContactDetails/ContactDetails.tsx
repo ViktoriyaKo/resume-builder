@@ -59,7 +59,6 @@ const ContactDetails = (props: IProps) => {
     <>
       <EditableHeader
         category={ShortCategories.TITLES}
-        title={t('personalTitle')}
         name={FormData.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>

@@ -14,10 +14,10 @@
   --pink-200: #ac6c5fc7;
 
   /* colors for templates: */
-  --designer-primary-color: #1b779bf4;
-  --designer-secondary-color: #2b2b2d;
-  --modern-primary-color: rgb(15, 167, 167);
-  --modern-secondary-color: black;
+  --designer-primaryColor: #1b779bf4;
+  --designer-secondaryColor: #2b2b2d;
+  --modern-primaryColor: rgb(15, 167, 167);
+  --modern-secondaryColor: black;
 
   /* spacing: */
   --xs-spacing: 12px;

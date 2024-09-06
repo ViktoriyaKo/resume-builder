@@ -9,6 +9,7 @@ import { UncontrolledCheckbox as Checkbox } from '@/ui/atoms';
 interface IProps {
   label?: string;
   withCheckbox?: boolean;
+  defaultValue?: string;
   name: string;
   value?: Date | null;
   isPresent?: boolean;
@@ -21,7 +22,6 @@ const CustomDataPicker = forwardRef(
   (props: IProps, ref: LegacyRef<DatePicker>) => {
     const { label, value, onChange, isPresent, onPresentChange, withCheckbox } =
       props;
-
     const handlePresentChange = useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
         const checked = event.target.checked;
@@ -78,11 +78,13 @@ const CustomDataPicker = forwardRef(
 
 const ControlledDataPicker = (props: IProps) => {
   const { control } = useFormContext();
-  const { onChange } = props;
-  const [isPresent, setIsPresent] = useState<boolean>(false);
+  const { onChange, defaultValue } = props;
+  const initialPresent = defaultValue === 'Present';
+  const [isPresent, setIsPresent] = useState<boolean>(initialPresent);
 
   return (
     <Controller
+      defaultValue={defaultValue && defaultValue}
       control={control}
       name={props.name ?? ''}
       render={({ field }) => {

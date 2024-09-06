@@ -1,4 +1,4 @@
-import { Button, Icon, PdfIcon, TxtIcon } from '@/ui/atoms';
+import { Button, Icon, PdfIcon, TxtIcon, SaveIcon } from '@/ui/atoms';
 import styles from './DownloadButtons.module.css';
 import { useReactToPrint } from 'react-to-print';
 import { useCallback, RefObject } from 'react';

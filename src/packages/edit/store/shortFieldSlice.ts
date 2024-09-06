@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
-import { TITLES } from '../entities';
 import { UpdateShortFieldActionPayload, TypeInitialShortField } from '../types';
 import { ShortCategories } from '../constants';
 import { getCurrentResume } from '../services';
@@ -8,11 +7,12 @@ import { getCurrentResume } from '../services';
 //в этом слайсе обрабатываются простые данные формы, где все values строки кроме TITLES
 
 const initialState: TypeInitialShortField = {
-  [ShortCategories.TITLES]: TITLES,
+  [ShortCategories.TITLES]: {},
   [ShortCategories.SKILLS_DESCRIPTION]: '',
   [ShortCategories.SUMMARY]: '',
   [ShortCategories.BACKGROUND]: '',
   [ShortCategories.COLOR]: '',
+  [ShortCategories.CONTACT_ID]: 0,
 };
 
 export const Slice = createSlice({
@@ -25,10 +25,7 @@ export const Slice = createSlice({
     ) => {
       const { category, name, value } = action.payload;
       if (category === ShortCategories.TITLES) {
-        const findItem = state[category].find((item) => item.name === name);
-        if (findItem) {
-          findItem.caption = value as string;
-        }
+        state[category] = { ...state[category], [name]: value };
       }
     },
     updateAdditionalField: (
@@ -44,11 +41,12 @@ export const Slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getCurrentResume.fulfilled, (state, action) => {
       Object.keys(initialState).forEach((key) => {
+        const initialData = action.payload[key];
+        if (key.includes('Id')) {
+          state[key] = action.payload[key.slice(0, -2)].id;
+        }
         if (action.payload[key]) {
-          // TODO fix!!!
-          if (key !== ShortCategories.TITLES) {
-            state[key] = action.payload[key];
-          }
+          state[key] = initialData;
         }
       });
     });

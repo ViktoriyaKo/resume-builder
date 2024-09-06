@@ -5,11 +5,7 @@ import styles from './Aside.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { TypeFieldData } from '@/packages/edit/types';
-import {
-  convertFilledContactData,
-  getDataValuesForm,
-  getTitles,
-} from '../../../../utils';
+import { convertFilledContactData, getDataValuesForm } from '../../../../utils';
 import { LabelValue, Title } from '../../atoms';
 import { useTranslation } from 'react-i18next';
 import { CallIcon, EmailIcon, EarthIcon } from '../../atoms/Icons';
@@ -20,10 +16,9 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles: titlesData } = useSelector(getStateShortData);
+  const { skills, titles } = useSelector(getStateShortData);
   const { contact, education, links, languages: languagesData } = initialData;
 
-  const titles = getTitles(titlesData, t);
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []

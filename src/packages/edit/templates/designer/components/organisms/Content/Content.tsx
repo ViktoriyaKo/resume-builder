@@ -2,7 +2,6 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
-import { getTitles } from '../../../../utils';
 import React, { useCallback } from 'react';
 import { convertFilledContactData } from '../../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
@@ -12,10 +11,9 @@ import { useTranslation } from 'react-i18next';
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
-  const { summary, titles: titlesData } = initialShortData;
+  const { summary, titles } = initialShortData;
   const { t } = useTranslation();
 
-  const titles = getTitles(titlesData, t);
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
     []

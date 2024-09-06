@@ -26,7 +26,6 @@ const Skills = () => {
       <EditableHeader
         category={ShortCategories.TITLES}
         name={FormData.SKILLS_TITLE}
-        title={t('skillsTitle')}
         description={t('description_skills')}
       />
       <TextEditor

@@ -15,7 +15,7 @@
 
 .button {
   padding: var(--xs-spacing);
-  margin-top: 20px;
+  margin-top: var(--xs-spacing);;
   color: white;
   text-transform: uppercase;
   font-weight: 700;

@@ -12,7 +12,7 @@
 }
 
 .caption {
-  color: var(--modern-primary-color);
+  color: var(--modern-primaryColor);
   font-size: 14px;
   font-weight: 500;
 }

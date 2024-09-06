@@ -1,7 +1,7 @@
 .article {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--xs-spacing);
 }
 
 .wrapper {
@@ -24,4 +24,20 @@
 .link:hover {
   color: black;
   background-color: white;
+}
+
+.button {
+  padding: 12px 20px;
+background-color: var(--gray-300);
+text-transform: uppercase;
+font-weight: 600;
+margin-top: 20px;
+border: 1px solid black;
+transform: all 0.5;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+  transform: all 0.5;
 }

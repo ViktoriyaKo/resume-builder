@@ -60,6 +60,7 @@ const InputsList = (props: IProps) => {
           return (
             <div key={uniqueName}>
               <DatePicker
+                defaultValue={defaultValue}
                 withCheckbox={name === FormData.END_DATE}
                 {...commonProps}
                 onChange={(date: any) => {

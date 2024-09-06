@@ -11,19 +11,18 @@ import { updateTitleField } from '@/packages/edit/store/shortFieldSlice';
 import { UpdateShortFieldActionPayload } from '@/packages/edit/types';
 
 interface IProps {
-  title: string;
   description?: string;
   name: string;
   category: ShortCategories;
 }
 
 const EditableHeader = (props: IProps) => {
-  const { title, description, name, category } = props;
+  const { description, name, category } = props;
   const [readonly, setReadonly] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  const handleCLick = useCallback(() => {
+  const handleClick = useCallback(() => {
     setReadonly(false);
     if (ref.current) {
       const refLength = ref.current.value.length;
@@ -50,7 +49,6 @@ const EditableHeader = (props: IProps) => {
       <div className={styles.wrapper}>
         <Input
           name={`${category}.${name}`}
-          defaultValue={title}
           inputStyle={styles.input}
           ref={ref}
           type={'text'}
@@ -59,7 +57,7 @@ const EditableHeader = (props: IProps) => {
             handleChange({ value: e.target.value, category, name })
           }
         />
-        <button onClick={handleCLick}>
+        <button onClick={handleClick}>
           <Icon html={EditIcon} />
         </button>
       </div>

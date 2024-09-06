@@ -12,7 +12,6 @@ interface IProps {
 
 const ColorInput = (props: IProps) => {
   const { caption, category, template } = props;
-
   const handleChange = useCallback(
     (value: any) => {
       //для каждого template есть два основных цвета в root globals:

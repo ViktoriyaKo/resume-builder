@@ -6,7 +6,7 @@
 }
 
 .position {
-  color: var(--designer-primary-color);
+  color: var(--designer-primaryColor);
   text-transform: uppercase;
   font-weight: 500;
 }

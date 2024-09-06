@@ -54,17 +54,6 @@ export const LINKS_ENTITY = new DataBuilder()
   .addField('Link', FormData.LINK)
   .build();
 
-export const TITLES = new DataBuilder()
-  .addField('Social links & Websites', FormData.LINK_TITLE)
-  .addField('Skills', FormData.SKILLS_TITLE)
-  .addField('Professional Summary', FormData.SUMMARY_TITLE)
-  .addField('Personal Details', FormData.PERSONAL_TITLE)
-  .addField('Education', FormData.EDUCATION_TITLE)
-  .addField('Employment History', FormData.EMPLOYMENT_TITLE)
-  .addField('Courses', FormData.COURSES_TITLE)
-  .addField('Languages', FormData.LANGUAGES_TITLE)
-  .build();
-
 // todo: переделать:
 
 export const SELECT_LANGUAGES_ENTITY = [

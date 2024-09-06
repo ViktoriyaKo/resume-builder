@@ -56,7 +56,7 @@ export interface UpdateValueToDataActionPayload extends TypeAttributeData {
 export type TypeInitialShortField = {
   [key in Exclude<ShortCategories, ShortCategories.TITLES>]: string;
 } & {
-  [ShortCategories.TITLES]: TypeFieldData[];
+  [ShortCategories.TITLES]: { [key: string]: string };
 };
 
 export type UpdateValueActionPayload = Omit<

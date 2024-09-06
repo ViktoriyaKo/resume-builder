@@ -8,7 +8,6 @@ import { TypeFieldData } from '@/packages/edit/types';
 import {
   convertFilledContactData,
   getDataValuesForm,
-  getTitles,
 } from '../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
@@ -21,10 +20,8 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles: titlesData } = useSelector(getStateShortData);
+  const { skills, titles } = useSelector(getStateShortData);
   const { contact, education, links, languages: languagesData } = initialData;
-
-  const titles = getTitles(titlesData, t);
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),

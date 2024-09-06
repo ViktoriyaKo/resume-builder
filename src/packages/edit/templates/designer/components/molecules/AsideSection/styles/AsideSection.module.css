@@ -4,7 +4,7 @@
   flex-direction: column;
   color: white;
   min-height: var(--review-height);
-  background-color: var(--designer-secondary-color);
+  background-color: var(--designer-secondaryColor);
 }
 
 .container::before {
@@ -14,7 +14,7 @@
   left: var(--xs-spacing);
   right: 0;
   bottom: var(--xs-spacing);
-  border: 1px solid var(--designer-primary-color);
+  border: 1px solid var(--designer-primaryColor);
   pointer-events: none;
 }
 

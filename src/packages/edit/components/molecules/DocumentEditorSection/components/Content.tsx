@@ -45,7 +45,6 @@ const Content = (props: IContentProps) => {
       <EditableHeader
         category={ShortCategories.TITLES}
         name={value}
-        title={header}
         description={description}
       />
       {data &&
@@ -63,6 +62,7 @@ const Content = (props: IContentProps) => {
                 <>
                   <Input
                     type="hidden"
+                    className={'d-none'}
                     defaultValue={uuid}
                     name={`${category}[${index}].id`}
                   />
