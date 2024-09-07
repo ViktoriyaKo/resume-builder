@@ -32,9 +32,18 @@ const DocumentEditor = (props: IProps) => {
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 
   const initialData = useSelector(getStateData);
-  const initialFormData = useSelector(getStateInitialFormData);
-  const { contact, education, employment, languages, course, titles, links, skills, summary } =
-    initialFormData ?? {};
+  const { initialFormData } = useSelector(getStateInitialFormData);
+  const {
+    contact,
+    education,
+    employment,
+    languages,
+    course,
+    titles,
+    links,
+    skills,
+    summary,
+  } = initialFormData ?? {};
   const { t } = useTranslation();
   const { lang } = useParams();
 
@@ -67,7 +76,7 @@ const DocumentEditor = (props: IProps) => {
       skills,
       summary,
     });
-  }, [initialFormData.id, methods]);
+  }, [initialFormData?.id, methods]);
 
   const debouncedUpdateResume = useDebounce((data) => {
     dispatch(updateResume({ data, id: resume }));
@@ -85,9 +94,7 @@ const DocumentEditor = (props: IProps) => {
     };
   }, [dispatch, methods, isInitialDataLoaded]);
 
-  const onSubmit = async (data: any) => {
-    dispatch(updateResume({ data, id: resume }));
-    console.log(data);
+  const onSubmit = async () => {
     return;
   };
 

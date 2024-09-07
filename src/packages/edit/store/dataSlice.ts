@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   CONTACT_ENTITY,
   COURSE_ENTITY,
@@ -9,8 +9,9 @@ import {
 } from '../entities';
 import { RootState } from '../../../store/store';
 
-import { TypeInitialDataState } from '../types';
+import { RemoveDataActionPayload, TypeInitialDataState } from '../types';
 import { getInitialDataItem } from './utils';
+import { Categories } from '../constants';
 
 const entityMapping = {
   contact: CONTACT_ENTITY,
@@ -36,24 +37,32 @@ export const Slice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    removeData: (state, action) => {
+    removeData: (
+      state: TypeInitialDataState,
+      action: PayloadAction<RemoveDataActionPayload>
+    ) => {
       const { category, id } = action.payload;
-      state[category] = state[category].filter((item) => item.uuid !== id);
+      if (category !== Categories.CONTACT) {
+        state[category] = state[category].filter((item) => item.uuid !== id);
+      }
     },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
       (action) => action.type.endsWith('/fulfilled'),
-      (state, action) => {
+      (
+        state: TypeInitialDataState,
+        action: PayloadAction<TypeInitialDataState>
+      ) => {
         (
           Object.keys(entityMapping) as Array<keyof typeof entityMapping>
         ).forEach((key) => {
           if (action.payload[key]) {
             const ENTITY = entityMapping[key];
             const data = action.payload[key];
-            if (key === 'contact') {
+            if (key === Categories.CONTACT) {
               state[key] = ENTITY.map((item) => {
-                return { ...item, value: data[item.name] };
+                return { ...item, value: data[item.name as keyof typeof data] };
               });
             } else {
               state[key] = getInitialDataItem(data, ENTITY);

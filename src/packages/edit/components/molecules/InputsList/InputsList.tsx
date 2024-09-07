@@ -17,8 +17,6 @@ const InputsList = (props: IProps) => {
   const { data, options, nestedIndex, category } = props;
   const { t } = useTranslation();
 
-  
-
   return (
     <div className={styles.container}>
       {data?.map((item) => {

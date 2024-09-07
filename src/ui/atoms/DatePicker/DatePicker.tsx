@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, LegacyRef, useCallback, useState } from 'react';
+import { forwardRef, LegacyRef, useCallback, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -78,13 +78,11 @@ const CustomDataPicker = forwardRef(
 
 const ControlledDataPicker = (props: IProps) => {
   const { control } = useFormContext();
-  const { onChange, defaultValue } = props;
-  const initialPresent = defaultValue === 'Present';
-  const [isPresent, setIsPresent] = useState<boolean>(initialPresent);
+  const { onChange } = props;
+  const [_, setIsPresent] = useState<boolean>(false);
 
   return (
     <Controller
-      defaultValue={defaultValue && defaultValue}
       control={control}
       name={props.name ?? ''}
       render={({ field }) => {
@@ -92,7 +90,7 @@ const ControlledDataPicker = (props: IProps) => {
           <CustomDataPicker
             {...field}
             {...props}
-            isPresent={isPresent}
+            isPresent={field.value === FormData.PRESENT}
             onPresentChange={(isPresent: boolean) => setIsPresent(isPresent)}
             onChange={(value) => {
               onChange?.(value);

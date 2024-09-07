@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
 import { TypeInitialShortField } from '../types';
 import { ShortCategories } from '../constants';
@@ -20,12 +20,22 @@ export const Slice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       (action) => action.type.endsWith('/fulfilled'),
-      (state: TypeInitialShortField, action) => {
-        Object.keys(initialState).forEach((key) => {
-          const initialData = action.payload[key];
-          const category = key as keyof TypeInitialShortField;
-          if (action.payload[key]) {
-            state[category] = initialData;
+      (
+        state: TypeInitialShortField,
+        action: PayloadAction<TypeInitialShortField>
+      ) => {
+        (
+          Object.keys(initialState) as Array<keyof TypeInitialShortField>
+        ).forEach((key) => {
+          const typedKey = key as keyof TypeInitialShortField;
+          const initialData = action.payload[typedKey];
+
+          if (typedKey === ShortCategories.TITLES) {
+            state[typedKey] =
+              typeof initialData === 'object' ? { ...initialData } : {};
+          } else {
+            state[typedKey] =
+              typeof initialData === 'string' ? initialData : '';
           }
         });
       }
