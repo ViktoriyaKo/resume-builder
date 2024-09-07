@@ -9,37 +9,24 @@ import { Categories } from '@/packages/edit/constants';
 interface IProps {
   data: TypeFieldData[];
   options?: TypeOptionsData[];
-  uuid: string;
   category: Categories;
   nestedIndex: number;
-  values?: { [key: string]: string | undefined };
-  handleClick: ({
-    uuid,
-    name,
-    value,
-  }: {
-    uuid: string;
-    name: string;
-    value: string;
-  }) => void;
 }
 
 const InputsList = (props: IProps) => {
-  const { data, options, handleClick, uuid, nestedIndex, category, values } =
-    props;
+  const { data, options, nestedIndex, category } = props;
   const { t } = useTranslation();
+
+  
 
   return (
     <div className={styles.container}>
       {data?.map((item) => {
         const { caption, type, name } = item;
-        const defaultValue = values && name && values?.[name];
         const uniqueName = `${category}[${nestedIndex}].${name}`;
         const commonProps = {
           name: uniqueName,
           label: t(caption),
-          onChange: (e: any) =>
-            handleClick({ uuid, name: name ?? '', value: e.target.value }),
         };
 
         if (type === 'textArea') {
@@ -48,10 +35,6 @@ const InputsList = (props: IProps) => {
               key={uniqueName}
               {...commonProps}
               className={styles.textArea}
-              value={defaultValue}
-              onChange={(value) =>
-                handleClick({ uuid, name: name ?? '', value })
-              }
             />
           );
         }
@@ -60,21 +43,8 @@ const InputsList = (props: IProps) => {
           return (
             <div key={uniqueName}>
               <DatePicker
-                defaultValue={defaultValue}
                 withCheckbox={name === FormData.END_DATE}
                 {...commonProps}
-                onChange={(date: any) => {
-                  handleClick({
-                    uuid,
-                    name: name ?? '',
-                    value:
-                      date === FormData.PRESENT
-                        ? FormData.PRESENT
-                        : date
-                        ? date.toISOString()
-                        : '',
-                  });
-                }}
               />
             </div>
           );
@@ -91,7 +61,6 @@ const InputsList = (props: IProps) => {
         } else {
           return (
             <Input
-              defaultValue={defaultValue}
               type={type}
               key={uniqueName}
               className={styles.input}

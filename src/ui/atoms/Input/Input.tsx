@@ -27,13 +27,14 @@ const Input = forwardRef((props: IProps, ref: LegacyRef<HTMLInputElement>) => {
     defaultValue,
     ...rest
   } = props;
+  const value = props.value ?? '';
 
   return (
     <div className={className ? className : ''}>
       {label && (
         <label className={clsx('form-label', styles.caption)}>{label}</label>
       )}
-      <input className={inputStyle} ref={ref} {...rest} />
+      <input className={inputStyle} ref={ref} {...rest} value={value} />
       {error?.message && <span className={styles.error}>{error?.message}</span>}
     </div>
   );
@@ -49,7 +50,6 @@ const ControlledInput = forwardRef(
     const { name, onChange, rules, defaultValue } = props;
     const error = name ? (errors[name] as FieldError | undefined) : undefined;
 
-    
     return (
       <Controller
         defaultValue={defaultValue && defaultValue}

@@ -4,7 +4,9 @@ mutation CreateResumeItem {
       education: { id: "" }
       employment: { id: "" }
       course: { id: "" }
-      contact: { id: "" }
+      languages: { id: "" }
+      links: { id: "" }
+      titles: { id: "" }
     }
   ) {
     data {

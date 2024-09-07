@@ -59,7 +59,6 @@ export type TypeInitialShortField = {
   [ShortCategories.SUMMARY]: string;
   [ShortCategories.BACKGROUND]: string;
   [ShortCategories.COLOR]: string;
-  [ShortCategories.CONTACT_ID]: number;
 };
 
 export type UpdateValueActionPayload = Omit<

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import styles from './EditableAccordion.module.css';
 import { Button, Icon } from '@/ui/atoms';
 import { DeleteIcon } from '@/ui/atoms';
@@ -6,12 +6,11 @@ import { DeleteIcon } from '@/ui/atoms';
 interface IProps {
   children: ReactElement;
   title: string;
-  id: string;
-  handleDelete: (arg: string) => void;
+  handleDelete: MouseEventHandler<HTMLButtonElement>;
 }
 
 const EditableAccordion = (props: IProps) => {
-  const { children, title, handleDelete, id } = props;
+  const { children, title, handleDelete } = props;
 
   return (
     <div className={styles.wrapper}>
@@ -19,7 +18,7 @@ const EditableAccordion = (props: IProps) => {
         <summary className={styles.summary}>{title}</summary>
         <div className={styles.content}>{children}</div>
       </details>
-      <Button onClick={() => handleDelete(id)} className={styles.button}>
+      <Button onClick={handleDelete} className={styles.button}>
         <Icon html={DeleteIcon} />
       </Button>
     </div>

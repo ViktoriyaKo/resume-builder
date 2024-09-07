@@ -1,14 +1,10 @@
 'use client';
-
 import { Input, Icon } from '@/ui/atoms';
 import { EditIcon } from '@/ui/atoms/Icons/EditIcon';
 import { useRef, useState, useCallback } from 'react';
 import styles from './EditableHeader.module.css';
 import { useOnClickOutside } from '@/hooks';
-import { useDispatch } from 'react-redux';
 import { ShortCategories } from '@/packages/edit/constants/categories';
-import { updateTitleField } from '@/packages/edit/store/shortFieldSlice';
-import { UpdateShortFieldActionPayload } from '@/packages/edit/types';
 
 interface IProps {
   description?: string;
@@ -20,7 +16,6 @@ const EditableHeader = (props: IProps) => {
   const { description, name, category } = props;
   const [readonly, setReadonly] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
 
   const handleClick = useCallback(() => {
     setReadonly(false);
@@ -37,13 +32,6 @@ const EditableHeader = (props: IProps) => {
     }
   });
 
-  const handleChange = useCallback(
-    ({ category, name, value }: UpdateShortFieldActionPayload) => {
-      dispatch(updateTitleField({ category, name, value }));
-    },
-    []
-  );
-
   return (
     <header className={'mt-3'}>
       <div className={styles.wrapper}>
@@ -53,9 +41,6 @@ const EditableHeader = (props: IProps) => {
           ref={ref}
           type={'text'}
           readOnly={readonly}
-          onChange={(e) =>
-            handleChange({ value: e.target.value, category, name })
-          }
         />
         <button onClick={handleClick}>
           <Icon html={EditIcon} />

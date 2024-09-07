@@ -3,6 +3,70 @@ mutation UpdateResumeItem($data: ResumeItemInput!, $id: ID!) {
     data {
       attributes {
         slug
+        contact {
+          id
+          job
+          firstName
+          lastName
+          email
+          phone
+          country
+          city
+        }
+
+        languages {
+          id
+          languagesName
+          languagesLevel
+        }
+        secondaryColor
+        primaryColor
+
+        design
+        summary
+        skills
+        titles {
+          link
+          id
+          skills
+          summary
+          personal
+          education
+          employment
+          course
+          languages
+        }
+        employment {
+          id
+          job
+          employer
+          city
+          description
+          startDate
+          endDate
+        }
+        course {
+          id
+          school
+          degree
+          specialty
+          description
+          city
+          startDate
+          endDate
+          uuid
+        }
+        education {
+          id
+          school
+          degree
+          specialty
+          description
+          startDate
+          startDate
+          endDate
+          uuid
+        }
       }
     }
   }
