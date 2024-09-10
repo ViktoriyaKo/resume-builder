@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, LegacyRef, useCallback, useEffect, useState } from 'react';
+import { forwardRef, LegacyRef, useCallback, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useFormContext } from 'react-hook-form';

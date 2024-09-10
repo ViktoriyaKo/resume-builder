@@ -4,7 +4,7 @@ import { Fragment, MouseEvent } from 'react';
 import EditableHeader from '../../EditableHeader/EditableHeader';
 import EditableAccordion from '../../EditableAccordion/EditableAccordion';
 import InputsList from '../../InputsList/InputsList';
-import { Button } from '@/ui/atoms';
+import { Button, Input } from '@/ui/atoms';
 import { v4 as uuid } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { removeData } from '@/packages/edit/store/dataSlice';
@@ -36,9 +36,11 @@ const Content = (props: IContentProps) => {
     name: category,
   });
 
-  const handleDelete = (e: MouseEvent<HTMLButtonElement>,
+  const handleDelete = (
+    e: MouseEvent<HTMLButtonElement>,
     index: number,
-    uuid: string) => {
+    uuid: string
+  ) => {
     e.preventDefault();
     console.log(e);
     remove(index);
@@ -63,12 +65,20 @@ const Content = (props: IContentProps) => {
                 title={`${titleAccordion} #${index + 1}`}
                 handleDelete={(e) => handleDelete(e, index, uuid)}
               >
-                <InputsList
-                  data={data}
-                  options={options}
-                  nestedIndex={index}
-                  category={category}
-                />
+                <>
+                {/* для инициализации id при создании нового поля: */}
+                  <Input
+                    type="hidden"
+                    defaultValue={uuid}
+                    name={`${category}[${index}].id`}
+                  />
+                  <InputsList
+                    data={data}
+                    options={options}
+                    nestedIndex={index}
+                    category={category}
+                  />
+                </>
               </EditableAccordion>
             </Fragment>
           );
