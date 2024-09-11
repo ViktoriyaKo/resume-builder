@@ -12,14 +12,15 @@ export default function HeaderBlock(props: IProps) {
   const pathname = usePathname();
   const pathParts = pathname.split('/');
   const isDarkHeader = pathParts.length > 2 && pathParts[2]?.includes('sign');
+  const isHeader = !pathname.includes("edit");
 
   return (
-    <Header.HeaderContainer isDarkHeader={isDarkHeader}>
+    isHeader && (<Header.HeaderContainer isDarkHeader={isDarkHeader}>
       <Header.Logo />
       <Header.Navigation routers={routers} />
       <NavBar routers={routers} pathname={pathname} />
       <Header.Login />
       <LanguageSelect />
-    </Header.HeaderContainer>
+    </Header.HeaderContainer>)
   );
 }

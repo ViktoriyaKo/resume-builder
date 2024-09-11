@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 import clsx from 'clsx';
 import { RoutersType } from '@/types';
 import { useSession } from 'next-auth/react';
-import { signOut } from 'next-auth/react';
+import { handleSignOut } from '@/utils';
 
 interface IProps {
   pathname: string;
@@ -60,7 +60,7 @@ const NavBar = (props: IProps) => {
           </ul>
           <Button
             className={clsx(styles.item, styles.button)}
-            onClick={() => signOut({ callbackUrl: `/${lang}/` })}
+            onClick={() => handleSignOut(lang)}
           >
             <Icon html={SignOutIcon} />
             {text}

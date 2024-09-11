@@ -39,7 +39,8 @@
   transition: background-color 0.3s;
 }
 
-.item:hover {
+.item:hover,
+.active {
   transition: background-color 0.3s;
   background-color: var(--blue-300);
 }

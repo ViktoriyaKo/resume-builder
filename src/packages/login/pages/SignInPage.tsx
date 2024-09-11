@@ -5,7 +5,7 @@ const SignInPage = () => {
   return (
     <ContainerForm
       title={'Welcome to Resume Builder'}
-      description={'Avsievich Resume Builder - free way to create resume'}
+      description={'Please sign in to create a resume'}
     >
       <SignInForm />
     </ContainerForm>

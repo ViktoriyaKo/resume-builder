@@ -11,6 +11,7 @@ interface IProps {
 
 const ClientAccountPage = (props: IProps) => {
   const { resume } = props;
+
   const session = useSession();
   const { name, image } = session?.data?.user ?? {};
   const { t } = useTranslation();
@@ -19,8 +20,16 @@ const ClientAccountPage = (props: IProps) => {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>
-          {t('welcome')}, <br />
-          {name}!
+          {t('welcome')}{' '}
+          {name ? (
+            <>
+              ,<br />
+              {name}
+            </>
+          ) : (
+            ''
+          )}
+          !
         </h1>
       </header>
       <div className={styles.wrapper}>

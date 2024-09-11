@@ -5,7 +5,7 @@ const SignUpPage = () => {
   return (
     <ContainerForm
       title={'Welcome to Resume Builder'}
-      description={'Avsievich Resume Builder - free way to create resume'}
+      description={'Please sign up or sign in to create a resume'}
     >
       <SignUpForm />
     </ContainerForm>

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Icon, AddIcon, Button } from '@/ui/atoms';
 import clsx from 'clsx';
 import ResumeCard from '../ResumeCard/ResumeCard';
-import { createResumeItem, updateUserResumeData } from '../../services';
 import {
   IdFilterInput,
   InputMaybe,
@@ -11,6 +10,7 @@ import {
 } from '@/graphql/gql/graphql';
 import { useState } from 'react';
 import { ModalConfirmation } from '@/ui/organisms';
+import { createResumeItem, updateUserResumeData } from '@/services';
 
 interface IProps {
   resume: ResumeItemFiltersInput[];
@@ -18,6 +18,7 @@ interface IProps {
 
 const Content = (props: IProps) => {
   const { resume } = props;
+  const [allResume, setResume] = useState(resume);
   const { t } = useTranslation();
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [resumeToDelete, setResumeToDelete] =
@@ -41,10 +42,16 @@ const Content = (props: IProps) => {
   const deleteResumeFromDB = async () => {
     try {
       if (resumeToDelete !== null) {
-        console.log('Deleting resume with ID:', resumeToDelete);
+        const updateResume = allResume.filter(
+          (item) => item.id !== resumeToDelete
+        );
+        setResume(updateResume);
+        await updateUserResumeData({
+          resume_items: updateResume.map((item) => item.id),
+        });
       }
     } catch (error) {
-      console.error('Error deleting resume:', error);
+      console.error('Error deleting resume');
     } finally {
       setOpenConfirmation(false);
       setResumeToDelete(null);
@@ -63,9 +70,9 @@ const Content = (props: IProps) => {
             <Icon html={AddIcon} />
           </>
         </Button>
-        {resume &&
-          resume.length > 0 &&
-          resume?.map((item) => {
+        {allResume &&
+          allResume.length > 0 &&
+          allResume?.map((item) => {
             return (
               <ResumeCard
                 handleDelete={confirmDelete}

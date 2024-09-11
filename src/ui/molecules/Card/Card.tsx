@@ -1,17 +1,29 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './Card.module.css';
 import { type Template } from '@/graphql/gql/graphql';
 import { useParams } from 'next/navigation';
+import { Button } from '@/ui/atoms';
+import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
-const Card = (props: Template) => {
-  const { link, image, title, description } = props ?? {};
+interface IProps extends Template {
+  handleClick: () => Promise<string | null | undefined>;
+}
+
+const Card = (props: IProps) => {
+  const { link, image, title, description, handleClick } = props ?? {};
   const { lang } = useParams();
+  const router = useRouter();
   const cover = image?.data?.attributes?.url;
 
+  const handleRedirect = useCallback(async () => {
+    const id = await handleClick();
+    router.push(`/${lang}/edit/${id}?design=${link}`);
+  }, []);
+
   return (
-    <Link href={`/${lang}/edit?design=${link}`} className={styles.card}>
+    <Button onClick={handleRedirect} className={styles.card}>
       <div className={styles.wrapperImage}>
         <Image
           className={styles.image}
@@ -27,7 +39,7 @@ const Card = (props: Template) => {
         <p className={styles.description}>{description}</p>
       </div>
       <div className={styles.button}>Use this template</div>
-    </Link>
+    </Button>
   );
 };
 

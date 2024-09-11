@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Icon, CustomLink, Button, DeleteIcon } from '@/ui/atoms';
 import styles from './ResumeCard.module.css';
 import { InputMaybe, IdFilterInput } from '@/graphql/gql/graphql';
+import { useParams } from 'next/navigation';
 
 interface IOptions {
   name: string;
@@ -22,21 +23,21 @@ interface IProps {
 const ResumeCard = (props: IProps) => {
   const { id, handleDelete, image } = props;
   const imageUrl = image?.url ?? '';
+  const { lang } = useParams();
 
   return (
     <>
       <CustomLink
-        href={`/edit/${id}`}
+        href={`/${lang}/edit/${id}`}
         className={styles.card}
         prefix={
           <>
             {handleDelete && id && (
               <Button
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault()
-                  handleDelete(id)
-                }
-              }
+                  e.preventDefault();
+                  handleDelete(id);
+                }}
                 className={styles.delete}
               >
                 <Icon html={DeleteIcon} />
