@@ -4,7 +4,13 @@ import { Icon, AddIcon, Button } from '@/ui/atoms';
 import clsx from 'clsx';
 import ResumeCard from '../ResumeCard/ResumeCard';
 import { createResumeItem, updateUserResumeData } from '../../services';
-import { ResumeItemFiltersInput } from '@/graphql/gql/graphql';
+import {
+  IdFilterInput,
+  InputMaybe,
+  ResumeItemFiltersInput,
+} from '@/graphql/gql/graphql';
+import { useState } from 'react';
+import { ModalConfirmation } from '@/ui/organisms';
 
 interface IProps {
   resume: ResumeItemFiltersInput[];
@@ -13,12 +19,35 @@ interface IProps {
 const Content = (props: IProps) => {
   const { resume } = props;
   const { t } = useTranslation();
+  const [openConfirmation, setOpenConfirmation] = useState(false);
+  const [resumeToDelete, setResumeToDelete] =
+    useState<InputMaybe<IdFilterInput> | null>(null);
 
   const createResume = async () => {
     const data = await createResumeItem();
     const id = data?.id;
     if (id) {
       await updateUserResumeData({ resume_items: id });
+    }
+  };
+
+  const confirmDelete = (id?: InputMaybe<IdFilterInput>) => {
+    if (id) {
+      setOpenConfirmation(true);
+      setResumeToDelete(id);
+    }
+  };
+
+  const deleteResumeFromDB = async () => {
+    try {
+      if (resumeToDelete !== null) {
+        console.log('Deleting resume with ID:', resumeToDelete);
+      }
+    } catch (error) {
+      console.error('Error deleting resume:', error);
+    } finally {
+      setOpenConfirmation(false);
+      setResumeToDelete(null);
     }
   };
 
@@ -37,10 +66,21 @@ const Content = (props: IProps) => {
         {resume &&
           resume.length > 0 &&
           resume?.map((item) => {
-            const { id } = item;
-            return <ResumeCard key={String(item.id)} id={id} />;
+            return (
+              <ResumeCard
+                handleDelete={confirmDelete}
+                key={String(item.id)}
+                {...item}
+              />
+            );
           })}
       </div>
+      <ModalConfirmation
+        isOpen={openConfirmation}
+        title={'Are you sure you want to delete the resume?'}
+        onClose={() => setOpenConfirmation(false)}
+        handleClick={deleteResumeFromDB}
+      />
     </div>
   );
 };

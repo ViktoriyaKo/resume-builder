@@ -10,8 +10,8 @@ interface IOptions {
 
 interface IProps {
   id?: InputMaybe<IdFilterInput>;
-  image?: string;
-  handleDelete?: () => void;
+  image?: { url?: string };
+  handleDelete?: (id?: InputMaybe<IdFilterInput>) => void;
   options?: IOptions[];
   onContextMenu?: (
     e: React.MouseEvent<HTMLDivElement>,
@@ -20,9 +20,8 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { id, handleDelete } = props;
-  const image =
-    'https://res.cloudinary.com/dzwxhvkhw/image/upload/v1724875296/Untitled_8d45050e8f.png';
+  const { id, handleDelete, image } = props;
+  const imageUrl = image?.url ?? '';
 
   return (
     <>
@@ -31,15 +30,22 @@ const ResumeCard = (props: IProps) => {
         className={styles.card}
         prefix={
           <>
-            {handleDelete && (
-              <Button onClick={handleDelete} className={styles.delete}>
+            {handleDelete && id && (
+              <Button
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault()
+                  handleDelete(id)
+                }
+              }
+                className={styles.delete}
+              >
                 <Icon html={DeleteIcon} />
               </Button>
             )}
-            {image && (
+            {imageUrl && (
               <Image
                 className={styles.image}
-                src={image}
+                src={imageUrl}
                 alt={`resume-${id}`}
                 sizes="(max-width: 768px) 70vw, 30vw"
                 quality={70}
