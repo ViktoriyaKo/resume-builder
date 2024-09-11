@@ -3,14 +3,15 @@ mutation UpdateResumeItem($data: ResumeItemInput!, $id: ID!) {
     data {
       attributes {
         slug
-        contact {
-          photo {
-            data {
-              attributes {
-                url
-              }
+        image {
+          data {
+            id
+            attributes {
+              url
             }
           }
+        }
+        contact {
           id
           job
           firstName

@@ -29,7 +29,7 @@
   display: none;
 }
 
-@media (width >= 968px) {
+@media (width >= 768px) {
   .menuNav {
     display: flex;
     gap: 4px;
@@ -62,15 +62,23 @@
 }
 
 .link {
-  padding: 8px !important;
-  color: white;
-  border: 1px solid white;
-  margin-block: 4px;
-  transition: background-color 0.5s;
+  display: none; 
 }
 
 .link:hover {
   background-color: black;
   color: white;
   transition: background-color 0.5s;
+}
+
+@media (width >= 768px) {
+  .link {
+    display: block;
+    padding: 8px !important;
+    background-color: var(--pink-200);
+    color: white;
+    border: 1px solid white;
+    margin-block: 4px;
+    transition: background-color 0.5s;
+  }
 }

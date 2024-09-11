@@ -15,7 +15,7 @@
   transition: background-color 0.5s;
 }
 
-@media (width >= 968px) {
+@media (width >= 768px) {
   .summary {
     padding: 8px;
   }

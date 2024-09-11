@@ -8,9 +8,6 @@ import {
 import { TypeFieldData } from '@/packages/edit/types/types';
 import { Input } from '@/ui/atoms';
 import { useTranslation } from 'react-i18next';
-import { useCallback } from 'react';
-import { useFormContext } from 'react-hook-form';
-import { uploadImageToDB } from '@/packages/edit/services';
 
 interface IProps {
   data: TypeFieldData[];
@@ -20,18 +17,6 @@ const ContactDetails = (props: IProps) => {
   const { data } = props;
   const { t } = useTranslation();
   const category = Categories.CONTACT;
-  // const { setValue } = useFormContext();
-
-  const handleChange = useCallback(async (event: Event) => {
-    const target = event.target as HTMLInputElement;
-
-    if (target?.files && target?.files?.length > 0) {
-      const file = target.files[0];
-      const formData = new FormData();
-      formData.append('files', file);
-      const imageId = await uploadImageToDB(formData);
-    }
-  }, []);
 
   return (
     <>
@@ -40,6 +25,9 @@ const ContactDetails = (props: IProps) => {
         name={FormDataConstants.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>
+        <Input name={`image`} type={'file'} label={t('Upload photo')} />
+        <Input type="hidden" name={'image.id'} />
+
         {data.map((item) => {
           const { caption, name, type, value: defaultValue } = item ?? {};
 
@@ -50,7 +38,6 @@ const ContactDetails = (props: IProps) => {
               type={type}
               defaultValue={defaultValue}
               label={t(caption)}
-              // onChange={handleChange}
             />
           );
         })}

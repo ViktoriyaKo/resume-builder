@@ -5,9 +5,6 @@ class Contact extends DataBuilder {
   addJob() {
     return this.addField('Job title', FormData.JOB_TITLE);
   }
-  addPhoto() {
-    return this.addField('Upload photo', FormData.PHOTO, 'file');
-  }
   addFirstName() {
     return this.addField('First name', FormData.FIRST_NAME);
   }

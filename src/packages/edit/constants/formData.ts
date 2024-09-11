@@ -2,7 +2,6 @@ export enum FormData {
   JOB = 'jobTitle',
   FIRST_NAME = 'firstName',
   LAST_NAME = 'lastName',
-  PHOTO = 'photo',
   EMAIL = 'email',
   PHONE = 'phone',
   COUNTRY = 'country',

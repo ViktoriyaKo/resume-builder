@@ -1,6 +1,6 @@
 'use client';
 import { RoutersType } from '@/types';
-import { Header, LanguageSelect } from '@/ui/molecules';
+import { Header, LanguageSelect, NavBar } from '@/ui/molecules';
 import { usePathname } from 'next/navigation';
 
 interface IProps {
@@ -17,11 +17,8 @@ export default function HeaderBlock(props: IProps) {
     <Header.HeaderContainer isDarkHeader={isDarkHeader}>
       <Header.Logo />
       <Header.Navigation routers={routers} />
-      {/* <NavBar
-        routers={routers}
-        pathname={pathname}
-      /> */}
-      <Header.Login/>
+      <NavBar routers={routers} pathname={pathname} />
+      <Header.Login />
       <LanguageSelect />
     </Header.HeaderContainer>
   );

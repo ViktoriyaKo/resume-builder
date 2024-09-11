@@ -30,7 +30,7 @@ export const COURSE_ENTITY = new Experience()
 
 export const CONTACT_ENTITY = new Contact()
   .addJob()
-  .addPhoto()
+  // .addPhoto()
   .addFirstName()
   .addLastName()
   .addEmail()

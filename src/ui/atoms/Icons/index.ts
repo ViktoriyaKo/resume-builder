@@ -12,3 +12,5 @@ export { DeleteIcon } from './DeleteIcon';
 export { PdfIcon } from './PdfIcon';
 export { TxtIcon } from './TxtIcon';
 export { SaveIcon } from './SaveIcon';
+export { BurgerIcon } from './BurgerIcon';
+export { SignOutIcon } from './SignOutIcon';
