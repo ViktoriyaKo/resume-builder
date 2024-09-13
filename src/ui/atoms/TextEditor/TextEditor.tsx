@@ -30,7 +30,10 @@ const TextEditor = forwardRef<typeof ReactQuill, TextEditorProps>(
       ...rest
     } = props;
 
-    const length = rest?.value ? String(rest?.value)?.length : 0;
+    const sanitizedString = rest?.value
+      ? rest?.value.replace(/<[^>]*>/g, '')
+      : '';
+    const length = sanitizedString?.length;
 
     const modules = {
       toolbar: [

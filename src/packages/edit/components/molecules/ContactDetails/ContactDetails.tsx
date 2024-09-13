@@ -26,7 +26,6 @@ const ContactDetails = (props: IProps) => {
       />
       <div className={styles.wrapper}>
         <Input name={`image`} type={'file'} label={t('Upload photo')} />
-        <Input type="hidden" name={'image.id'} />
 
         {data.map((item) => {
           const { caption, name, type, value: defaultValue } = item ?? {};

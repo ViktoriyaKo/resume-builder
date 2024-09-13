@@ -2,10 +2,12 @@
 import { Card } from '@/ui/molecules';
 import styles from '../styles/Templates.module.css';
 import { CustomLink } from '@/ui/atoms';
-import { TemplateEntity } from '@/graphql/gql/graphql';
+import { Maybe, TemplateEntity } from '@/graphql/gql/graphql';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { createResumeItem, updateUserResumeData } from '@/services';
+import { useCallback } from 'react';
+import { useSession } from 'next-auth/react';
 
 interface IProps {
   templates: TemplateEntity[];
@@ -15,15 +17,26 @@ const Templates = (props: IProps) => {
   const { lang } = useParams();
   const { templates } = props;
   const { t } = useTranslation();
+  const router = useRouter();
 
-  const createResume = async () => {
-    const data = await createResumeItem();
-    const id = data?.id;
-    if (id) {
-      await updateUserResumeData({ resume_items: id });
-    }
-    return id;
-  };
+  const { status } = useSession();
+  const isAuthorized = status === 'authenticated';
+
+  const createResume = useCallback(
+    async (link?: Maybe<string>) => {
+      if (isAuthorized) {
+        const data = await createResumeItem();
+        const id = data?.id;
+        if (id) {
+          await updateUserResumeData({ resume_items: id });
+          router.push(`/${lang}/edit/${id}?design=${link}`);
+        }
+      } else {
+        router.push(`/${lang}/sign-in`);
+      }
+    },
+    [isAuthorized, lang, router]
+  );
 
   return (
     <section className={styles.container}>
@@ -32,7 +45,11 @@ const Templates = (props: IProps) => {
         {templates?.map((item) => {
           const element = item?.attributes ?? {};
           return (
-            <Card key={element.title} {...element} handleClick={createResume} />
+            <Card
+              key={element.title}
+              {...element}
+              handleClick={() => createResume(element?.link)}
+            />
           );
         })}
       </div>

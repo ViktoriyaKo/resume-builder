@@ -4,8 +4,11 @@ import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
 import background from '@images/background.jpg';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
+
 
 const Hero = () => {
+  const { lang } = useParams();
   const { t } = useTranslation();
 
   return (
@@ -24,7 +27,7 @@ const Hero = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{t('header')}</h1>
         <CustomLink
-          href={'/account'}
+          href={`/${lang}account`}
           className={styles.link}
           text={t('create_resume')}
         />

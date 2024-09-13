@@ -1,9 +1,19 @@
-import { i18nRouter } from 'next-i18n-router';
-import i18nConfig from '../i18nConfig';
-export { default } from 'next-auth/middleware';
+import { NextResponse } from 'next/server';
+import { withAuth } from 'next-auth/middleware';
+import { nextAuthConfig } from '@/entities';
 
-// export async function middleware(request) {
-//   return i18nRouter(request, i18nConfig);
-// }
+const handleProtectedRoutes = withAuth(nextAuthConfig);
 
-export const config = { matcher: ['/:lang/account', '/:lang/edit'] };
+export async function middleware(request) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/en', request.url));
+  }
+
+  return handleProtectedRoutes(request);
+}
+
+export const config = {
+  matcher: ['/', '/:lang/account', '/:lang/edit'],
+};

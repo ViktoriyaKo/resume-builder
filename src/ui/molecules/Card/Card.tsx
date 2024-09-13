@@ -2,28 +2,19 @@
 import Image from 'next/image';
 import styles from './Card.module.css';
 import { type Template } from '@/graphql/gql/graphql';
-import { useParams } from 'next/navigation';
 import { Button } from '@/ui/atoms';
-import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { MouseEventHandler } from 'react';
 
 interface IProps extends Template {
-  handleClick: () => Promise<string | null | undefined>;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Card = (props: IProps) => {
-  const { link, image, title, description, handleClick } = props ?? {};
-  const { lang } = useParams();
-  const router = useRouter();
+  const { image, title, description, handleClick } = props ?? {};
   const cover = image?.data?.attributes?.url;
 
-  const handleRedirect = useCallback(async () => {
-    const id = await handleClick();
-    router.push(`/${lang}/edit/${id}?design=${link}`);
-  }, []);
-
   return (
-    <Button onClick={handleRedirect} className={styles.card}>
+    <Button onClick={handleClick} className={styles.card}>
       <div className={styles.wrapperImage}>
         <Image
           className={styles.image}
