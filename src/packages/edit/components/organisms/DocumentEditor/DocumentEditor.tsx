@@ -83,10 +83,10 @@ const DocumentEditor = (props: IProps) => {
   }, 1000);
 
   useEffect(() => {
-    const subscription = methods.watch((value) => {
+    const subscription = methods.watch((value, { name }) => {
       if (isInitialDataLoaded) {
         debouncedUpdateResume(value);
-        console.log(value);
+        console.log(name, value);
       }
     });
 

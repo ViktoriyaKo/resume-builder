@@ -63,8 +63,8 @@ const ControlledInput = forwardRef(
               {...props}
               {...field}
               onChange={(value) => {
-                onChange?.(value);
                 field.onChange(value);
+                onChange?.(value);
               }}
               ref={ref}
             />

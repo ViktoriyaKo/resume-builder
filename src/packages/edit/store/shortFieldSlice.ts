@@ -11,6 +11,7 @@ const initialState: TypeInitialShortField = {
   [ShortCategories.SUMMARY]: '',
   [ShortCategories.BACKGROUND]: '',
   [ShortCategories.COLOR]: '',
+  [ShortCategories.IMAGE]: '',
 };
 
 export const Slice = createSlice({
@@ -33,6 +34,9 @@ export const Slice = createSlice({
           if (typedKey === ShortCategories.TITLES) {
             state[typedKey] =
               typeof initialData === 'object' ? { ...initialData } : {};
+          } else if (typedKey === ShortCategories.IMAGE) {
+            state[typedKey] =
+              initialData?.url ?? initialData?.data?.attributes?.url ?? '';
           } else {
             state[typedKey] =
               typeof initialData === 'string' ? initialData : '';

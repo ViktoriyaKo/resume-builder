@@ -10,6 +10,7 @@ import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
+  const { image } = useSelector(getStateShortData);
   const { contact, links } = initialData;
 
   const getFilledData = useCallback(
@@ -20,27 +21,19 @@ const Hero = () => {
   const headerData = getFilledData(contact);
   const contactLinks = getDataValuesForm(links);
 
-  const {
-    city,
-    country,
-    email,
-    firstName,
-    job,
-    lastName,
-    phone,
-    address,
-    photo,
-  } = headerData;
+  const { city, country, email, firstName, job, lastName, phone, address } =
+    headerData;
 
   return (
     <div className={styles.container}>
-      {photo && (
+      {image && (
         <Image
-          src={photo}
+          src={image}
           className={styles.image}
           alt="photo"
-          width={70}
-          height={70}
+          width={100}
+          height={100}
+          quality={100}
         />
       )}
       <header className={styles.header}>

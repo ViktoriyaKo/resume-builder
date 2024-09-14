@@ -8,6 +8,7 @@ import {
 import { TypeFieldData } from '@/packages/edit/types/types';
 import { Input } from '@/ui/atoms';
 import { useTranslation } from 'react-i18next';
+import { UploadPhoto } from '../../atoms';
 
 interface IProps {
   data: TypeFieldData[];
@@ -25,7 +26,7 @@ const ContactDetails = (props: IProps) => {
         name={FormDataConstants.PERSONAL_TITLE}
       />
       <div className={styles.wrapper}>
-        <Input name={`image`} type={'file'} label={t('Upload photo')} />
+        <UploadPhoto />
 
         {data.map((item) => {
           const { caption, name, type, value: defaultValue } = item ?? {};

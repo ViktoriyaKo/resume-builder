@@ -14,4 +14,5 @@ export enum ShortCategories {
   TITLES = 'titles',
   BACKGROUND = 'secondaryColor',
   COLOR = 'primaryColor',
+  IMAGE = 'image',
 }

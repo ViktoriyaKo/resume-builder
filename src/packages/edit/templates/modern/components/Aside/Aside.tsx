@@ -17,7 +17,7 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles } = useSelector(getStateShortData);
+  const { skills, titles, image } = useSelector(getStateShortData);
   const { contact, education, links, languages: languagesData } = initialData;
 
   const getFilledData = useCallback(
@@ -27,7 +27,7 @@ const Aside = () => {
 
   const headerData = getFilledData(contact);
 
-  const { city, country, email, phone, photo } = headerData;
+  const { city, country, email, phone } = headerData;
   const shortAddress =
     city && country ? `${city}, ${country}` : city || country;
 
@@ -37,13 +37,14 @@ const Aside = () => {
 
   return (
     <div className={styles.container}>
-      {photo && (
+      {image && (
         <Image
-          src={photo}
+          src={image}
           className={styles.image}
           alt="photo"
-          width={70}
-          height={70}
+          width={200}
+          height={200}
+          quality={100}
         />
       )}
       <div className={styles.wrapper}>

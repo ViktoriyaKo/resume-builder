@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--sm-spacing);
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.input {
+  visibility: hidden;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  pointer-events: none;
+}
+
+.image {
+  object-fit: contain;
+  width: 60px;
+  height: 60px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.caption {
+  transition: color 0.5s;
+}
+
+.active:hover,
+.button:hover {
+  color: var(--blue-200) !important;
+  transition: color 0.5s;
+}
+
