@@ -14,6 +14,7 @@ interface IProps {
   image?: { url?: string };
   handleDelete?: (id?: InputMaybe<IdFilterInput>) => void;
   options?: IOptions[];
+  design?: string;
   onContextMenu?: (
     e: React.MouseEvent<HTMLDivElement>,
     options: IOptions[]
@@ -21,14 +22,14 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { id, handleDelete, image } = props;
+  const { id, handleDelete, image, design } = props;
   const imageUrl = image?.url ?? '';
   const { lang } = useParams();
 
   return (
     <>
       <CustomLink
-        href={`/${lang}/edit/${id}`}
+        href={`/${lang}/edit/${id}?design=${design ?? 'simple'}`}
         className={styles.card}
         prefix={
           <>

@@ -1,4 +1,4 @@
-import { authClient } from '@/graphql-client';
+import { getAuthClient } from '@/graphql-client';
 import {
   CreateResumeItemMutation,
   CreateResumeItemDocument,
@@ -6,6 +6,7 @@ import {
 
 export const createResumeItem = async () => {
   try {
+    const authClient = getAuthClient()
     const data = await authClient.request<CreateResumeItemMutation>(
       CreateResumeItemDocument
     );

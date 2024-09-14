@@ -1,4 +1,4 @@
-import { authClient } from '@/graphql-client';
+import { getAuthClient } from '@/graphql-client';
 import {
   UpdateResumeItemMutation,
   UpdateResumeItemDocument,
@@ -11,6 +11,8 @@ export const updateResume = createAsyncThunk(
     const variables = { data, id };
 
     try {
+      const authClient = getAuthClient()
+
       const data = await authClient.request<UpdateResumeItemMutation>(
         UpdateResumeItemDocument,
         variables
@@ -19,6 +21,6 @@ export const updateResume = createAsyncThunk(
     } catch (error) {
       console.error('GraphQL Error:', error);
       return thunkAPI.rejectWithValue('Failed to update resume');
-   }
+    }
   }
 );

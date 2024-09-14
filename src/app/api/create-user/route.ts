@@ -8,7 +8,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ jwt }, { status: 200 });
   } catch (error: any) {
-    console.log(error);
     const errorMessage = 'Email or Username are already taken';
     if (error?.response?.errors?.[0]?.message === errorMessage) {
       return NextResponse.json(

@@ -41,8 +41,6 @@ const Content = (props: IContentProps) => {
     index: number,
     uuid: string
   ) => {
-    e.preventDefault();
-    console.log(e);
     remove(index);
     dispatch(removeData({ category, id: uuid }));
   };
@@ -66,7 +64,7 @@ const Content = (props: IContentProps) => {
                 handleDelete={(e) => handleDelete(e, index, uuid)}
               >
                 <>
-                {/* для инициализации id при создании нового поля: */}
+                  {/* для инициализации id при создании нового поля: */}
                   <Input
                     type="hidden"
                     defaultValue={uuid}
@@ -85,7 +83,6 @@ const Content = (props: IContentProps) => {
         })}
       <Button
         onClick={(e) => {
-          e.preventDefault();
           append({ uuid: uuid() });
         }}
       >
