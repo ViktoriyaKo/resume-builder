@@ -1,17 +1,25 @@
 import { NextResponse } from 'next/server';
-import { withAuth } from 'next-auth/middleware';
-import { nextAuthConfig } from '@/entities';
+import { getToken } from 'next-auth/jwt'; // Используется для проверки авторизации
 
-const handleProtectedRoutes = withAuth(nextAuthConfig);
+const protectedRoutes = ['account', 'edit'];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
+  const token = await getToken({ req: request });
 
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/en', request.url));
   }
 
-  return handleProtectedRoutes(request);
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname.includes(route)
+  );
+
+  if (isProtectedRoute && !token) {
+    return NextResponse.redirect(new URL('/en/sign-in', request.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {

@@ -46,6 +46,7 @@ const DocumentEditor = (props: IProps) => {
   } = initialFormData ?? {};
   const { t } = useTranslation();
   const { lang } = useParams();
+  console.log(initialFormData);
 
   useEffect(() => {
     dispatch(getCurrentResume(resume)).then(() => {

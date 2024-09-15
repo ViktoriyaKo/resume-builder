@@ -35,8 +35,21 @@ export const Slice = createSlice({
             state[typedKey] =
               typeof initialData === 'object' ? { ...initialData } : {};
           } else if (typedKey === ShortCategories.IMAGE) {
-            state[typedKey] =
-              initialData?.url ?? initialData?.data?.attributes?.url ?? '';
+            if (typeof initialData === 'object' && initialData !== null) {
+              state[typedKey] =
+                (
+                  initialData as {
+                    url?: string;
+                    data?: { attributes?: { url?: string } };
+                  }
+                ).url ??
+                (initialData as { data?: { attributes?: { url?: string } } })
+                  .data?.attributes?.url ??
+                '';
+            } else {
+              state[typedKey] =
+                typeof initialData === 'string' ? initialData : '';
+            }
           } else {
             state[typedKey] =
               typeof initialData === 'string' ? initialData : '';

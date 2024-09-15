@@ -1,11 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
-import { ResumeItemInput } from '@/graphql/gql/graphql';
+import { ResumeItem } from '@/graphql/gql/graphql';
 
 //в этом слайсе устанавливаются значения формы по умолчанию
 
+interface ResumeItemExtend extends ResumeItem {
+  id?: string;
+}
+
 interface TypeInitialState {
-  initialFormData: ResumeItemInput;
+  initialFormData: ResumeItemExtend;
 }
 
 const initialState: TypeInitialState = {
@@ -19,7 +23,7 @@ export const Slice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       (action) => action.type.endsWith('/fulfilled'),
-      (state, action: PayloadAction<ResumeItemInput>) => {
+      (state, action: PayloadAction<ResumeItem>) => {
         state.initialFormData = action.payload;
       }
     );

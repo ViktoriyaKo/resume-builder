@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { getUserResume } from '@/packages/account/services';
 
 interface IProps {
   templates: TemplateEntity[];
@@ -29,7 +30,9 @@ const Content = (props: IProps) => {
         const data = await createResumeItem();
         const id = data?.id;
         if (id) {
-          await updateUserResumeData({ resume_items: id });
+          const data = await getUserResume();
+          const newResume = [...data.map((item: any) => item?.id), id];
+          await updateUserResumeData({ resume_items: newResume });
           router.push(`/${lang}/edit/${id}?design=${link}`);
         }
       } else {

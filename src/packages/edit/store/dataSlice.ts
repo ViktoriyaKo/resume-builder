@@ -62,7 +62,10 @@ export const Slice = createSlice({
             const data = action.payload[key];
             if (key === Categories.CONTACT) {
               state[key] = ENTITY.map((item) => {
-                return { ...item, value: data[item.name as keyof typeof data] };
+                const value = String(
+                  data[item.name as keyof typeof data] || ''
+                );
+                return { ...item, value };
               });
             } else {
               state[key] = getInitialDataItem(data, ENTITY);

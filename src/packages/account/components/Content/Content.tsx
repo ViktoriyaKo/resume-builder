@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import { ModalConfirmation } from '@/ui/organisms';
 import { createResumeItem, updateUserResumeData } from '@/services';
+import { useRouter, useParams } from 'next/navigation';
 
 interface IProps {
   resume: ResumeItemFiltersInput[];
@@ -18,17 +19,21 @@ interface IProps {
 
 const Content = (props: IProps) => {
   const { resume } = props;
+  const { lang } = useParams();
   const [allResume, setResume] = useState(resume);
   const { t } = useTranslation();
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [resumeToDelete, setResumeToDelete] =
     useState<InputMaybe<IdFilterInput> | null>(null);
+  const router = useRouter();
 
   const createResume = async () => {
     const data = await createResumeItem();
-    const id = data?.id;
-    if (id) {
-      await updateUserResumeData({ resume_items: id });
+    const id = data?.id;  
+     if (id) {
+      const newResume = [...allResume.map(item => item.id), id];
+      await updateUserResumeData({ resume_items: newResume });
+      router.push(`/${lang}/edit/${id}`);
     }
   };
 

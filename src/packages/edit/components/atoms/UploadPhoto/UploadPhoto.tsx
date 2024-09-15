@@ -54,7 +54,7 @@ const UploadPhoto = () => {
   };
 
   const handleDeleteImage = () => {
-    setPhoto(null);
+    setPhoto('');
     setValue('image', null);
   };
 

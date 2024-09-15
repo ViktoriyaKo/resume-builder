@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import { Icon, CustomLink, Button, DeleteIcon } from '@/ui/atoms';
 import styles from './ResumeCard.module.css';
-import { InputMaybe, IdFilterInput } from '@/graphql/gql/graphql';
+import {
+  InputMaybe,
+  IdFilterInput,
+  Scalars,
+  StringFilterInput,
+} from '@/graphql/gql/graphql';
 import { useParams } from 'next/navigation';
 
 interface IOptions {
@@ -11,10 +16,10 @@ interface IOptions {
 
 interface IProps {
   id?: InputMaybe<IdFilterInput>;
-  image?: { url?: string };
+  cover?: { url?: string };
   handleDelete?: (id?: InputMaybe<IdFilterInput>) => void;
   options?: IOptions[];
-  design?: string;
+  design?: InputMaybe<StringFilterInput>;
   onContextMenu?: (
     e: React.MouseEvent<HTMLDivElement>,
     options: IOptions[]
@@ -22,8 +27,8 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { id, handleDelete, image, design } = props;
-  const imageUrl = image?.url ?? '';
+  const { id, handleDelete, cover, design } = props;
+  const imageUrl = cover?.url ?? '';
   const { lang } = useParams();
 
   return (
