@@ -1,7 +1,13 @@
 .wrapper {
   border-radius: var(--border-radius);
-  padding: var(--sm-spacing);
+  padding: var(--xs-spacing);
   background: white;
+}
+
+@media (width >= 468px) {
+  .wrapper {
+    padding: var(--sm-spacing);
+  }
 }
 
 .title {
@@ -13,7 +19,15 @@
 .list {
   display: grid;
   gap: var(--sm-spacing);
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-content: center;
+  justify-items: center;
+}
+
+@media (width >= 468px) {
+  .list {
+    grid-template-columns: repeat(auto-fit, 300px);
+  }
 }
 
 .card {

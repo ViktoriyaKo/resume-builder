@@ -86,7 +86,7 @@ const DocumentEditor = (props: IProps) => {
     const subscription = methods.watch((value, { name }) => {
       if (isInitialDataLoaded) {
         debouncedUpdateResume(value);
-        console.log(name, value);
+        // console.log(name, value);
       }
     });
 

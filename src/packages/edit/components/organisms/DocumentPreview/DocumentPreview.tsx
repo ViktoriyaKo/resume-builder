@@ -6,10 +6,11 @@ import { ListTemplates } from '@/packages/edit/templates';
 
 interface IProps {
   currentTemplate: string;
+  resume: string;
 }
 
 const DocumentPreview = (props: IProps) => {
-  const { currentTemplate } = props;
+  const { currentTemplate, resume } = props;
   const contentRef = useRef(null);
 
   return (
@@ -18,7 +19,7 @@ const DocumentPreview = (props: IProps) => {
         {ListTemplates[currentTemplate]}
       </div>
       <DocumentPreviewPagination />
-      <DownloadButtons contentRef={contentRef}/>
+      <DownloadButtons resume={resume} contentRef={contentRef} />
     </div>
   );
 };

@@ -3,7 +3,7 @@
   border: 1px solid var(--pink-100);
   border-radius: var(--border-radius);
   max-width: 300px;
-  width: 100%;
+  width: 100%!important;
   position: relative;
   height: 100%;
   overflow: hidden;

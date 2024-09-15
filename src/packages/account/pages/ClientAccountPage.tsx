@@ -20,7 +20,7 @@ const ClientAccountPage = (props: IProps) => {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>
-          {t('welcome')}{' '}
+          {t('welcome')}
           {name ? (
             <>
               ,<br />

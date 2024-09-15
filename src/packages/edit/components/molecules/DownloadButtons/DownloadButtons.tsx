@@ -11,8 +11,10 @@ import { Modal } from '@/ui/organisms';
 
 const DownloadButtons = ({
   contentRef,
+  resume,
 }: {
   contentRef: RefObject<HTMLDivElement>;
+  resume: string;
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [openModal, setModal] = useState(false);
@@ -55,7 +57,7 @@ const DownloadButtons = ({
       const data = await uploadImageToDB(formData);
       const imageId = data?.[0]?.id;
       if (imageId) {
-        await dispatch(updateResume({ data: { cover: imageId }, id: '37' }));
+        await dispatch(updateResume({ data: { cover: imageId }, id: resume }));
       }
     }, 'image/png');
   }, []);
