@@ -4,7 +4,6 @@ import styles from './ResumeCard.module.css';
 import {
   InputMaybe,
   IdFilterInput,
-  Scalars,
   StringFilterInput,
 } from '@/graphql/gql/graphql';
 import { useParams } from 'next/navigation';

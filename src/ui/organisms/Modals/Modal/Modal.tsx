@@ -17,8 +17,8 @@ const Modal = (props: Props) => {
     <ModalWrapper isOpen={isOpen} onClose={onClose}>
       {
         <div className={styles.container}>
-          <h4 className={styles.title}>{title}</h4>
-          <div>{description}</div>
+          {title && <h4 className={styles.title}>{title}</h4>}
+          {description && <div>{description}</div>}
           <Button onClick={onClose} className={styles.button}>
             Close
           </Button>

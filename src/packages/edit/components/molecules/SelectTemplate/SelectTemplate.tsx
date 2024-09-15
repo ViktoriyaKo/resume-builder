@@ -1,6 +1,8 @@
 import { Select } from '@/ui/atoms';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 interface IProps {
   currentTemplate: string;
@@ -11,6 +13,7 @@ const SelectTemplates = (props: IProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
+  const { t } = useTranslation();
 
   // добавить из базы, временно:
   const options = [
@@ -31,7 +34,7 @@ const SelectTemplates = (props: IProps) => {
   return (
     <Select
       defaultValue={currentTemplate}
-      label={'Change template:'}
+      label={`${t('Change template')}:`}
       options={options}
       name={'design'}
       onChange={handleChange}

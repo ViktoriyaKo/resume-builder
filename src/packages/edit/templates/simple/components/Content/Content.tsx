@@ -6,13 +6,11 @@ import styles from './Content.module.css';
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';
 import { getLongDateFormat } from '@/packages/edit/utils';
-import { useTranslation } from 'react-i18next';
 
 const Content = () => {
-  const { contact, ...initialData } = useSelector(getStateData);
+  const { contact, links, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { skills, summary, titles } = initialShortData;
-  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>

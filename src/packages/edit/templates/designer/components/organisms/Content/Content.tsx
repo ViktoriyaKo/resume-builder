@@ -6,13 +6,11 @@ import React, { useCallback } from 'react';
 import { convertFilledContactData } from '../../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
 import { ExperienceList, Title } from '../../atoms';
-import { useTranslation } from 'react-i18next';
 
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateShortData);
   const { summary, titles } = initialShortData;
-  const { t } = useTranslation();
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
