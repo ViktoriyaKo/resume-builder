@@ -12,11 +12,13 @@
   transition: background-color 0.5s;
   font-weight: 600;
   border: 2px solid black;
+  max-width: max-content !important;
+  min-width: max-content !important;
 }
 
 .item:hover,
 .active {
   background-color: black;
   color: white;
-  transition: all 0.5s;
+  transition: background-color 0.5s;
 }

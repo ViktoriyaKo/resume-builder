@@ -5,19 +5,18 @@
   gap: 8px;
 }
 
+.wrapperInput {
+  max-width: 70%;
+  overflow: hidden;
+}
+
 .input {
   padding-inline: var(--xs-spacing);
   font-weight: 600;
   font-size: 20px;
   outline: none;
   border-bottom: 2px solid transparent;
-  max-width: 70%;
-}
-
-@media (width >= 468px) {
-  .input {
-    max-width: max-content;
-  }
+  max-width: max-content;
 }
 
 .input:focus {

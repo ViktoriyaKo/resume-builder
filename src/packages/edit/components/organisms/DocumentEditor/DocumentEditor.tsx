@@ -107,8 +107,8 @@ const DocumentEditor = (props: IProps) => {
       >
         <div className={styles.topLine}>
           <CustomLink
-            text={t('home')}
-            href={`/${lang}/`}
+            text={t('Account')}
+            href={`/${lang}/account`}
             className={styles.link}
           />
           <SelectTemplates currentTemplate={currentTemplate} />
