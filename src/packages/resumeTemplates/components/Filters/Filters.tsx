@@ -18,8 +18,7 @@ const Filters = (props: IProps) => {
   const searchParams = useSearchParams();
   const currentFilter = searchParams.get('filter') ?? 'all';
 
-  const animation = { duration: 7000, easing: (t: number) => t };
-  const [ref, slider] = useKeenSlider<HTMLElement>({
+  const [ref] = useKeenSlider<HTMLElement>({
     mode: 'free',
     slides: {
       perView: 'auto',
