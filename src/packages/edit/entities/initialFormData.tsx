@@ -54,7 +54,7 @@ export const LINKS_ENTITY = new DataBuilder()
   .addField('Link', FormData.LINK)
   .build();
 
-// todo: переделать:
+// todo: fix!!:
 
 export const SELECT_LANGUAGES_ENTITY = [
   { caption: 'Choose level', value: '' },
