@@ -21,6 +21,7 @@ export const nextAuthConfig: AuthOptions = {
           password: credentials?.password,
           provider: 'local',
         };
+        console.log('body', body);
         const options: RequestInit = getRequestOptions({
           method: 'POST',
           data: body,
@@ -30,6 +31,8 @@ export const nextAuthConfig: AuthOptions = {
           options
         );
         const data = await res.json();
+        console.log('data', data);
+
         const userInfo = data?.message?.login;
         if (userInfo?.user) {
           const userName = userInfo.user?.username;

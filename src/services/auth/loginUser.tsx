@@ -14,7 +14,7 @@ export const loginUser = async (data: IProps) => {
     const data = await client.request<LoginMutation>(LoginDocument, variables);
     return data;
   } catch (error) {
-    console.error('Error');
+    console.error('Error', error);
     throw error;
   }
 };
