@@ -1,5 +1,5 @@
 import { getStateData } from '@/packages/edit/store/dataSlice';
-import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import React, { useCallback } from 'react';
 import styles from './Aside.module.css';
 import { useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles, image } = useSelector(getStateShortData);
+  const { skills, titles, image } = useSelector(getStateSimpleData);
   const { contact, education, links, languages: languagesData } = initialData;
 
   const getFilledData = useCallback(

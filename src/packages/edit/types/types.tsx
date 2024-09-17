@@ -53,15 +53,6 @@ export interface UpdateValueToDataActionPayload extends TypeAttributeData {
   uuid?: UUID;
 }
 
-export type TypeInitialShortField = {
-  [ShortCategories.TITLES]: { [key: string]: string | undefined };
-  [ShortCategories.SKILLS_DESCRIPTION]: string;
-  [ShortCategories.SUMMARY]: string;
-  [ShortCategories.BACKGROUND]: string;
-  [ShortCategories.COLOR]: string;
-  [ShortCategories.IMAGE]: string;
-};
-
 export type UpdateValueActionPayload = Omit<
   UpdateValueToDataActionPayload,
   'category'
@@ -78,3 +69,15 @@ export interface IFields {
   type?: string;
   value?: any;
 }
+
+// simpleForm
+export type TypeInitialShortField = {
+  [ShortCategories.TITLES]: { [key: string]: string | undefined };
+  [ShortCategories.SKILLS_DESCRIPTION]: string;
+  [ShortCategories.SUMMARY]: string;
+  [ShortCategories.BACKGROUND]: string;
+  [ShortCategories.COLOR]: string;
+  [ShortCategories.IMAGE]: string;
+};
+
+export type TypeUpdateSimpleData = { image: string };

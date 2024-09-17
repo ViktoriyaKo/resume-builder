@@ -1,5 +1,5 @@
 import { getStateData } from '@/packages/edit/store/dataSlice';
-import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
 
@@ -9,7 +9,7 @@ import { getLongDateFormat } from '@/packages/edit/utils';
 
 const Content = () => {
   const { contact, links, ...initialData } = useSelector(getStateData);
-  const initialShortData = useSelector(getStateShortData);
+  const initialShortData = useSelector(getStateSimpleData);
   const { skills, summary, titles } = initialShortData;
 
   return (

@@ -7,22 +7,24 @@ import { useRef, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { useFormContext } from 'react-hook-form';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uploadImageToDB } from '@/packages/edit/services';
+import { updateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 
 const UploadPhoto = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { initialFormData } = useSelector(getStateInitialFormData);
   const { image } = initialFormData;
-  const photo = image?.url ?? image?.data?.attributes?.url;
-  const [hasPhoto, setPhoto] = useState(photo);
+  const initialPhoto = image?.url ?? image?.data?.attributes?.url;
+  const [photo, setPhoto] = useState(initialPhoto);
 
   useEffect(() => {
-    if (photo) {
-      setPhoto(photo);
+    if (initialPhoto) {
+      setPhoto(initialPhoto);
     }
-  }, [photo]);
+  }, [initialPhoto]);
 
   const handleUploadPhotoClick = () => {
     if (inputRef.current) {
@@ -40,12 +42,14 @@ const UploadPhoto = () => {
       const file = target.files[0];
       const formData = new FormData();
       formData.append('files', file);
+      const blobURL = URL.createObjectURL(file);
+      dispatch(updateSimpleData({ image: blobURL }));
+      setPhoto(blobURL);
 
       const data = await uploadImageToDB(formData);
       const imageId = data?.[0]?.id;
       if (imageId) {
         if (inputRef.current) {
-          const id = 2;
           setValue('image', imageId);
         }
       }
@@ -59,8 +63,8 @@ const UploadPhoto = () => {
 
   return (
     <div
-      className={clsx(styles.wrapper, { [styles.active]: !hasPhoto })}
-      onClick={!hasPhoto ? handleUploadPhotoClick : undefined}
+      className={clsx(styles.wrapper, { [styles.active]: !photo })}
+      onClick={!photo ? handleUploadPhotoClick : undefined}
     >
       <Input
         ref={inputRef}
@@ -77,7 +81,7 @@ const UploadPhoto = () => {
         height={60}
         className={styles.image}
       />
-      {hasPhoto ? (
+      {photo ? (
         <div className={styles.actions}>
           <Button onClick={handleUploadPhotoClick} className={styles.button}>
             <Icon html={EditSmIcon} />

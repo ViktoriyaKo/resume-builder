@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
-import { TypeInitialShortField } from '../types';
+import { TypeInitialShortField, TypeUpdateSimpleData } from '../types';
 import { ShortCategories } from '../constants';
 
 //в этом слайсе обрабатываются простые данные формы, где все values строки кроме TITLES
@@ -17,7 +17,15 @@ const initialState: TypeInitialShortField = {
 export const Slice = createSlice({
   name: 'simpleForm',
   initialState,
-  reducers: {},
+  reducers: {
+    updateSimpleData: (
+      state: TypeUpdateSimpleData,
+      action: PayloadAction<TypeUpdateSimpleData>
+    ) => {
+      const { image } = action.payload;
+      state.image = image;
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(
       (action) => action.type.endsWith('/fulfilled'),
@@ -59,7 +67,8 @@ export const Slice = createSlice({
     );
   },
 });
+export const { updateSimpleData } = Slice.actions;
 
-export const getStateShortData = (store: RootState) => store.simpleForm;
+export const getStateSimpleData = (store: RootState) => store.simpleForm;
 
 export default Slice.reducer;

@@ -1,5 +1,5 @@
 import { getStateData } from '@/packages/edit/store/dataSlice';
-import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import React, { useCallback } from 'react';
 import styles from './Hero.module.css';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {
   const initialData = useSelector(getStateData);
-  const { image } = useSelector(getStateShortData);
+  const { image } = useSelector(getStateSimpleData);
   const { contact, links } = initialData;
 
   const getFilledData = useCallback(

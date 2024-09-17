@@ -1,5 +1,5 @@
 import { getStateData } from '@/packages/edit/store/dataSlice';
-import { getStateShortData } from '@/packages/edit/store/shortFieldSlice';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
 import React, { useCallback } from 'react';
@@ -9,7 +9,7 @@ import { ExperienceList, Title } from '../../atoms';
 
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
-  const initialShortData = useSelector(getStateShortData);
+  const initialShortData = useSelector(getStateSimpleData);
   const { summary, titles } = initialShortData;
 
   const getFilledData = useCallback(

@@ -2,7 +2,6 @@
 import { Ticker } from '@/ui/atoms';
 import styles from '../styles/Description.module.css';
 import { useTranslation } from 'react-i18next';
-import { clsx } from 'clsx';
 
 const Description = () => {
   const { t } = useTranslation();
