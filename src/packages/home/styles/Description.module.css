@@ -6,7 +6,7 @@
 
 .wrapper {
   max-width: var(--width-container);
-  padding: 160px 20px 80px 20px;
+  padding: 160px 20px 20px 20px;
   margin: 0 auto;
   flex-direction: column;
   display: flex;
@@ -22,12 +22,12 @@
 .description {
   font-size: 22px;
   text-align: justify;
-  flex: 1;
+  flex-basis: 50%;
 }
 
 .title {
+  flex-basis: 50%;
   padding-right: var(--sm-spacing);
-  flex: 1;
   border-right: 1px solid black;
   font-size: 26px;
   font-weight: 600;
@@ -38,4 +38,31 @@
   .title {
     font-size: 36px;
   }
+}
+
+.wrapperInner { 
+  background: linear-gradient(white 30%, #b19994a6 90%);
+}
+
+.inner {
+  padding: 20px 20px 40px 20px;
+  margin: 0 auto;
+  max-width: var(--width-container);
+}
+
+.lgTitle {
+  font-size: 46px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.list {
+  list-style: decimal;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 26px;
+  font-size: 26px;
+  font-weight: 600;
+  font-style: italic;
 }

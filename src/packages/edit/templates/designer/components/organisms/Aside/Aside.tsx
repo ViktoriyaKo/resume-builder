@@ -40,8 +40,8 @@ const Aside = () => {
           src={image}
           className={styles.image}
           alt="photo"
-          width={200}
-          height={200}
+          width={800}
+          height={800}
           quality={100}
         />
       )}

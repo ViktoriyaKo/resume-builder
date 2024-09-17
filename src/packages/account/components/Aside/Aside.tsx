@@ -38,6 +38,7 @@ const Aside = (props: IProps) => {
             width={60}
             height={60}
             src={image}
+            quality={100}
             alt={'user-photo'}
           />
         )}

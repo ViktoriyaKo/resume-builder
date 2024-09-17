@@ -43,7 +43,6 @@ const UploadPhoto = () => {
 
       const data = await uploadImageToDB(formData);
       const imageId = data?.[0]?.id;
-      console.log(imageId);
       if (imageId) {
         if (inputRef.current) {
           const id = 2;

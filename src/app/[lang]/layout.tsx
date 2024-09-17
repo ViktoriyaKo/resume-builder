@@ -2,7 +2,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import clsx from 'clsx';
-import { Footer, Header } from '@/ui/organisms';
+import { CookieModal, Footer, Header } from '@/ui/organisms';
 import { ROUTERS } from '@/constants/routers';
 import { ContactForm } from '@/packages/core';
 import { Locales } from '@/types';
@@ -21,7 +21,6 @@ export default function Layout({
   children: React.ReactNode;
   params: { lang: Locales };
 }>) {
-
   return (
     <html lang={lang}>
       <head>
@@ -47,6 +46,11 @@ export default function Layout({
             }
           />
         </MainProviders>
+        <CookieModal
+          title={'We use cookies'}
+          description={'Usage Agreement'}
+          label={'Accept'}
+        />
       </body>
     </html>
   );

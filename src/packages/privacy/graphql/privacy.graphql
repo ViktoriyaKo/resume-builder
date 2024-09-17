@@ -1,0 +1,10 @@
+query Privacy($locale: I18NLocaleCode) {
+  pages(locale: $locale, filters: { slug: { eq: "privacy" } }) {
+    data {
+      attributes {
+        description
+        title
+      }
+    }
+  }
+}
