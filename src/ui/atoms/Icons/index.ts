@@ -15,3 +15,4 @@ export { TxtIcon } from './TxtIcon';
 export { SaveIcon } from './SaveIcon';
 export { BurgerIcon } from './BurgerIcon';
 export { SignOutIcon } from './SignOutIcon';
+export { BackIcon } from './BackIcon';

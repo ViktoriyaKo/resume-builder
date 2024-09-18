@@ -63,10 +63,10 @@ const Form = () => {
           />
         </div>
         <Button type={'submit'} className={styles.button}>
-          Войти
+          Login
         </Button>
         <Link href={`/${lang}/sign-up`} className={styles.link}>
-          Если у вас нет аккаунта, то нажмите сюда для регистрации
+          If you do not have an account, click here to sign up
         </Link>
       </form>
     </FormProvider>

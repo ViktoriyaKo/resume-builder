@@ -59,8 +59,11 @@ export const Slice = createSlice({
                 typeof initialData === 'string' ? initialData : '';
             }
           } else {
-            state[typedKey] =
-              typeof initialData === 'string' ? initialData : '';
+            const sanitizedData =
+              typeof initialData === 'string' && initialData
+                ? initialData.replace(/<[^>]*>/g, '')
+                : '';
+            state[typedKey] = sanitizedData;
           }
         });
       }

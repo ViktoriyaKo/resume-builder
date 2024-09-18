@@ -10,9 +10,10 @@ import {
   SelectTemplates,
   Skills,
 } from '../../molecules';
+import { ResumeScore } from '../../atoms';
 import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
-import { CustomLink } from '@/ui/atoms';
+import { Button, BackIcon, Icon } from '@/ui/atoms';
 import { useParams } from 'next/navigation';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect, useState } from 'react';
@@ -20,6 +21,7 @@ import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useDebounce } from '@/hooks';
+import { useRouter } from 'next/navigation';
 
 interface IProps {
   currentTemplate: string;
@@ -28,6 +30,8 @@ interface IProps {
 
 const DocumentEditor = (props: IProps) => {
   const { currentTemplate, resume } = props;
+  const router = useRouter();
+
   const dispatch = useDispatch<AppDispatch>();
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 
@@ -45,7 +49,6 @@ const DocumentEditor = (props: IProps) => {
     summary,
   } = initialFormData ?? {};
   const { t } = useTranslation();
-  const { lang } = useParams();
 
   useEffect(() => {
     dispatch(getCurrentResume(resume)).then(() => {
@@ -106,13 +109,13 @@ const DocumentEditor = (props: IProps) => {
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <div className={styles.topLine}>
-          <CustomLink
-            text={t('Account')}
-            href={`/${lang}/account`}
-            className={styles.link}
-          />
+          <Button className={styles.back} onClick={() => router.back()}>
+            <Icon html={BackIcon} />
+            Back
+          </Button>
           <SelectTemplates currentTemplate={currentTemplate} />
         </div>
+        <ResumeScore score={10} />
         <ContactDetails data={contactData} />
         <DocumentEditorSection.Summary />
         <DocumentEditorSection.Employment data={employmentData} />

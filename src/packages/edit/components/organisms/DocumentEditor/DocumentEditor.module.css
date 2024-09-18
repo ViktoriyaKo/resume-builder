@@ -12,28 +12,33 @@
 .topLine {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
-.link {
+.back {
   position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   background-color: black;
   color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
 
-.link:hover {
+.back:hover {
   color: black;
   background-color: var(--gray-300);
 }
 
 .button {
   padding: 12px 20px;
-background-color: var(--gray-300);
-text-transform: uppercase;
-font-weight: 600;
-margin-top: 20px;
-border: 1px solid black;
-transform: all 0.5;
+  background-color: var(--gray-300);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 20px;
+  border: 1px solid black;
+  transform: all 0.5;
 }
 
 .button:hover {

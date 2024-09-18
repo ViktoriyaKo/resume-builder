@@ -1,5 +1,5 @@
 import { AdvantageEntity, TemplateEntity } from '@/graphql/gql/graphql';
-import { Hero, Description, Templates, Advantages } from '../components';
+import { Hero, Description, Templates, Advantages, StepsList } from '../components';
 import { getHomeData } from '../services/getHomeData';
 import { LanguagesType } from '@/types/types';
 import initTranslations from '@/app/i18n';
@@ -27,6 +27,7 @@ const HomePage = async (props: LanguagesType) => {
       <Hero />
       <Description />
       <Advantages advantages={advantages} />
+      <StepsList/>
       <Templates templates={templates} />
     </TranslationsProvider>
   );
