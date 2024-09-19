@@ -37,7 +37,7 @@ const Form = () => {
           email: data.email,
           password: data.password,
         });
-        router.push(`/${lang}/account`);
+        router.push(`/${lang}/`);
       } else {
         const errorText = await res.json();
         methods.setError('repeatPassword', {

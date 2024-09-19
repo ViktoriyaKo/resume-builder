@@ -31,7 +31,7 @@ const Form = () => {
       });
       if (result?.ok) {
         console.log(result);
-        router.push(`/${lang}/account`);
+        router.push(`/${lang}/`);
       } else {
         methods.setError('password', {
           type: 'manual',
