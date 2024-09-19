@@ -1,5 +1,16 @@
-import { AdvantageEntity, TemplateEntity } from '@/graphql/gql/graphql';
-import { Hero, Description, Templates, Advantages, StepsList } from '../components';
+import {
+  AdvantageEntity,
+  TemplateEntity,
+  StepEntity,
+  UploadFileEntity,
+} from '@/graphql/gql/graphql';
+import {
+  Hero,
+  Description,
+  Templates,
+  Advantages,
+  StepsList,
+} from '../components';
 import { getHomeData } from '../services/getHomeData';
 import { LanguagesType } from '@/types/types';
 import initTranslations from '@/app/i18n';
@@ -17,6 +28,9 @@ const HomePage = async (props: LanguagesType) => {
 
   const templates = data?.templates?.data as TemplateEntity[];
   const advantages = data?.advantages?.data as AdvantageEntity[];
+  const steps = data?.steps?.data as StepEntity[];
+  const stepsImage = data?.image?.data?.attributes?.stepsImage
+    ?.data as UploadFileEntity[];
 
   return (
     <TranslationsProvider
@@ -27,7 +41,7 @@ const HomePage = async (props: LanguagesType) => {
       <Hero />
       <Description />
       <Advantages advantages={advantages} />
-      <StepsList/>
+      <StepsList steps={steps} images={stepsImage} />
       <Templates templates={templates} />
     </TranslationsProvider>
   );

@@ -1,16 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
 import { ResumeItem } from '@/graphql/gql/graphql';
+import { TypeInitialState } from '../types';
 
 //в этом слайсе устанавливаются значения формы по умолчанию
-
-interface ResumeItemExtend extends ResumeItem {
-  id?: string;
-}
-
-interface TypeInitialState {
-  initialFormData: ResumeItemExtend;
-}
 
 const initialState: TypeInitialState = {
   initialFormData: {},

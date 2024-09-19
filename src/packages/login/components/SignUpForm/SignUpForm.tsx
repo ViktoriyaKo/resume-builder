@@ -8,9 +8,11 @@ import { useParams } from 'next/navigation';
 import { getRequestOptions } from '@/utils';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 const Form = () => {
   const { lang } = useParams();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const initialData = {
@@ -35,7 +37,7 @@ const Form = () => {
           email: data.email,
           password: data.password,
         });
-        router.push(`/${lang}`);
+        router.push(`/${lang}/account`);
       } else {
         const errorText = await res.json();
         methods.setError('repeatPassword', {
@@ -56,36 +58,36 @@ const Form = () => {
         <div className={styles.wrapper}>
           <Input
             name={'email'}
-            rules={{ required: 'Email is required' }}
-            placeholder="Enter email"
+            rules={{ required: t('email_error') }}
+            placeholder={t('enter_email')}
             type={'email'}
           />
           <PasswordInput
             name={'password'}
-            placeholder={'Enter password'}
+            placeholder={t('enter_password')}
             rules={{
-              required: 'Password is required',
+              required: t('password_error'),
               minLength: {
                 value: 8,
-                message: 'Password must be at least 8 characters long',
+                message: t('password_error_characters'),
               },
             }}
           />
           <PasswordInput
             name={'repeatPassword'}
-            placeholder={'Repeat password'}
+            placeholder={t('repeat_password')}
             rules={{
-              required: 'Please repeat your password',
+              required: t('please_repeat_password'),
               validate: (value) =>
-                value === password || 'Passwords do not match',
+                value === password || t('passwords_dont_match'),
             }}
           />
         </div>
         <Button type={'submit'} className={styles.button}>
-          Register
+          {t('register')}
         </Button>
         <Link href={`/${lang}/sign-in`} className={styles.link}>
-          Have you already had account? Sign in
+          {t('already_had_account')}
         </Link>
       </form>
     </FormProvider>

@@ -6,9 +6,11 @@ import { useParams } from 'next/navigation';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 const Form = () => {
   const { lang } = useParams();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const initialData = {
@@ -28,11 +30,11 @@ const Form = () => {
         password: data.password,
       });
       if (result?.ok) {
-        router.push(`/${lang}`);
+        router.push(`/${lang}/account`);
       } else {
         methods.setError('password', {
           type: 'manual',
-          message: 'Password or Email are not correct',
+          message: t('signin_error'),
         });
       }
     } catch (error) {
@@ -46,27 +48,27 @@ const Form = () => {
         <div className={styles.wrapper}>
           <Input
             name={'email'}
-            rules={{ required: 'Email is required' }}
-            placeholder="Enter email"
+            rules={{ required: t('email_error') }}
+            placeholder={t('enter_email')}
             type={'email'}
           />
           <PasswordInput
             name={'password'}
-            placeholder={'Enter password'}
+            placeholder={t('enter_password')}
             rules={{
-              required: 'Password is required',
+              required: t('password_error'),
               minLength: {
                 value: 8,
-                message: 'Password must be at least 8 characters long',
+                message: t('password_error_characters'),
               },
             }}
           />
         </div>
         <Button type={'submit'} className={styles.button}>
-          Login
+          {t('login')}
         </Button>
         <Link href={`/${lang}/sign-up`} className={styles.link}>
-          If you do not have an account, click here to sign up
+          {t('dont_have_account')}
         </Link>
       </form>
     </FormProvider>

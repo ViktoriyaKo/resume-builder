@@ -17,6 +17,31 @@ query Home($locale: I18NLocaleCode) {
     }
   }
 
+  steps(locale: $locale) {
+    data {
+      attributes {
+        title
+        description
+      }
+    }
+  }
+
+  image {
+    data {
+      attributes {
+        stepsImage {
+          data {
+            attributes {
+              url
+              alternativeText
+              hash
+            }
+          }
+        }
+      }
+    }
+  }
+
   advantages(locale: $locale) {
     data {
       attributes {

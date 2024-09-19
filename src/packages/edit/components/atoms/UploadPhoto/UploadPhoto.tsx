@@ -17,7 +17,8 @@ const UploadPhoto = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { initialFormData } = useSelector(getStateInitialFormData);
   const { image } = initialFormData;
-  const initialPhoto = image?.url ?? image?.data?.attributes?.url;
+  const initialPhoto =
+    image && 'url' in image ? image?.url : image?.data?.attributes?.url;
   const [photo, setPhoto] = useState(initialPhoto);
 
   useEffect(() => {

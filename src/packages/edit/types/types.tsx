@@ -1,5 +1,10 @@
 import { StaticImageData } from 'next/image';
 import { Categories, ShortCategories } from '../constants';
+import {
+  Maybe,
+  ResumeItem,
+  UploadFileEntityResponse,
+} from '@/graphql/gql/graphql';
 
 interface TypeAttributeData {
   name?: string;
@@ -81,3 +86,13 @@ export type TypeInitialShortField = {
 };
 
 export type TypeUpdateSimpleData = { image: string };
+
+//initialFormSlice:
+interface ResumeItemExtend extends Omit<ResumeItem, 'image'> {
+  id?: string;
+  image?: Maybe<UploadFileEntityResponse> | { url: string };
+}
+
+export interface TypeInitialState {
+  initialFormData: ResumeItemExtend;
+}

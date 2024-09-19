@@ -1,14 +1,25 @@
-'use client';
-import { SignInForm, ContainerForm } from '../components';
+import { LanguagesType } from '@/types/types';
+import initTranslations from '@/app/i18n';
+import TranslationsProvider from '@/providers/TranslationsProvider';
+import ClientSignInPage from './ClientSignInPage';
 
-const SignInPage = () => {
+const namespaces = ['sign'];
+
+const SignInPage = async (props: LanguagesType) => {
+  const { lang } = props;
+  const { resources } = await initTranslations({
+    lang,
+    namespaces,
+  });
+
   return (
-    <ContainerForm
-      title={'Welcome to Resume Builder'}
-      description={'Please sign in to create a resume'}
+    <TranslationsProvider
+      namespaces={namespaces}
+      lang={lang}
+      resources={resources}
     >
-      <SignInForm />
-    </ContainerForm>
+      <ClientSignInPage />
+    </TranslationsProvider>
   );
 };
 
