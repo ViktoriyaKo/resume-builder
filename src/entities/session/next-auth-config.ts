@@ -4,11 +4,6 @@ import Credentials from 'next-auth/providers/credentials';
 import GooggleProvider from 'next-auth/providers/google';
 import { cookies } from 'next/headers';
 
-interface Credentials {
-  csrfToken: string;
-  email: string;
-  password: string;
-}
 export const nextAuthConfig: AuthOptions = {
   providers: [
     GooggleProvider({
@@ -20,13 +15,9 @@ export const nextAuthConfig: AuthOptions = {
         email: { label: 'email', type: 'email', required: true },
         password: { label: 'password', type: 'password', required: true },
       },
-      async authorize(
-        credentials?: Record<'email' | 'password', string> &
-          Partial<Credentials>
-      ) {
+      async authorize(credentials) {
         console.log('credentials', credentials);
         const body = {
-          csrfToken: credentials?.csrfToken,
           identifier: credentials?.email,
           password: credentials?.password,
           provider: 'local',
@@ -35,15 +26,14 @@ export const nextAuthConfig: AuthOptions = {
           method: 'POST',
           data: body,
         });
+        console.log('options', options);
         const res = await fetch(
           `${process.env.NEXTAUTH_URL}/api/sign-in`,
           options
         );
         const data = await res.json();
         console.log('data', data);
-
         const userInfo = data?.message?.login;
-        console.log('user', userInfo);
 
         if (userInfo?.user) {
           const userName = userInfo.user?.username;
