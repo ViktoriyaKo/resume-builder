@@ -31,7 +31,7 @@ const Form = () => {
       });
       if (result?.ok) {
         console.log(result);
-        router.replace(`/${lang}/`);
+        router.push(`/`);
       } else {
         methods.setError('password', {
           type: 'manual',
