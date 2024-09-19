@@ -30,6 +30,7 @@ const Form = () => {
         password: data.password,
       });
       if (result?.ok) {
+        console.log(result);
         router.push(`/${lang}/account`);
       } else {
         methods.setError('password', {
@@ -38,7 +39,7 @@ const Form = () => {
         });
       }
     } catch (error) {
-      console.log("Error");
+      console.log('Error');
     }
   };
 

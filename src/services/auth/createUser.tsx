@@ -19,10 +19,10 @@ export const createUser = async (data: IProps) => {
       CreateUserDocument,
       variables
     );
-    const {user, jwt} = data.register;
-    return {id: user.id, jwt }
+    const { user, jwt } = data.register;
+    return { id: user.id, jwt };
   } catch (error) {
-    console.error('Error');
+    console.error(error);
     throw error;
   }
 };

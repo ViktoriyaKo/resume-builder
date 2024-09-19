@@ -16,6 +16,7 @@ export const nextAuthConfig: AuthOptions = {
         password: { label: 'password', type: 'password', required: true },
       },
       async authorize(credentials) {
+        console.log(credentials)
         const body = {
           identifier: credentials?.email,
           password: credentials?.password,
@@ -40,6 +41,7 @@ export const nextAuthConfig: AuthOptions = {
             email: userName,
             jwt: userInfo.jwt,
           };
+          console.log('user', user);
           return user as User;
         } else {
           return null;
@@ -48,6 +50,14 @@ export const nextAuthConfig: AuthOptions = {
     }),
   ],
   callbacks: {
+    async session({ session, token }) {
+      const jwt = token.jwt;
+      session.jwt = jwt;
+      if (typeof jwt === 'string') {
+        cookies().set('jwt', jwt);
+      }
+      return session;
+    },
     async jwt({ token, user, account }) {
       const isSignIn = user ? true : false;
       if (isSignIn) {
@@ -64,15 +74,8 @@ export const nextAuthConfig: AuthOptions = {
           token.id = user.id;
         }
       }
+      console.log('token', token);
       return token;
-    },
-    async session({ session, token }) {
-      const jwt = token.jwt;
-      session.jwt = jwt;
-      if (typeof jwt === 'string') {
-        cookies().set('jwt', jwt);
-      }
-      return session;
     },
   },
   pages: {
