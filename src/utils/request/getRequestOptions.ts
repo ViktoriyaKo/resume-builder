@@ -8,7 +8,7 @@ const getRequestOptions = ({ method, data }: ArgsType) => {
     method: method,
     mode: 'cors',
     cache: 'no-cache',
-    credentials: 'include',
+    credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
     },
