@@ -7,7 +7,6 @@ import PasswordInput from '../PasswordInput/PasswordInput';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { getRequestOptions } from '@/utils';
 
 const Form = () => {
   const { lang } = useParams();
@@ -25,25 +24,20 @@ const Form = () => {
 
   const onSubmit = async (data: { email: string; password: string }) => {
     try {
-      const options: RequestInit = getRequestOptions({
-        method: 'POST',
-        data,
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
       });
-      const res1 = await fetch(`${process.env.NEXTAUTH_URL}/api/test`, options);
-      // const result = await signIn('credentials', {
-      //   redirect: false,
-      //   email: data.email,
-      //   password: data.password,
-      // });
-      // if (result?.ok) {
-      //   console.log(result);
-      //   router.push(`/${lang}/account`);
-      // } else {
-      //   methods.setError('password', {
-      //     type: 'manual',
-      //     message: t('signin_error'),
-      //   });
-      // }
+      if (result?.ok) {
+        console.log(result);
+        router.push(`/${lang}/account`);
+      } else {
+        methods.setError('password', {
+          type: 'manual',
+          message: t('signin_error'),
+        });
+      }
     } catch (error) {
       console.log(error);
     }
