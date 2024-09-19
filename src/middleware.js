@@ -6,7 +6,7 @@ const protectedRoutes = ['account', 'edit'];
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
   const token = await getToken({ req: request });
-
+  console.log('token', token);
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/en', request.url));
   }

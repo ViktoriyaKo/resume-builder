@@ -16,7 +16,6 @@ export const nextAuthConfig: AuthOptions = {
         password: { label: 'password', type: 'password', required: true },
       },
       async authorize(credentials) {
-        console.log('credentials', credentials);
         const body = {
           identifier: credentials?.email,
           password: credentials?.password,
@@ -26,13 +25,11 @@ export const nextAuthConfig: AuthOptions = {
           method: 'POST',
           data: body,
         });
-        console.log('options', options);
         const res = await fetch(
           `${process.env.NEXTAUTH_URL}/api/sign-in`,
           options
         );
         const data = await res.json();
-        console.log('data', data);
         const userInfo = data?.message?.login;
 
         if (userInfo?.user) {
@@ -75,7 +72,6 @@ export const nextAuthConfig: AuthOptions = {
           token.id = user.id;
         }
       }
-      console.log('token', token);
       return token;
     },
   },
