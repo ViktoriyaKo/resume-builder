@@ -16,6 +16,8 @@ export async function middleware(request) {
   );
 
   if (isProtectedRoute && !token) {
+    console.log('token1111', token);
+
     return NextResponse.redirect(new URL('/en/sign-in', request.url));
   }
 

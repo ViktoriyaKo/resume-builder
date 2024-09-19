@@ -30,7 +30,6 @@ const Form = () => {
         password: data.password,
       });
       if (result?.ok) {
-        console.log(result);
         router.push(`/`);
       } else {
         methods.setError('password', {

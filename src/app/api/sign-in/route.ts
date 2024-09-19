@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const res = await loginUser(body);
     return NextResponse.json({ message: res }, { status: 200 });
   } catch (error: any) {
-    console.log(error);
+    console.log('error');
 
     return NextResponse.json(
       { message: 'An unexpected error occurred' },
