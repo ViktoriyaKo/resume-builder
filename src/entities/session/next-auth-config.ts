@@ -16,7 +16,7 @@ export const nextAuthConfig: AuthOptions = {
         password: { label: 'password', type: 'password', required: true },
       },
       async authorize(credentials) {
-        console.log(credentials)
+        console.log('credentials', credentials);
         const body = {
           identifier: credentials?.email,
           password: credentials?.password,
@@ -31,7 +31,10 @@ export const nextAuthConfig: AuthOptions = {
           options
         );
         const data = await res.json();
+        console.log('data', data);
+
         const userInfo = data?.message?.login;
+        console.log('user', userInfo);
 
         if (userInfo?.user) {
           const userName = userInfo.user?.username;
@@ -41,7 +44,6 @@ export const nextAuthConfig: AuthOptions = {
             email: userName,
             jwt: userInfo.jwt,
           };
-          console.log('user', user);
           return user as User;
         } else {
           return null;

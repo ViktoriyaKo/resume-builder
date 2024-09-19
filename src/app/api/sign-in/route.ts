@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: res }, { status: 200 });
   } catch (error: any) {
-    console.log('Error');
+    console.log(error);
 
     return NextResponse.json(
       { message: 'An unexpected error occurred' },
