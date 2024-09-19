@@ -10,6 +10,5 @@ export const getHomeData = async (locale: string) => {
     const data = await client.request<HomeQuery>(HomeDocument, variables);
     return data;
   } catch (err) {
-    console.log(err);
-  }
+    console.log("Error");  }
 };

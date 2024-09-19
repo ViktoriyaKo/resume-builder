@@ -14,6 +14,5 @@ export const updateUserResumeData = async (body: any) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.log('error', error);
-  }
+    console.log("Error");  }
 };

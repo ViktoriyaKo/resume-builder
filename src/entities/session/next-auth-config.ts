@@ -31,9 +31,11 @@ export const nextAuthConfig: AuthOptions = {
         );
         const data = await res.json();
         const userInfo = data?.message?.login;
+
         if (userInfo?.user) {
           const userName = userInfo.user?.username;
           const user = {
+            id: userInfo.user.id,
             name: userName,
             email: userName,
             jwt: userInfo.jwt,
@@ -46,14 +48,6 @@ export const nextAuthConfig: AuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
-      const jwt = token.jwt;
-      session.jwt = jwt;
-      if (typeof jwt === 'string') {
-        cookies().set('jwt', jwt);
-      }
-      return session;
-    },
     async jwt({ token, user, account }) {
       const isSignIn = user ? true : false;
       if (isSignIn) {
@@ -65,9 +59,20 @@ export const nextAuthConfig: AuthOptions = {
 
           token.jwt = data.jwt;
           token.id = data.user.id;
+        } else {
+          token.jwt = user.jwt;
+          token.id = user.id;
         }
       }
       return token;
+    },
+    async session({ session, token }) {
+      const jwt = token.jwt;
+      session.jwt = jwt;
+      if (typeof jwt === 'string') {
+        cookies().set('jwt', jwt);
+      }
+      return session;
     },
   },
   pages: {

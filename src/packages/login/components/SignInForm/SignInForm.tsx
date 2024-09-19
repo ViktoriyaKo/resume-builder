@@ -38,7 +38,7 @@ const Form = () => {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error");
     }
   };
 

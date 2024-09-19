@@ -14,10 +14,8 @@ const calculateScore = (data: any) => {
   // Object.keys(scoreWeights).forEach((category) => {
   //   if (data[category] && typeof data[category] !== 'object') {
   //     totalScore += scoreWeights[category];
-  //     console.log(category);
   //   }
   // });
-  // console.log(totalScore);
   // return totalScore;
 };
 

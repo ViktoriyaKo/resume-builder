@@ -11,6 +11,5 @@ export const getPrivacyData = async (locale: Locales) => {
     const data = await client.request<PrivacyQuery>(PrivacyDocument, variables);
     return data;
   } catch (err) {
-    console.log(err);
-  }
+    console.log("Error");  }
 };

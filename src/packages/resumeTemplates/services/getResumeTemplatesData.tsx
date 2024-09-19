@@ -20,6 +20,5 @@ export const getResumeTemplatesData = async (
     );
     return data;
   } catch (err) {
-    console.log(err);
-  }
+    console.log("Error");  }
 };
