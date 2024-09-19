@@ -4,6 +4,11 @@ import Credentials from 'next-auth/providers/credentials';
 import GooggleProvider from 'next-auth/providers/google';
 import { cookies } from 'next/headers';
 
+interface Credentials {
+  csrfToken: string;
+  email: string;
+  password: string;
+}
 export const nextAuthConfig: AuthOptions = {
   providers: [
     GooggleProvider({
@@ -15,10 +20,13 @@ export const nextAuthConfig: AuthOptions = {
         email: { label: 'email', type: 'email', required: true },
         password: { label: 'password', type: 'password', required: true },
       },
-      async authorize(credentials) {
+      async authorize(
+        credentials?: Record<'email' | 'password', string> &
+          Partial<Credentials>
+      ) {
         console.log('credentials', credentials);
         const body = {
-          csrfToken: credentials.csrfToken,
+          csrfToken: credentials?.csrfToken,
           identifier: credentials?.email,
           password: credentials?.password,
           provider: 'local',
