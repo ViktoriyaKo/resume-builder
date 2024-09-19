@@ -52,7 +52,7 @@ const StepsList = (props: IProps) => {
         <h2 className={styles.title}>{t('title_steps')}</h2>
         <p className={styles.description}>{t('description_steps')}</p>
         <ul className={styles.list}>
-          {steps.map((item, index) => {
+          {steps?.map((item, index) => {
             const { title, description } = item?.attributes ?? {};
 
             return (
@@ -71,7 +71,7 @@ const StepsList = (props: IProps) => {
           ref={sliderRef}
         >
           <div className={clsx('keen-slider')}>
-            {images.map((item, index) => {
+            {images?.map((item, index) => {
               const { alternativeText, url, hash } = item.attributes ?? {};
               return url ? (
                 <Image

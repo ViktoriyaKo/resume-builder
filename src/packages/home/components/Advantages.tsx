@@ -13,7 +13,7 @@ const Advantages = (props: IProps) => {
   return (
     <section className={styles.container}>
       <ul className={styles.wrapper}>
-        {advantages.map((item) => {
+        {advantages?.map((item) => {
           const { icon, title, description } = item?.attributes ?? {};
           const cover = icon?.data?.attributes?.url;
 

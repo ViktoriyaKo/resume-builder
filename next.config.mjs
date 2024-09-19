@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: 'http',
-        hostname: 'localhost',
+        hostname: 'api.create-resume.online',
         port: '1337',
         pathname: '/**',
       },
