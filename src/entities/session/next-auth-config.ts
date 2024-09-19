@@ -18,6 +18,7 @@ export const nextAuthConfig: AuthOptions = {
       async authorize(credentials) {
         console.log('credentials', credentials);
         const body = {
+          csrfToken: credentials.csrfToken,
           identifier: credentials?.email,
           password: credentials?.password,
           provider: 'local',
