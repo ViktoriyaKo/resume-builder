@@ -27,10 +27,6 @@ export const nextAuthConfig: AuthOptions = {
           data: body,
         });
         console.log('options', options);
-        const res1 = await fetch(
-          `${process.env.NEXTAUTH_URL}/api/test`,
-          options
-        );
         const res = await fetch(
           `${process.env.NEXTAUTH_URL}/api/sign-in`,
           options

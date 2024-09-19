@@ -24,20 +24,21 @@ const Form = () => {
 
   const onSubmit = async (data: { email: string; password: string }) => {
     try {
-      const result = await signIn('credentials', {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
-      if (result?.ok) {
-        console.log(result);
-        router.push(`/${lang}/account`);
-      } else {
-        methods.setError('password', {
-          type: 'manual',
-          message: t('signin_error'),
-        });
-      }
+      const res1 = await fetch(`${process.env.NEXTAUTH_URL}/api/test`, options);
+      // const result = await signIn('credentials', {
+      //   redirect: false,
+      //   email: data.email,
+      //   password: data.password,
+      // });
+      // if (result?.ok) {
+      //   console.log(result);
+      //   router.push(`/${lang}/account`);
+      // } else {
+      //   methods.setError('password', {
+      //     type: 'manual',
+      //     message: t('signin_error'),
+      //   });
+      // }
     } catch (error) {
       console.log(error);
     }
