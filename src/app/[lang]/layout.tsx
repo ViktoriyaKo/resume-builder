@@ -7,12 +7,19 @@ import { ROUTERS } from '@/constants/routers';
 import { ContactForm } from '@/packages/core';
 import { Locales } from '@/types';
 import MainProviders from '@/providers/MainProviders';
+import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
 });
+
+export const metadata: Metadata = {
+  title: 'Resume-builder',
+  description:
+    'Create stunning resumes with our free, user-friendly resume builder. Choose from a variety of customizable templates and craft a professional resume that stands out. Perfect for job seekers looking to make a strong impression.',
+};
 
 export default function Layout({
   children,
