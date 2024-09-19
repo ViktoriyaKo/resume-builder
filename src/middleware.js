@@ -23,5 +23,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/:lang', '/', '/:lang/account', '/:lang/edit'],
+  matcher: ['/', '/:lang/account', '/:lang/edit'],
 };
