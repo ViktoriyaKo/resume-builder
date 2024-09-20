@@ -31,6 +31,7 @@ const Form = () => {
       });
       if (result?.ok) {
         router.push(`/`);
+        window.location.reload;
       } else {
         methods.setError('password', {
           type: 'manual',

@@ -4,12 +4,11 @@ import styles from './NavBar.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from '@/hooks';
 import { BurgerIcon, Button, SignOutIcon, Icon } from '@/ui/atoms';
-import { useParams,useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import clsx from 'clsx';
 import { RoutersType } from '@/types';
 import { useSession } from 'next-auth/react';
 import { handleSignOut } from '@/utils';
-
 
 interface IProps {
   pathname: string;
@@ -23,7 +22,7 @@ const NavBar = (props: IProps) => {
   const router = useRouter();
   const isAuthorized = status === 'authenticated';
   const text = isAuthorized ? 'Sign out' : 'Sign in';
-  const account = { href: `/${lang}/account`, title: 'Account' };
+  const account = { href: `/account`, title: 'Account' };
   const updateRouters = isAuthorized ? [...routers, account] : routers;
   const navBar = useRef<HTMLDivElement | null>(null);
   const [isOpen, setOpen] = useState(false);
@@ -62,7 +61,11 @@ const NavBar = (props: IProps) => {
           </ul>
           <Button
             className={clsx(styles.item, styles.button)}
-            onClick={() => isAuthorized ? handleSignOut(lang) : router.push(`/${lang}/sign-in`)}
+            onClick={() =>
+              isAuthorized
+                ? handleSignOut(lang)
+                : router.push(`/${lang}/sign-in`)
+            }
           >
             {isAuthorized && <Icon html={SignOutIcon} />}
             {text}

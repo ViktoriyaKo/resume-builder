@@ -38,6 +38,7 @@ const Form = () => {
           password: data.password,
         });
         router.push(`/${lang}/`);
+        window.location.reload;
       } else {
         const errorText = await res.json();
         methods.setError('repeatPassword', {
