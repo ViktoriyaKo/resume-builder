@@ -1,7 +1,7 @@
 .container {
   position: relative;
   height: 100%;
-  background-image: var(--backgroundImage);
+  background: #f4f2f4;
 }
 
 .wrapper {

@@ -5,13 +5,38 @@ import styles from '../styles/Hero.module.css';
 import background from '@images/background.jpg';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'next/navigation';
+import { useState, useEffect, useCallback } from 'react';
 
 const Hero = () => {
   const { lang } = useParams();
   const { t } = useTranslation();
+  const [isHidden, setIsHidden] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > 1000) {
+      if (!isHidden) {
+        setIsHidden(true);
+      }
+    } else {
+      if (isHidden) {
+        setIsHidden(false);
+      }
+    }
+  }, [isHidden]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
-    <section className={styles.container}>
+    <section
+      className={styles.container}
+      style={{ position: isHidden ? 'relative' : 'sticky' }}
+    >
       <div className={styles.imageWrapper}>
         <Image
           alt={'hero'}

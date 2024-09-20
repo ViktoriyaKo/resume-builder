@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt'; // Используется для проверки авторизации
+import { getToken } from 'next-auth/jwt';
 
 const protectedRoutes = ['account', 'edit'];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
   const token = await getToken({ req: request });
-  console.log('token', token);
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/en', request.url));
   }
@@ -16,8 +15,6 @@ export async function middleware(request) {
   );
 
   if (isProtectedRoute && !token) {
-    console.log('token1111', token);
-
     return NextResponse.redirect(new URL('/en/sign-in', request.url));
   }
 

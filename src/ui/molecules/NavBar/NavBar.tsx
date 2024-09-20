@@ -4,11 +4,12 @@ import styles from './NavBar.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from '@/hooks';
 import { BurgerIcon, Button, SignOutIcon, Icon } from '@/ui/atoms';
-import { useParams } from 'next/navigation';
+import { useParams,useRouter } from 'next/navigation';
 import clsx from 'clsx';
 import { RoutersType } from '@/types';
 import { useSession } from 'next-auth/react';
 import { handleSignOut } from '@/utils';
+
 
 interface IProps {
   pathname: string;
@@ -19,6 +20,7 @@ const NavBar = (props: IProps) => {
   const { routers, pathname } = props;
   const { lang } = useParams();
   const { status } = useSession();
+  const router = useRouter();
   const isAuthorized = status === 'authenticated';
   const text = isAuthorized ? 'Sign out' : 'Sign in';
   const account = { href: `/${lang}/account`, title: 'Account' };
@@ -60,9 +62,9 @@ const NavBar = (props: IProps) => {
           </ul>
           <Button
             className={clsx(styles.item, styles.button)}
-            onClick={() => handleSignOut(lang)}
+            onClick={() => isAuthorized ? handleSignOut(lang) : router.push(`/${lang}/sign-in`)}
           >
-            <Icon html={SignOutIcon} />
+            {isAuthorized && <Icon html={SignOutIcon} />}
             {text}
           </Button>
         </nav>
