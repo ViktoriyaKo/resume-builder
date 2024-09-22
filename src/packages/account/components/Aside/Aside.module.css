@@ -1,12 +1,18 @@
 .wrapper {
-  border-radius: var(--border-radius);
-  padding: var(--sm-spacing);
-  display: flex;
-  flex-direction: column;
-  gap: 40px var(--xs-spacing);
-  background: white;
-  align-items: center;
-  min-height: 400px;
+  display: none;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    border-radius: var(--border-radius);
+    padding: var(--sm-spacing);
+    display: flex;
+    flex-direction: column;
+    gap: 40px var(--xs-spacing);
+    background: white;
+    align-items: center;
+    min-height: 400px;
+  }
 }
 
 .user {

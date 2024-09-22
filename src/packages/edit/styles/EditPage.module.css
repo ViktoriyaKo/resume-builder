@@ -15,9 +15,9 @@
   padding: 20px 20px 60px 20px;
 }
 
-.view {
-  display: none;
-}
+/* .view {
+  visible: ;
+} */
 
 @media (width >= 768px) {
   .view {

@@ -16,3 +16,6 @@ export { SaveIcon } from './SaveIcon';
 export { BurgerIcon } from './BurgerIcon';
 export { SignOutIcon } from './SignOutIcon';
 export { BackIcon } from './BackIcon';
+export { DocumentsIcon } from './DocumentsIcon';
+export { HomeIcon } from './HomeIcon';
+export { PreviewIcon } from './PreviewIcon';

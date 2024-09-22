@@ -4,6 +4,14 @@ import { useSession } from 'next-auth/react';
 import { Aside, Content } from '../components';
 import { useTranslation } from 'react-i18next';
 import { ResumeItemFiltersInput } from '@/graphql/gql/graphql';
+import {
+  BottomNavigation,
+  DocumentsIcon,
+  HomeIcon,
+  SignOutIcon,
+} from '@/ui/atoms';
+import { handleSignOut } from '@/utils';
+import { useParams } from 'next/navigation';
 
 interface IProps {
   resume: ResumeItemFiltersInput[];
@@ -11,10 +19,22 @@ interface IProps {
 
 const ClientAccountPage = (props: IProps) => {
   const { resume } = props;
+  const { lang } = useParams();
 
   const session = useSession();
   const { name, image } = session?.data?.user ?? {};
   const { t } = useTranslation();
+
+  const routers = [
+    { text: t('Home'), href: `/`, icon: HomeIcon },
+    { text: t('documents'), href: `/account`, icon: DocumentsIcon },
+    {
+      text: t('sign_out'),
+      href: '/sign-up',
+      handleClick: () => handleSignOut(lang),
+      icon: SignOutIcon,
+    },
+  ];
 
   return (
     <div className={styles.container}>
@@ -36,6 +56,7 @@ const ClientAccountPage = (props: IProps) => {
         <Aside name={name ?? 'anonymous'} image={image ?? ''} />
         <Content resume={resume} />
       </div>
+      <BottomNavigation routers={routers} />
     </div>
   );
 };

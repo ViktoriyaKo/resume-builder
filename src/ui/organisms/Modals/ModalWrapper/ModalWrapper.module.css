@@ -1,6 +1,6 @@
 .out {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   z-index: calc(infinity);
   top: 0;
   width: 100%;

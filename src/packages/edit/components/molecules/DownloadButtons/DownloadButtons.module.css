@@ -1,15 +1,28 @@
 .wrapper {
+  width: 100%;
   display: flex;
   gap: 8px;
-  position: absolute;
-  right: 0;
-  top: -12px;
+  position: fixed;
+  bottom: 12px;
   border-radius: 4px;
   padding: 4px;
   border: 1px solid black;
   background: var(--gray-300);
   transition: scale 0.5s;
   align-items: center;
+  justify-content: space-around;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    right: 0;
+    top: -12px;
+    bottom: auto;
+  }
 }
 
 .saveButton {
@@ -23,16 +36,43 @@
   color: gray;
   border: 2px solid gray;
   text-align: center;
-  height: 40px;
+  height: 54px;
   font-weight: 600;
   transition: scale 0.5s;
+}
+
+@media (width >= 768px) {
+  .saveButton {
+    height: 40px;
+  }
 }
 
 .button {
   transition: scale 0.5s;
 }
 
-.button:hover, .saveButton:hover {
+.button:hover,
+.saveButton:hover {
   scale: 1.1;
   transition: scale 0.5s;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.779);
+}
+
+.image {
+  max-width: 75vw;
+  border-radius: var(--border-radius);
+}
+
+@media (width >= 768px) {
+  .hide {
+    display: none;
+  }
 }

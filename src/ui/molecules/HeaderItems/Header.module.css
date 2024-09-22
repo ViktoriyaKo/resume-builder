@@ -15,6 +15,7 @@
 
 .dark {
   background-color: black;
+  padding: 30px 20px 0 0;
 }
 
 .menu {
@@ -62,23 +63,21 @@
 }
 
 .link {
-  display: none; 
+  display: none;
 }
 
 .link:hover {
   background-color: black;
   color: white;
-  transition: background-color 0.5s;
 }
 
 @media (width >= 768px) {
   .link {
     display: block;
-    padding: 8px !important;
+    padding: 8px;
     background-color: var(--pink-200);
     color: white;
     border: 1px solid white;
     margin-block: 4px;
-    transition: background-color 0.5s;
   }
 }

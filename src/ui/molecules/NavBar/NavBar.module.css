@@ -57,3 +57,7 @@
 .button:hover {
   background-color: var(--blue-300);
 }
+
+.hide {
+  display: none;
+}

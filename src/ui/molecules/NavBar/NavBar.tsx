@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { RoutersType } from '@/types';
 import { useSession } from 'next-auth/react';
 import { handleSignOut } from '@/utils';
+import { createPortal } from 'react-dom';
 
 interface IProps {
   pathname: string;
@@ -26,6 +27,7 @@ const NavBar = (props: IProps) => {
   const updateRouters = isAuthorized ? [...routers, account] : routers;
   const navBar = useRef<HTMLDivElement | null>(null);
   const [isOpen, setOpen] = useState(false);
+  const hideNavbar = pathname.includes('account');
   useOnClickOutside(navBar, () => setOpen(false));
 
   useEffect(() => {
@@ -34,44 +36,49 @@ const NavBar = (props: IProps) => {
 
   return (
     <>
-      <div className={styles.menuIcon} onClick={() => setOpen(true)}>
+      <div
+        className={clsx(styles.menuIcon, { [styles.hide]: hideNavbar })}
+        onClick={() => setOpen(true)}
+      >
         <Icon html={BurgerIcon} />
       </div>
-      {isOpen && (
-        <nav className={styles.wrapper} ref={navBar}>
-          <ul>
-            {updateRouters &&
-              updateRouters.length > 0 &&
-              updateRouters.map((item) => {
-                const path = `/${lang}${item?.href}`;
-                const isActive = pathname === path;
-                return (
-                  <li key={item?.title}>
-                    <Link
-                      className={clsx(styles.item, {
-                        [styles.active]: isActive,
-                      })}
-                      href={path}
-                    >
-                      {item?.title}
-                    </Link>
-                  </li>
-                );
-              })}
-          </ul>
-          <Button
-            className={clsx(styles.item, styles.button)}
-            onClick={() =>
-              isAuthorized
-                ? handleSignOut(lang)
-                : router.push(`/${lang}/sign-in`)
-            }
-          >
-            {isAuthorized && <Icon html={SignOutIcon} />}
-            {text}
-          </Button>
-        </nav>
-      )}
+      {isOpen &&
+        createPortal(
+          <nav className={styles.wrapper} ref={navBar}>
+            <ul>
+              {updateRouters &&
+                updateRouters.length > 0 &&
+                updateRouters.map((item) => {
+                  const path = `/${lang}${item?.href}`;
+                  const isActive = pathname === path;
+                  return (
+                    <li key={item?.title}>
+                      <Link
+                        className={clsx(styles.item, {
+                          [styles.active]: isActive,
+                        })}
+                        href={path}
+                      >
+                        {item?.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+            </ul>
+            <Button
+              className={clsx(styles.item, styles.button)}
+              onClick={() =>
+                isAuthorized
+                  ? handleSignOut(lang)
+                  : router.push(`/${lang}/sign-in`)
+              }
+            >
+              {isAuthorized && <Icon html={SignOutIcon} />}
+              {text}
+            </Button>
+          </nav>,
+          document.body
+        )}
     </>
   );
 };

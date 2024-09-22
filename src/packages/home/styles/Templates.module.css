@@ -41,6 +41,8 @@
 }
 
 .link {
+  display: flex;
+  width: max-content;
   margin-top: 40px;
   align-self: center;
   font-size: 18px;
@@ -48,6 +50,7 @@
   padding: 4px 8px;
   color: white;
   margin: 40px auto 0;
+  box-shadow: 2px 2px 30px gray;
 }
 
 .link:hover {

@@ -1,22 +1,9 @@
 .link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: fit-content;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 8px;
   transition: all 0.5s;
-  gap: var(--xs-spacing);
 }
 
 .link:hover {
   transition: all 0.5s;
-}
-
-@media (width >= 768px) {
-  .link {
-    padding: 12px 20px;
-    gap: 40px;
-  }
 }

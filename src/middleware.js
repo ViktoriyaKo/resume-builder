@@ -18,7 +18,7 @@ export async function middleware(request) {
     return NextResponse.redirect(new URL('/en/sign-in', request.url));
   }
 
-  return NextResponse.next();
+  // return NextResponse.next();
 }
 
 export const config = {

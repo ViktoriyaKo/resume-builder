@@ -1,9 +1,15 @@
 .wrapper {
-  padding: var(--xs-spacing);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  display:none;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    padding: var(--xs-spacing);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
 }
 
 .button {

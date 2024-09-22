@@ -6,7 +6,6 @@
 }
 
 .container {
-  padding: var(--sm-spacing);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -35,17 +34,31 @@
   color: var(--blue-200);
 }
 
+@media (width >= 768px) {
+  .container {
+    padding: var(--sm-spacing);
+  }
+}
+
 .list {
   border-radius: var(--border-radius);
   background-color: white;
   width: var(--review-width);
   height: var(--review-height);
   overflow: hidden;
+  display:none;
+}
+
+@media (width >= 768px) {
+  .list {
+    display:block;
+  }
 }
 
 @media print {
   .list {
     overflow: visible;
+    display:block;
     transform-origin: top left;
     font-family: 'Montserrat';
     zoom: 1.4;

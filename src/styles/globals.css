@@ -40,7 +40,7 @@
 *::before,
 *::after {
   scroll-margin-top: 80px;
-  box-sizing: border-box !important;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -51,7 +51,6 @@ html,
 body {
   font-family: var(--font-inter);
   max-width: 100vw;
-  height: 100%;
 }
 
 a {
