@@ -55,12 +55,15 @@ const Content = (props: IContentProps) => {
       {data &&
         data.length > 0 &&
         data.map((item, index) => {
-          const { uuid, data } = item;
+          const { uuid, data, values } = item;
+          const { job, school, label } = values ?? {};
+          const newTitleAccordion =
+            job ?? school ?? label ?? `${titleAccordion} #${index + 1}`;
 
           return (
             <Fragment key={uuid}>
               <EditableAccordion
-                title={`${titleAccordion} #${index + 1}`}
+                title={newTitleAccordion}
                 handleDelete={(e) => handleDelete(e, index, uuid)}
               >
                 <>
@@ -82,7 +85,7 @@ const Content = (props: IContentProps) => {
           );
         })}
       <Button
-        onClick={(e) => {
+        onClick={() => {
           append({ uuid: uuid() });
         }}
       >
