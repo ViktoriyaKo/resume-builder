@@ -15,7 +15,6 @@ import { useTranslation } from 'react-i18next';
 
 const Aside = () => {
   const initialData = useSelector(getStateData);
-  const { t } = useTranslation();
 
   const { skills, titles, image } = useSelector(getStateSimpleData);
   const { contact, education, links, languages: languagesData } = initialData;

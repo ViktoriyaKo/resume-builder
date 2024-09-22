@@ -61,7 +61,7 @@ export const Slice = createSlice({
           } else {
             const sanitizedData =
               typeof initialData === 'string' && initialData
-                ? initialData.replace(/<[^>]*>/g, '')
+                ? initialData.replace(/<p><br><\/p>/g, '')
                 : '';
             state[typedKey] = sanitizedData;
           }

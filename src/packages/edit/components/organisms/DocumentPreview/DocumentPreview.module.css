@@ -46,19 +46,19 @@
   width: var(--review-width);
   height: var(--review-height);
   overflow: hidden;
-  display:none;
+  display: none;
 }
 
 @media (width >= 768px) {
   .list {
-    display:block;
+    display: block;
   }
 }
 
 @media print {
   .list {
     overflow: visible;
-    display:block;
+    display: block;
     transform-origin: top left;
     font-family: 'Montserrat';
     zoom: 1.4;

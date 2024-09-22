@@ -14,9 +14,8 @@ import { ResumeScore } from '../../atoms';
 import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
 import { Button, BackIcon, Icon } from '@/ui/atoms';
-import { useParams } from 'next/navigation';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
@@ -101,6 +100,13 @@ const DocumentEditor = (props: IProps) => {
     return;
   };
 
+  const handleBackNavigation = useCallback(() => {
+    router.back();
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }, [router]);
+
   return (
     <FormProvider {...methods}>
       <form
@@ -108,13 +114,13 @@ const DocumentEditor = (props: IProps) => {
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <div className={styles.topLine}>
-          <Button className={styles.back} onClick={() => router.back()}>
+          <Button className={styles.back} onClick={handleBackNavigation}>
             <Icon html={BackIcon} />
             Back
           </Button>
           <SelectTemplates currentTemplate={currentTemplate} />
         </div>
-        <ResumeScore score={10} />
+        {/* <ResumeScore score={10} /> */}
         <ContactDetails data={contactData} />
         <DocumentEditorSection.Summary />
         <DocumentEditorSection.Employment data={employmentData} />
