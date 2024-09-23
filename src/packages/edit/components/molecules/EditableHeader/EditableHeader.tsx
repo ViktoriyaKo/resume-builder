@@ -43,7 +43,7 @@ const EditableHeader = (props: IProps) => {
           type={'text'}
           readOnly={readonly}
         />
-        <button onClick={handleClick}>
+        <button className={styles.button} onClick={handleClick}>
           <Icon html={EditIcon} />
         </button>
       </div>

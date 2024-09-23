@@ -64,6 +64,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.779);
+  border-radius: var(--border-radius);
 }
 
 .image {

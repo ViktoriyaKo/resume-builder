@@ -26,3 +26,12 @@
 .input[readOnly]:focus {
   border-bottom: 2px solid transparent;
 }
+
+.button {
+  transition: scale 0.5s;
+}
+
+.button:hover {
+  scale: 1.2;
+  transition: scale 0.5s;
+}

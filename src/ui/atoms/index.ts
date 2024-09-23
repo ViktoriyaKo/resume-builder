@@ -12,4 +12,5 @@ export { default as TextEditor } from './TextEditor/TextEditor';
 export { default as Button } from './Button/Button';
 export { default as MenuContext } from './MenuContext/MenuContext';
 export { default as BottomNavigation } from './BottomNavigation/BottomNavigation';
+export { default as Spinner } from './Spinner/Spinner';
 export * from './Icons';

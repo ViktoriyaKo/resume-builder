@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../store/store';
 import { ResumeItem } from '@/graphql/gql/graphql';
 import { TypeInitialState } from '../types';
+import { getCurrentResume } from '../services';
 
 //в этом слайсе устанавливаются значения формы по умолчанию
 
 const initialState: TypeInitialState = {
   initialFormData: {},
+  loading: true,
 };
 
 export const Slice = createSlice({
@@ -14,12 +16,17 @@ export const Slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addMatcher(
-      (action) => action.type.endsWith('/fulfilled'),
-      (state, action: PayloadAction<ResumeItem>) => {
-        state.initialFormData = action.payload;
-      }
-    );
+    builder
+      .addCase(getCurrentResume.pending, (state) => {
+        state.loading = true;
+      })
+      .addMatcher(
+        (action) => action.type.endsWith('/fulfilled'),
+        (state, action: PayloadAction<ResumeItem>) => {
+          state.initialFormData = action.payload;
+          state.loading = false;
+        }
+      );
   },
 });
 

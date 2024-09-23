@@ -13,7 +13,7 @@ import {
 import { ResumeScore } from '../../atoms';
 import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
-import { Button, BackIcon, Icon } from '@/ui/atoms';
+import { Button, BackIcon, Icon, Spinner } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect, useState, useCallback } from 'react';
 import { AppDispatch } from '@/store/store';
@@ -35,7 +35,7 @@ const DocumentEditor = (props: IProps) => {
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 
   const initialData = useSelector(getStateData);
-  const { initialFormData } = useSelector(getStateInitialFormData);
+  const { initialFormData, loading } = useSelector(getStateInitialFormData);
   const {
     contact,
     education,
@@ -107,7 +107,9 @@ const DocumentEditor = (props: IProps) => {
     }, 100);
   }, [router]);
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <FormProvider {...methods}>
       <form
         className={styles.article}

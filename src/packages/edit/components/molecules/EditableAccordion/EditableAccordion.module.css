@@ -23,4 +23,11 @@
 
 .button {
   align-self: center;
+  transition: all 0.5s;
+}
+
+.button:hover {
+  scale: 1.2;
+  transition: all 0.5s;
+  color: red;
 }

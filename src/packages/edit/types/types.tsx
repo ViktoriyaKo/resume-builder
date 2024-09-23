@@ -95,4 +95,5 @@ interface ResumeItemExtend extends Omit<ResumeItem, 'image'> {
 
 export interface TypeInitialState {
   initialFormData: ResumeItemExtend;
+  loading?: boolean;
 }
