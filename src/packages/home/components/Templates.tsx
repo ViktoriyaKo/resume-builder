@@ -51,7 +51,7 @@ const Templates = (props: IProps) => {
             <Card
               key={element.title}
               {...element}
-              handleClick={() => createResume(element?.link)}
+              handleClick={() => createResume(element?.slug)}
             />
           );
         })}

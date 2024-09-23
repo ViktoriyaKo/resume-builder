@@ -13,7 +13,8 @@ interface IProps {
 const ClientEditPage = (props: IProps) => {
   const { resume } = props;
   const searchParams = useSearchParams();
-  const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple';
+  const currentTemplate =
+    searchParams.get(paramsVariables.DESIGN) ?? 'simple1';
 
   return (
     <Provider store={store}>

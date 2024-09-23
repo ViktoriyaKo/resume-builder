@@ -5,6 +5,7 @@ query ResumeTemplates($locale: I18NLocaleCode, $link: String) {
         link
         title
         description
+        slug
         image {
           data {
             id

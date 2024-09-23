@@ -1,5 +1,5 @@
 query Home($locale: I18NLocaleCode) {
-  templates(locale: $locale) {
+  templates(locale: $locale,  sort: "id", pagination: { limit: 3 }) {
     data {
       attributes {
         link

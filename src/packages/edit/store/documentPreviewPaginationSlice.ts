@@ -6,6 +6,7 @@ const initialState = {
   totalPages: 1,
   marginTop: 0,
   heightPage: 833,
+  minHeight: 833,
 };
 
 export const Slice = createSlice({
@@ -14,6 +15,7 @@ export const Slice = createSlice({
   reducers: {
     changeTotalPage: (state, action) => {
       state.totalPages = action.payload;
+      state.minHeight = action.payload * state.heightPage;
     },
     changeCurrentPage: (state, action) => {
       state.currentPage = action.payload;

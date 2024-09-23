@@ -17,9 +17,10 @@ const SelectTemplates = (props: IProps) => {
 
   // добавить из базы, временно:
   const options = [
-    { caption: 'Designer', value: 'designer' },
-    { caption: 'Modern', value: 'modern' },
-    { caption: 'Simple', value: 'simple' },
+    { caption: 'Designer', value: 'designer1' },
+    { caption: 'Modern', value: 'modern1' },
+    { caption: 'Simple-01', value: 'simple1' },
+    { caption: 'Simple-02', value: 'simple2' },
   ];
 
   const handleChange = useCallback(

@@ -50,7 +50,7 @@ const Content = (props: IProps) => {
           const element = item?.attributes ?? {};
           return (
             <Card
-              handleClick={() => createResume(element?.link)}
+              handleClick={() => createResume(element?.slug)}
               key={element.title}
               {...element}
             />
