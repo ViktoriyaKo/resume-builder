@@ -1,5 +1,9 @@
 query ResumeTemplates($locale: I18NLocaleCode, $link: String) {
-  templates(filters: { link: { eq: $link } }, locale: $locale) {
+  templates(
+    filters: { link: { eq: $link } }
+    locale: $locale
+    pagination: { limit: 100 }
+  ) {
     data {
       attributes {
         link
