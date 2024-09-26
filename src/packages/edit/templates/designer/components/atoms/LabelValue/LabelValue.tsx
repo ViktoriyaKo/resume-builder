@@ -12,7 +12,11 @@ const LabelValue = (props: IProps) => {
   return (
     value && (
       <div className={styles.wrapper}>
-        {icon && <div className={styles.icon}><Icon html={icon} /></div>}
+        {icon && (
+          <div className={styles.icon}>
+            <Icon html={icon} />
+          </div>
+        )}
         <div>
           <p className={styles.label}>{label}</p>
           <p>{value}</p>

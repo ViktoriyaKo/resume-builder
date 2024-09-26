@@ -16,7 +16,7 @@ const SelectTemplates = (props: IProps) => {
 
   // добавить из базы, временно:
   const options = [
-    { caption: 'Designer', value: 'designer1' },
+    { caption: 'Voyage', value: 'designer1' },
     { caption: 'Astronomy', value: 'modern1' },
     { caption: 'Orion', value: 'simple1' },
     { caption: 'Pegasus', value: 'simple2' },

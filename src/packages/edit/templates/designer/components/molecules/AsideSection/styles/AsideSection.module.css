@@ -55,3 +55,10 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+/* languages */
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}

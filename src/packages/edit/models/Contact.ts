@@ -15,7 +15,7 @@ class Contact extends DataBuilder {
     return this.addField('Email', FormData.EMAIL, 'email');
   }
   addPhone() {
-    return this.addField('Phone', FormData.PHONE, 'number');
+    return this.addField('Phone', FormData.PHONE);
   }
   addCountry() {
     return this.addField('Country', FormData.COUNTRY);
