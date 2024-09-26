@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import languagesIcon from '/public/icons/languages4.png';
 import skillsIcon from '/public/icons/skills4.png';
 import personalIcon from '/public/icons/personal4.png';
+import { Stars } from '@/ui/atoms';
 
 const Aside = ({ style }: { style: string }) => {
   const { skills, titles, image } = useSelector(getStateSimpleData);
@@ -83,12 +84,13 @@ const Aside = ({ style }: { style: string }) => {
             title={titles.languages ?? ''}
             icon={isIcon && languagesIcon}
           />
-          {languages.map((item) => {
+          {languages?.map((item) => {
             const { languagesLevel, languagesName } = item ?? {};
             return (
               <div key={languagesName}>
                 <p className={styles.bold}>{languagesName}</p>
-                <p>{languagesLevel}</p>
+                {/* <p>{languagesLevel}</p> */}
+                {languagesLevel && <Stars value={languagesLevel} color={"#005c85"}/>}
               </div>
             );
           })}
