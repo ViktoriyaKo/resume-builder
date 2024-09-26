@@ -19,6 +19,7 @@ const Aside = ({ style }: { style: string }) => {
   const { city, country, email, phone } = contact ?? {};
   const { t } = useTranslation();
   const isIcon = style === 'simple3';
+  const starColor = isIcon ? '#005c85' : '#333333';
 
   const allLinks = links && [
     ...links,
@@ -90,7 +91,9 @@ const Aside = ({ style }: { style: string }) => {
               <div key={languagesName}>
                 <p className={styles.bold}>{languagesName}</p>
                 {/* <p>{languagesLevel}</p> */}
-                {languagesLevel && <Stars value={languagesLevel} color={"#005c85"}/>}
+                {languagesLevel && (
+                  <Stars value={languagesLevel} color={starColor} />
+                )}
               </div>
             );
           })}
