@@ -43,7 +43,11 @@ const Aside = ({ style }: { style: string }) => {
           quality={100}
         />
       )}
-      <Title title={titles.personal ?? ''} icon={isIcon && personalIcon} />
+      <Title
+        title={titles.personal ?? ''}
+        icon={isIcon && personalIcon}
+        style={style}
+      />
       {/* links */}
       <div className={styles.flex}>
         {allLinks?.map((item) => {
@@ -84,6 +88,7 @@ const Aside = ({ style }: { style: string }) => {
           <Title
             title={titles.languages ?? ''}
             icon={isIcon && languagesIcon}
+            style={style}
           />
           {languages?.map((item) => {
             const { languagesLevel, languagesName } = item ?? {};
