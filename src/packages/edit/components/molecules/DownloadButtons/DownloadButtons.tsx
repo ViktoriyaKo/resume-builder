@@ -72,7 +72,7 @@ const DownloadButtons = ({
     const originalDisplay = element.style.display;
     element.style.display = 'block';
 
-    const canvas = await html2canvas(element);
+    const canvas = await html2canvas(element, { scale: 2 });
     const dataUrl = canvas.toDataURL('image/png');
 
     setPreview(dataUrl);

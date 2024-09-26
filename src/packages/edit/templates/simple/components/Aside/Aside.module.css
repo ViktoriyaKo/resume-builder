@@ -2,12 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: var(--xs-spacing);
   background-color: rgb(236 236 236);
 }
 
 .image {
-  height: 200px;
+  max-height: 240px;
   object-fit: cover;
   align-self: center;
 }
@@ -18,6 +17,22 @@
 }
 
 .flex {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simple2 {
+  background-color: rgb(236 236 236);
+  padding: var(--xs-spacing);
+}
+
+.simple3 {
+  background-color: white;
+  padding-inline: var(--xs-spacing);
+}
+
+.skills {
   display: flex;
   flex-direction: column;
   gap: 4px;

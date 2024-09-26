@@ -22,9 +22,16 @@
   display: flex;
   flex-direction: column;
   padding: 8px 16px;
-  color: white;
   font-size: 14px;
+}
+
+.simple2 {
   background-color: #333333;
+  color: white;
+}
+
+.simple3 {
+  color: var(--simple3-secondaryColor);
 }
 
 .name {
@@ -36,6 +43,6 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   color: #696a6e;
-  font-size: 12px;
+  font-size: 10px;
   flex: 1;
 }

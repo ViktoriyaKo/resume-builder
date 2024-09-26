@@ -9,10 +9,12 @@ import { convertFilledContactData, getDataValuesForm } from '../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';
+import { useTranslation } from 'react-i18next';
 
 
 const Aside = () => {
   const initialData = useSelector(getStateData);
+  const { t } = useTranslation();
 
   const { skills, titles, image } = useSelector(getStateSimpleData);
   const { contact, education, links, languages: languagesData } = initialData;
@@ -50,8 +52,8 @@ const Aside = () => {
           return <LabelValue key={label} label={label} value={link} />;
         })}
         <LabelValue label={'Email:'} value={email} />
-        <LabelValue label={'Phone:'} value={phone} />
-        <LabelValue label={'Address:'} value={shortAddress} />
+        <LabelValue label={`${t('Phone')}:`} value={phone} />
+        <LabelValue label={`${t('Address')}:`} value={shortAddress} />
       </div>
       {skills && (
         <div>

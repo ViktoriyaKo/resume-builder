@@ -48,8 +48,8 @@ const Aside = () => {
       <Title title={titles.personal ?? ''} filled={true} />
       <div className={clsx(styles.wrapper)}>
         <LabelValue label={'Email'} value={email} icon={EmailIcon} />
-        <LabelValue label={'Phone'} value={phone} icon={CallIcon} />
-        <LabelValue label={'Address'} value={shortAddress} icon={EarthIcon} />
+        <LabelValue label={t('Phone')} value={phone} icon={CallIcon} />
+        <LabelValue label={t('Address')} value={shortAddress} icon={EarthIcon} />
         {contactLinks.map((item) => {
           const { label, link } = item || {};
           return <LabelValue key={label} label={label} value={link} />;

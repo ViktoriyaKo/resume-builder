@@ -30,10 +30,6 @@
   text-decoration: underline;
 }
 
-.container a {
-  color: var(--blue-200);
-}
-
 @media (width >= 768px) {
   .container {
     padding: var(--sm-spacing);
@@ -47,6 +43,10 @@
   height: var(--review-height);
   overflow: hidden;
   display: none;
+}
+
+.list ol {
+  list-style: inside;
 }
 
 @media (width >= 768px) {

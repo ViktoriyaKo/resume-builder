@@ -37,7 +37,7 @@ const Form = () => {
           email: data.email,
           password: data.password,
         });
-        router.push(`/${lang}/`);
+        router.push(`/${lang}/account?refreshId=${Date.now()}`);
       } else {
         const errorText = await res.json();
         methods.setError('repeatPassword', {

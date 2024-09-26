@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #696a6e;
+  padding-bottom: 4px;
+}
+
+.simple3-wrapper {
+  border-bottom: 1px solid var(--simple3-secondaryColor);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--simple3-secondaryColor);
+}
+
+.simple3 {
+  color: var(--simple3-secondaryColor);
+}
+
+.image {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  background-color: var(--simple3-secondaryColor);
+  padding: 4px;
+}

@@ -30,7 +30,7 @@ const Form = () => {
         password: data.password,
       });
       if (result?.ok) {
-        router.push(`/`);
+        router.push(`/${lang}/account?refreshId=${Date.now()}`);
       } else {
         methods.setError('password', {
           type: 'manual',

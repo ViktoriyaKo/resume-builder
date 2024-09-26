@@ -3,7 +3,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 interface IProps {
   currentTemplate: string;
 }
@@ -18,9 +17,10 @@ const SelectTemplates = (props: IProps) => {
   // добавить из базы, временно:
   const options = [
     { caption: 'Designer', value: 'designer1' },
-    { caption: 'Modern', value: 'modern1' },
-    { caption: 'Simple-01', value: 'simple1' },
-    { caption: 'Simple-02', value: 'simple2' },
+    { caption: 'Astronomy', value: 'modern1' },
+    { caption: 'Orion', value: 'simple1' },
+    { caption: 'Pegasus', value: 'simple2' },
+    { caption: 'Gemini', value: 'simple3' },
   ];
 
   const handleChange = useCallback(

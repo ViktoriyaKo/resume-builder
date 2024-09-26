@@ -1,12 +1,18 @@
 import { useResizePreviewPagination } from '@/packages/edit/hooks';
-import styles from './Resume.module.css';
-import { useRef } from 'react';
-import { Content, Aside } from './components';
+import styles from './ResumeWrapper.module.css';
+import { ReactNode, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { getPreviewPaginationData } from '@/packages/edit/store/documentPreviewPaginationSlice';
+import clsx from 'clsx';
 
-const Resume = () => {
+const Resume = ({
+  children,
+  style,
+}: {
+  children: ReactNode;
+  style: string;
+}) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { marginTop } = useResizePreviewPagination(contentRef);
   const { minHeight } = useSelector(getPreviewPaginationData);
@@ -22,16 +28,13 @@ const Resume = () => {
       ref={contentRef}
     >
       <div className={styles.inner}>
-        <header className={styles.header}>
+        <header className={clsx(styles.header, styles[style])}>
           <p className={styles.name}>
             {firstName} {lastName}
           </p>
           {job && <p>{job}</p>}
         </header>
-        <div className={styles.wrapper}>
-          <Content />
-          <Aside />
-        </div>
+        <div className={styles.wrapper}>{children}</div>
       </div>
     </section>
   );

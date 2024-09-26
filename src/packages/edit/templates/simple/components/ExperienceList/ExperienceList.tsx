@@ -3,20 +3,23 @@ import { getLongDateFormat } from '@/packages/edit/utils';
 import { TypeExpendedData } from '@/packages/edit/types';
 import Title from '../Title/Title';
 import { FormData } from '@/packages/edit/constants';
+import { StaticImageData } from 'next/image';
 
 interface IProps {
   data: TypeExpendedData[];
+  icon?: StaticImageData | false;
+  style?: string;
   title: string;
 }
 
 const ExperienceList = (props: IProps) => {
-  const { data, title } = props;
+  const { data, title, icon, style } = props;
   const isSection = data.some((item) => item.values);
 
   return (
     isSection && (
       <div className={styles.wrapper}>
-        <Title text={title} />
+        <Title title={title} style={style} icon={icon} />
         {data.map((element) => {
           const { uuid, values } = element;
           const {
@@ -54,6 +57,7 @@ const ExperienceList = (props: IProps) => {
                 {city && <p>{city}</p>}
                 {description && (
                   <div
+                  className={styles.description}
                     dangerouslySetInnerHTML={{
                       __html: description,
                     }}

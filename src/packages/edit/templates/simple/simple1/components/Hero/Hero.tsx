@@ -5,7 +5,7 @@ import styles from './Hero.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getDataValuesForm, convertFilledContactData } from '../../../utils';
+import { getDataValuesForm, convertFilledContactData } from '../../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
 
 const Hero = () => {

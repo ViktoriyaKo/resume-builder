@@ -10,17 +10,15 @@ import {
   SelectTemplates,
   Skills,
 } from '../../molecules';
-import { ResumeScore } from '../../atoms';
-import { ShortCategories } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
-import { Button, BackIcon, Icon, Spinner } from '@/ui/atoms';
+import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useDebounce } from '@/hooks';
-import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 interface IProps {
   currentTemplate: string;
@@ -29,8 +27,7 @@ interface IProps {
 
 const DocumentEditor = (props: IProps) => {
   const { currentTemplate, resume } = props;
-  const router = useRouter();
-
+  const { lang } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 
@@ -100,13 +97,6 @@ const DocumentEditor = (props: IProps) => {
     return;
   };
 
-  const handleBackNavigation = useCallback(() => {
-    router.back();
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
-  }, [router]);
-
   return loading ? (
     <Spinner />
   ) : (
@@ -116,10 +106,13 @@ const DocumentEditor = (props: IProps) => {
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <div className={styles.topLine}>
-          <Button className={styles.back} onClick={handleBackNavigation}>
-            <Icon html={BackIcon} />
-            Back
-          </Button>
+          <CustomLink
+            href={`/${lang}/account?refreshId=${Date.now()}`}
+            className={styles.back}
+            prefix={<Icon html={BackIcon} />}
+            text={'Account'}
+          />
+
           <SelectTemplates currentTemplate={currentTemplate} />
         </div>
         {/* <ResumeScore score={10} /> */}
@@ -134,7 +127,7 @@ const DocumentEditor = (props: IProps) => {
           data={languagesData}
           options={SELECT_LANGUAGES_ENTITY}
         />
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <DocumentEditorSection.ColorInput
             caption={t('choose_background')}
             template={currentTemplate}
@@ -145,7 +138,7 @@ const DocumentEditor = (props: IProps) => {
             template={currentTemplate}
             category={ShortCategories.COLOR}
           />
-        </div>
+        </div> */}
       </form>
     </FormProvider>
   );
