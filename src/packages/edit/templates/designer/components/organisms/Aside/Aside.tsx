@@ -16,8 +16,12 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles, image, secondaryColor:color } =
-    useSelector(getStateSimpleData);
+  const {
+    skills,
+    titles,
+    image,
+    primaryColor: color,
+  } = useSelector(getStateSimpleData);
   const { contact, education, links, languages: languagesData } = initialData;
 
   const getFilledData = useCallback(
@@ -62,7 +66,11 @@ const Aside = () => {
       </div>
       <AsideSection.Education title={titles.education ?? ''} data={education} />
       <AsideSection.Skills title={titles.skills ?? ''} description={skills} />
-      <AsideSection.Languages title={titles.languages ?? ''} data={languages} color={color}/>
+      <AsideSection.Languages
+        title={titles.languages ?? ''}
+        data={languages}
+        color={color}
+      />
     </div>
   );
 };

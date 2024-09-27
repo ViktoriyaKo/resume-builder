@@ -5,13 +5,12 @@ import { useCallback, RefObject, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { uploadImageToDB } from '@/packages/edit/services';
 import { updateResume } from '@/packages/edit/services';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { Modal, ModalWrapper } from '@/ui/organisms';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { useEditTemplateContext } from '@/packages/edit';
-import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 
 const DownloadButtons = ({
   contentRef,
@@ -91,12 +90,12 @@ const DownloadButtons = ({
       handleClick: () => handleDownloadPdf(contentRef),
     },
     { text: 'txt', icon: TxtIcon, handleClick: () => handleDownloadTxt() },
-    {
-      text: 'preview',
-      icon: PreviewIcon,
-      handleClick: () => handlePreview(),
-      hiddenDesktop: true,
-    },
+    // {
+    //   text: 'preview',
+    //   icon: PreviewIcon,
+    //   handleClick: () => handlePreview(),
+    //   hiddenDesktop: true,
+    // },
   ];
 
   return (
@@ -106,11 +105,11 @@ const DownloadButtons = ({
         as draft
       </Button>
       {buttons.map((button) => {
-        const { text, icon, handleClick, hiddenDesktop } = button;
+        const { text, icon, handleClick } = button;
         return (
           <Button
             key={text}
-            className={clsx(styles.button, { [styles.hide]: hiddenDesktop })}
+            className={clsx(styles.button)}
             onClick={handleClick}
           >
             <Icon html={icon} />

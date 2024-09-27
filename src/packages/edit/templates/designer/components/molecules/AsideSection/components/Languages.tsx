@@ -22,7 +22,7 @@ const Languages = (props: IProps) => {
 
             return (
               languagesLevel && (
-                <div>
+                <div key={languagesName}>
                   <p className={styles.label}>{languagesName}</p>
                   <Stars
                     value={languagesLevel}

@@ -79,7 +79,7 @@ const UploadPhoto = () => {
         onChange={handleImageChange}
       />
       <Image
-        src={photo ?? gallery}
+        src={photo || gallery}
         alt={'photo'}
         width={60}
         height={60}
