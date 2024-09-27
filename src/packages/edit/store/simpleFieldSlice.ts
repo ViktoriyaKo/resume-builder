@@ -19,11 +19,13 @@ export const Slice = createSlice({
   initialState,
   reducers: {
     updateSimpleData: (
-      state: TypeUpdateSimpleData,
+      state: TypeInitialShortField,
       action: PayloadAction<TypeUpdateSimpleData>
     ) => {
-      const { image } = action.payload;
-      state.image = image;
+      const { category, value } = action.payload;
+      if (category !== ShortCategories.TITLES) {
+        state[category] = value;
+      }
     },
   },
   extraReducers: (builder) => {

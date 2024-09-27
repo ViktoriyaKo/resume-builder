@@ -5,12 +5,13 @@ import { useCallback, RefObject, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { uploadImageToDB } from '@/packages/edit/services';
 import { updateResume } from '@/packages/edit/services';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { Modal, ModalWrapper } from '@/ui/organisms';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { useEditTemplateContext } from '@/packages/edit';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 
 const DownloadButtons = ({
   contentRef,
@@ -20,6 +21,7 @@ const DownloadButtons = ({
   resume: string;
 }) => {
   const dispatch = useDispatch<AppDispatch>();
+
   const [openModal, setModal] = useState(false);
   const [openModalPreview, setModalPreview] = useState(false);
   const [preview, setPreview] = useState('');

@@ -13,13 +13,18 @@ import personalIcon from '/public/icons/personal4.png';
 import { Stars } from '@/ui/atoms';
 
 const Aside = ({ style }: { style: string }) => {
-  const { skills, titles, image } = useSelector(getStateSimpleData);
+  const {
+    skills,
+    titles,
+    image,
+    secondaryColor: color,
+  } = useSelector(getStateSimpleData);
   const { initialFormData } = useSelector(getStateInitialFormData);
   const { contact, links, languages } = initialFormData ?? {};
   const { city, country, email, phone } = contact ?? {};
   const { t } = useTranslation();
   const isIcon = style === 'simple3';
-  const starColor = isIcon ? '#005c85' : '#333333';
+  const starColor = color ? color : isIcon ? '#005c85' : '#333333';
 
   const allLinks = links && [
     ...links,

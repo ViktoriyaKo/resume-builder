@@ -12,6 +12,6 @@
 
 .icon svg {
   border-radius: 50%;
-  background-color: var(--designer-primaryColor);
+  background-color: var(--designer1-primaryColor);
   padding: 4px;
 }

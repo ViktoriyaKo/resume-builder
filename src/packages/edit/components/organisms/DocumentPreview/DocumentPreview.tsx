@@ -15,11 +15,14 @@ const DocumentPreview = (props: IProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.list} ref={contentRef}>
+      <div className={styles.list} ref={contentRef} id={'print-content'}>
         {ListTemplates[currentTemplate]}
       </div>
       <DocumentPreviewPagination />
-      <DownloadButtons resume={resume} contentRef={contentRef} />
+      <DownloadButtons
+        resume={resume}
+        contentRef={contentRef}
+      />
     </div>
   );
 };

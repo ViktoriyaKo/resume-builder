@@ -4,21 +4,17 @@ import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
-import {
-  ContactDetails,
-  DocumentEditorSection,
-  SelectTemplates,
-  Skills,
-} from '../../molecules';
+import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
 import { useTranslation } from 'react-i18next';
-import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
+import { BackIcon, Icon, Spinner, CustomLink, Button } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useDebounce } from '@/hooks';
 import { useParams } from 'next/navigation';
+import { ShortCategories } from '@/packages/edit/constants';
 
 interface IProps {
   currentTemplate: string;
@@ -43,6 +39,8 @@ const DocumentEditor = (props: IProps) => {
     links,
     skills,
     summary,
+    secondaryColor,
+    primaryColor,
   } = initialFormData ?? {};
   const { t } = useTranslation();
 
@@ -74,6 +72,8 @@ const DocumentEditor = (props: IProps) => {
       links,
       skills,
       summary,
+      secondaryColor,
+      primaryColor,
     });
   }, [initialFormData?.id, methods]);
 
@@ -96,6 +96,11 @@ const DocumentEditor = (props: IProps) => {
   const onSubmit = async () => {
     return;
   };
+
+  const handleResetColors = useCallback(() => {
+    methods.setValue(ShortCategories.BACKGROUND, '');
+    methods.setValue(ShortCategories.COLOR, '');
+  }, []);
 
   return loading ? (
     <Spinner />
@@ -125,18 +130,23 @@ const DocumentEditor = (props: IProps) => {
           data={languagesData}
           options={SELECT_LANGUAGES_ENTITY}
         />
-        {/* <div className={styles.wrapper}>
+        <div className={styles.wrapper}>
           <DocumentEditorSection.ColorInput
             caption={t('choose_background')}
             template={currentTemplate}
             category={ShortCategories.BACKGROUND}
+            color={secondaryColor}
           />
           <DocumentEditorSection.ColorInput
             caption={t('choose_color')}
             template={currentTemplate}
             category={ShortCategories.COLOR}
+            color={primaryColor}
           />
-        </div> */}
+          <Button onClick={handleResetColors} className={styles.reset}>
+            Accept default colors
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );

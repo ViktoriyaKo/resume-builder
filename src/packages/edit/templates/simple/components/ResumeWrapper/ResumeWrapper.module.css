@@ -26,7 +26,7 @@
 }
 
 .simple2 {
-  background-color: #333333;
+  background-color: var(--simple2-secondaryColor);
   color: white;
 }
 

@@ -16,7 +16,8 @@ const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
 
-  const { skills, titles, image } = useSelector(getStateSimpleData);
+  const { skills, titles, image, secondaryColor:color } =
+    useSelector(getStateSimpleData);
   const { contact, education, links, languages: languagesData } = initialData;
 
   const getFilledData = useCallback(
@@ -49,7 +50,11 @@ const Aside = () => {
       <div className={clsx(styles.wrapper)}>
         <LabelValue label={'Email'} value={email} icon={EmailIcon} />
         <LabelValue label={t('Phone')} value={phone} icon={CallIcon} />
-        <LabelValue label={t('Address')} value={shortAddress} icon={EarthIcon} />
+        <LabelValue
+          label={t('Address')}
+          value={shortAddress}
+          icon={EarthIcon}
+        />
         {contactLinks.map((item) => {
           const { label, link } = item || {};
           return <LabelValue key={label} label={label} value={link} />;
@@ -57,7 +62,7 @@ const Aside = () => {
       </div>
       <AsideSection.Education title={titles.education ?? ''} data={education} />
       <AsideSection.Skills title={titles.skills ?? ''} description={skills} />
-      <AsideSection.Languages title={titles.languages ?? ''} data={languages} />
+      <AsideSection.Languages title={titles.languages ?? ''} data={languages} color={color}/>
     </div>
   );
 };

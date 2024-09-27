@@ -8,7 +8,7 @@
 .filled {
   position: relative;
   color: white;
-  background-color: var(--designer-primaryColor);
+  background-color: var(--designer1-primaryColor);
   padding-inline: 20px 12px;
   width: 105%;
   padding-block: 8px;
@@ -26,8 +26,8 @@
 }
 
 .notFilled {
-  color: var(--designer-primaryColor);
-  border-top: 1px solid var(--designer-primaryColor);
-  border-bottom: 1px solid var(--designer-primaryColor);
+  color: var(--designer1-primaryColor);
+  border-top: 1px solid var(--designer1-primaryColor);
+  border-bottom: 1px solid var(--designer1-primaryColor);
   padding-block: 4px;
 }

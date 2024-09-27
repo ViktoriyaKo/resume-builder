@@ -10,6 +10,7 @@ import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImageToDB } from '@/packages/edit/services';
 import { updateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
+import { ShortCategories } from '@/packages/edit/constants';
 
 const UploadPhoto = () => {
   const { t } = useTranslation();
@@ -44,7 +45,9 @@ const UploadPhoto = () => {
       const formData = new FormData();
       formData.append('files', file);
       const blobURL = URL.createObjectURL(file);
-      dispatch(updateSimpleData({ image: blobURL }));
+      dispatch(
+        updateSimpleData({ category: ShortCategories.IMAGE, value: blobURL })
+      );
       setPhoto(blobURL);
 
       const data = await uploadImageToDB(formData);

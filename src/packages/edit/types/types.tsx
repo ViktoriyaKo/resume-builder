@@ -85,7 +85,10 @@ export type TypeInitialShortField = {
   [ShortCategories.IMAGE]: string;
 };
 
-export type TypeUpdateSimpleData = { image: string };
+export type TypeUpdateSimpleData = {
+  category: ShortCategories;
+  value: string;
+};
 
 //initialFormSlice:
 interface ResumeItemExtend extends Omit<ResumeItem, 'image'> {
