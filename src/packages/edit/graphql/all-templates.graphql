@@ -1,0 +1,20 @@
+query AllTemplates($locale: I18NLocaleCode) {
+  templates(locale: $locale, pagination: { limit: 100 }) {
+    data {
+      attributes {
+        link
+        title
+        description
+        slug
+        image {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

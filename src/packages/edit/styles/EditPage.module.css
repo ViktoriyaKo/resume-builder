@@ -15,9 +15,12 @@
   padding: 20px 20px 60px 20px;
 }
 
-/* .view {
-  visible: ;
-} */
+@media (width >= 768px) {
+  .editor {
+    height: var(--review-max-height);
+    overflow-y: auto;
+  }
+}
 
 @media (width >= 768px) {
   .view {
@@ -26,6 +29,7 @@
     position: sticky;
     top: 0;
     height: var(--review-max-height);
+    overflow-y: auto;
     display: block;
   }
 }

@@ -10,6 +10,7 @@ import { AppDispatch } from '@/store/store';
 import { Modal, ModalWrapper } from '@/ui/organisms';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { useEditTemplateContext } from '@/packages/edit';
 
 const DownloadButtons = ({
   contentRef,
@@ -22,6 +23,7 @@ const DownloadButtons = ({
   const [openModal, setModal] = useState(false);
   const [openModalPreview, setModalPreview] = useState(false);
   const [preview, setPreview] = useState('');
+  const { isEditorTemplate, setEditorTemplate } = useEditTemplateContext();
 
   const handleDownloadPdf = useReactToPrint({
     content: () => contentRef.current,
@@ -113,6 +115,15 @@ const DownloadButtons = ({
           </Button>
         );
       })}
+      {!isEditorTemplate && (
+        <Button
+          onClick={() => setEditorTemplate(true)}
+          className={styles.saveButton}
+        >
+          select <br />
+          template
+        </Button>
+      )}
       <Modal
         isOpen={openModal}
         onClose={() => setModal(false)}

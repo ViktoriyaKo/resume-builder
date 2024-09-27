@@ -3,7 +3,6 @@ import styles from './DocumentPreview.module.css';
 import { useRef } from 'react';
 import { DocumentPreviewPagination, DownloadButtons } from '../../molecules';
 import { ListTemplates } from '@/packages/edit/templates';
-import { BottomNavigation } from '@/ui/atoms';
 
 interface IProps {
   currentTemplate: string;

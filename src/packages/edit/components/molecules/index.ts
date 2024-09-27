@@ -8,3 +8,4 @@ export { default as DocumentPreviewPagination } from './DocumentPreviewPaginatio
 export { default as DocumentEditorSection } from './DocumentEditorSection/DocumentEditorSection';
 export { default as SelectTemplates } from './SelectTemplate/SelectTemplate';
 export { default as DownloadButtons } from './DownloadButtons/DownloadButtons';
+export { default as AsideTemplates } from './AsideTemplates/AsideTemplates';

@@ -30,10 +30,11 @@ const Filters = (props: IProps) => {
     <ul className={clsx(styles.wrapper, 'keen-slider')} ref={ref}>
       {['all', ...uniqueLinks].map((item) => {
         return (
-          <li key={item} className={clsx(styles.item, 'keen-slider__slide',{
-            [styles.active]: currentFilter === item,
-          })}>
+          <li key={item}>
             <Link
+              className={clsx(styles.item, 'keen-slider__slide', {
+                [styles.active]: currentFilter === item,
+              })}
               href={{
                 query: { filter: item },
               }}

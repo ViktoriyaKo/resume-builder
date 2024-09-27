@@ -1,7 +1,9 @@
 import { Select } from '@/ui/atoms';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useEditTemplateContext } from '@/packages/edit';
+import { TypeOptionsData } from '@/packages/edit/types';
 
 interface IProps {
   currentTemplate: string;
@@ -13,15 +15,14 @@ const SelectTemplates = (props: IProps) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const { t } = useTranslation();
+  const { templates } = useEditTemplateContext();
 
-  // добавить из базы, временно:
-  const options = [
-    { caption: 'Voyage', value: 'designer1' },
-    { caption: 'Astronomy', value: 'modern1' },
-    { caption: 'Orion', value: 'simple1' },
-    { caption: 'Pegasus', value: 'simple2' },
-    { caption: 'Gemini', value: 'simple3' },
-  ];
+  const options: TypeOptionsData[] = useMemo(() => {
+    return templates?.map((item) => {
+      const { slug, title } = item?.attributes ?? {};
+      return { caption: title ?? '', value: slug ?? '' };
+    });
+  }, [templates]);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 8px;
   font-family: var(--font-montserrat);
-  padding: 40px;
+  padding: var(--sm-spacing);
 }
 
 @media print {

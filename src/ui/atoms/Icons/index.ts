@@ -19,3 +19,4 @@ export { BackIcon } from './BackIcon';
 export { DocumentsIcon } from './DocumentsIcon';
 export { HomeIcon } from './HomeIcon';
 export { PreviewIcon } from './PreviewIcon';
+export { LikeIcon } from './LikeIcon';

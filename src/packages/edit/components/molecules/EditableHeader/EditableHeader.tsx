@@ -33,7 +33,7 @@ const EditableHeader = (props: IProps) => {
   });
 
   return (
-    <header className={'mt-3'}>
+    <header>
       <div className={styles.wrapper}>
         <Input
           className={styles.wrapperInput}

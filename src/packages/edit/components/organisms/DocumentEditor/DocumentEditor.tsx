@@ -112,8 +112,6 @@ const DocumentEditor = (props: IProps) => {
             prefix={<Icon html={BackIcon} />}
             text={'Account'}
           />
-
-          <SelectTemplates currentTemplate={currentTemplate} />
         </div>
         {/* <ResumeScore score={10} /> */}
         <ContactDetails data={contactData} />
