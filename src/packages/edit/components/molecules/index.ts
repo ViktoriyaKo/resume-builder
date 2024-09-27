@@ -9,3 +9,4 @@ export { default as DocumentEditorSection } from './DocumentEditorSection/Docume
 export { default as SelectTemplates } from './SelectTemplate/SelectTemplate';
 export { default as DownloadButtons } from './DownloadButtons/DownloadButtons';
 export { default as AsideTemplates } from './AsideTemplates/AsideTemplates';
+export { default as ColorInput } from './ColorInput/ColorInput';

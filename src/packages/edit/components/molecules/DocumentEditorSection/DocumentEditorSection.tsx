@@ -1,5 +1,5 @@
 import {
-  ColorInput,
+  Colors,
   Content,
   Courses,
   Education,
@@ -10,7 +10,7 @@ import {
 } from './components';
 
 const DocumentEditorSection = {
-  ColorInput,
+  Colors,
   Content,
   Courses,
   Education,

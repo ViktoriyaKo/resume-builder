@@ -5,16 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
 import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
-import { useTranslation } from 'react-i18next';
-import { BackIcon, Icon, Spinner, CustomLink, Button } from '@/ui/atoms';
+import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { AppDispatch } from '@/store/store';
 import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useDebounce } from '@/hooks';
 import { useParams } from 'next/navigation';
-import { ShortCategories } from '@/packages/edit/constants';
 
 interface IProps {
   currentTemplate: string;
@@ -42,7 +40,6 @@ const DocumentEditor = (props: IProps) => {
     secondaryColor,
     primaryColor,
   } = initialFormData ?? {};
-  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getCurrentResume(resume)).then(() => {
@@ -97,11 +94,6 @@ const DocumentEditor = (props: IProps) => {
     return;
   };
 
-  const handleResetColors = useCallback(() => {
-    methods.setValue(ShortCategories.BACKGROUND, '');
-    methods.setValue(ShortCategories.COLOR, '');
-  }, []);
-
   return loading ? (
     <Spinner />
   ) : (
@@ -130,23 +122,11 @@ const DocumentEditor = (props: IProps) => {
           data={languagesData}
           options={SELECT_LANGUAGES_ENTITY}
         />
-        <div className={styles.wrapper}>
-          <DocumentEditorSection.ColorInput
-            caption={t('choose_background')}
-            template={currentTemplate}
-            category={ShortCategories.BACKGROUND}
-            color={secondaryColor}
-          />
-          <DocumentEditorSection.ColorInput
-            caption={t('choose_color')}
-            template={currentTemplate}
-            category={ShortCategories.COLOR}
-            color={primaryColor}
-          />
-          <Button onClick={handleResetColors} className={styles.reset}>
-            Accept default colors
-          </Button>
-        </div>
+        <DocumentEditorSection.Colors
+          currentTemplate={currentTemplate}
+          secondaryColor={secondaryColor}
+          primaryColor={primaryColor}
+        />
       </form>
     </FormProvider>
   );

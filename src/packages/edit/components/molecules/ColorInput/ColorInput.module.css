@@ -1,0 +1,11 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.input {
+  width: 90px;
+  height: 45px;
+  display: block;
+}

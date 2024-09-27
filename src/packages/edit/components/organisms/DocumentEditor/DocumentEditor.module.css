@@ -4,16 +4,6 @@
   gap: var(--xs-spacing);
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-radius: 8px;
-  border: var(--bs-border-width) solid var(--bs-border-color);
-  padding: 8px;
-  background: linear-gradient(180deg, #f7f7f7 57%, rgba(255, 255, 255, 1) 100%);
-}
-
 .topLine {
   display: flex;
   justify-content: space-between;
@@ -52,10 +42,3 @@
   transform: all 0.5;
 }
 
-.reset {
-  background-color: black;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  max-width: max-content;
-}

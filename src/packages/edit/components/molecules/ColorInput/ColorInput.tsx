@@ -1,7 +1,7 @@
 import { ShortCategories } from '@/packages/edit/constants';
 import { Input } from '@/ui/atoms';
 import clsx from 'clsx';
-import styles from '../styles/EditorItems.module.css';
+import styles from './ColorInput.module.css';
 import { updateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import { useDispatch } from 'react-redux';
 import { useDebounce } from '@/hooks';
