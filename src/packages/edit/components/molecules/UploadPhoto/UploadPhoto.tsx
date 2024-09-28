@@ -1,12 +1,4 @@
-import {
-  Button,
-  DeleteIcon,
-  EditSmIcon,
-  Icon,
-  Input,
-  ZoomIn,
-  ZoomOut,
-} from '@/ui/atoms';
+import { Button, DeleteIcon, EditSmIcon, Icon, Input } from '@/ui/atoms';
 import { useTranslation } from 'react-i18next';
 import styles from './UploadPhoto.module.css';
 import Image from 'next/image';

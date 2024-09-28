@@ -4,7 +4,7 @@ import {
   changeCurrentPage,
   getPreviewPaginationData,
 } from '@/packages/edit/store/documentPreviewPaginationSlice';
-import { Button } from '@/ui/atoms';
+import { ArrowIcon, Button, Icon } from '@/ui/atoms';
 
 const DocumentPreviewPagination = () => {
   const { currentPage, totalPages } = useSelector(getPreviewPaginationData);
@@ -21,7 +21,7 @@ const DocumentPreviewPagination = () => {
         onClick={handlePrevList}
         disabled={currentPage === 1}
       >
-        &#11164;
+        <Icon html={ArrowIcon} />
       </Button>
       <span>
         {currentPage} / {totalPages}
@@ -32,7 +32,7 @@ const DocumentPreviewPagination = () => {
         onClick={handleNextList}
         disabled={currentPage === totalPages}
       >
-        &#11166;
+        <Icon html={ArrowIcon} />
       </Button>
     </div>
   );

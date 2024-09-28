@@ -20,5 +20,4 @@ export { DocumentsIcon } from './DocumentsIcon';
 export { HomeIcon } from './HomeIcon';
 export { PreviewIcon } from './PreviewIcon';
 export { LikeIcon } from './LikeIcon';
-export { ZoomIn } from './ZoomIn';
-export { ZoomOut } from './ZoomOut';
+export { ArrowIcon } from './ArrowIcon';

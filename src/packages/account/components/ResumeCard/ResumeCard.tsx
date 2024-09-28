@@ -15,6 +15,7 @@ interface IOptions {
 
 interface IProps {
   id?: InputMaybe<IdFilterInput>;
+  index: number;
   cover?: { url?: string };
   handleDelete?: (id?: InputMaybe<IdFilterInput>) => void;
   options?: IOptions[];
@@ -26,7 +27,7 @@ interface IProps {
 }
 
 const ResumeCard = (props: IProps) => {
-  const { id, handleDelete, cover, design } = props;
+  const { id, handleDelete, cover, design, index } = props;
   const imageUrl = cover?.url ?? '';
   const { lang } = useParams();
 
@@ -48,7 +49,7 @@ const ResumeCard = (props: IProps) => {
                 <Icon html={DeleteIcon} />
               </Button>
             )}
-            {imageUrl && (
+            {imageUrl ? (
               <Image
                 className={styles.image}
                 src={imageUrl}
@@ -57,6 +58,8 @@ const ResumeCard = (props: IProps) => {
                 quality={70}
                 fill
               />
+            ) : (
+              <p className={styles.title}>Your resume #{index + 1}</p>
             )}
           </>
         }

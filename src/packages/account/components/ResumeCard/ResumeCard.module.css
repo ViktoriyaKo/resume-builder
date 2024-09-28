@@ -3,10 +3,13 @@
   border: 1px solid var(--pink-100);
   border-radius: var(--border-radius);
   max-width: 300px;
-  width: 100%!important;
+  width: 100% !important;
   position: relative;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card:hover {
@@ -34,4 +37,12 @@
   background-color: black;
   transition: all 0.3s;
   color: white;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+  color: var(--blue-300);
+  text-transform: uppercase;
+  font-weight: 600;
 }

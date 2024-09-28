@@ -8,7 +8,7 @@ import {
 import { TypeFieldData } from '@/packages/edit/types/types';
 import { Input } from '@/ui/atoms';
 import { useTranslation } from 'react-i18next';
-import { UploadPhoto } from '../../atoms';
+import UploadPhoto from '../UploadPhoto/UploadPhoto';
 
 interface IProps {
   data: TypeFieldData[];

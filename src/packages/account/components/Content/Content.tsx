@@ -77,11 +77,12 @@ const Content = (props: IProps) => {
         </Button>
         {allResume &&
           allResume.length > 0 &&
-          allResume?.map((item) => {
+          allResume?.map((item, index) => {
             return (
               <ResumeCard
                 handleDelete={confirmDelete}
                 key={String(item.id)}
+                index={index}
                 {...item}
               />
             );
