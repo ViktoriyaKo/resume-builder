@@ -42,3 +42,52 @@
   transition: color 0.5s;
 }
 
+/* start modal */
+
+.modal {
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.779);
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.downloadButton {
+  padding: 8px 12px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+
+.cropImage {
+  width: 100%;
+  height: auto;
+  max-height: 600px !important;
+  object-fit: contain;
+}
+
+.wrapperZoom {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.wrapperZoom button {
+  color: black;
+}
+
+.wrapperZoom button:disabled {
+  color: gray;
+}
+/* finish modal */
