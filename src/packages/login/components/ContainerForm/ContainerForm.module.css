@@ -18,14 +18,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 16px;
+  padding: 12px;
   gap: 16px;
+  background-color:white;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    background-color: transparent;
+    padding: 30px 16px;
+  }
 }
 
 .title {
   font-size: 26px;
   font-weight: 600;
-  color: white;
+  text-align: center;
+}
+
+@media (width >= 768px) {
+  .title {
+    color: white;
+  }
 }
 
 .description {
@@ -36,12 +50,17 @@
 .separator {
   display: flex;
   align-items: center;
-  margin: 20px 0;
   font-size: 14px;
   color: var(--gray-500);
   text-align: center;
   justify-content: center;
   width: 100%;
+}
+
+@media (width >= 768px) {
+  .separator {
+    margin: 20px 0;
+  }
 }
 
 .separator::before,

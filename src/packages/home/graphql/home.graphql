@@ -1,10 +1,11 @@
 query Home($locale: I18NLocaleCode) {
-  templates(locale: $locale,  sort: "id", pagination: { limit: 3 }) {
+  templates(locale: $locale, sort: "id", pagination: { limit: 3 }) {
     data {
       attributes {
         link
         title
         description
+        slug
         image {
           data {
             id

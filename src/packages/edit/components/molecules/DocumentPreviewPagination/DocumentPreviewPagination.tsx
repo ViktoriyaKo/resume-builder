@@ -21,7 +21,7 @@ const DocumentPreviewPagination = () => {
         onClick={handlePrevList}
         disabled={currentPage === 1}
       >
-        &#11160;
+        &#11164;
       </Button>
       <span>
         {currentPage} / {totalPages}
@@ -32,7 +32,7 @@ const DocumentPreviewPagination = () => {
         onClick={handleNextList}
         disabled={currentPage === totalPages}
       >
-        &#11162;
+        &#11166;
       </Button>
     </div>
   );
