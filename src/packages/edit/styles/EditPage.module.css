@@ -22,14 +22,17 @@
   }
 }
 
+.view {
+  padding: var(--sm-spacing);
+  background-color: var(--gray-300);
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  display: block;
+}
+
 @media (width >= 768px) {
   .view {
-    padding: var(--sm-spacing);
-    background-color: var(--gray-300);
-    position: sticky;
-    top: 0;
     height: var(--review-max-height);
-    overflow-y: auto;
-    display: block;
   }
 }

@@ -16,7 +16,6 @@ const Resume = ({
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { marginTop } = useResizePreviewPagination(contentRef);
   const { minHeight } = useSelector(getPreviewPaginationData);
-
   const { initialFormData } = useSelector(getStateInitialFormData);
   const { contact } = initialFormData;
   const { job, firstName, lastName } = contact ?? {};

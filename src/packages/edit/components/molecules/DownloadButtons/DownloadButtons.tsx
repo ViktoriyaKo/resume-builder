@@ -68,21 +68,6 @@ const DownloadButtons = ({
     }, 'image/png');
   }, []);
 
-  const handlePreview = useCallback(async () => {
-    const element = contentRef.current;
-    if (!element) return;
-    setModalPreview(true);
-    const originalDisplay = element.style.display;
-    element.style.display = 'block';
-
-    const canvas = await html2canvas(element, { scale: 2 });
-    const dataUrl = canvas.toDataURL('image/png');
-
-    setPreview(dataUrl);
-
-    element.style.display = originalDisplay;
-  }, []);
-
   const buttons = [
     {
       text: 'pdf',
@@ -90,12 +75,6 @@ const DownloadButtons = ({
       handleClick: () => handleDownloadPdf(contentRef),
     },
     { text: 'txt', icon: TxtIcon, handleClick: () => handleDownloadTxt() },
-    // {
-    //   text: 'preview',
-    //   icon: PreviewIcon,
-    //   handleClick: () => handlePreview(),
-    //   hiddenDesktop: true,
-    // },
   ];
 
   return (
