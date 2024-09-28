@@ -33,7 +33,7 @@ const ResumeCard = (props: IProps) => {
   return (
     <>
       <CustomLink
-        href={`/${lang}/edit/${id}?design=${design ?? 'simple'}`}
+        href={`/${lang}/edit/${id}?design=${design ?? 'simple1'}`}
         className={styles.card}
         prefix={
           <>
