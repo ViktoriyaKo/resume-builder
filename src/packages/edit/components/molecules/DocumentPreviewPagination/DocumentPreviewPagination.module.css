@@ -1,16 +1,16 @@
 .wrapper {
   position: absolute;
   bottom: 120px;
+  padding: var(--xs-spacing);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 @media (width >= 768px) {
   .wrapper {
     position: relative;
-    padding: var(--xs-spacing);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
     bottom: auto;
   }
 }
