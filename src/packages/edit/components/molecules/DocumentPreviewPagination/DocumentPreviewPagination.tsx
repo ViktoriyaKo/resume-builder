@@ -21,7 +21,7 @@ const DocumentPreviewPagination = () => {
         onClick={handlePrevList}
         disabled={currentPage === 1}
       >
-        <Icon html={ArrowIcon} />
+        <Icon html={ArrowIcon} style={{ rotate: '180deg', display: 'flex' }} />
       </Button>
       <span>
         {currentPage} / {totalPages}

@@ -19,6 +19,9 @@
   color: white;
   padding: 8px 12px;
   border-radius: 4px;
+  position: fixed;
+  top: 20px;
+  z-index: 20;
 }
 
 .back:hover {
@@ -41,4 +44,3 @@
   color: white;
   transform: all 0.5;
 }
-
