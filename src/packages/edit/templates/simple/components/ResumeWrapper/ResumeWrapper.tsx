@@ -28,10 +28,10 @@ const Resume = ({
     >
       <div className={styles.inner}>
         <header className={clsx(styles.header, style && styles[style])}>
-          {/* <p className={styles.name}>
+          <p className={styles.name}>
             {firstName} {lastName}
           </p>
-          {job && <p>{job}</p>} */}
+          {job && <p>{job}</p>}
         </header>
         <div className={styles.wrapper}>{children}</div>
       </div>
