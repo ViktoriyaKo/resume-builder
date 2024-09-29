@@ -1,3 +1,4 @@
+'use client';
 import { useResizePreviewPagination } from '@/packages/edit/hooks';
 import styles from './ResumeWrapper.module.css';
 import { ReactNode, useRef } from 'react';
@@ -26,15 +27,15 @@ const Resume = ({
       style={{ marginTop: `${marginTop}px`, minHeight: `${minHeight}px` }}
       ref={contentRef}
     >
-      {/* <div className={styles.inner}>
+      <div className={styles.inner}>
         <header className={clsx(styles.header, style && styles[style])}>
-          <p className={styles.name}>
+          {/* <p className={styles.name}>
             {firstName} {lastName}
           </p>
-          {job && <p>{job}</p>}
+          {job && <p>{job}</p>} */}
         </header>
         <div className={styles.wrapper}>{children}</div>
-      </div> */}
+      </div>
     </div>
   );
 };
