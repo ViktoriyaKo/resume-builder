@@ -2,11 +2,11 @@ import { Content, Aside, ResumeWrapper } from '../components';
 
 const Resume = () => {
   return (
-    <div>test</div>
-    // <ResumeWrapper style="simple2">
-    //   <Content style="simple2"/>
-    //   <Aside style="simple2"/>
-    // </ResumeWrapper>
+    <ResumeWrapper style="simple2">
+      <div>test</div>
+      {/* <Content style="simple2"/> */}
+      {/* <Aside style="simple2"/> */}
+    </ResumeWrapper>
   );
 };
 
