@@ -13,7 +13,7 @@ const Content = ({ style }: { style: string }) => {
   const isIcon = style === 'simple3';
 
   return (
-    <div className={clsx(styles.wrapper, styles[style])}>
+    <div className={clsx(styles.wrapper, style && styles[style])}>
       {summary && (
         <div
           dangerouslySetInnerHTML={{
@@ -23,19 +23,19 @@ const Content = ({ style }: { style: string }) => {
       )}
       <ExperienceList
         data={employment}
-        title={titles.employment ?? ''}
+        title={titles?.employment ?? ''}
         icon={isIcon && jobIcon}
         style={style}
       />
       <ExperienceList
         data={education}
-        title={titles.education ?? ''}
+        title={titles?.education ?? ''}
         icon={isIcon && educationIcon}
         style={style}
       />
       <ExperienceList
         data={course}
-        title={titles.course ?? ''}
+        title={titles?.course ?? ''}
         icon={isIcon && educationIcon}
         style={style}
       />

@@ -49,7 +49,7 @@ const Aside = ({ style }: { style: string }) => {
         />
       )}
       <Title
-        title={titles.personal ?? ''}
+        title={titles?.personal ?? ''}
         icon={isIcon && personalIcon}
         style={style}
       />
@@ -74,7 +74,7 @@ const Aside = ({ style }: { style: string }) => {
       {skills && (
         <div>
           <Title
-            title={titles.skills ?? ''}
+            title={titles?.skills ?? ''}
             icon={isIcon && skillsIcon}
             style={style}
           />
@@ -91,7 +91,7 @@ const Aside = ({ style }: { style: string }) => {
       {languages && languages?.length > 0 && (
         <div className={styles.flex}>
           <Title
-            title={titles.languages ?? ''}
+            title={titles?.languages ?? ''}
             icon={isIcon && languagesIcon}
             style={style}
           />

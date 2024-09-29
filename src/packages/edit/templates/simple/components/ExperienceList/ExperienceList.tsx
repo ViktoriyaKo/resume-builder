@@ -20,7 +20,7 @@ const ExperienceList = (props: IProps) => {
     isSection && (
       <div className={styles.wrapper}>
         <Title title={title} style={style} icon={icon} />
-        {data.map((element) => {
+        {data?.map((element) => {
           const { uuid, values } = element;
           const {
             job,
@@ -57,7 +57,7 @@ const ExperienceList = (props: IProps) => {
                 {city && <p>{city}</p>}
                 {description && (
                   <div
-                  className={styles.description}
+                    className={styles.description}
                     dangerouslySetInnerHTML={{
                       __html: description,
                     }}
