@@ -36,7 +36,7 @@ const Resume = ({
           )}
           {contact?.job && <p>{contact?.job}</p>}
         </header>
-        {/* <div className={styles.wrapper}>{children}</div> */}
+        <div className={styles.wrapper}>{children}</div>
       </div>
     </div>
   );
