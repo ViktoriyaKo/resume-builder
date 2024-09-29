@@ -6,14 +6,10 @@ import { useSelector } from 'react-redux';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { getPreviewPaginationData } from '@/packages/edit/store/documentPreviewPaginationSlice';
 import clsx from 'clsx';
+import Content from '../Content/Content';
+import Aside from '../Aside/Aside';
 
-const Resume = ({
-  children,
-  style,
-}: {
-  children: ReactNode;
-  style: string;
-}) => {
+const Resume = ({ style }: { style: string }) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { marginTop } = useResizePreviewPagination(contentRef);
   const { minHeight } = useSelector(getPreviewPaginationData);
@@ -36,7 +32,10 @@ const Resume = ({
           )}
           {contact?.job && <p>{contact?.job}</p>}
         </header>
-        {/* <div className={styles.wrapper}>{children}</div> */}
+        <div className={styles.wrapper}>
+          <Content style={style} />
+          <Aside style={style} />
+        </div>
       </div>
     </div>
   );
