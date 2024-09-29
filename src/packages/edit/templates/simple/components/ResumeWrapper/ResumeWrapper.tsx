@@ -19,7 +19,7 @@ const Resume = ({
   const { minHeight } = useSelector(getPreviewPaginationData);
   const { initialFormData } = useSelector(getStateInitialFormData);
   const { contact } = initialFormData ?? {};
-  // const { job, firstName, lastName } = contact ?? {};
+  const { firstName, lastName } = contact ?? {};
 
   return (
     <div
@@ -29,12 +29,14 @@ const Resume = ({
     >
       <div className={styles.inner}>
         <header className={clsx(styles.header, style && styles[style])}>
-          {/* <p className={styles.name}>
-            {firstName} {lastName}
-          </p>
-          {job && <p>{job}</p>} */}
+          {firstName && lastName && (
+            <p className={styles.name}>
+              {firstName} {lastName}
+            </p>
+          )}
+          {contact?.job && <p>{contact?.job}</p>}
         </header>
-        <div className={styles.wrapper}>{children}</div>
+        {/* <div className={styles.wrapper}>{children}</div> */}
       </div>
     </div>
   );
