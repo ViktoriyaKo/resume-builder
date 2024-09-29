@@ -33,8 +33,8 @@ const Resume = ({ style }: { style: string }) => {
           {contact?.job && <p>{contact?.job}</p>}
         </header>
         <div className={styles.wrapper}>
-          {/* <Content style={style} />
-          <Aside style={style} /> */}
+          <Content style={style} />
+          {/* <Aside style={style} /> */}
         </div>
       </div>
     </div>
