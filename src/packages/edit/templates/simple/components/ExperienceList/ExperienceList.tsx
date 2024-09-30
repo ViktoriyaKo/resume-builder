@@ -14,7 +14,7 @@ interface IProps {
 
 const ExperienceList = (props: IProps) => {
   const { data, title, icon, style } = props;
-  const isSection = data.some((item) => item.values);
+  const isSection = data?.some((item) => item?.values);
 
   return (
     isSection && (

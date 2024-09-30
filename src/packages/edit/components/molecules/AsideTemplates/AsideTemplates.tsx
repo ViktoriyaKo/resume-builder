@@ -6,6 +6,8 @@ import { useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { paramsVariables } from '@/constants';
 import clsx from 'clsx';
+import { useFormContext } from 'react-hook-form';
+
 
 const AsideTemplates = () => {
   const { templates, setEditorTemplate } = useEditTemplateContext();
@@ -13,10 +15,12 @@ const AsideTemplates = () => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const currentTemplate = searchParams.get(paramsVariables.DESIGN) ?? 'simple1';
+  const methods = useFormContext();
 
   const handleChange = useCallback((param: string) => {
     params.set('design', param);
     router.push(`?${params.toString()}`);
+    methods.setValue('design', param);
   }, []);
 
   return (

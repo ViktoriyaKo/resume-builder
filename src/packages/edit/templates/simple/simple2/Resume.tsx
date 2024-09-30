@@ -1,7 +1,12 @@
-import { ResumeWrapper } from '../components';
+import { Content, Aside, ResumeWrapper } from '../components';
 
 const Resume = () => {
-  return <ResumeWrapper style="simple2" />;
+  return (
+    <ResumeWrapper style="simple2">
+      <Content style="simple2" />
+      <Aside style="simple2" />
+    </ResumeWrapper>
+  );
 };
 
 export default Resume;

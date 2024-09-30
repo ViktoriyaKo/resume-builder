@@ -4,7 +4,7 @@ import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
-import { ContactDetails, DocumentEditorSection, Skills } from '../../molecules';
+import { ContactDetails, DocumentEditorSection, Skills, AsideTemplates } from '../../molecules';
 import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import { updateResume } from '@/packages/edit/services';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useDebounce } from '@/hooks';
 import { useParams } from 'next/navigation';
+import { useEditTemplateContext } from '@/packages/edit';
 
 interface IProps {
   currentTemplate: string;
@@ -21,6 +22,8 @@ interface IProps {
 
 const DocumentEditor = (props: IProps) => {
   const { currentTemplate, resume } = props;
+  const { isEditorTemplate } = useEditTemplateContext();
+
   const { lang } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
@@ -98,6 +101,8 @@ const DocumentEditor = (props: IProps) => {
     <Spinner />
   ) : (
     <FormProvider {...methods}>
+      {isEditorTemplate ? (
+        <AsideTemplates />) : (
       <form
         className={styles.article}
         onSubmit={methods.handleSubmit(onSubmit)}
@@ -127,7 +132,7 @@ const DocumentEditor = (props: IProps) => {
           secondaryColor={secondaryColor}
           primaryColor={primaryColor}
         />
-      </form>
+      </form>)}
     </FormProvider>
   );
 };

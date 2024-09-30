@@ -28,8 +28,8 @@ const Aside = ({ style }: { style: string }) => {
 
   const allLinks = links && [
     ...links,
-    { label: 'Email', link: email, href: 'mailto:' },
-    { label: t('Phone'), link: phone, href: 'tel:' },
+    { label: 'Email', link: email && email, href: 'mailto:' },
+    { label: t('Phone'), link: phone && phone, href: 'tel:' },
     {
       label: t('Address'),
       link: city && country ? `${city}, ${country}` : city || country,
@@ -37,7 +37,7 @@ const Aside = ({ style }: { style: string }) => {
   ];
 
   return (
-    <div className={clsx(styles.container, styles[style])}>
+    <div className={clsx(styles.container, style && styles[style])}>
       {image && (
         <Image
           src={image}
