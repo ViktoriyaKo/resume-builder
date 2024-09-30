@@ -18,8 +18,8 @@ const Aside = ({ style }: { style: string }) => {
     titles,
     image,
     secondaryColor: color,
-  } = useSelector(getStateSimpleData);
-  const { initialFormData } = useSelector(getStateInitialFormData);
+  } = useSelector(getStateSimpleData) || {};
+  const { initialFormData } = useSelector(getStateInitialFormData) || {};
   const { contact, links, languages } = initialFormData ?? {};
   const { city, country, email, phone } = contact ?? {};
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ const Aside = ({ style }: { style: string }) => {
   ];
 
   return (
-    <div className={clsx(styles.container, style && styles[style])}>
+    <div className={clsx(styles.container, style ? styles[style] : '')}>
       {image && (
         <Image
           src={image}
