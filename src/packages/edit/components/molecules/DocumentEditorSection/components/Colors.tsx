@@ -32,6 +32,7 @@ const Colors = (props: IProps) => {
   }, []);
 
   const isColorInputVisible = shouldShowColorInput(currentTemplate);
+  // console.log(isColorInputVisible, secondaryColor, primaryColor);
 
   const handleResetColors = useCallback(() => {
     methods.setValue(ShortCategories.BACKGROUND, '');
