@@ -50,7 +50,7 @@ const Aside = ({ style }: { style: string }) => {
       )}
       <Title
         title={titles?.personal ?? ''}
-        icon={isIcon}
+        // icon={isIcon && personalIcon}
         style={style}
       />
       {/* links */}
@@ -75,7 +75,7 @@ const Aside = ({ style }: { style: string }) => {
         <div>
           <Title
             title={titles?.skills ?? ''}
-            icon={isIcon}
+            // icon={isIcon && skillsIcon}
             style={style}
           />
           <div
@@ -92,7 +92,7 @@ const Aside = ({ style }: { style: string }) => {
         <div className={styles.flex}>
           <Title
             title={titles?.languages ?? ''}
-            icon={isIcon}
+            // icon={isIcon && languagesIcon}
             style={style}
           />
           {languages?.map((item) => {
