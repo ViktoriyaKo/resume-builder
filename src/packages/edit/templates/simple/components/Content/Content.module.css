@@ -1,4 +1,5 @@
 .wrapper {
+  flex-basis: 67%;
   display: flex;
   flex-direction: column;
   gap: 8px;
