@@ -12,7 +12,7 @@
 
 .inner {
   display: flex;
-  /* flex: 1; */
+  flex: 1;
   flex-direction: column;
   min-height: var(--review-height);
 }
@@ -25,14 +25,14 @@
   font-size: 14px;
 }
 
-/* .simple2 {
+.simple2 {
   background-color: var(--simple2-secondaryColor);
   color: white;
 }
 
 .simple3 {
   color: var(--simple3-secondaryColor);
-} */
+}
 
 .name {
   font-weight: 600;
