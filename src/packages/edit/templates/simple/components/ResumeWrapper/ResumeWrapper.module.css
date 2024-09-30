@@ -1,0 +1,48 @@
+.container {
+  font-family: var(--font-montserrat);
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  .container {
+    margin-top: 0 !important;
+  }
+}
+
+.inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: var(--review-height);
+}
+
+/* header */
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* .simple2 {
+  background-color: var(--simple2-secondaryColor);
+  color: white;
+}
+
+.simple3 {
+  color: var(--simple3-secondaryColor);
+} */
+
+.name {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  color: #696a6e;
+  font-size: 10px;
+  flex: 1;
+}
