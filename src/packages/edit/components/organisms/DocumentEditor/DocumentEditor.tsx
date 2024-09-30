@@ -4,7 +4,12 @@ import { SELECT_LANGUAGES_ENTITY } from '@/packages/edit/entities';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { useForm, FormProvider } from 'react-hook-form';
-import { ContactDetails, DocumentEditorSection, Skills, AsideTemplates } from '../../molecules';
+import {
+  ContactDetails,
+  DocumentEditorSection,
+  Skills,
+  AsideTemplates,
+} from '../../molecules';
 import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect, useState } from 'react';
@@ -102,37 +107,39 @@ const DocumentEditor = (props: IProps) => {
   ) : (
     <FormProvider {...methods}>
       {isEditorTemplate ? (
-        <AsideTemplates />) : (
-      <form
-        className={styles.article}
-        onSubmit={methods.handleSubmit(onSubmit)}
-      >
-        <div className={styles.topLine}>
-          <CustomLink
-            href={`/${lang}/account?refreshId=${Date.now()}`}
-            className={styles.back}
-            prefix={<Icon html={BackIcon} />}
-            text={'Account'}
+        <AsideTemplates />
+      ) : (
+        <form
+          className={styles.article}
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          <div className={styles.topLine}>
+            <CustomLink
+              href={`/${lang}/account?refreshId=${Date.now()}`}
+              className={styles.back}
+              prefix={<Icon html={BackIcon} />}
+              text={'Account'}
+            />
+          </div>
+          {/* <ResumeScore score={10} /> */}
+          <ContactDetails data={contactData} />
+          <DocumentEditorSection.Summary />
+          <DocumentEditorSection.Employment data={employmentData} />
+          <DocumentEditorSection.Education data={educationData} />
+          <Skills />
+          <DocumentEditorSection.Links data={linksData} />
+          <DocumentEditorSection.Courses data={courseData} />
+          <DocumentEditorSection.Languages
+            data={languagesData}
+            options={SELECT_LANGUAGES_ENTITY}
           />
-        </div>
-        {/* <ResumeScore score={10} /> */}
-        <ContactDetails data={contactData} />
-        <DocumentEditorSection.Summary />
-        <DocumentEditorSection.Employment data={employmentData} />
-        <DocumentEditorSection.Education data={educationData} />
-        <Skills />
-        <DocumentEditorSection.Links data={linksData} />
-        <DocumentEditorSection.Courses data={courseData} />
-        <DocumentEditorSection.Languages
-          data={languagesData}
-          options={SELECT_LANGUAGES_ENTITY}
-        />
-        <DocumentEditorSection.Colors
-          currentTemplate={currentTemplate}
-          secondaryColor={secondaryColor}
-          primaryColor={primaryColor}
-        />
-      </form>)}
+          <DocumentEditorSection.Colors
+            currentTemplate={currentTemplate}
+            secondaryColor={secondaryColor}
+            primaryColor={primaryColor}
+          />
+        </form>
+      )}
     </FormProvider>
   );
 };
