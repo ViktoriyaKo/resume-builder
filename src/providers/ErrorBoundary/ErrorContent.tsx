@@ -1,11 +1,11 @@
 
 import styles from './ErrorBoundary.module.css';
 
-const ErrorContent = ({hasError}:{hasError: string}) => {
+const ErrorContent = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}> Oops, there is an error!{hasError.message}</h1>
+      <h1 className={styles.title}> Oops, there is an error!</h1>
     </div>
   );
 };
