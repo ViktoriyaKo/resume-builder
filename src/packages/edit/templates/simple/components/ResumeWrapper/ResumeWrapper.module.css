@@ -44,5 +44,5 @@
   grid-template-columns: 2fr 1fr;
   color: #696a6e;
   font-size: 10px;
-  /* flex: 1; */
+  flex-grow: 1;
 }
