@@ -7,9 +7,9 @@ import Title from '../Title/Title';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
-// import languagesIcon from '/public/icons/languages4.png';
-// import skillsIcon from '/public/icons/skills4.png';
-// import personalIcon from '/public/icons/personal4.png';
+import languagesIcon from '/public/icons/languages4.png';
+import skillsIcon from '/public/icons/skills4.png';
+import personalIcon from '/public/icons/personal4.png';
 import { Stars } from '@/ui/atoms';
 
 const Aside = ({ style }: { style: string }) => {
@@ -18,7 +18,7 @@ const Aside = ({ style }: { style: string }) => {
     titles,
     image,
     secondaryColor: color,
-  } = useSelector(getStateSimpleData) || {};
+  } = useSelector(getStateSimpleData) ;
   const { initialFormData } = useSelector(getStateInitialFormData) || {};
   const { contact, links, languages } = initialFormData ?? {};
   const { city, country, email, phone } = contact ?? {};
@@ -50,7 +50,7 @@ const Aside = ({ style }: { style: string }) => {
       )}
       <Title
         title={titles?.personal ?? ''}
-        // icon={isIcon && personalIcon}
+        icon={isIcon && personalIcon}
         style={style}
       />
       {/* links */}
@@ -75,7 +75,7 @@ const Aside = ({ style }: { style: string }) => {
         <div>
           <Title
             title={titles?.skills ?? ''}
-            // icon={isIcon && skillsIcon}
+            icon={isIcon && skillsIcon}
             style={style}
           />
           <div
@@ -92,7 +92,7 @@ const Aside = ({ style }: { style: string }) => {
         <div className={styles.flex}>
           <Title
             title={titles?.languages ?? ''}
-            // icon={isIcon && languagesIcon}
+            icon={isIcon && languagesIcon}
             style={style}
           />
           {languages?.map((item) => {
