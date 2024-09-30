@@ -4,8 +4,8 @@ import styles from './Content.module.css';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import ExperienceList from '../ExperienceList/ExperienceList';
 import clsx from 'clsx';
-// import educationIcon from '/public/icons/education4.png';
-// import jobIcon from '/public/icons/job4.png';
+import educationIcon from '/public/icons/education4.png';
+import jobIcon from '/public/icons/job4.png';
 
 const Content = ({ style }: { style: string }) => {
   const { titles, summary } = useSelector(getStateSimpleData);
@@ -14,7 +14,7 @@ const Content = ({ style }: { style: string }) => {
 
   return (
     <div className={clsx(styles.wrapper, style ? styles[style] : '')}>
-      {/* {summary && (
+      {summary && (
         <div
           dangerouslySetInnerHTML={{
             __html: summary,
@@ -38,7 +38,7 @@ const Content = ({ style }: { style: string }) => {
         title={titles?.course ?? ''}
         icon={isIcon && educationIcon}
         style={style}
-      /> */}
+      />
     </div>
   );
 };
