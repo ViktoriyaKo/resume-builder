@@ -33,7 +33,7 @@ const Resume = ({
           </p>
           {job && <p>{job}</p>}
         </header>
-        <div className={styles.wrapper}>{children}</div>
+        {/* <div className={styles.wrapper}>{children}</div> */}
       </div>
     </section>
   );
