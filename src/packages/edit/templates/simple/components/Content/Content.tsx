@@ -14,7 +14,7 @@ const Content = ({ style }: { style: string }) => {
 
   return (
     <div className={clsx(styles.wrapper, style ? styles[style] : '')}>
-      {/* {summary && (
+      {summary && (
         <div
           dangerouslySetInnerHTML={{
             __html: summary,
@@ -38,7 +38,7 @@ const Content = ({ style }: { style: string }) => {
         title={titles?.course ?? ''}
         icon={isIcon && educationIcon}
         style={style}
-      /> */}
+      />
     </div>
   );
 };
