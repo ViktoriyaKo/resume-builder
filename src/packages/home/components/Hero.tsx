@@ -49,6 +49,7 @@ const Hero = () => {
         <div className={styles.filter} />
       </div>
       <div className={styles.wrapper}>
+        <p className={styles.caption}>{t('main_description')}</p>
         <h1 className={styles.title}>{t('header')}</h1>
         <CustomLink
           href={`/${lang}/account`}

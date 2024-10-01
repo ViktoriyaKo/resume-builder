@@ -11,6 +11,7 @@ import { Modal, ModalWrapper } from '@/ui/organisms';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { useEditTemplateContext } from '@/packages/edit';
+import { useTranslation } from 'react-i18next';
 
 const DownloadButtons = ({
   contentRef,
@@ -23,8 +24,9 @@ const DownloadButtons = ({
 
   const [openModal, setModal] = useState(false);
   const [openModalPreview, setModalPreview] = useState(false);
-  const [preview, setPreview] = useState('');
+  const [preview] = useState('');
   const { isEditorTemplate, setEditorTemplate } = useEditTemplateContext();
+  const { t } = useTranslation();
 
   const handleDownloadPdf = useReactToPrint({
     content: () => contentRef.current,
@@ -80,8 +82,7 @@ const DownloadButtons = ({
   return (
     <div className={styles.wrapper}>
       <Button onClick={handleUploadCover} className={styles.saveButton}>
-        save <br />
-        as draft
+      {t('save_draft')}
       </Button>
       {buttons.map((button) => {
         const { text, icon, handleClick } = button;
@@ -100,14 +101,13 @@ const DownloadButtons = ({
           onClick={() => setEditorTemplate(true)}
           className={styles.saveButton}
         >
-          select <br />
-          template
+            {t('select template')}
         </Button>
       )}
       <Modal
         isOpen={openModal}
         onClose={() => setModal(false)}
-        title={'Your template has saved as draft'}
+        title={t('save_message')}
       />
       <ModalWrapper
         isOpen={openModalPreview}

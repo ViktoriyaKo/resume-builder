@@ -57,7 +57,7 @@ const Colors = (props: IProps) => {
           />
         )}
         <Button onClick={handleResetColors} className={styles.reset}>
-          Accept default colors
+          {t('accept_colors')}
         </Button>
       </div>
     )

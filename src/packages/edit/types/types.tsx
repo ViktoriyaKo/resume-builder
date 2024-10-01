@@ -83,6 +83,7 @@ export type TypeInitialShortField = {
   [ShortCategories.BACKGROUND]: string;
   [ShortCategories.COLOR]: string;
   [ShortCategories.IMAGE]: string;
+  [ShortCategories.ADDITIONAL]: string;
 };
 
 export type TypeUpdateSimpleData = {

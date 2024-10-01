@@ -28,9 +28,9 @@ mutation UpdateResumeItem($data: ResumeItemInput!, $id: ID!) {
         }
         secondaryColor
         primaryColor
-
         design
         summary
+        additionalInfo
         skills
         titles {
           link

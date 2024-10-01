@@ -1,0 +1,49 @@
+.article {
+  max-width: var(--width-container);
+  padding: 60px 20px;
+  margin: 0 auto;
+}
+
+.article div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article h1, .article h2, .article h3, .article h4 {
+  margin-block: 0.5rem;
+}
+
+.article h1 {
+  font-size: 26px;
+}
+
+.article h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.article h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.article h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.article ul li {
+  list-style: inside;
+  padding-left: var(--padding-md-2);
+}
+
+.article ol li {
+  list-style: decimal;
+  margin-left: var(--padding-md-2);
+}
+
+.article a {
+  text-decoration: underline;
+  color: blue;
+}

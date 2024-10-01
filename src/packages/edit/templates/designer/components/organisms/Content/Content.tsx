@@ -10,7 +10,7 @@ import { ExperienceList, Title } from '../../atoms';
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateSimpleData);
-  const { summary, titles } = initialShortData;
+  const { summary, titles, additionalInfo } = initialShortData;
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
@@ -40,6 +40,13 @@ const Content = () => {
       )}
       <ExperienceList data={employment} title={titles.employment ?? ''} />
       <ExperienceList data={course} title={titles.course ?? ''} />
+      {additionalInfo && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: additionalInfo,
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,23 @@
+query BlogItem($locale: I18NLocaleCode, $slug: String) {
+  blogs(locale: $locale, filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        title
+        slug
+        description
+        topic
+        read_time
+        author
+        publishedAt
+        content
+        cover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

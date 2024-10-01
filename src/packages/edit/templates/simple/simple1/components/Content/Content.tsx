@@ -10,7 +10,7 @@ import { getLongDateFormat } from '@/packages/edit/utils';
 const Content = () => {
   const { contact, links, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateSimpleData);
-  const { skills, summary, titles } = initialShortData;
+  const { skills, summary, titles, additionalInfo } = initialShortData;
 
   return (
     <div className={styles.container}>
@@ -124,6 +124,13 @@ const Content = () => {
           </Fragment>
         );
       })}
+      {additionalInfo && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: additionalInfo,
+          }}
+        />
+      )}
     </div>
   );
 };

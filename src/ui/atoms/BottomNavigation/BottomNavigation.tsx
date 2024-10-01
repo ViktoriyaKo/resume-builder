@@ -1,3 +1,4 @@
+"use client"
 import styles from './BottomNavigation.module.css';
 import { useParams, usePathname } from 'next/navigation';
 import { Icon } from '@/ui/atoms';

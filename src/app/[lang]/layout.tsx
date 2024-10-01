@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import clsx from 'clsx';
 import { CookieModal, Footer, Header } from '@/ui/organisms';
 import { ROUTERS } from '@/constants/routers';
-import { ContactForm } from '@/packages/core';
+import { ContactForm, GoogleAnalytics } from '@/packages/core';
 import { Locales } from '@/types';
 import MainProviders from '@/providers/MainProviders';
 import type { Metadata } from 'next';
@@ -37,6 +37,7 @@ export default function Layout({
           name="viewport"
         />
         <meta charSet="utf-8" />
+        <GoogleAnalytics />
       </head>
       <body className={clsx(inter.variable, montserrat.variable)}>
         <MainProviders>
@@ -45,12 +46,7 @@ export default function Layout({
           <Footer
             title={'Meet your new everyday basics'}
             routers={ROUTERS ?? []}
-            form={
-              <ContactForm
-                title={'leave a message and we will contact you'}
-                label={'Send'}
-              />
-            }
+            form={<ContactForm title={'leave your feedback'} label={'Send'} />}
           />
         </MainProviders>
         <CookieModal

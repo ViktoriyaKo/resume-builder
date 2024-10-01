@@ -14,6 +14,7 @@ interface IProps {
 }
 
 const ContactForm = (props: IProps) => {
+  const {title, label} = props;
   const initialForm = { email: '', text: '' };
   const [open, setOpen] = useState(false);
   const methods = useForm({
@@ -30,7 +31,7 @@ const ContactForm = (props: IProps) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
-        <p>{props.title}</p>
+        <p>{title}</p>
         <Input name={'email'} placeholder="Email" type={'email'} id={'email'} />
         <textarea
           {...methods.register('text')}
@@ -39,7 +40,7 @@ const ContactForm = (props: IProps) => {
           rows={5}
         />
         <Button className={styles.button} type={'submit'}>
-          {props.label}
+          {label}
         </Button>
       </form>
       <Modal

@@ -133,6 +133,7 @@ const DocumentEditor = (props: IProps) => {
             data={languagesData}
             options={SELECT_LANGUAGES_ENTITY}
           />
+          <DocumentEditorSection.AdditionalInfo />
           <DocumentEditorSection.Colors
             currentTemplate={currentTemplate}
             secondaryColor={secondaryColor}

@@ -1,0 +1,22 @@
+query Blog($locale: I18NLocaleCode) {
+  blogs(locale: $locale) {
+    data {
+      attributes {
+        title
+        slug
+        description
+        topic
+        read_time
+        publishedAt
+        author
+        cover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

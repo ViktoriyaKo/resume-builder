@@ -15,4 +15,5 @@ export enum ShortCategories {
   BACKGROUND = 'secondaryColor',
   COLOR = 'primaryColor',
   IMAGE = 'image',
+  ADDITIONAL = 'additionalInfo',
 }

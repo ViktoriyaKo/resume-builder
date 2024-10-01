@@ -15,18 +15,23 @@
   justify-content: center;
 }
 
+.caption {
+  align-self: center;
+  font-size: 20px;
+}
+
 .title {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: var(--xs-spacing);
   align-self: center;
-  text-align: center;
 }
 
 @media (width >= 768px) {
   .title {
     font-size: 80px;
+    font-weight: 500;
   }
 }
 
@@ -56,16 +61,17 @@
 .link {
   align-self: center;
   font-size: 22px;
-  background-color: black;
+  background-color: white;
+  color: black;
   text-transform: uppercase;
   transition: all 0.5s;
-  padding: 8px;
+  padding: 8px 16px;
   font-weight: 600;
-  box-shadow: 2px 2px 30px gray;
+  box-shadow: 2px 2px 20px gray;
 }
 
 .link:hover {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   transition: all 0.5s;
 }

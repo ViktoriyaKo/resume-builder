@@ -7,6 +7,8 @@ import {
   StringFilterInput,
 } from '@/graphql/gql/graphql';
 import { useParams } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
+
 
 interface IOptions {
   name: string;
@@ -30,6 +32,7 @@ const ResumeCard = (props: IProps) => {
   const { id, handleDelete, cover, design, index } = props;
   const imageUrl = cover?.url ?? '';
   const { lang } = useParams();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -59,7 +62,7 @@ const ResumeCard = (props: IProps) => {
                 fill
               />
             ) : (
-              <p className={styles.title}>Your resume #{index + 1}</p>
+              <p className={styles.title}>{t('your_resume')} #{index + 1}</p>
             )}
           </>
         }

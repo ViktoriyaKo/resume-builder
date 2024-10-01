@@ -8,7 +8,7 @@ import educationIcon from '/public/icons/education4.png';
 import jobIcon from '/public/icons/job4.png';
 
 const Content = ({ style }: { style: string }) => {
-  const { titles, summary } = useSelector(getStateSimpleData);
+  const { titles, summary, additionalInfo } = useSelector(getStateSimpleData);
   const { employment, course, education } = useSelector(getStateData);
   const isIcon = style === 'simple3';
 
@@ -39,6 +39,13 @@ const Content = ({ style }: { style: string }) => {
         icon={isIcon && educationIcon}
         style={style}
       />
+      {additionalInfo && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: additionalInfo,
+          }}
+        />
+      )}
     </div>
   );
 };

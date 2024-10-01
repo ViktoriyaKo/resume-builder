@@ -6,3 +6,4 @@ export { default as Languages } from './Languages';
 export { default as Links } from './Links';
 export { default as Summary } from './Summary';
 export { default as Colors } from './Colors';
+export { default as AdditionalInfo } from './AdditionalInfo';

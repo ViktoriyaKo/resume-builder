@@ -39,6 +39,7 @@
   height: 54px;
   font-weight: 600;
   transition: scale 0.5s;
+  max-width: 90px;
 }
 
 @media (width >= 768px) {

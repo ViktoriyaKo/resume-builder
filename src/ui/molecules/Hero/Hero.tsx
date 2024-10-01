@@ -1,8 +1,15 @@
-import Image from 'next/image';
+"use client"
+import Image, { StaticImageData } from 'next/image';
 import styles from './Hero.module.css';
-import background from '@images/background-templates.jpg';
 
-const Hero = () => {
+interface IProps {
+  image: StaticImageData;
+  title: string;
+}
+
+const Hero = (props: IProps) => {
+  const { image, title } = props;
+
   return (
     <section className={styles.container}>
       <Image
@@ -12,11 +19,11 @@ const Hero = () => {
         sizes="70vw"
         quality={50}
         fill
-        src={background}
+        src={image}
       />
       <div className={styles.filter} />
       <header className={styles.header}>
-        <h1 className={styles.title}>Templates</h1>
+        <h1 className={styles.title}>{title}</h1>
       </header>
     </section>
   );

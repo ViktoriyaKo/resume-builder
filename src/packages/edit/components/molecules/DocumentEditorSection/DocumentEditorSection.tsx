@@ -7,6 +7,7 @@ import {
   Languages,
   Links,
   Summary,
+  AdditionalInfo
 } from './components';
 
 const DocumentEditorSection = {
@@ -18,6 +19,7 @@ const DocumentEditorSection = {
   Languages,
   Links,
   Summary,
+  AdditionalInfo
 };
 
 export default DocumentEditorSection;
