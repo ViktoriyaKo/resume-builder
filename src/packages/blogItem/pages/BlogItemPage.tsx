@@ -2,10 +2,11 @@ import { getBlogItemData } from '../services/getBlogItemData';
 import { notFound } from 'next/navigation';
 import { Article, Hero } from '../components';
 import { Blog } from '@/graphql/gql/graphql';
+import { LanguagesType } from '@/types/types';
 
 interface IProps {
   slug: string;
-  lang: string;
+  lang: LanguagesType;
 }
 
 const BlogItemPage = async (props: IProps) => {

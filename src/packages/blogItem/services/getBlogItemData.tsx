@@ -1,7 +1,8 @@
 import { client } from '@/graphql-client';
 import { BlogItemQuery, BlogItemDocument } from '@/graphql/gql/graphql';
+import { LanguagesType } from '@/types/types';
 
-export const getBlogItemData = async (locale: string, slug: string) => {
+export const getBlogItemData = async (locale: LanguagesType, slug: string) => {
   try {
     const variables = {
       locale,
