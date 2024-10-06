@@ -1,5 +1,5 @@
 query AllTemplates($locale: I18NLocaleCode) {
-  templates(locale: $locale, pagination: { limit: 100 }) {
+  templates(locale: $locale, pagination: { limit: 1000 }) {
     data {
       attributes {
         link
