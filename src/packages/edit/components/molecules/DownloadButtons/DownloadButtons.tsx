@@ -48,33 +48,35 @@ const DownloadButtons = ({
     content.style.overflow = 'visible';
     content.style.height = 'auto';
 
-    html2canvas(content, { scale: 4 }).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'pt', 'a4');
+    html2canvas(content, { scale: 4 })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'pt', 'a4');
 
-      const imgWidth = 595; // width in pt (letter size)
-      const pageHeight = 843; // height in pt (letter size)
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
+        const imgWidth = 595; // width in pt (letter size)
+        const pageHeight = 843; // height in pt (letter size)
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
 
-      let position = 0;
+        let position = 0;
 
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
         pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
-      }
 
-      pdf.save('document.pdf');
-    }).finally(
-      content.style.display = 'none';
-      content.style.overflow = 'hidden';
-      content.style.height = '833px';
-    );
+        while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        pdf.save('document.pdf');
+      })
+      .finally(() => {
+        content.style.display = 'none';
+        content.style.overflow = 'hidden';
+        content.style.height = '833px';
+      });
   };
 
   const handleDownloadTxt = useCallback(() => {
