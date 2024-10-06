@@ -15,7 +15,7 @@ const BlogItemPage = async (props: IProps) => {
   const { blogs } = data ?? {};
   const blogsItem = blogs?.data?.[0].attributes as Blog;
 
-  if (!data ?? !blogsItem) {
+  if (!data) {
     notFound();
   }
 

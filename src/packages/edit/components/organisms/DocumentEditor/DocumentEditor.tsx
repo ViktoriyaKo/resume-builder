@@ -47,6 +47,7 @@ const DocumentEditor = (props: IProps) => {
     summary,
     secondaryColor,
     primaryColor,
+    additionalInfo
   } = initialFormData ?? {};
 
   useEffect(() => {
@@ -79,6 +80,7 @@ const DocumentEditor = (props: IProps) => {
       summary,
       secondaryColor,
       primaryColor,
+      additionalInfo
     });
   }, [initialFormData?.id, methods]);
 

@@ -25,35 +25,12 @@
   }
 }
 
-.saveButton {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  font-size: 12px;
-  background: #e8e8e8;
-  padding: 4px;
-  text-transform: uppercase;
-  color: gray;
-  border: 2px solid gray;
-  text-align: center;
-  height: 54px;
-  font-weight: 600;
-  transition: scale 0.5s;
-  max-width: 90px;
-}
-
-@media (width >= 768px) {
-  .saveButton {
-    height: 40px;
-  }
-}
-
 .button {
+  position: relative;
   transition: scale 0.5s;
 }
 
-.button:hover,
-.saveButton:hover {
+.button:hover {
   scale: 1.1;
   transition: scale 0.5s;
 }

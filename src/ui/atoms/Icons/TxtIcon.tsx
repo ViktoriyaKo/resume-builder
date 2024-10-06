@@ -1,6 +1,16 @@
-export const TxtIcon = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.188 303.188" xml:space="preserve" width="54px" height="54px" fill="#000000">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier"> <g> <polygon style="fill:#E8E8E8;" points="219.821,0 32.842,0 32.842,303.188 270.346,303.188 270.346,50.525 "/> <g> <rect x="92.817" y="166.37" style="fill:gray;" width="49.543" height="12.865"/> <rect x="92.817" y="141.729" style="fill:gray;" width="107.543" height="12.865"/> <rect x="92.817" y="117.087" style="fill:gray;" width="117.551" height="12.865"/> <rect x="92.817" y="92.445" style="fill:gray;" width="82.209" height="12.865"/> <rect x="92.817" y="67.804" style="fill:gray;" width="117.551" height="12.865"/> </g> <g> <path style="fill:gray;" d="M113.189,273.871h-12.963v-37.379H88.511v-10.6h36.361v10.6h-11.683V273.871z"/> <path style="fill:gray;" d="M174.952,273.871h-14.998l-9.352-14.998l-9.256,14.998h-14.669l15.917-24.547l-14.965-23.433 h14.373l8.664,14.834l8.336-14.834h14.801l-15.195,24.449L174.952,273.871z"/> <path style="fill:gray;" d="M201.502,273.871h-12.963v-37.379h-11.716v-10.6h36.361v10.6h-11.683v37.379H201.502z"/> </g> <polygon style="fill:gray;" points="227.64,25.263 32.842,25.263 32.842,0 219.821,0 "/> <polygon style="fill:gray;" points="219.821,50.525 270.346,50.525 219.821,0 "/> </g> </g>
+export const TxtIcon = `<svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M75.3125 6.47501L92.7 24.6V93.525H27.7469V93.75H92.9219V24.8281L75.3125 6.47501Z" fill="#909090"/>
+<path d="M75.0969 6.25H27.525V93.525H92.7V24.6031L75.0969 6.25Z" fill="#F4F4F4"/>
+<path d="M27.0469 10.9375H7.07812V32.2719H69.8906V10.9375H27.0469Z" fill="#7A7B7C"/>
+<path d="M70.225 31.9094H7.48438V10.5594H70.225V31.9094Z" fill="#208EDD"/>
+<path d="M74.8563 6.49063V24.8438H92.4594L74.8563 6.49063Z" fill="#909090"/>
+<path d="M75.0969 6.25V24.6031H92.7L75.0969 6.25Z" fill="#F4F4F4"/>
+<path d="M29.4512 15.2031V28H26.4365V15.2031H29.4512ZM32.5537 15.2031V17.585H23.4219V15.2031H32.5537ZM36.6143 15.2031L38.0557 19.457L39.4795 15.2031H42.8984L40.042 21.5488L42.9688 28H39.5146L38.0557 23.667L36.5879 28H33.1162L36.0605 21.5488L33.1865 15.2031H36.6143ZM49.5781 15.2031V28H46.5635V15.2031H49.5781ZM52.6807 15.2031V17.585H43.5488V15.2031H52.6807Z" fill="white"/>
+<line x1="37" y1="41.5" x2="82" y2="41.5" stroke="#909090" stroke-width="3"/>
+<line x1="37" y1="49.5" x2="70" y2="49.5" stroke="#909090" stroke-width="3"/>
+<line x1="37" y1="57.5" x2="82" y2="57.5" stroke="#909090" stroke-width="3"/>
+<line x1="37" y1="65.5" x2="78" y2="65.5" stroke="#909090" stroke-width="3"/>
+<line x1="37" y1="73.5" x2="82" y2="73.5" stroke="#909090" stroke-width="3"/>
+<line x1="37" y1="81.5" x2="64" y2="81.5" stroke="#909090" stroke-width="3"/>
 </svg>
 `;

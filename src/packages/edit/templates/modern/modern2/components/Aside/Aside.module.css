@@ -1,0 +1,13 @@
+.bold {
+  font-weight: 600;
+}
+
+.muted {
+  color: gray;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

@@ -20,7 +20,7 @@ const Colors = (props: IProps) => {
 
   // todo перенести в БД:
   const shouldShowColorInput = useCallback((template: string) => {
-    const templatesWithSecondary = ['simple2', 'simple3'];
+    const templatesWithSecondary = ['simple2', 'simple3', 'modern2'];
     const templatesWithoutColor = ['simple1'];
     if (templatesWithSecondary.includes(template)) {
       return ShortCategories.BACKGROUND;

@@ -18,7 +18,7 @@ export { SignOutIcon } from './SignOutIcon';
 export { BackIcon } from './BackIcon';
 export { DocumentsIcon } from './DocumentsIcon';
 export { HomeIcon } from './HomeIcon';
-export { PreviewIcon } from './PreviewIcon';
 export { LikeIcon } from './LikeIcon';
 export { ArrowIcon } from './ArrowIcon';
 export { ClockIcon } from './ClockIcon';
+export { TemplateIcon } from './TemplateIcon';

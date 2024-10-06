@@ -5,7 +5,7 @@ import styles from './Aside.module.css';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { TypeFieldData } from '@/packages/edit/types';
-import { convertFilledContactData, getDataValuesForm } from '../../../utils';
+import { convertFilledContactData, getDataValuesForm } from '../../../../utils';
 import { getLongDateFormat } from '@/packages/edit/utils';
 import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';

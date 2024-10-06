@@ -1,0 +1,31 @@
+/* experience */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 3fr 1fr;
+  padding-bottom: 4px;
+}
+
+.date {
+  font-weight: 600;
+  color: gray;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.italic {
+  font-style: italic;
+}

@@ -3,7 +3,7 @@ import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
 import React, { useCallback } from 'react';
-import { convertFilledContactData } from '../../../utils';
+import { convertFilledContactData } from '../../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
 import { ExperienceList } from '../atoms';
 import iconEducation from '/public/icons/education1.png';

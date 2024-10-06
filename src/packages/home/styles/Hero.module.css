@@ -76,4 +76,5 @@
   background-color: black;
   color: white;
   transition: all 0.5s;
+  box-shadow: none;
 }

@@ -1,4 +1,11 @@
-import { Button, Icon, PdfIcon, TxtIcon, PreviewIcon } from '@/ui/atoms';
+import {
+  Button,
+  Icon,
+  PdfIcon,
+  TxtIcon,
+  TemplateIcon,
+  SaveIcon,
+} from '@/ui/atoms';
 import styles from './DownloadButtons.module.css';
 import { useReactToPrint } from 'react-to-print';
 import { useCallback, RefObject, useState } from 'react';
@@ -72,38 +79,47 @@ const DownloadButtons = ({
 
   const buttons = [
     {
+      text: 'save',
+      icon: SaveIcon,
+      handleClick: () => handleUploadCover(),
+      visible: true,
+    },
+    {
       text: 'pdf',
       icon: PdfIcon,
       handleClick: () => handleDownloadPdf(contentRef),
+      visible: true,
     },
-    { text: 'txt', icon: TxtIcon, handleClick: () => handleDownloadTxt() },
+    {
+      text: 'txt',
+      icon: TxtIcon,
+      handleClick: () => handleDownloadTxt(),
+      visible: true,
+    },
+    {
+      text: 'template',
+      icon: TemplateIcon,
+      handleClick: () => setEditorTemplate(true),
+      visible: !isEditorTemplate,
+    },
   ];
 
   return (
     <div className={styles.wrapper}>
-      <Button onClick={handleUploadCover} className={styles.saveButton}>
-      {t('save_draft')}
-      </Button>
       {buttons.map((button) => {
-        const { text, icon, handleClick } = button;
+        const { text, icon, handleClick, visible } = button;
         return (
-          <Button
-            key={text}
-            className={clsx(styles.button)}
-            onClick={handleClick}
-          >
-            <Icon html={icon} />
-          </Button>
+          visible && (
+            <Button
+              key={text}
+              className={clsx(styles.button)}
+              onClick={handleClick}
+            >
+              <Icon html={icon} />
+            </Button>
+          )
         );
       })}
-      {!isEditorTemplate && (
-        <Button
-          onClick={() => setEditorTemplate(true)}
-          className={styles.saveButton}
-        >
-            {t('select template')}
-        </Button>
-      )}
       <Modal
         isOpen={openModal}
         onClose={() => setModal(false)}

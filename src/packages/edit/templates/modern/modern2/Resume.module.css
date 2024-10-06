@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  font-family: var(--font-montserrat);
+  font-size: 10px;
+}
+
+@media print {
+  .container {
+    margin-top: 0 !important;
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 20px 40px 0 40px;
+}

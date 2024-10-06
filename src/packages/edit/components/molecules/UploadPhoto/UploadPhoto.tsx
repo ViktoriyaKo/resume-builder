@@ -133,7 +133,7 @@ const UploadPhoto = () => {
             }
           }
         }
-      }, 'image/png');
+      }, 'image/jpeg', 0.8);
     }
     setOpen(false);
   };
