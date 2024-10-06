@@ -23,6 +23,7 @@
     "i18next-resources-to-backend": "^1.2.1",
     "js-cookie": "^3.0.5",
     "js-html2pdf": "^1.1.4",
+    "jspdf": "^2.5.2",
     "keen-slider": "^6.8.6",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
