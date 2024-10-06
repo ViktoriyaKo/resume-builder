@@ -69,7 +69,7 @@ const DownloadButtons = ({
             heightLeft -= pageHeight;
           }
 
-          pdf.save('document.pdf');
+          pdf.save('resume.pdf');
         })
         .finally(() => {
           content.style.overflow = 'hidden';
@@ -158,7 +158,10 @@ const DownloadButtons = ({
           visible && (
             <Button
               key={text}
-              className={clsx(styles.button, className ? styles[className]: '')}
+              className={clsx(
+                styles.button,
+                className ? styles[className] : ''
+              )}
               onClick={handleClick}
             >
               <Icon html={icon} />

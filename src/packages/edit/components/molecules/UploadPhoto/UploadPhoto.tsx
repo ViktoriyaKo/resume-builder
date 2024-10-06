@@ -108,32 +108,36 @@ const UploadPhoto = () => {
         crop.height * scaleY
       );
 
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          const croppedImageFile = new File([blob], 'cropped-image.png', {
-            type: 'image/png',
-          });
+      canvas.toBlob(
+        async (blob) => {
+          if (blob) {
+            const croppedImageFile = new File([blob], 'cropped-image.png', {
+              type: 'image/png',
+            });
 
-          const formData = new FormData();
-          formData.append('files', croppedImageFile);
-          const objectUrl = URL.createObjectURL(croppedImageFile);
-          setPhoto(objectUrl);
-          dispatch(
-            updateSimpleData({
-              category: ShortCategories.IMAGE,
-              value: objectUrl,
-            })
-          );
-          const data = await uploadImageToDB(formData);
-          const imageId = data?.[0]?.id;
+            const formData = new FormData();
+            formData.append('files', croppedImageFile);
+            const objectUrl = URL.createObjectURL(croppedImageFile);
+            setPhoto(objectUrl);
+            dispatch(
+              updateSimpleData({
+                category: ShortCategories.IMAGE,
+                value: objectUrl,
+              })
+            );
+            const data = await uploadImageToDB(formData);
+            const imageId = data?.[0]?.id;
 
-          if (imageId) {
-            if (inputRef.current) {
-              setValue('image', imageId);
+            if (imageId) {
+              if (inputRef.current) {
+                setValue('image', imageId);
+              }
             }
           }
-        }
-      }, 'image/jpeg', 0.8);
+        },
+        'image/jpeg',
+        0.5
+      );
     }
     setOpen(false);
   };
