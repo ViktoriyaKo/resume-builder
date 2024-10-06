@@ -1,5 +1,5 @@
 'use client';
-import { CustomLink } from '@/ui/atoms';
+import { AwardIcon, CustomLink, Icon, UsersIcon } from '@/ui/atoms';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
 import background from '@images/background.jpg';
@@ -11,6 +11,11 @@ const Hero = () => {
   const { lang } = useParams();
   const { t } = useTranslation();
   const [isHidden, setIsHidden] = useState(false);
+
+  const mainFeatures = [
+    { icon: UsersIcon, text: '40+ Users' },
+    { icon: AwardIcon, text: ' #1 Growth Builder 2024' },
+  ];
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 1000) {
@@ -56,6 +61,17 @@ const Hero = () => {
           className={styles.link}
           text={t('create_resume')}
         />
+        <div className={styles.features}>
+          {mainFeatures.map((item) => {
+            const { icon, text } = item;
+            return (
+              <div className={styles.item} key={text}>
+                <Icon html={icon} />
+                <span>{text}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

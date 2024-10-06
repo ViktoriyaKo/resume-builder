@@ -22,3 +22,5 @@ export { LikeIcon } from './LikeIcon';
 export { ArrowIcon } from './ArrowIcon';
 export { ClockIcon } from './ClockIcon';
 export { TemplateIcon } from './TemplateIcon';
+export { AwardIcon } from './AwardIcon';
+export { UsersIcon } from './UsersIcon';
