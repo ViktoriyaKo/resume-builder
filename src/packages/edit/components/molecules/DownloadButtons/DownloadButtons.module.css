@@ -55,3 +55,20 @@
     display: none;
   }
 }
+
+
+@media (width >= 768px) {
+  .mobileOnly {
+   display: none;
+  }
+}
+
+.desktopOnly {
+  display: none;
+}
+
+@media (width >= 768px) {
+.desktopOnly {
+   display: block;
+  }
+}

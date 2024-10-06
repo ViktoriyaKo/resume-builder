@@ -58,7 +58,6 @@
 @media print {
   .list {
     overflow: visible;
-    display: block;
     transform-origin: top left;
     font-family: 'Montserrat';
     zoom: 1.4;

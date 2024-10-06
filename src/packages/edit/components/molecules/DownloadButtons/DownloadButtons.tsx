@@ -36,15 +36,14 @@ const DownloadButtons = ({
   const { isEditorTemplate, setEditorTemplate } = useEditTemplateContext();
   const { t } = useTranslation();
 
-  // const handleDownloadPdf = useReactToPrint({
-  //   content: () => contentRef.current,
-  //   documentTitle: `Resume`,
-  // });
+  const handleDownloadPdf = useReactToPrint({
+    content: () => contentRef.current,
+    documentTitle: `Resume`,
+  });
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdfMobile = () => {
     const content = document.querySelector('#print-content') as HTMLDivElement;
     if (content) {
-      content.style.display = 'block';
       content.style.overflow = 'visible';
       content.style.height = 'auto';
 
@@ -53,8 +52,8 @@ const DownloadButtons = ({
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF('p', 'pt', 'a4');
 
-          const imgWidth = 595; // width in pt (letter size)
-          const pageHeight = 843; // height in pt (letter size)
+          const imgWidth = 595;
+          const pageHeight = 843;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           let heightLeft = imgHeight;
 
@@ -73,7 +72,6 @@ const DownloadButtons = ({
           pdf.save('document.pdf');
         })
         .finally(() => {
-          content.style.display = 'none';
           content.style.overflow = 'hidden';
           content.style.height = '833px';
         });
@@ -127,8 +125,16 @@ const DownloadButtons = ({
     {
       text: 'pdf',
       icon: PdfIcon,
-      handleClick: () => handleDownloadPdf(),
+      handleClick: () => handleDownloadPdfMobile(),
       visible: true,
+      className: 'mobileOnly',
+    },
+    {
+      text: 'pdf',
+      icon: PdfIcon,
+      handleClick: () => handleDownloadPdf(contentRef),
+      visible: true,
+      className: 'desktopOnly',
     },
     {
       text: 'txt',
@@ -147,12 +153,12 @@ const DownloadButtons = ({
   return (
     <div className={styles.wrapper}>
       {buttons.map((button) => {
-        const { text, icon, handleClick, visible } = button;
+        const { text, icon, handleClick, visible, className } = button;
         return (
           visible && (
             <Button
               key={text}
-              className={clsx(styles.button)}
+              className={clsx(styles.button, className ? styles[className]: '')}
               onClick={handleClick}
             >
               <Icon html={icon} />
