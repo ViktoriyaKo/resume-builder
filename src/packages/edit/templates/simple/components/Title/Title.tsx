@@ -19,6 +19,8 @@ const Title = (props: IProps) => {
           width={20}
           height={20}
           src={icon}
+          sizes='22px'
+
         />
       )}
       <h3 className={clsx(styles.title, styles[style])}>{title}</h3>

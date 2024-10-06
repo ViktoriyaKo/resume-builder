@@ -43,9 +43,10 @@ const Aside = ({ style }: { style: string }) => {
           src={image}
           className={styles.image}
           alt="photo"
-          width={800}
-          height={800}
+          width={200}
+          height={200}
           quality={100}
+          sizes='(max-width: 768px) 200px, 100vw'
         />
       )}
       <Title

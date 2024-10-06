@@ -41,9 +41,10 @@ const Aside = () => {
           src={image}
           className={styles.image}
           alt="photo"
-          width={800}
-          height={800}
+          width={120}
+          height={120}
           quality={100}
+          sizes='(max-width: 768px) 200px, 100vw'
         />
       )}
       <div className={styles.wrapper}>

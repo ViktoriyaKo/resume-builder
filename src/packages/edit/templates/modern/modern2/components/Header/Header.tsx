@@ -19,8 +19,9 @@ const Header = () => {
             alt={'photo'}
             className={styles.image}
             src={image}
-            width={800}
-            height={800}
+            width={160}
+            height={150}
+            sizes='(max-width: 768px) 200px, 100vw'
           />
         )}
         <div className={styles.wrapper}>

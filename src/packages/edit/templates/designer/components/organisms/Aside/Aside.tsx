@@ -45,9 +45,10 @@ const Aside = () => {
           src={image}
           className={styles.image}
           alt="photo"
-          width={800}
-          height={800}
+          width={220}
+          height={260}
           quality={100}
+          sizes='(max-width: 768px) 220px, 100vw'
         />
       )}
       <Title title={titles.personal ?? ''} filled={true} />

@@ -63,6 +63,7 @@ const DownloadButtons = ({
           heightLeft -= pageHeight;
 
           while (heightLeft >= 0) {
+            console.log(heightLeft);
             position = heightLeft - imgHeight;
             pdf.addPage();
             pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
