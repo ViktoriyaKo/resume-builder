@@ -17,25 +17,26 @@ const Hero = () => {
     { icon: AwardIcon, text: ' #1 Growth Builder 2024' },
   ];
 
-  // const handleScroll = useCallback(() => {
-  //   if (window.scrollY > 1000) {
-  //     if (!isHidden) {
-  //       setIsHidden(true);
-  //     }
-  //   } else {
-  //     if (isHidden) {
-  //       setIsHidden(false);
-  //     }
-  //   }
-  // }, [isHidden]);
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > 800) {
+      console.log(window.scrollY)
+      if (!isHidden) {
+        setIsHidden(true);
+      }
+    } else {
+      if (isHidden) {
+        setIsHidden(false);
+      }
+    }
+  }, [isHidden]);
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [handleScroll]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <section

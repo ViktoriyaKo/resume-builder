@@ -3,6 +3,7 @@ import {
   TemplateEntity,
   StepEntity,
   UploadFileEntity,
+  ReviewEntity,
 } from '@/graphql/gql/graphql';
 import {
   Hero,
@@ -10,6 +11,7 @@ import {
   Templates,
   Advantages,
   StepsList,
+  Reviews,
 } from '../components';
 import { getHomeData } from '../services/getHomeData';
 import { LanguagesType } from '@/types/types';
@@ -29,6 +31,7 @@ const HomePage = async (props: LanguagesType) => {
   const templates = data?.templates?.data as TemplateEntity[];
   const advantages = data?.advantages?.data as AdvantageEntity[];
   const steps = data?.steps?.data as StepEntity[];
+  const reviews = data?.reviews?.data as ReviewEntity[];
   const stepsImage = data?.image?.data?.attributes?.stepsImage
     ?.data as UploadFileEntity[];
 
@@ -43,6 +46,7 @@ const HomePage = async (props: LanguagesType) => {
       <Advantages advantages={advantages} />
       <StepsList steps={steps} images={stepsImage} />
       <Templates templates={templates} />
+      <Reviews reviews={reviews} />
     </TranslationsProvider>
   );
 };

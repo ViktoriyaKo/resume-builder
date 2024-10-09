@@ -12,8 +12,10 @@
 
   --pink-100: #b19994c7;
   --primary-color: #7f5858f4;
+  --primary-color-opacity: #7f585861;
 
   --black-light: rgba(0, 0, 0, 0.36);
+  --black-100: #121212;
 
   /* colors for templates: */
   --designer1-primaryColor: #1b779bf4;

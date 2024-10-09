@@ -24,7 +24,7 @@
 
 .view {
   padding: var(--sm-spacing);
-  background-color: var(--gray-300);
+  background-color: var(--primary-color-opacity);
   position: sticky;
   top: 0;
   overflow-y: auto;

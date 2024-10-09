@@ -2,12 +2,13 @@ import { Rating } from 'react-simple-star-rating';
 
 interface IProps {
   size?: number;
-  value: string;
+  value: string | number;
   color?: string;
+  isLevel?: boolean;
 }
 
 const Stars = (props: IProps) => {
-  const { size = 15, value, color = '#f1a545' } = props;
+  const { size = 15, value, color = '#f1a545', isLevel = true } = props;
   const score: Record<string, number> = {
     A1: 2,
     A2: 3,
@@ -21,7 +22,7 @@ const Stars = (props: IProps) => {
     <Rating
       fillColor={color}
       allowFraction={true}
-      initialValue={score[value]}
+      initialValue={isLevel ? score[value] : (value as number)}
       readonly={true}
       size={size}
     />

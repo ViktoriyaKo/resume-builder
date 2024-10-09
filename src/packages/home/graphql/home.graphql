@@ -43,6 +43,16 @@ query Home($locale: I18NLocaleCode) {
     }
   }
 
+  reviews {
+    data {
+      attributes {
+        user
+        review
+        createdAt
+      }
+    }
+  }
+
   advantages(locale: $locale) {
     data {
       attributes {
