@@ -19,7 +19,6 @@ const Hero = () => {
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 800) {
-      console.log(window.scrollY)
       if (!isHidden) {
         setIsHidden(true);
       }

@@ -9,13 +9,12 @@
 
 @media (width >= 768px) {
   .wrapper {
-    padding: 30px 40px 30px 60px;
+    padding: 40px;
   }
 }
 
 .dark {
   background-color: black;
-  padding: 30px 20px 0 0;
 }
 
 .menu {

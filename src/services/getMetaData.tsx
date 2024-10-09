@@ -33,7 +33,7 @@ export const getMetaData = async (
         params ? `/${params}` : ''
       }`,
     };
-    console.log(updatedData.canonical);
+
     const meta = createMetadata(updatedData);
     return meta;
   } catch (err) {
