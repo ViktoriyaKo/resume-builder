@@ -18,15 +18,9 @@
   position: relative;
   z-index: 9;
   max-width: var(--width-container);
-  padding: 60px 70px;
+  padding: 100px 20px;
   margin: 0 auto;
   color: white;
-}
-
-@media (width >= 768px) {
-  .header {
-    padding: 60px 100px;
-  }
 }
 
 .header {
@@ -34,7 +28,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  gap: 8px;
+  gap: 12px;
 }
 
 @media (width >= 768px) {

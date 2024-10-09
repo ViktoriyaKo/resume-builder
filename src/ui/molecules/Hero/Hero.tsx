@@ -1,14 +1,14 @@
-"use client"
+'use client';
 import Image, { StaticImageData } from 'next/image';
 import styles from './Hero.module.css';
+import background from '@images/frame.svg';
 
 interface IProps {
-  image: StaticImageData;
   title: string;
 }
 
 const Hero = (props: IProps) => {
-  const { image, title } = props;
+  const { title } = props;
 
   return (
     <section className={styles.container}>
@@ -16,12 +16,10 @@ const Hero = (props: IProps) => {
         alt={'background'}
         className={styles.image}
         priority
-        sizes="70vw"
-        quality={50}
+        sizes="200px"
         fill
-        src={image}
+        src={background}
       />
-      <div className={styles.filter} />
       <header className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
       </header>

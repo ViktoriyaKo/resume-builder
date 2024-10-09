@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { Blog } from '../components';
 import { BlogEntity } from '@/graphql/gql/graphql';
 import { Hero } from '@/ui/molecules';
-import background from '@images/background-templates.jpg';
 
 const BlogPage = async (props: LanguagesType) => {
   const { lang } = props;
@@ -19,7 +18,7 @@ const BlogPage = async (props: LanguagesType) => {
 
   return (
     <>
-      <Hero title={'Blog'} image={background} />
+      <Hero title={'Blog'} />
       <Blog blogItems={blogItems} />
     </>
   );

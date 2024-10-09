@@ -2,6 +2,7 @@
   border-radius: var(--border-radius);
   padding: var(--xs-spacing);
   background: white;
+  border: 2px solid var(--primary-color);
 }
 
 @media (width >= 468px) {
@@ -22,13 +23,19 @@
   display: grid;
   gap: var(--sm-spacing);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-content: center;
   justify-items: center;
+  justify-content: center;
 }
 
 @media (width >= 468px) {
   .list {
     grid-template-columns: repeat(auto-fit, 300px);
+  }
+}
+
+@media (width >= 768px) {
+  .list {
+    justify-content: start;
   }
 }
 

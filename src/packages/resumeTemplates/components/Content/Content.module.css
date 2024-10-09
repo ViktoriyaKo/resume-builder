@@ -1,3 +1,8 @@
+.background {
+  background: var(--backgroundImage);
+}
+
+
 .container {
   max-width: var(--width-container);
   padding: 60px 20px 0 20px;

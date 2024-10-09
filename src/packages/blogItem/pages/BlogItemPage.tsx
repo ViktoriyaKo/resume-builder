@@ -22,7 +22,7 @@ const BlogItemPage = async (props: IProps) => {
   return (
     <>
       <Hero blog={blogsItem} />
-      <Article content={blogsItem.content ?? ''} />
+      <Article content={blogsItem.content ?? ''} author={blogsItem?.author ?? ''} />
     </>
   );
 };

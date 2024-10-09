@@ -2,7 +2,6 @@ import { Locales } from '@/types';
 import { Content } from '../components';
 import { getResumeTemplatesData } from '../services/getResumeTemplatesData';
 import { TemplateEntity } from '@/graphql/gql/graphql';
-import background from '@images/background-templates.jpg';
 import { Hero } from '@/ui/molecules';
 
 interface IProps {
@@ -19,7 +18,7 @@ const ResumeTemplatesPage = async (props: IProps) => {
 
   return (
     <div>
-      <Hero image={background} title={'Templates'} />
+      <Hero title={'Templates'} />
       <Content templates={templates} allFilters={allFilters} />
     </div>
   );

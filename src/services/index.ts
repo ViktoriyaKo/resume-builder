@@ -4,3 +4,4 @@ export { loginUser } from './auth/loginUser';
 export { createResumeItem } from './createResumeItem';
 export { updateUserResumeData } from './updateUserResumeData';
 export { fetchUserResumeData } from './auth/fetchUserResumeData';
+export { getMetaData } from './getMetaData';

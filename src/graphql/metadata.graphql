@@ -1,0 +1,31 @@
+query Metadata($locale: I18NLocaleCode, $slug: String) {
+  pages(locale: $locale, filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        title
+        meta_description
+      }
+    }
+  }
+  translation(locale: $locale) {
+    data {
+      attributes {
+        meta_keywords
+      }
+    }
+  }
+  image {
+    data {
+      attributes {
+        ogImage {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

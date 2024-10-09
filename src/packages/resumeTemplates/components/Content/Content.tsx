@@ -43,7 +43,8 @@ const Content = (props: IProps) => {
   );
 
   return (
-    <section className={styles.container}>
+    <section className={styles.background}>
+      <div className={styles.container}>
       <Filters filters={allFilters} />
       <div className={styles.wrapper}>
         {templates?.map((item) => {
@@ -56,6 +57,7 @@ const Content = (props: IProps) => {
             />
           );
         })}
+      </div>
       </div>
     </section>
   );

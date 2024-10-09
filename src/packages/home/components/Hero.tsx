@@ -2,7 +2,7 @@
 import { AwardIcon, CustomLink, Icon, UsersIcon } from '@/ui/atoms';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
-import background from '@images/background.jpg';
+import background from '@images/frame.svg';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'next/navigation';
 import { useState, useEffect, useCallback } from 'react';
@@ -17,25 +17,25 @@ const Hero = () => {
     { icon: AwardIcon, text: ' #1 Growth Builder 2024' },
   ];
 
-  const handleScroll = useCallback(() => {
-    if (window.scrollY > 1000) {
-      if (!isHidden) {
-        setIsHidden(true);
-      }
-    } else {
-      if (isHidden) {
-        setIsHidden(false);
-      }
-    }
-  }, [isHidden]);
+  // const handleScroll = useCallback(() => {
+  //   if (window.scrollY > 1000) {
+  //     if (!isHidden) {
+  //       setIsHidden(true);
+  //     }
+  //   } else {
+  //     if (isHidden) {
+  //       setIsHidden(false);
+  //     }
+  //   }
+  // }, [isHidden]);
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [handleScroll]);
 
   return (
     <section
@@ -51,7 +51,7 @@ const Hero = () => {
           fill
           src={background}
         />
-        <div className={styles.filter} />
+        <div className={styles.background} />
       </div>
       <div className={styles.wrapper}>
         <p className={styles.caption}>{t('main_description')}</p>

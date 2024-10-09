@@ -75,9 +75,13 @@
   .link {
     display: block;
     padding: 8px;
-    background-color: var(--pink-200);
+    background-color: var(--primary-color);
     color: white;
     border: 1px solid white;
     margin-block: 4px;
   }
+}
+
+.logo svg {
+  color: white;
 }

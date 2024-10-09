@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { RoutersType } from '@/types';
 import { useParams } from 'next/navigation';
 import clsx from 'clsx';
-import { CustomLink } from '@/ui/atoms';
+import { CustomLink, Icon, LogoIcon } from '@/ui/atoms';
 import { useSession } from 'next-auth/react';
 
 const HeaderContainer = (props: {
@@ -43,7 +43,14 @@ const Navigation = (props: { routers: RoutersType }) => {
 };
 
 const Logo = () => {
-  return <p className={styles.vertical}>Avsievich</p>;
+  return (
+    <CustomLink
+      href={`/`}
+      aria-label="main page"
+      className={styles.logo}
+      prefix={<Icon html={LogoIcon} />}
+    />
+  );
 };
 
 const Login = () => {

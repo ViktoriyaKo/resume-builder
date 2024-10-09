@@ -12,6 +12,7 @@ import {
 } from '@/ui/atoms';
 import { handleSignOut } from '@/utils';
 import { useParams } from 'next/navigation';
+import { Hero } from '@/ui/molecules';
 
 interface IProps {
   resume: ResumeItemFiltersInput[];
@@ -24,6 +25,7 @@ const ClientAccountPage = (props: IProps) => {
   const session = useSession();
   const { name, image } = session?.data?.user ?? {};
   const { t } = useTranslation();
+  const greeting = `${t('welcome')}${name ? `,\n${name}` : ''}!`;
 
   const routers = [
     { text: t('Home'), href: `/`, icon: HomeIcon },
@@ -38,20 +40,7 @@ const ClientAccountPage = (props: IProps) => {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>
-          {t('welcome')}
-          {name ? (
-            <>
-              ,<br />
-              {name}
-            </>
-          ) : (
-            ''
-          )}
-          !
-        </h1>
-      </header>
+      <Hero title={greeting} />
       <div className={styles.wrapper}>
         <Aside name={name ?? 'anonymous'} image={image ?? ''} />
         <Content resume={resume} />
