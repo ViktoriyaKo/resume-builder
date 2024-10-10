@@ -12,7 +12,7 @@ interface IProps extends Template {
 const Card = (props: IProps) => {
   const { image, title, description, handleClick } = props ?? {};
   const cover = image?.data?.attributes?.url;
-
+  console.log(cover);
   return (
     <Button onClick={handleClick} className={styles.card}>
       <div className={styles.wrapperImage}>
