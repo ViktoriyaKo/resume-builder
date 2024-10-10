@@ -5,43 +5,18 @@ import styles from '../styles/Hero.module.css';
 import background from '@images/frame.svg';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'next/navigation';
-import { useState, useEffect, useCallback } from 'react';
 
 const Hero = () => {
   const { lang } = useParams();
   const { t } = useTranslation();
-  const [isHidden, setIsHidden] = useState(false);
 
   const mainFeatures = [
     { icon: UsersIcon, text: '40+ Users' },
     { icon: AwardIcon, text: ' #1 Growth Builder 2024' },
   ];
 
-  const handleScroll = useCallback(() => {
-    if (window.scrollY > 800) {
-      if (!isHidden) {
-        setIsHidden(true);
-      }
-    } else {
-      if (isHidden) {
-        setIsHidden(false);
-      }
-    }
-  }, [isHidden]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
-
   return (
-    <section
-      className={styles.container}
-      style={{ position: isHidden ? 'relative' : 'sticky' }}
-    >
+    <section className={styles.container}>
       <div className={styles.imageWrapper}>
         <Image
           alt={'hero'}

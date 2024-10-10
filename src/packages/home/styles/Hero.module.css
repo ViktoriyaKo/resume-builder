@@ -1,6 +1,7 @@
 .container {
   height: 80vh;
   top: 0;
+  position: relative;
 }
 
 .wrapper {
