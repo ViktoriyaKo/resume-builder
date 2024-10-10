@@ -53,7 +53,7 @@ const StepsList = (props: IProps) => {
       className={styles.container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.2, once: true }}
+      viewport={{ amount: 0.1, once: true }}
     >
       <div className={styles.wrapper}>
         <motion.h2 className={styles.title} variants={fadeAnimation}>

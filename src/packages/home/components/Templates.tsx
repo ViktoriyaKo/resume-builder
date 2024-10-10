@@ -48,12 +48,16 @@ const Templates = (props: IProps) => {
       className={styles.container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.2, once: true }}
+      viewport={{ amount: 0.1, once: true }}
     >
       <motion.h2 variants={fadeAnimation} className={styles.title}>
         {t('choose_templates')}:
       </motion.h2>
-      <motion.div variants={fadeAnimation} custom={2} className={styles.wrapper}>
+      <motion.div
+        variants={fadeAnimation}
+        custom={2}
+        className={styles.wrapper}
+      >
         {templates?.map((item) => {
           const element = item?.attributes ?? {};
           return (

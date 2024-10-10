@@ -15,7 +15,7 @@ const ResumeTemplatesPage = async (props: IProps) => {
   const data = await getResumeTemplatesData(lang, filter);
   const templates = data?.templates?.data as TemplateEntity[];
   const allFilters = data?.allFilters?.data as TemplateEntity[];
-
+  console.log(templates);
   return (
     <div>
       <Hero title={'Templates'} />
