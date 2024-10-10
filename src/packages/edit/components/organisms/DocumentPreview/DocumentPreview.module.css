@@ -59,7 +59,7 @@
   .list {
     overflow: visible;
     transform-origin: top left;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat' !important;
     zoom: 1.4;
     transform: none;
   }

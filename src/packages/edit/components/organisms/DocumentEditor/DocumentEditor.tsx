@@ -47,7 +47,7 @@ const DocumentEditor = (props: IProps) => {
     summary,
     secondaryColor,
     primaryColor,
-    additionalInfo
+    additionalInfo,
   } = initialFormData ?? {};
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const DocumentEditor = (props: IProps) => {
       summary,
       secondaryColor,
       primaryColor,
-      additionalInfo
+      additionalInfo,
     });
   }, [initialFormData?.id, methods]);
 
@@ -118,7 +118,7 @@ const DocumentEditor = (props: IProps) => {
           <div className={styles.topLine}>
             <CustomLink
               href={`/${lang}/account?refreshId=${Date.now()}`}
-              className={styles.back}
+              className={styles.button}
               prefix={<Icon html={BackIcon} />}
               text={'Account'}
             />

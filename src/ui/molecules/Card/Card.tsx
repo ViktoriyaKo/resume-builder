@@ -21,7 +21,7 @@ const Card = (props: IProps) => {
           src={cover ?? ''}
           alt={title ?? ''}
           sizes="(max-width: 768px) 70vw, 30vw"
-          quality={70}
+          quality={100}
           fill
         />
       </div>

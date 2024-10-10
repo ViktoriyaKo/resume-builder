@@ -123,7 +123,7 @@ const DownloadButtons = ({
       visible: true,
     },
     {
-      text: 'pdf',
+      text: 'pdf-mobile',
       icon: PdfIcon,
       handleClick: () => handleDownloadPdfMobile(),
       visible: true,

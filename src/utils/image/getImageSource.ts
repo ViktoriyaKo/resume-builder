@@ -6,7 +6,7 @@ interface ImageParameters {
 }
 
 export const createUploadUrlPath = (relativePath: string): string =>
-  `${process.env.baseUrl}/uploads/${relativePath}`;
+  `${process.env.baseApiUrl}/uploads/${relativePath}`;
 
 export const getImageSource = ({
   id,

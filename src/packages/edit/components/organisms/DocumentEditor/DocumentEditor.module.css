@@ -10,7 +10,7 @@
   align-items: flex-end;
 }
 
-.back {
+.button {
   position: relative;
   display: flex;
   gap: 8px;
@@ -24,23 +24,7 @@
   z-index: 20;
 }
 
-.back:hover {
-  color: black;
-  background-color: var(--gray-300);
-}
-
-.button {
-  padding: 12px 20px;
-  background-color: var(--gray-300);
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-top: 20px;
-  border: 1px solid black;
-  transform: all 0.5;
-}
-
 .button:hover {
-  background-color: black;
-  color: white;
-  transform: all 0.5;
+  color: black;
+  background-color: var(--primary-color-opacity);
 }

@@ -29,7 +29,8 @@ const nextConfig = {
     ],
   },
   env: {
-    baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:1337',
+    baseApiUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:1337',
+    baseUrl: process.env.NEXT_PUBLIC_URL || '',
   },
 };
 
