@@ -2,6 +2,8 @@ import { ResumeTemplatesPage } from '@/packages/resumeTemplates';
 import { getMetaData } from '@/services';
 import { LanguagesType } from '@/types/types';
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params: { lang },
 }: {
