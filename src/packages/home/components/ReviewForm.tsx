@@ -1,19 +1,20 @@
 'use client';
 
-import styles from './ContactForm.module.css';
+import styles from '../styles/ReviewForm.module.css';
 import { Button, Input } from '@/ui/atoms';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
 import { FormContactValues } from '@/types';
 import { createRequest } from '@/services';
+import { Rating } from 'react-simple-star-rating';
 
 interface IProps {
   title: string;
   label: string;
 }
 
-const ContactForm = (props: IProps) => {
+const ReviewForm = (props: IProps) => {
   const { title, label } = props;
   const initialForm = { email: '', text: '' };
   const [open, setOpen] = useState(false);
@@ -31,18 +32,18 @@ const ContactForm = (props: IProps) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
-        <p>{title}</p>
+        <p className={styles.title}>{title}</p>
+        <Rating allowFraction={true} size={30} />
         <Input
           name={'email'}
-          placeholder="Email"
-          type={'email'}
-          id={'email'}
-          rules={{ required: 'Enter your email' }}
+          placeholder="Name"
+          type={'text'}
+          rules={{ required: 'Enter your name' }}
         />
         <textarea
           {...methods.register('text')}
           className={styles.textArea}
-          placeholder="..."
+          placeholder="Leave your review"
           rows={5}
         />
         <Button className={styles.button} type={'submit'}>
@@ -52,11 +53,10 @@ const ContactForm = (props: IProps) => {
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title={'Thank you for your message!'}
-        description={'We will definitely contact you'}
+        title={'Thank you for your review!'}
       />
     </FormProvider>
   );
 };
 
-export default ContactForm;
+export default ReviewForm;

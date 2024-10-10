@@ -4,6 +4,7 @@
   background-color: black;
   color: #fff;
   padding: 100px 20px;
+  border-bottom: 2px solid var(--gray-100);
 }
 
 .title {
@@ -23,13 +24,14 @@
   max-width: var(--width-container);
   margin: 0 auto;
   padding-block: 80px;
-  display: grid;
-  gap: var(--sm-spacing);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: var(--sm-spacing);
+  column-width: 300px;
+  counter-reset: item-counter;
 }
 
 .item {
   position: relative;
+  break-inside: avoid;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -38,10 +40,11 @@
   background-color: var(--black-100);
   border-radius: var(--border-radius);
   border: 1px solid #252424;
+  margin-bottom: var(--sm-spacing);
 }
 
 .review {
-  margin-block: 12px;
+  margin-block: var(--xs-spacing);
 }
 
 .date {

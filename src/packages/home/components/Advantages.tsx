@@ -2,6 +2,8 @@
 import styles from '../styles/Advantages.module.css';
 import Image from 'next/image';
 import { AdvantageEntity } from '@/graphql/gql/graphql';
+import { motion } from 'framer-motion';
+import { fadeAnimation } from '@/utils';
 
 interface IProps {
   advantages: AdvantageEntity[];
@@ -11,14 +13,24 @@ const Advantages = (props: IProps) => {
   const { advantages } = props;
 
   return (
-    <section className={styles.container}>
+    <motion.section
+      className={styles.container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.1, once: true }}
+    >
       <ul className={styles.wrapper}>
-        {advantages?.map((item) => {
+        {advantages?.map((item, index) => {
           const { icon, title, description } = item?.attributes ?? {};
           const cover = icon?.data?.attributes?.url;
 
           return (
-            <li key={title} className={styles.item}>
+            <motion.li
+              custom={index + 1}
+              variants={fadeAnimation}
+              key={title}
+              className={styles.item}
+            >
               <Image
                 className={styles.image}
                 alt={title ?? ''}
@@ -28,11 +40,11 @@ const Advantages = (props: IProps) => {
               />
               <p className={styles.title}>{title}</p>
               <p className={styles.description}>{description}</p>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
-    </section>
+    </motion.section>
   );
 };
 

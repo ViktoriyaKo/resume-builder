@@ -43,7 +43,7 @@ query Home($locale: I18NLocaleCode) {
     }
   }
 
-  reviews {
+  reviews(pagination: { limit: 100 }) {
     data {
       attributes {
         user

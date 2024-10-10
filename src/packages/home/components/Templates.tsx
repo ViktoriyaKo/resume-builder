@@ -9,6 +9,8 @@ import { createResumeItem, updateUserResumeData } from '@/services';
 import { useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { getUserResume } from '@/packages/account/services';
+import { motion } from 'framer-motion';
+import { fadeAnimation } from '@/utils';
 
 interface IProps {
   templates: TemplateEntity[];
@@ -42,9 +44,16 @@ const Templates = (props: IProps) => {
   );
 
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>{t('choose_templates')}:</h2>
-      <div className={styles.wrapper}>
+    <motion.section
+      className={styles.container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.2, once: true }}
+    >
+      <motion.h2 variants={fadeAnimation} className={styles.title}>
+        {t('choose_templates')}:
+      </motion.h2>
+      <motion.div variants={fadeAnimation} custom={2} className={styles.wrapper}>
         {templates?.map((item) => {
           const element = item?.attributes ?? {};
           return (
@@ -55,13 +64,13 @@ const Templates = (props: IProps) => {
             />
           );
         })}
-      </div>
+      </motion.div>
       <CustomLink
         href={`/${lang}/resume-templates`}
         className={styles.link}
         text={t('see_templates')}
       />
-    </section>
+    </motion.section>
   );
 };
 

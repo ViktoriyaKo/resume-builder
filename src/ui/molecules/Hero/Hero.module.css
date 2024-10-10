@@ -21,6 +21,7 @@
   align-items: center;
   min-height: 300px;
   border-bottom: 4px solid var(--primary-color);
+  animation: fadeOpacity 0.5s linear forwards;
 }
 
 .title {
@@ -34,5 +35,16 @@
 @media (width >= 768px) {
   .title {
     font-size: 40px;
+  }
+}
+
+@keyframes fadeOpacity {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
   }
 }

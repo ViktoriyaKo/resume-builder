@@ -7,6 +7,8 @@ import 'keen-slider/keen-slider.min.css';
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { StepEntity, UploadFileEntity } from '@/graphql/gql/graphql';
+import { motion } from 'framer-motion';
+import { fadeAnimation } from '@/utils';
 
 interface IProps {
   steps: StepEntity[];
@@ -47,20 +49,34 @@ const StepsList = (props: IProps) => {
   }, [slider]);
 
   return (
-    <section className={styles.container}>
+    <motion.section
+      className={styles.container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.2, once: true }}
+    >
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>{t('title_steps')}</h2>
-        <p className={styles.description}>{t('description_steps')}</p>
+        <motion.h2 className={styles.title} variants={fadeAnimation}>
+          {t('title_steps')}
+        </motion.h2>
+        <motion.p className={styles.description} variants={fadeAnimation}>
+          {t('description_steps')}
+        </motion.p>
         <ul className={styles.list}>
           {steps?.map((item, index) => {
             const { title, description } = item?.attributes ?? {};
 
             return (
-              <li key={title} className={styles.listItem}>
+              <motion.li
+                key={title}
+                custom={index + 1}
+                variants={fadeAnimation}
+                className={styles.listItem}
+              >
                 <p className={styles.step}>Step {index + 1}</p>
                 <p className={styles.titleList}>{title}</p>
                 <p>{description}</p>
-              </li>
+              </motion.li>
             );
           })}
         </ul>
@@ -88,7 +104,7 @@ const StepsList = (props: IProps) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
