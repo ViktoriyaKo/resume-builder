@@ -8,8 +8,7 @@ interface IProps {
 
 const Article = (props: IProps) => {
   const { content, author } = props;
-  const photo =
-    `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/v1727108820/photo_beda219a52.jpg`;
+  const photo = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/v1728576941/photo_4b180e11b8.jpg`;
 
   return (
     <article className={styles.article}>
