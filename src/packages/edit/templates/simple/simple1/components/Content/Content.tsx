@@ -6,17 +6,19 @@ import styles from './Content.module.css';
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';
 import { getLongDateFormat } from '@/packages/edit/utils';
+import { useTranslation } from 'react-i18next';
 
 const Content = () => {
   const { contact, links, ...initialData } = useSelector(getStateData);
   const initialShortData = useSelector(getStateSimpleData);
   const { skills, summary, titles, additionalInfo } = initialShortData;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       {skills && (
         <>
-          <h3 className={styles.title}>{titles.skills}</h3>
+          <h3 className={styles.title}>{t(titles.skills || '')}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{
@@ -27,7 +29,7 @@ const Content = () => {
       )}
       {summary && (
         <>
-          <h3 className={styles.title}>{titles.summary}</h3>
+          <h3 className={styles.title}>{t(titles.summary || '')}</h3>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{
@@ -63,12 +65,11 @@ const Content = () => {
                 `${getLongDateFormat(startDate)} - ${
                   endDate === 'Present' ? endDate : getLongDateFormat(endDate)
                 }`;
+              const title = t(titles[key] as string);
 
               return values ? (
                 <div key={uuid}>
-                  {index === 0 && (
-                    <h3 className={styles.title}>{titles[key]}</h3>
-                  )}
+                  {index === 0 && <h3 className={styles.title}>{title}</h3>}
                   {key === Categories.EDUCATION ? (
                     <>
                       <b>{degree}</b>

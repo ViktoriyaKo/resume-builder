@@ -1,1 +1,16 @@
-{"choose_templates":"Wybierz szablony","create_resume":"Utwórz CV","description":"Nasz internetowy kreator CV pomaga Ci tworzyć imponujące CV w ciągu kilku minut, idealne dla wszystkich poszukujących pracy. Wybierz spośród wielu konfigurowalnych szablonów i łatwo dodaj swoje umiejętności, doświadczenie i kwalifikacje. Platforma prowadzi Cię przez każdy krok, zapewniając skuteczne podkreślenie Twoich mocnych stron","description_steps":"Utwórz swoje CV w kilku prostych krokach za darmo","header":"Darmowy kreator CV","main_description":"Stwórz CV, które pozwoli Ci się wyróżnić","see_templates":"Zobacz wszystkie szablony","testimonials":"Referencje","title_description":"Szybko stwórz swoje profesjonalne CV dzięki naszemu kreatorowi CV","title_steps":"Zacznij tworzyć CV w kilka sekund"}
+{
+  "choose_templates": "Wybierz szablony",
+  "create_resume": "Utwórz CV",
+  "description": "Nasz internetowy kreator CV pomaga Ci tworzyć imponujące CV w ciągu kilku minut, idealne dla wszystkich poszukujących pracy. Wybierz spośród wielu konfigurowalnych szablonów i łatwo dodaj swoje umiejętności, doświadczenie i kwalifikacje. Platforma prowadzi Cię przez każdy krok, zapewniając skuteczne podkreślenie Twoich mocnych stron",
+  "description_steps": "Utwórz swoje CV w kilku prostych krokach za darmo",
+  "header": "Darmowy kreator CV",
+  "main_description": "Stwórz CV, które pozwoli Ci się wyróżnić",
+  "see_templates": "Zobacz wszystkie szablony",
+  "testimonials": "Referencje",
+  "title_description": "Szybko stwórz swoje profesjonalne CV dzięki naszemu kreatorowi CV",
+  "title_steps": "Zacznij tworzyć CV w kilka sekund",
+  "leave_review": "Zostaw swoją opinię",
+  "send": "Wysłać",
+  "Users": "Użytkownicy",
+  "award_description": "#1 Kreator wzrostu 2024"
+}

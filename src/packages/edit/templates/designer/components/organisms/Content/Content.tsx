@@ -6,11 +6,13 @@ import React, { useCallback } from 'react';
 import { convertFilledContactData } from '../../../../utils';
 import { TypeFieldData } from '@/packages/edit/types';
 import { ExperienceList, Title } from '../../atoms';
+import { useTranslation } from 'react-i18next';
 
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateSimpleData);
   const { summary, titles, additionalInfo } = initialShortData;
+  const { t } = useTranslation();
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
@@ -30,7 +32,7 @@ const Content = () => {
       </header>
       {summary && (
         <div className={styles.summary}>
-          <Title title={titles.summary ?? ''} />
+          <Title title={t(titles.summary ?? '')} />
           <div
             dangerouslySetInnerHTML={{
               __html: summary,
@@ -38,8 +40,8 @@ const Content = () => {
           />
         </div>
       )}
-      <ExperienceList data={employment} title={titles.employment ?? ''} />
-      <ExperienceList data={course} title={titles.course ?? ''} />
+      <ExperienceList data={employment} title={t(titles.employment ?? '')} />
+      <ExperienceList data={course} title={t(titles.course ?? '')} />
       {additionalInfo && (
         <div
           dangerouslySetInnerHTML={{

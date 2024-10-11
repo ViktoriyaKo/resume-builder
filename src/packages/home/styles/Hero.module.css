@@ -32,7 +32,7 @@
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 300;
-  letter-spacing: var(--xs-spacing);
+  letter-spacing: 6px;
   align-self: center;
   text-align: center;
   font-weight: 500;
@@ -42,6 +42,7 @@
 @media (width >= 768px) {
   .title {
     font-size: 80px;
+    letter-spacing: var(--xs-spacing);
   }
 }
 

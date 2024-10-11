@@ -9,9 +9,12 @@ import { getStateData } from '@/packages/edit/store/dataSlice';
 import { Stars } from '@/ui/atoms';
 import Title from '../Title/Title';
 
-
 const Aside = () => {
-  const { summary, titles, primaryColor: color } = useSelector(getStateSimpleData);
+  const {
+    summary,
+    titles,
+    primaryColor: color,
+  } = useSelector(getStateSimpleData);
   const initialData = useSelector(getStateData);
   const { education } = initialData;
 
@@ -41,7 +44,7 @@ const Aside = () => {
           }}
         />
       )}
-      <Title title={titles?.personal ?? ""}/>
+      <Title title={t(titles?.personal ?? '')} />
       <div className={styles.contacts}>
         {allLinks?.map((item) => {
           const { label, link } = item ?? {};
@@ -54,10 +57,10 @@ const Aside = () => {
             )
           );
         })}
-      </div> 
+      </div>
       {isEducation && (
         <div>
-          <Title title={titles?.education ?? ""}/>
+          <Title title={t(titles?.education ?? '')} />
           <ul className={styles.education}>
             {education.map((item) => {
               const { uuid, values } = item;
@@ -104,14 +107,14 @@ const Aside = () => {
       {/* languages */}
       {languages && languages?.length > 0 && (
         <div className={styles.flex}>
-          <Title title={titles?.languages ?? ""}/>
+          <Title title={t(titles?.languages ?? '')} />
           {languages?.map((item) => {
             const { languagesLevel, languagesName } = item ?? {};
             return (
               <div key={languagesName}>
                 <p className={styles.bold}>{languagesName}</p>
                 {languagesLevel && (
-                  <Stars value={languagesLevel} color={color}/>
+                  <Stars value={languagesLevel} color={color} />
                 )}
               </div>
             );

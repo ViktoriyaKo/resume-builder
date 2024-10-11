@@ -11,8 +11,8 @@ const Hero = () => {
   const { t } = useTranslation();
 
   const mainFeatures = [
-    { icon: UsersIcon, text: '40+ Users' },
-    { icon: AwardIcon, text: ' #1 Growth Builder 2024' },
+    { icon: UsersIcon, text: `40+ ${t('Users')}` },
+    { icon: AwardIcon, text: t('award_description') },
   ];
 
   return (

@@ -57,7 +57,7 @@ const Aside = () => {
       </div>
       {skills && (
         <div>
-          <Title title={titles.skills ?? ''} />
+          <Title title={t(titles.skills ?? '')} />
           <div
             className={styles.skills}
             dangerouslySetInnerHTML={{
@@ -68,7 +68,7 @@ const Aside = () => {
       )}
       {isEducation && (
         <div>
-          <Title title={titles.education ?? ''} />
+          <Title title={t(titles.education ?? '')} />
           <ul className={styles.education}>
             {education.map((item) => {
               const { uuid, values } = item;
@@ -114,7 +114,7 @@ const Aside = () => {
       )}
       {languages.length > 0 && (
         <div>
-          <Title title={titles.languages ?? ''} />
+          <Title title={t(titles.languages ?? '')} />
           <div className={styles.wrapper}>
             {languages.map((item) => {
               const { languagesLevel, languagesName } = item ?? {};

@@ -5,6 +5,9 @@ import { useRef, useState, useCallback } from 'react';
 import styles from './EditableHeader.module.css';
 import { useOnClickOutside } from '@/hooks';
 import { ShortCategories } from '@/packages/edit/constants/categories';
+import { useSelector } from 'react-redux';
+import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   description?: string;
@@ -16,6 +19,8 @@ const EditableHeader = (props: IProps) => {
   const { description, name, category } = props;
   const [readonly, setReadonly] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
+  const { titles } = useSelector(getStateSimpleData);
+  const { t } = useTranslation();
 
   const handleClick = useCallback(() => {
     setReadonly(false);
@@ -42,6 +47,7 @@ const EditableHeader = (props: IProps) => {
           ref={ref}
           type={'text'}
           readOnly={readonly}
+          defaultValue={t(titles[name] ?? '')}
         />
         <button className={styles.button} onClick={handleClick}>
           <Icon html={EditIcon} />

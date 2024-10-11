@@ -48,10 +48,10 @@ const Aside = () => {
           width={220}
           height={260}
           quality={100}
-          sizes='(max-width: 768px) 220px, 100vw'
+          sizes="(max-width: 768px) 220px, 100vw"
         />
       )}
-      <Title title={titles.personal ?? ''} filled={true} />
+      <Title title={t(titles.personal ?? '')} filled={true} />
       <div className={clsx(styles.wrapper)}>
         <LabelValue label={'Email'} value={email} icon={EmailIcon} />
         <LabelValue label={t('Phone')} value={phone} icon={CallIcon} />
@@ -65,10 +65,16 @@ const Aside = () => {
           return <LabelValue key={label} label={label} value={link} />;
         })}
       </div>
-      <AsideSection.Education title={titles.education ?? ''} data={education} />
-      <AsideSection.Skills title={titles.skills ?? ''} description={skills} />
+      <AsideSection.Education
+        title={t(titles.education ?? '')}
+        data={education}
+      />
+      <AsideSection.Skills
+        title={t(titles.skills ?? '')}
+        description={skills}
+      />
       <AsideSection.Languages
-        title={titles.languages ?? ''}
+        title={t(titles.languages ?? '')}
         data={languages}
         color={color}
       />

@@ -41,7 +41,7 @@ const Reviews = (props: IProps) => {
           );
         })}
       </motion.ul>
-      <ReviewForm title={'Leave your review'} label={'Send'} />
+      <ReviewForm title={t('leave_review')} label={t('send')} />
     </motion.section>
   );
 };

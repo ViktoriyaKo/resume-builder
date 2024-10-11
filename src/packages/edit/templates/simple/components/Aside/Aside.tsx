@@ -18,7 +18,7 @@ const Aside = ({ style }: { style: string }) => {
     titles,
     image,
     secondaryColor: color,
-  } = useSelector(getStateSimpleData) ;
+  } = useSelector(getStateSimpleData);
   const { initialFormData } = useSelector(getStateInitialFormData) || {};
   const { contact, links, languages } = initialFormData ?? {};
   const { city, country, email, phone } = contact ?? {};
@@ -46,11 +46,11 @@ const Aside = ({ style }: { style: string }) => {
           width={200}
           height={200}
           quality={100}
-          sizes='(max-width: 768px) 200px, 100vw'
+          sizes="(max-width: 768px) 200px, 100vw"
         />
       )}
       <Title
-        title={titles?.personal ?? ''}
+        title={t(titles?.personal ?? '')}
         icon={isIcon && personalIcon}
         style={style}
       />
@@ -75,7 +75,7 @@ const Aside = ({ style }: { style: string }) => {
       {skills && (
         <div>
           <Title
-            title={titles?.skills ?? ''}
+            title={t(titles?.skills ?? '')}
             icon={isIcon && skillsIcon}
             style={style}
           />
@@ -92,7 +92,7 @@ const Aside = ({ style }: { style: string }) => {
       {languages && languages?.length > 0 && (
         <div className={styles.flex}>
           <Title
-            title={titles?.languages ?? ''}
+            title={t(titles?.languages ?? '')}
             icon={isIcon && languagesIcon}
             style={style}
           />

@@ -8,11 +8,13 @@ import { TypeFieldData } from '@/packages/edit/types';
 import { ExperienceList } from '../atoms';
 import iconEducation from '/public/icons/education1.png';
 import iconJob from '/public/icons/job1.png';
+import { useTranslation } from 'react-i18next';
 
 const Content = () => {
   const { contact, employment, course } = useSelector(getStateData);
   const initialShortData = useSelector(getStateSimpleData);
   const { summary, titles, additionalInfo } = initialShortData;
+  const { t } = useTranslation();
 
   const getFilledData = useCallback(
     (data: TypeFieldData[]) => convertFilledContactData(data),
@@ -38,12 +40,12 @@ const Content = () => {
       )}
       <ExperienceList
         data={employment}
-        title={titles.employment ?? ''}
+        title={t(titles.employment ?? '')}
         icon={iconJob}
       />
       <ExperienceList
         data={course}
-        title={titles.course ?? ''}
+        title={t(titles.course ?? '')}
         icon={iconEducation}
       />
       {additionalInfo && (
