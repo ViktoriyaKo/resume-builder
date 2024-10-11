@@ -51,6 +51,7 @@ const ContactForm = (props: IProps) => {
       </form>
       <Modal
         isOpen={open}
+        closeLabel={'Close'}
         onClose={() => setOpen(false)}
         title={'Thank you for your message!'}
         description={'We will definitely contact you'}

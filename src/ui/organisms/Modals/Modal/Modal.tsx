@@ -8,10 +8,11 @@ interface Props {
   onClose: () => void;
   title?: string;
   description?: string;
+  closeLabel: string;
 }
 
 const Modal = (props: Props) => {
-  const { isOpen, onClose, title, description } = props;
+  const { isOpen, onClose, title, description, closeLabel } = props;
 
   return (
     <ModalWrapper isOpen={isOpen} onClose={onClose}>
@@ -20,7 +21,7 @@ const Modal = (props: Props) => {
           {title && <h4 className={styles.title}>{title}</h4>}
           {description && <div>{description}</div>}
           <Button onClick={onClose} className={styles.button}>
-            Close
+            {closeLabel}
           </Button>
         </div>
       }

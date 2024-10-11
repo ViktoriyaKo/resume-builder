@@ -19,10 +19,7 @@ const DocumentPreview = (props: IProps) => {
         {ListTemplates[currentTemplate]}
       </div>
       <DocumentPreviewPagination />
-      <DownloadButtons
-        resume={resume}
-        contentRef={contentRef}
-      />
+      <DownloadButtons resume={resume} contentRef={contentRef} />
     </div>
   );
 };

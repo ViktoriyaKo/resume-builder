@@ -51,6 +51,7 @@ const ReviewForm = (props: IProps) => {
         </Button>
       </form>
       <Modal
+        closeLabel={'Close'}
         isOpen={open}
         onClose={() => setOpen(false)}
         title={'Thank you for your review!'}

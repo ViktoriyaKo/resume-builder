@@ -32,8 +32,10 @@ const Navigation = (props: { routers: RoutersType }) => {
           routers.map((item) => {
             const { href, title } = item ?? {};
             return (
-              <li key={title} className={styles.item}>
-                <Link href={`/${lang}${href}`}>{title}</Link>
+              <li key={title}>
+                <Link className={styles.item} href={`/${lang}${href}`}>
+                  {title}
+                </Link>
               </li>
             );
           })}

@@ -11,7 +11,6 @@ import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
 
-
 const Aside = () => {
   const initialData = useSelector(getStateData);
   const { t } = useTranslation();
@@ -44,7 +43,7 @@ const Aside = () => {
           width={120}
           height={120}
           quality={100}
-          sizes='(max-width: 768px) 200px, 100vw'
+          sizes="(max-width: 768px) 200px, 100vw"
         />
       )}
       <div className={styles.wrapper}>

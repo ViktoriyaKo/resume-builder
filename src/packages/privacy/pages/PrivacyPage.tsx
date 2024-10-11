@@ -6,7 +6,7 @@ import { LanguagesType } from '@/types/types';
 const PrivacyPage = async (props: LanguagesType) => {
   const { lang } = props;
   const data = await getPrivacyData(lang);
-
+  console.log('test');
   if (!data) {
     notFound();
   }

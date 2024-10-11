@@ -64,4 +64,5 @@ export const SELECT_LANGUAGES_ENTITY = [
   { caption: 'B2', value: 'B2' },
   { caption: 'C1', value: 'C1' },
   { caption: 'C2', value: 'C2' },
+  { caption: 'Native speaker', value: 'Native speaker' },
 ];

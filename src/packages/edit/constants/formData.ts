@@ -15,7 +15,7 @@ export enum FormData {
   EMPLOYMENT_TITLE = 'employment',
   LANGUAGES_TITLE = 'languages',
   LINK_TITLE = 'link',
-  SKILLS_TITLE = 'skills',
+  SKILLS_TITLE = 'Skills',
   SCHOOL = 'school',
   DEGREE = 'degree',
   START_DATE = 'startDate',

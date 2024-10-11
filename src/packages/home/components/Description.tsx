@@ -11,8 +11,8 @@ const Description = () => {
       <div className={styles.wrapper}>
         <h2 className={styles.title}>{t('title_description')}</h2>
         <p className={styles.description}>{t('description')}</p>
-      </div> 
-      <Ticker text="Avsievich Resume Builder" />
+      </div>
+      <Ticker text="Free Resume Builder" />
     </section>
   );
 };

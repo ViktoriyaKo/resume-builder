@@ -1,8 +1,7 @@
-"use client"
+'use client';
 import styles from './Footer.module.css';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-
 
 const FooterContainer = (props: { children: React.ReactNode }) => {
   const { children } = props;
@@ -66,7 +65,7 @@ const Navigation = (props: { routers: { title: string; href: string }[] }) => {
 const Author = () => {
   return (
     <div className={styles.media}>
-      <span>Avsievich</span>
+      <Link href={'https://www.avsievich.eu'}>Avsievich Marketing Agency</Link>
       <span>2024</span>
     </div>
   );

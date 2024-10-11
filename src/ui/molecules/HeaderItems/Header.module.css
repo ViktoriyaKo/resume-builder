@@ -38,7 +38,8 @@
 }
 
 .item {
-  padding: var(--xs-spacing);
+  display: block;
+  padding: var(--xs-spacing) 16px;
   font-weight: 500;
   transition: opacity 0.5s;
   color: white;
@@ -77,7 +78,7 @@
     background-color: var(--primary-color);
     color: white;
     border: 1px solid white;
-    margin-block: 4px;
+    margin: 4px 4px 4px 12px;
   }
 }
 

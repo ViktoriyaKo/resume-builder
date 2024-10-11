@@ -16,6 +16,7 @@ const Stars = (props: IProps) => {
     B2: 4,
     C1: 4.5,
     C2: 5,
+    'Native speaker': 5,
   };
 
   return value ? (

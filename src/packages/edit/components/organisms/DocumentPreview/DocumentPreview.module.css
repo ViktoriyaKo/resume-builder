@@ -37,6 +37,7 @@
 }
 
 .list {
+  position: relative;
   border-radius: var(--border-radius);
   background-color: white;
   width: var(--review-width);

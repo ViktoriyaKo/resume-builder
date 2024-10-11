@@ -173,6 +173,7 @@ const DownloadButtons = ({
         isOpen={openModal}
         onClose={() => setModal(false)}
         title={t('save_message')}
+        closeLabel={t('close')}
       />
       <ModalWrapper
         isOpen={openModalPreview}
