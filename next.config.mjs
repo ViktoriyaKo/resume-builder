@@ -26,6 +26,12 @@ const nextConfig = {
         port: '',
         pathname: `/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/**`,
       },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        pathname: `/**`,
+      },
     ],
   },
   env: {

@@ -4,14 +4,7 @@
   gap: var(--xs-spacing);
 }
 
-.topLine {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
 .button {
-  position: relative;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -24,7 +17,20 @@
   z-index: 20;
 }
 
-.button:hover {
+.link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: black;
+  align-self: flex-end;
+  padding: 5px 16px;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.button:hover,
+.link:hover {
   color: black;
   background-color: var(--primary-color-opacity);
 }

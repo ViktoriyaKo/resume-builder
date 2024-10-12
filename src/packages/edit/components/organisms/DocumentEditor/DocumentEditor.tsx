@@ -10,7 +10,14 @@ import {
   Skills,
   AsideTemplates,
 } from '../../molecules';
-import { BackIcon, Icon, Spinner, CustomLink } from '@/ui/atoms';
+import {
+  BackIcon,
+  Icon,
+  Spinner,
+  CustomLink,
+  LinkedinIcon,
+  Button,
+} from '@/ui/atoms';
 import { getCurrentResume } from '@/packages/edit/services/getCurrentResume';
 import { useEffect, useState } from 'react';
 import { AppDispatch } from '@/store/store';
@@ -19,6 +26,8 @@ import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice'
 import { useDebounce } from '@/hooks';
 import { useParams } from 'next/navigation';
 import { useEditTemplateContext } from '@/packages/edit';
+import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 interface IProps {
   currentTemplate: string;
@@ -32,6 +41,7 @@ const DocumentEditor = (props: IProps) => {
   const { lang } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
+  const session = useSession();
 
   const initialData = useSelector(getStateData);
   const { initialFormData, loading } = useSelector(getStateInitialFormData);
@@ -102,6 +112,20 @@ const DocumentEditor = (props: IProps) => {
     return;
   };
 
+  // const handleAutofill = async () => {
+  //   await signIn('linkedin');
+  //   const response = await fetch(`/api/linkedin`);
+  //   const {data} = await response.json();
+  //   const { email, family_name, given_name, picture } = data;
+  //   methods.reset({
+  //     contact: {
+  //       email: email || '',
+  //       firstName: given_name || '',
+  //       lastName: family_name || '',
+  //       // profilePicture: picture || '',
+  //     }})
+  // };
+
   return loading ? (
     <Spinner />
   ) : (
@@ -113,14 +137,18 @@ const DocumentEditor = (props: IProps) => {
           className={styles.article}
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          <div className={styles.topLine}>
-            <CustomLink
-              href={`/${lang}/account?refreshId=${Date.now()}`}
-              className={styles.button}
-              prefix={<Icon html={BackIcon} />}
-              text={'Account'}
-            />
-          </div>
+          <CustomLink
+            href={`/${lang}/account?refreshId=${Date.now()}`}
+            className={styles.button}
+            prefix={<Icon html={BackIcon} />}
+            text={'Account'}
+          />
+          {/* <Button onClick={handleAutofill} className={styles.link}>
+            <>
+              <span>Autofill with</span>
+              <Icon html={LinkedinIcon} />
+            </>
+          </Button> */}
           {/* <ResumeScore score={10} /> */}
           <ContactDetails data={contactData} />
           <DocumentEditorSection.Summary />

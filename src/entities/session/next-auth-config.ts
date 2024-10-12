@@ -3,12 +3,31 @@ import { AuthOptions, User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GooggleProvider from 'next-auth/providers/google';
 import { cookies } from 'next/headers';
+import LinkedInProvider, {
+  LinkedInProfile,
+} from 'next-auth/providers/linkedin';
 
 export const nextAuthConfig: AuthOptions = {
   providers: [
     GooggleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+    }),
+    LinkedInProvider({
+      clientId: process.env.LINKEDIN_CLIENT_ID ?? '',
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET ?? '',
+      authorization: { params: { scope: 'profile email openid' } },
+      issuer: 'https://www.linkedin.com/oauth',
+      jwks_endpoint: 'https://www.linkedin.com/oauth/openid/jwks',
+      async profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          firstname: profile.given_name,
+          lastname: profile.family_name,
+          email: profile.email,
+        };
+      },
     }),
     Credentials({
       credentials: {
@@ -51,6 +70,7 @@ export const nextAuthConfig: AuthOptions = {
     async session({ session, token }) {
       const jwt = token.jwt;
       session.jwt = jwt;
+      session.access_token = token.access_token;
       if (typeof jwt === 'string') {
         cookies().set('jwt', jwt);
       }
@@ -67,6 +87,8 @@ export const nextAuthConfig: AuthOptions = {
 
           token.jwt = data.jwt;
           token.id = data.user.id;
+        } else if (account && account.provider === 'linkedin') {
+          token.access_token = account.access_token;
         } else {
           token.jwt = user.jwt;
           token.id = user.id;

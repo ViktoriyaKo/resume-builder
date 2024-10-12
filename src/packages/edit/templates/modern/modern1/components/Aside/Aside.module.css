@@ -47,6 +47,7 @@
   padding-inline: 4px;
   color: black;
   border-radius: 4px;
+  width: fit-content;
 }
 
 /* contacts */

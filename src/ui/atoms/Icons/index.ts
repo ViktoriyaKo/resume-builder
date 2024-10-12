@@ -24,3 +24,4 @@ export { ClockIcon } from './ClockIcon';
 export { TemplateIcon } from './TemplateIcon';
 export { AwardIcon } from './AwardIcon';
 export { UsersIcon } from './UsersIcon';
+export { LinkedinIcon } from './LinkedinIcon';
