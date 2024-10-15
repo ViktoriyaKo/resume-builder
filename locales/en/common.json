@@ -1,1 +1,10 @@
-{ "close": "Close", "Send": "Send", "use_template": "Use this template" }
+{
+  "close": "Close",
+  "Send": "Send",
+  "use_template": "Use this template",
+  "title_templates": "Templates",
+  "all": "all",
+  "simple": "simple",
+  "modern": "modern",
+  "designer": "designer"
+}

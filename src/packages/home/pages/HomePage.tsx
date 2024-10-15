@@ -18,7 +18,7 @@ import { LanguagesType } from '@/types/types';
 import initTranslations from '@/app/i18n';
 import TranslationsProvider from '@/providers/TranslationsProvider';
 
-const namespaces = ['home'];
+const namespaces = ['home', 'common'];
 
 const HomePage = async (props: LanguagesType) => {
   const { lang } = props;

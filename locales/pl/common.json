@@ -1,1 +1,10 @@
-{ "close": "Zamknąć", "Send": "Wysłać", "use_template": "Użyj tego szablonu" }
+{
+  "close": "Zamknąć",
+  "Send": "Wysłać",
+  "use_template": "Użyj tego szablonu",
+  "title_templates": "Szablony",
+  "all": "wszyscy",
+  "simple": "prosty",
+  "modern": "nowoczesny",
+  "designer": "projektant"
+}

@@ -6,12 +6,17 @@ import clsx from 'clsx';
 import { TemplateEntity } from '@/graphql/gql/graphql';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 interface IProps {
   filters: TemplateEntity[];
 }
 
 const Filters = (props: IProps) => {
+  const { t } = useTranslation('common');
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { filters } = props;
   const links = filters.map((item) => item?.attributes?.link);
   const uniqueLinks = Array.from(new Set(links));
@@ -24,10 +29,18 @@ const Filters = (props: IProps) => {
       perView: 'auto',
       spacing: 8,
     },
+    created() {
+      setIsLoaded(true);
+    },
   });
 
   return (
-    <ul className={clsx(styles.wrapper, 'keen-slider')} ref={ref}>
+    <ul
+      className={clsx(styles.wrapper, 'keen-slider', {
+        [styles.hidden]: !isLoaded,
+      })}
+      ref={ref}
+    >
       {['all', ...uniqueLinks].map((item) => {
         return (
           <li key={item}>
@@ -39,7 +52,7 @@ const Filters = (props: IProps) => {
                 query: { filter: item },
               }}
             >
-              {item}
+              {item && t(item)}
             </Link>
           </li>
         );

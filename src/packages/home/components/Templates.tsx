@@ -18,8 +18,8 @@ interface IProps {
 
 const Templates = (props: IProps) => {
   const { lang } = useParams();
-  const { templates } = props;
   const { t } = useTranslation();
+  const { templates } = props;
   const router = useRouter();
 
   const { status } = useSession();

@@ -4,6 +4,7 @@ import styles from './Card.module.css';
 import { type Template } from '@/graphql/gql/graphql';
 import { Button } from '@/ui/atoms';
 import { MouseEventHandler } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface IProps extends Template {
   handleClick: MouseEventHandler<HTMLButtonElement>;
@@ -12,6 +13,7 @@ interface IProps extends Template {
 const Card = (props: IProps) => {
   const { image, title, description, handleClick } = props ?? {};
   const cover = image?.data?.attributes?.url;
+  const { t } = useTranslation('common');
 
   return (
     <Button onClick={handleClick} className={styles.card}>
@@ -29,7 +31,7 @@ const Card = (props: IProps) => {
         <p className={styles.title}>{title}</p>
         <p className={styles.description}>{description}</p>
       </div>
-      <div className={styles.button}>Use this template</div>
+      <div className={styles.button}>{t('use_template')}</div>
     </Button>
   );
 };

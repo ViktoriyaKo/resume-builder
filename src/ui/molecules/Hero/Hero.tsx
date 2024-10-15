@@ -1,7 +1,8 @@
 'use client';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import styles from './Hero.module.css';
 import background from '@images/frame.svg';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   title: string;
@@ -9,6 +10,7 @@ interface IProps {
 
 const Hero = (props: IProps) => {
   const { title } = props;
+  const { t } = useTranslation();
 
   return (
     <section className={styles.container}>
@@ -21,7 +23,7 @@ const Hero = (props: IProps) => {
         src={background}
       />
       <header className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>{t(title)}</h1>
       </header>
     </section>
   );

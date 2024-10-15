@@ -1,9 +1,15 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: var(--sm-spacing);
   width: 100%;
-  justify-content: center;
+  transition: opacity 2s;
+}
+
+@media (width >= 588px) {
+  .wrapper {
+    justify-content: center;
+    gap: var(--sm-spacing);
+  }
 }
 
 .item {
@@ -29,4 +35,10 @@
     color: white;
     transition: background-color 0.5s;
   }
+}
+
+.hidden {
+  opacity: 0;
+  height: 475px;
+  transition: opacity 2s;
 }
