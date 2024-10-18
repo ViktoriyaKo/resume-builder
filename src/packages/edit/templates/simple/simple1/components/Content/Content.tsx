@@ -5,7 +5,7 @@ import styles from './Content.module.css';
 
 import { Fragment } from 'react';
 import { Categories } from '@/packages/edit/constants';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { useTranslation } from 'react-i18next';
 
 const Content = () => {

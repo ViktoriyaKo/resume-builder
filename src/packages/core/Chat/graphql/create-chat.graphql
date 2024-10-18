@@ -1,0 +1,10 @@
+mutation CreateChat($chatId: String!) {
+  createChat(data: { chatId: $chatId }) {
+    data {
+      id
+      attributes {
+        chatId
+      }
+    }
+  }
+}

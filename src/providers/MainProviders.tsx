@@ -2,6 +2,7 @@
 import { SessionProvider } from 'next-auth/react';
 import { ReactNode } from 'react';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import ModalProvider from '@/context/ModalContext';
 
 export interface SessionProviderProps {
   children: ReactNode;
@@ -10,7 +11,9 @@ export interface SessionProviderProps {
 export default function MainProviders({ children }: SessionProviderProps) {
   return (
     <ErrorBoundary>
-      <SessionProvider>{children}</SessionProvider>
+      <ModalProvider>
+        <SessionProvider>{children}</SessionProvider>
+      </ModalProvider>
     </ErrorBoundary>
   );
 }

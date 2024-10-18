@@ -1,0 +1,19 @@
+query AllChats {
+  chats(pagination: { limit: 1000 }, sort: "createdAt:desc") {
+    data {
+      id
+      attributes {
+        chatId
+        messages(pagination: { limit: 1000 }, sort: "createdAt:desc") {
+          data {
+            attributes {
+              message
+              sender
+              createdAt
+            }
+          }
+        }
+      }
+    }
+  }
+}

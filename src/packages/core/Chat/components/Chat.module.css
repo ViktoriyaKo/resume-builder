@@ -1,0 +1,7 @@
+
+.iconChat {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  color: var(--primary-color);
+}

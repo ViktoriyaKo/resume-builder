@@ -1,5 +1,5 @@
 import styles from './ExperienceList.module.css';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { TypeExpendedData } from '@/packages/edit/types';
 import { FormData } from '@/packages/edit/constants';
 import { StaticImageData } from 'next/image';

@@ -14,6 +14,7 @@ declare module 'next-auth' {
     jwt?: unknown;
     data?: { [key: string]: string };
     access_token?: unknown;
+    role?: unknown;
   }
 
   interface Token extends DefaultToken {

@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types"
-  ],
+, "src/packages/core/Chat/components/ChatList/ChatList.module.csstsx"  ],
   "exclude": ["node_modules"]
 }

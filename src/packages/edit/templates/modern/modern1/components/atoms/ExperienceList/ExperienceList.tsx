@@ -1,6 +1,6 @@
 import Title from '../Title/Title';
 import styles from './ExperienceList.module.css';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { TypeExpendedData } from '@/packages/edit/types';
 import { StaticImageData } from 'next/image';
 import { FormData } from '@/packages/edit/constants';

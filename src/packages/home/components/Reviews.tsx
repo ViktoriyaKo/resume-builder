@@ -1,7 +1,7 @@
 'use client';
 import styles from '../styles/Reviews.module.css';
 import { ReviewEntity } from '@/graphql/gql/graphql';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { Stars } from '@/ui/atoms';
 import { ReviewForm } from '.';
 import { motion } from 'framer-motion';

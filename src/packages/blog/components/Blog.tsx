@@ -3,9 +3,9 @@ import Link from 'next/link';
 import styles from '../styles/Blog.module.css';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { getLongDateFormat } from '@/packages/edit/utils';
 import { TimeLine } from '@/ui/molecules';
 import { BlogEntity } from '@/graphql/gql/graphql';
+import { getLongDateFormat } from '@/utils';
 
 interface IProps {
   blogItems: BlogEntity[];

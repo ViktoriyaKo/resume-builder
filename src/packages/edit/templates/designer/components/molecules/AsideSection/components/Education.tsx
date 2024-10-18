@@ -1,7 +1,7 @@
 import { TypeExpendedData } from '@/packages/edit/types';
 import { Title } from '../../../atoms';
 import styles from '../styles/AsideSection.module.css';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { FormData } from '@/packages/edit/constants';
 
 interface IProps {

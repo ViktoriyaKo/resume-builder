@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import clsx from 'clsx';
 import { CookieModal, Footer, Header } from '@/ui/organisms';
 import { ROUTERS } from '@/constants/routers';
-import { ContactForm, GoogleAnalytics } from '@/packages/core';
+import { Chat, ContactForm, GoogleAnalytics } from '@/packages/core';
 import { Locales } from '@/types';
 import MainProviders from '@/providers/MainProviders';
 import type { Metadata } from 'next';
@@ -48,6 +48,7 @@ export default function Layout({
             routers={ROUTERS ?? []}
             form={<ContactForm title={'leave your feedback'} label={'Send'} />}
           />
+          <Chat />
         </MainProviders>
         <CookieModal
           title={'We use cookies'}

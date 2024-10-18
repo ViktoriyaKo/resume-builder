@@ -1,0 +1,19 @@
+query Chat($id: ID) {
+  chats(filters: { id: { eq: $id } }, pagination: { limit: 1000 }) {
+    data {
+      id
+      attributes {
+        chatId
+        messages(pagination: { limit: 1000 }) {
+          data {
+            attributes {
+              message
+              sender
+              createdAt
+            }
+          }
+        }
+      }
+    }
+  }
+}

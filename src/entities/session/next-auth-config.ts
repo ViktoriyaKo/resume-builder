@@ -71,6 +71,7 @@ export const nextAuthConfig: AuthOptions = {
       const jwt = token.jwt;
       session.jwt = jwt;
       session.access_token = token.access_token;
+      session.role = token.role;
       if (typeof jwt === 'string') {
         cookies().set('jwt', jwt);
       }
@@ -79,6 +80,11 @@ export const nextAuthConfig: AuthOptions = {
     async jwt({ token, user, account }) {
       const isSignIn = user ? true : false;
       if (isSignIn) {
+        if (user && user.email === process.env.ADMIN_EMAIL) {
+          token.role = 'admin';
+        } else {
+          token.role = 'user';
+        }
         if (account && account.provider === 'google') {
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`

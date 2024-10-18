@@ -19,7 +19,7 @@ export const getMetaData = async (
     );
 
     const keywords = data.translation?.data?.attributes?.meta_keywords;
-    const page = data.pages?.data[0].attributes;
+    const page = data.pages?.data?.[0]?.attributes;
     const ogImage =
       data.image?.data?.attributes?.ogImage?.data?.attributes?.url;
     const isMain = slug === 'home';

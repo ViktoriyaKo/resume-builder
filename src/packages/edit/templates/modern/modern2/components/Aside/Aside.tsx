@@ -4,7 +4,7 @@ import { getStateSimpleData } from '@/packages/edit/store/simpleFieldSlice';
 import { getStateInitialFormData } from '@/packages/edit/store/initialFormSlice';
 import { useTranslation } from 'react-i18next';
 import { FormData } from '@/packages/edit/constants';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { getStateData } from '@/packages/edit/store/dataSlice';
 import { Stars } from '@/ui/atoms';
 import Title from '../Title/Title';

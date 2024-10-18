@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
 import { TimeLine } from '@/ui/molecules';
 import { Blog } from '@/graphql/gql/graphql';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 
 interface IProps {
   blog: Blog;

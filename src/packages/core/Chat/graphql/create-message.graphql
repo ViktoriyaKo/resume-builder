@@ -1,0 +1,11 @@
+mutation CreateMessage($message: String!, $sender: String!, $chats: [ID!]) {
+  createMessage(data: { message: $message, sender: $sender, chats: $chats }) {
+    data {
+      attributes {
+        message
+        sender
+        createdAt
+      }
+    }
+  }
+}

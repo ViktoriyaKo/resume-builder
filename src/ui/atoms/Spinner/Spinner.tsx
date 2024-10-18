@@ -1,10 +1,18 @@
 import styles from './Spinner.module.css';
 import clsx from 'clsx';
 
-const Spinner = () => {
+
+interface IProps {
+  size?: string;
+}
+
+
+const Spinner = (props: IProps) => {
+  const {size = 'bg'} = props;
+
   return (
     <div className={styles.wrapper}>
-      <div className={clsx(styles.spinner, 'spinner-grow')} role="status"></div>
+      <div className={clsx(styles[size], 'spinner-grow')} role="status"></div>
       <span className="sr-only">Loading...</span>
     </div>
   );

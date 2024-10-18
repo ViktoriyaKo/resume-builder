@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { TypeFieldData } from '@/packages/edit/types';
 import { convertFilledContactData, getDataValuesForm } from '../../../../utils';
-import { getLongDateFormat } from '@/packages/edit/utils';
+import { getLongDateFormat } from '@/utils';
 import { LabelValue, Title } from '../atoms';
 import { FormData } from '@/packages/edit/constants';
 import { useTranslation } from 'react-i18next';
