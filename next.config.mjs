@@ -37,6 +37,7 @@ const nextConfig = {
   env: {
     baseApiUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:1337',
     baseUrl: process.env.NEXT_PUBLIC_URL || '',
+    telegramBotUrl: `${process.env.URL_TELEGRAM}${process.env.BOT_TOKEN}`,
   },
 };
 

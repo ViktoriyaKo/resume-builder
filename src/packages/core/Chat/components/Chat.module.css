@@ -4,4 +4,16 @@
   bottom: 30px;
   right: 40px;
   color: var(--primary-color);
+  z-index:10000;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid var(--primary-color);
+  backdrop-filter: blur(10px);  
+  transition:all 0.5s;
+  box-shadow: var(--box-shadow);
+}
+
+.iconChat:hover {
+  transition:all 0.5s;
+  color:black; 
 }

@@ -7,6 +7,10 @@ import { useState } from 'react';
 import { Modal } from '@/ui/organisms';
 import { FormContactValues } from '@/types';
 import { createRequest } from '@/services';
+import {
+  generateMessageForTelegram,
+  sendDataToTelegram,
+} from '@/services/sendNotifyToTelegram';
 
 interface IProps {
   title: string;
@@ -25,6 +29,12 @@ const ContactForm = (props: IProps) => {
   const onSubmit = async (body: FormContactValues) => {
     await createRequest(body);
     setOpen(true);
+    const message = generateMessageForTelegram({
+      contact: body.email,
+      description: body.text,
+    });
+    await sendDataToTelegram(message);
+
     methods.reset();
   };
 

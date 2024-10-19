@@ -21,7 +21,7 @@ const ProfileHeader = (props: IProps) => {
           <Icon html={ArrowIcon} />
         </Button>
       )}
-     {isOpenModal && <div className={styles.imageWrapper}>
+     {(isOpenModal || (!isOpenModal && !isAdmin)) && <div className={styles.imageWrapper}>
          <Image
           className={styles.image}
           width={45}

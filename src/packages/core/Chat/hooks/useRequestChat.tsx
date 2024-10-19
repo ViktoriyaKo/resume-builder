@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { createChat } from '../services';
 
-const useRequestChat = () => {
+const useRequestChat = (isOpenChat: boolean) => {
   const [chatId, setChatId] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
 
@@ -18,6 +18,7 @@ const useRequestChat = () => {
   };
 
   useEffect(() => {
+    if(isOpenChat) {
     const initializeChat = async () => {
       let currentChat = localStorage.getItem('chat');
 
@@ -32,9 +33,11 @@ const useRequestChat = () => {
       }
       setLoading(false);
     };
+  
 
     initializeChat();
-  }, []);
+  }
+  }, [isOpenChat]);
 
   return { isLoading, chatId };
 };

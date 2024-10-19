@@ -6,6 +6,8 @@ import { getChat, createMessage } from '../../services';
 import { MessageEntity } from '@/graphql/gql/graphql';
 import { ChatSection } from '..';
 import { useModalContext } from '@/context/ModalContext';
+import { generateMessageForTelegram } from '@/services/sendNotifyToTelegram';
+import { socket } from '@/socket';
 
 interface FormValue {
   message: string;
@@ -13,10 +15,9 @@ interface FormValue {
 
 const ClientChat = () => {
   const { setOpenModal } = useModalContext();
-  const { isLoading, chatId } = useRequestChat();
   const [messages, setMessages] = useState<MessageEntity[]>([]);
-
-  const [isOpen, setOpen] = useState(true);
+  const [isOpenChat, setOpenChat] = useState(false);
+  const { isLoading, chatId } = useRequestChat(isOpenChat);
 
   const onSubmit = async (data: FormValue) => {
     try {
@@ -29,20 +30,50 @@ const ClientChat = () => {
         await createMessage(newData);
       }
 
-      setMessages([
-        ...messages,
-        {
-          attributes: {
-            sender: 'user',
-            message: data.message,
-            createdAt: new Date(),
-          },
+      const newMessage = {
+        chatId,
+        attributes: {
+          sender: 'user',
+          message: data.message,
+          createdAt: new Date(),
         },
-      ]);
+      };
+      socket.emit('send-message', newMessage);
+      const message = generateMessageForTelegram({
+        chat: String(chatId),
+        description: data.message,
+      });
+      // await sendDataToTelegram(message);
     } catch (err) {
       console.log(err);
     }
   };
+
+  //start socket
+  function receiveMessage(messageData: any) {
+    if (messageData?.data?.chatId === chatId) {
+      setMessages((prevMessages) => [...prevMessages, messageData?.data]);
+    }
+  }
+
+  useEffect(() => {
+    if (!chatId) return;
+    socket.connect();
+
+    function onConnect() {
+      console.log(`Connected with socket`);
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('receive-message', receiveMessage);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('receive-message', receiveMessage);
+      socket.disconnect();
+    };
+  }, [chatId]);
+  //finish socket
 
   const fetchMessages = useCallback(async () => {
     if (!chatId) return;
@@ -58,9 +89,9 @@ const ClientChat = () => {
 
   return (
     <>
-      <ChatSection.Container isOpen={isOpen}>
+      <ChatSection.Container isOpen={isOpenChat}>
         <ChatSection.ProfileHeader
-          closeChat={() => setOpen(false)}
+          closeChat={() => setOpenChat(false)}
           isAdmin={false}
         />
         {isLoading ? (
@@ -70,8 +101,8 @@ const ClientChat = () => {
         )}
         <ChatSection.InputBox onSubmit={onSubmit} />
       </ChatSection.Container>
-      {!isOpen && (
-        <Button className={styles.iconChat} onClick={() => setOpen(true)}>
+      {!isOpenChat && (
+        <Button className={styles.iconChat} onClick={() => setOpenChat(true)}>
           <Icon html={ChatIcon} />
         </Button>
       )}
