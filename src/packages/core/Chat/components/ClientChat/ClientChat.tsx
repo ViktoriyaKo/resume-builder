@@ -6,7 +6,10 @@ import { getChat, createMessage } from '../../services';
 import { MessageEntity } from '@/graphql/gql/graphql';
 import { ChatSection } from '..';
 import { useModalContext } from '@/context/ModalContext';
-import { generateMessageForTelegram } from '@/services/sendNotifyToTelegram';
+import {
+  generateMessageForTelegram,
+  sendDataToTelegram,
+} from '@/services/sendNotifyToTelegram';
 import { socket } from '@/socket';
 
 interface FormValue {
@@ -43,7 +46,7 @@ const ClientChat = () => {
         chat: String(chatId),
         description: data.message,
       });
-      // await sendDataToTelegram(message);
+      await sendDataToTelegram(message);
     } catch (err) {
       console.log(err);
     }

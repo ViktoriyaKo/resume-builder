@@ -4,7 +4,7 @@
   bottom: 30px;
   right: 40px;
   color: var(--primary-color);
-  z-index:10000;
+  z-index:1002;
   padding: 8px;
   border-radius: 8px;
   border: 2px solid var(--primary-color);

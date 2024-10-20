@@ -1,6 +1,6 @@
 .wrapper {
   position: fixed;
-  z-index: 20;
+  z-index: 1003;
   bottom: 10px;
   left: 50%;
   transform: translate(-50%);

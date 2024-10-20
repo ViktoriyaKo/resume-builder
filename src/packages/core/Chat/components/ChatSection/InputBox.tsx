@@ -37,11 +37,10 @@ const InputBox = (props: IProps) => {
           className={styles.form}
         >
           <Input
-            inputStyle={clsx('form-control', styles.smallText)}
             name={'message'}
             placeholder="Send message..."
             type={'text'}
-            rules={{ required: '' }}
+            rules={{ required: true }}
           />
           <Button
             type={'submit'}
