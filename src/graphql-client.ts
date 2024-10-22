@@ -16,10 +16,3 @@ export const getAuthClient = () => {
   });
 };
 
-export const getAdminClient = () => {
-  return new GraphQLClient(`${process.env.baseApiUrl}/graphql`, {
-    headers: {
-      Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
-    },
-  });
-};
