@@ -16,3 +16,15 @@ export const getAuthClient = () => {
   });
 };
 
+export const getAdminClient = () => {
+  const jwt = Cookies.get('adminToken');
+  if (!jwt) {
+    throw new Error('Access is forbidden');
+  }
+
+  return new GraphQLClient(`${process.env.baseApiUrl}/graphql`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+};

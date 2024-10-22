@@ -75,6 +75,9 @@ export const nextAuthConfig: AuthOptions = {
       if (typeof jwt === 'string') {
         cookies().set('jwt', jwt);
       }
+      if (typeof token?.adminToken === 'string') {
+        cookies().set('adminToken', token.adminToken);
+      }
       return session;
     },
     async jwt({ token, user, account }) {
@@ -82,6 +85,7 @@ export const nextAuthConfig: AuthOptions = {
       if (isSignIn) {
         if (user && user.email === process.env.ADMIN_EMAIL) {
           token.role = 'admin';
+          token.adminToken = process.env.ADMIN_TOKEN;
         } else {
           token.role = 'user';
         }
